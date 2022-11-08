@@ -1,7 +1,5 @@
 #include "ROOT/RDataFrame.hxx"
-#include "ROOT/RVec.hxx" //per usare ROOT::VecOps::RVec<T>
-#include "Math/Vector4D.h" //per usare PtEtaPhiMVector
-using namespace ROOT::VecOps;
+#include "ROOT/RVec.hxx"
 
 float computeInvariantMass(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass) {
   ROOT::Math::PtEtaPhiMVector m1(pt[0], eta[0], phi[0], mass[0]);
