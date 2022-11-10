@@ -51,6 +51,7 @@ void dimuonSpectrum() {
     auto c = new TCanvas("c", "", 800, 700);
     c->SetLogx();
     c->SetLogy();
+    //ehi mati proviamo a risolvere questo conflitto
 
     // Draw histogram
     hist->GetXaxis()->SetTitle("m_{#mu#mu} (GeV)");
