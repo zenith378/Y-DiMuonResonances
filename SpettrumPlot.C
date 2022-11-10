@@ -2,6 +2,10 @@
 #include "ROOT/RVec.hxx" //per usare ROOT::VecOps::RVec<T>
 #include "Math/Vector4Dfwd.h"
 #include "Math/Vector4D.h" //per usare PtEtaPhiMVector
+#include "TCanvas.h"
+#include "TH1D.h"
+#include "TLatex.h"
+#include "TStyle.h"
 
 using namespace ROOT::VecOps;
 
@@ -36,6 +40,9 @@ void SpettrumPlot(){
   const auto up = 300.0; // Upper edge of the histogram                       
   auto hist = df_mass.Histo1D({"hist", "Dimuon mass", bins, low, up}, "Dimuon_mass");
 
+  // Request cut-flow report
+  auto report = df_mass.Report();
+
   // Create canvas for plotting                                               
   gStyle->SetOptStat(0);
   gStyle->SetTextFont(42);
@@ -48,4 +55,28 @@ void SpettrumPlot(){
   hist->GetXaxis()->SetTitleSize(0.04);
   hist->GetYaxis()->SetTitle("N_{Events}");
   hist->GetYaxis()->SetTitleSize(0.04);
+  hist->DrawClone(); //crea un clone dell'istogramma che sopravvive fuori dalla macro
+
+  // Draw labels
+  TLatex label;
+  label.SetTextAlign(22); //22= centrale verticalmente e orizzontalmente --> fare diverse prove!
+  label.DrawLatex(0.55, 3.0e4, "#eta");
+  label.DrawLatex(0.77, 7.0e4, "#rho,#omega");
+  label.DrawLatex(1.20, 4.0e4, "#phi");
+  label.DrawLatex(4.40, 1.0e5, "J/#psi");
+  label.DrawLatex(4.60, 1.0e4, "#psi'");
+  label.DrawLatex(12.0, 2.0e4, "Y(1,2,3S)");
+  label.DrawLatex(91.0, 1.5e4, "Z");
+  label.SetNDC(true); //cambio di coordinate di riferimento da quelle del grafico a quelle del pad normalizzate
+  abel.SetTextAlign(11); //left bottom
+  label.SetTextSize(0.04);
+  label.DrawLatex(0.10, 0.92, "#bf{CMS Open Data}");
+  label.SetTextAlign(31); //right bottom
+  label.DrawLatex(0.90, 0.92, "#sqrt{s} = 8 TeV, L_{int} = 11.6 fb^{-1}");
+  
+  // Save plot
+  c->SaveAs("dimuonSpectrum.pdf");
+
+  // Print cut-flow report
+  report->Print();
 }

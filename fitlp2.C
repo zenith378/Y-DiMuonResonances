@@ -86,7 +86,7 @@ TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
 
   // create a TF1 with the range from x1 to x9 and 7 parameters
 
-  TF1 *lp2Fcn = new TF1( "lp2Fcn", fitfunction, x1, x9, 7 );
+  TF1 *lp2Fcn = new TF1( "lp2Fcn", fitfunction, x1, x9, 6 );
     
   lp2Fcn->SetParName( 0, "BG" );
   lp2Fcn->SetParName( 1, "slope" );
