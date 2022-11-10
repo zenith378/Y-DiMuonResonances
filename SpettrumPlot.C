@@ -2,6 +2,7 @@
 #include "ROOT/RVec.hxx" //per usare ROOT::VecOps::RVec<T>
 #include "Math/Vector4Dfwd.h"
 #include "Math/Vector4D.h" //per usare PtEtaPhiMVector
+#include "SpettrumPlot.h"
 
 using namespace ROOT::VecOps;
 
