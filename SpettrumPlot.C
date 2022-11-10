@@ -51,7 +51,6 @@ void SpettrumPlot(){
   c->SetLogx();
   c->SetLogy();
 
-  //VOGLIO CREARE UN CONFLITTO
 
   // Draw histogram
   hist->GetXaxis()->SetTitle("m_{#mu^{+}#mu^{-}} [GeV]");
