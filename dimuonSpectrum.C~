@@ -54,8 +54,6 @@ void dimuonSpectrum() {
     //ehi mati proviamo a risolvere questo conflitto
 <<<<<<< HEAD
     //ehi ehi non ci riesco 
-=======
-    //non ha funzionato, riproviamo!
 >>>>>>> 049b78b48a7bd65193b0074b781d06f64aeeed3d
 
     // Draw histogram
