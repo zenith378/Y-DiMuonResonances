@@ -1,5 +1,6 @@
 #include "ROOT/RDataFrame.hxx"
 #include "ROOT/RVec.hxx" //per usare ROOT::VecOps::RVec<T>
+#include "Math/Vector4Dfwd.h"
 #include "Math/Vector4D.h" //per usare PtEtaPhiMVector
 
 using namespace ROOT::VecOps;
@@ -29,4 +30,22 @@ void SpettrumPlot(){
   auto df_mass = df_os.Define("Dimuon_mass", computeInvariantMass,
 			      {"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass"});
 
+  // Book histogram of dimuon mass spectrum                                   
+  const auto bins = 30000; // Number of bins in the histogram                 
+  const auto low = 0.25; // Lower edge of the histogram                       
+  const auto up = 300.0; // Upper edge of the histogram                       
+  auto hist = df_mass.Histo1D({"hist", "Dimuon mass", bins, low, up}, "Dimuon_mass");
+
+  // Create canvas for plotting                                               
+  gStyle->SetOptStat(0);
+  gStyle->SetTextFont(42);
+  auto c = new TCanvas("c", "", 800, 700);
+  c->SetLogx();
+  c->SetLogy();
+
+  // Draw histogram                                                           
+  hist->GetXaxis()->SetTitle("m_{#mu^{+}#mu^{-}} [GeV]");
+  hist->GetXaxis()->SetTitleSize(0.04);
+  hist->GetYaxis()->SetTitle("N_{Events}");
+  hist->GetYaxis()->SetTitleSize(0.04);
 }
