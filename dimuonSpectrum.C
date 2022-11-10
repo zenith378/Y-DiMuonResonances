@@ -52,7 +52,9 @@ void dimuonSpectrum() {
     c->SetLogx();
     c->SetLogy();
     //ehi mati proviamo a risolvere questo conflitto
+<<<<<<< HEAD
     //ehi ehi non ci riesco 
+>>>>>>> 049b78b48a7bd65193b0074b781d06f64aeeed3d
 
     // Draw histogram
     hist->GetXaxis()->SetTitle("m_{#mu#mu} (GeV)");
