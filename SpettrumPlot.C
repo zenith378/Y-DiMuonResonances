@@ -1,17 +1,14 @@
-#include "ROOT/RDataFrame.hxx"
-#include "ROOT/RVec.hxx" //per usare ROOT::VecOps::RVec<T>
-#include "Math/Vector4Dfwd.h"
-#include "Math/Vector4D.h" //per usare PtEtaPhiMVector
+
 #include "SpettrumPlot.h"
-#include "TCanvas.h"
-#include "TH1D.h"
-#include "TLatex.h"
-#include "TStyle.h"
+
 
 using namespace ROOT::VecOps;
 
 float computeInvariantMass(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass) {
-  //potremmo implementare queste due righe con un ciclo su uno dei vettori, definire un vettore si vettori di lorentz che se è più lungo di 2 mi restituisce un messaggio di errore, sommare gli elementi del vettore (cioè sommare i duei vettori di L e fare la massa invariante)
+  //potremmo implementare queste due righe con un ciclo su uno dei vettori,
+  //definire un vettore si vettori di lorentz che se è più lungo di 2 mi
+  //restituisce un messaggio di errore, sommare gli elementi del vettore
+  //(cioè sommare i duei vettori di L e fare la massa invariante)
   ROOT::Math::PtEtaPhiMVector m1(pt[0], eta[0], phi[0], mass[0]);
   ROOT::Math::PtEtaPhiMVector m2(pt[1], eta[1], phi[1], mass[1]);
   return (m1 + m2).mass();
