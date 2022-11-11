@@ -9,6 +9,7 @@
 #ifndef SpettrumPlot_h
 #define SpettrumPlot_h
 
+using namespace ROOT::VecOps;
 
 float computeInvariantMass(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass);
 //compute invariant mass

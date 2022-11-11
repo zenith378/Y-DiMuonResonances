@@ -17,4 +17,6 @@ Double_t background(Double_t *x, Double_t *par); //Funzione di fit per il backgr
 
 Double_t fitfunction(Double_t *x, Double_t *par); // funzione che esegue il fit
 
+TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 );//esecuzione fit
+
 #endif /* fitlp2_h */

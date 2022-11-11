@@ -13,5 +13,4 @@
 int main() {
     SpettrumPlot();
     //    fitlp2("hist",70,100);
-    return 0;
 }

@@ -70,7 +70,7 @@ void SpettrumPlot(){
   label.DrawLatex(12.0, 2.0e4, "Y(1,2,3S)");
   label.DrawLatex(91.0, 1.5e4, "Z");
   label.SetNDC(true); //cambio di coordinate di riferimento da quelle del grafico a quelle del pad normalizzate
-  abel.SetTextAlign(11); //left bottom
+  label.SetTextAlign(11); //left bottom
   label.SetTextSize(0.04);
   label.DrawLatex(0.10, 0.92, "#bf{CMS Open Data}");
   label.SetTextAlign(31); //right bottom
@@ -82,3 +82,4 @@ void SpettrumPlot(){
   // Print cut-flow report
   report->Print();
 }
+
