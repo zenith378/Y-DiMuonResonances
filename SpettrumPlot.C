@@ -1,6 +1,4 @@
-
 #include "SpettrumPlot.h"
-
 
 using namespace ROOT::VecOps;
 

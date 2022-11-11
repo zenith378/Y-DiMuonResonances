@@ -18,6 +18,8 @@
 #include "TLatex.h"
 #include "TStyle.h"
 
+using namespace ROOT::VecOps;
+
 float computeInvariantMass(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass);
 //compute invariant mass
 
