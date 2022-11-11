@@ -1,12 +1,3 @@
-#include "TDirectory.h"
-#include "TH1.h"
-#include "TMath.h"
-#include "TF1.h"
-//#include "TLegend.h"
-//#include "TCanvas.h"
-#include "TStyle.h"
-#include "TFitResult.h"
-#include "TMatrixD.h"
 #include "fitlp2.h"
 
 
