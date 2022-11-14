@@ -20,21 +20,21 @@
 #include "TMatrixD.h"
 
 
-inline Double_t lorentzianPeak(Double_t *x, Double_t *par) {
+Double_t lorentzianPeak(Double_t *x, Double_t *par) {
     return (0.5*par[0]*par[1]/TMath::Pi()) / TMath::Max(1.e-10,(x[0]-par[2])*(x[0]-par[2])+ .25*par[1]*par[1]);
 }
 // Quadratic background function
-inline Double_t background(Double_t *x, Double_t *par) {
+Double_t background(Double_t *x, Double_t *par) {
     return par[0] + par[1]*x[0] + par[2]*x[0]*x[0];
 }
 
 // Sum of background and peak function
-inline Double_t fitfunction(Double_t *x, Double_t *par) {
+Double_t fitfunction(Double_t *x, Double_t *par) {
     return background(x,par) + lorentzianPeak(x,&par[3]);
 }
 
 //----------------------------------------------------------------------
-inline TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
+TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
 {
     TH1 *h = (TH1*)gDirectory->Get( hs.c_str() ); // perché quaggiù non passiamo fdirettamente l'istogramma anziché la stringa?
 
@@ -44,7 +44,7 @@ inline TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
     }
 
     h->SetMarkerStyle(21);
-    h->SetMarkerSize(0.8);
+    h->SetMarkerSize(0.2);
     h->SetStats(1);
     gStyle->SetOptFit(101);
 
@@ -127,12 +127,19 @@ inline TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
     cout << "chisq = " << lp2Fcn->GetChisquare() << endl;
     cout << "prob  = " << lp2Fcn->GetProb() << endl;
 
+    ///*
+    auto c1 = new TCanvas("c", "", 800, 700);
+    c1->SetLogx();
+    c1->SetLogy();//*/
+    
     // data points on top:
     h->Draw("histpesame");
     TMatrixD cor = r->GetCorrelationMatrix();
     TMatrixD cov = r->GetCovarianceMatrix();
     //cov.Print();
     //cor.Print();
+    
+    c1->SaveAs("fitZ.pdf");
     return r;
 
 }

@@ -20,7 +20,7 @@
 
 using namespace ROOT::VecOps;
 
-inline float computeInvariantMass(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass){
+float computeInvariantMass(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass)
   {
     //potremmo implementare queste due righe con un ciclo su uno dei vettori,
     //definire un vettore si vettori di lorentz che se è più lungo di 2 mi
@@ -33,7 +33,7 @@ inline float computeInvariantMass(RVec<float>& pt, RVec<float>& eta, RVec<float>
 
 //compute invariant mass
 
-inline void SpettrumPlot(){
+void SpettrumPlot(){
   //Enable multi-threading
   ROOT::EnableImplicitMT(1);
 
@@ -86,7 +86,7 @@ inline void SpettrumPlot(){
   label.DrawLatex(12.0, 2.0e4, "Y(1,2,3S)");
   label.DrawLatex(91.0, 1.5e4, "Z");
   label.SetNDC(true); //cambio di coordinate di riferimento da quelle del grafico a quelle del pad normalizzate
-  abel.SetTextAlign(11); //left bottom
+  label.SetTextAlign(11); //left bottom
   label.SetTextSize(0.04);
   label.DrawLatex(0.10, 0.92, "#bf{CMS Open Data}");
   label.SetTextAlign(31); //right bottom
