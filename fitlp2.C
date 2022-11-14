@@ -29,7 +29,7 @@ TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
     }
 
     h->SetMarkerStyle(21);
-    h->SetMarkerSize(0.8);
+    h->SetMarkerSize(0.2);
     h->SetStats(1);
     gStyle->SetOptFit(101);
 
@@ -111,13 +111,19 @@ TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
     cout << "NDoF  = " << lp2Fcn->GetNDF() << endl;
     cout << "chisq = " << lp2Fcn->GetChisquare() << endl;
     cout << "prob  = " << lp2Fcn->GetProb() << endl;
-
+    
+    auto c = new TCanvas("c", "", 800, 700);
+    c->SetLogx();
+    c->SetLogy()
+    
     // data points on top:
     h->Draw("histpesame");
     TMatrixD cor = r->GetCorrelationMatrix();
     TMatrixD cov = r->GetCovarianceMatrix();
     //cov.Print();
     //cor.Print();
+    
+    c->SaveAs("fitZ.pdf");
     return r;
 
 }
