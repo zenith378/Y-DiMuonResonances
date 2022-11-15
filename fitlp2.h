@@ -46,7 +46,12 @@ TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
     h->SetMarkerStyle(21);
     h->SetMarkerSize(0.2);
     h->SetStats(1);
+    
     gStyle->SetOptFit(101);
+    gStyle->SetStatX(0.4); // right edge
+    gStyle->SetStatY(0.45); // top edge
+    gStyle->SetStatW(0.15); // width
+    gStyle->SetStatH(0.15); // height
 
     //gROOT->ForceStyle();
 
