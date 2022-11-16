@@ -23,6 +23,11 @@
 Double_t lorentzianPeak(Double_t *x, Double_t *par) {
     return (0.5*par[0]*par[1]/TMath::Pi()) / TMath::Max(1.e-10,(x[0]-par[2])*(x[0]-par[2])+ .25*par[1]*par[1]);
 }
+
+Double_t gaussianPeak(Double_t *x, Double_t *par) {
+    return par[0]*exp(-0.5*((x-par[1])/par[2])^2)/(par[2] *TMath::Sqrt(2*TMath::Pi)));
+}
+
 // Quadratic background function
 Double_t background(Double_t *x, Double_t *par) {
     return par[0] + par[1]*x[0] + par[2]*x[0]*x[0];
@@ -30,7 +35,7 @@ Double_t background(Double_t *x, Double_t *par) {
 
 // Sum of background and peak function
 Double_t fitfunction(Double_t *x, Double_t *par) {
-    return background(x,par) + lorentzianPeak(x,&par[3]);
+    return background(x,par) + gaussianPeak(x,&par[3])+ gaussianPeak(x,&par[6])+ gaussianPeak(x,&par[9]);
 }
 
 //----------------------------------------------------------------------
@@ -99,15 +104,20 @@ TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
 
     // create a TF1 with the range from x1 to x9 and 7 parameters
 
-    TF1 *lp2Fcn = new TF1( "lp2Fcn", fitfunction, x1, x9, 6 );
+    TF1 *lp2Fcn = new TF1( "lp2Fcn", fitfunction, x1, x9, 11 );
 
     lp2Fcn->SetParName( 0, "BG" );
     lp2Fcn->SetParName( 1, "slope" );
     lp2Fcn->SetParName( 2, "curv" );
-    lp2Fcn->SetParName( 3, "area");
-    lp2Fcn->SetParName( 5, "mean" );
-    lp2Fcn->SetParName( 4, "sigma" );
-
+    lp2Fcn->SetParName( 3, "norm1");
+    lp2Fcn->SetParName( 4, "mean1" );
+    lp2Fcn->SetParName( 5, "sigma1" );
+    lp2Fcn->SetParName( 6, "norm2");
+    lp2Fcn->SetParName( 7, "mean2" );
+    lp2Fcn->SetParName( 8, "sigma2" );    
+    lp2Fcn->SetParName( 9, "norm2");
+    lp2Fcn->SetParName( 10, "mean2" );
+    lp2Fcn->SetParName( 11, "sigma2" );
     // set start values for some parameters:
 
 
@@ -115,11 +125,17 @@ TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
     lp2Fcn->SetParameter( 0, bg );
     lp2Fcn->SetParameter( 1, slp );
     lp2Fcn->SetParameter( 2, 0 );
-    lp2Fcn->SetParameter( 3, aa );
-    lp2Fcn->SetParameter( 4, sm ); // width
-    lp2Fcn->SetLineWidth(4);
-    lp2Fcn->SetParameter( 5, xpk ); // peak position
+    lp2Fcn->SetParameter( 3, nm1 ); //norm
+    lp2Fcn->SetParameter( 4, me1 ); // mean
+    lp2Fcn->SetParameter( 5, sig1 ); // sigma
+    lp2Fcn->SetParameter( 6, nm2 );
+    lp2Fcn->SetParameter( 7, me2 ); 
+    lp2Fcn->SetParameter( 8, sig2 ); 
+    lp2Fcn->SetParameter( 9, nm3 );
+    lp2Fcn->SetParameter( 10, me3 ); 
+    lp2Fcn->SetParameter( 11, sig3 ); 
 
+    lp2Fcn->SetLineWidth(4);
     lp2Fcn->SetNpx(500);
     lp2Fcn->SetLineColor(kMagenta);
 
