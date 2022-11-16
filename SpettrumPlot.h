@@ -60,6 +60,10 @@ void SpettrumPlot(){
   auto df_mass = df_os.Define("Dimuon_mass", computeInvariantMass,
 			      {"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass"});
     
+  //Cut around the Ys
+  auto df_mass = df_mass.Filter("Dimuon_mass > 8.5 ", "First cut on minv");
+  auto df_mass = df_mass.Filter("Dimuon_mass < 11.5 ", , "Second cut on minv");
+    
   //Compute pt and pseudorapidity of dimuon
   auto df_pt = df_mass.Define("Dimuon_pt", computePT,{"Muon_pt"});
     
