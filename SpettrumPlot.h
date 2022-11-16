@@ -12,7 +12,8 @@
 #include "ROOT/RDataFrame.hxx"
 #include "ROOT/RVec.hxx" //per usare ROOT::VecOps::RVec<T>
 #include "Math/Vector4Dfwd.h"
-#include "Math/Vector4D.h" //per usare PtEtaPhiMVector
+#include "Math/Vector4D.h" //per usare PtEtaPhiMVector e le sue funzioni
+#include "TMath.h"
 #include "TCanvas.h"
 #include "TH1D.h"
 #include "TLatex.h"
@@ -30,6 +31,12 @@ float computeInvariantMass(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, 
     ROOT::Math::PtEtaPhiMVector m1(pt[0], eta[0], phi[0], mass[0]);
     ROOT::Math::PtEtaPhiMVector m2(pt[1], eta[1], phi[1], mass[1]);
     return (m1 + m2).mass();
+  }
+
+float computePT(RVec<float>& pt)
+  {
+      float pt_Dimuon = TMath::Sqrt(pt[0]*pt[0] + pt[1]*pt[1]);
+      return pt_Dimuon;
   }
 
 
@@ -52,12 +59,22 @@ void SpettrumPlot(){
   // Compute invariant mass of the dimuon system
   auto df_mass = df_os.Define("Dimuon_mass", computeInvariantMass,
 			      {"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass"});
+    
+  //Compute pt and pseudorapidity of dimuon
+  auto df_pt = df_mass.Define("Dimuon_pt", computePT,{"Muon_pt"});
+    
+
+  //Select events with 10 GeV < pT < 12 GeV
+  //const auto pt_max = 12.;
+  //const auto pt_min = 10.;
+  auto df_pt1 = df_pt.Filter("Dimuon_pt > 10. ", "First cut on pt");
+  auto df_pt2 = df_pt1.Filter("Dimuon_pt < 12. ", "Second cut on pt");   //sarebbe possibile unire i due tagli???
 
   // Book histogram of dimuon mass spectrum
   const auto bins = 30000; // Number of bins in the histogram
   const auto low = 0.25; // Lower edge of the histogram
   const auto up = 300.0; // Upper edge of the histogram
-  auto hist = df_mass.Histo1D({"hist", "Dimuon mass", bins, low, up}, "Dimuon_mass");
+  auto hist = df_pt2.Histo1D({"hist", "Dimuon mass", bins, low, up}, "Dimuon_mass");
 
   // Request cut-flow report
   auto report = df_mass.Report();
@@ -95,7 +112,7 @@ void SpettrumPlot(){
   label.DrawLatex(0.90, 0.92, "#sqrt{s} = 8 TeV, L_{int} = 11.6 fb^{-1}");
 
   // Save plot
-  c->SaveAs("dimuonSpectrum.pdf");
+  c->SaveAs("dimuonSpectrum_cut_pt.pdf");
 
   // Print cut-flow report
   report->Print();
