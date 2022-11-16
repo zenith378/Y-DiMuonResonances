@@ -25,7 +25,7 @@ Double_t lorentzianPeak(Double_t *x, Double_t *par) {
 }
 
 Double_t gaussianPeak(Double_t *x, Double_t *par) {
-    return par[0]*exp(-0.5*((x-par[1])/par[2])^2)/(par[2] *TMath::Sqrt(2*TMath::Pi)));
+    return par[0]*exp(-0.5* ((x[0]-par[1])/par[2]) * ((x[0]-par[1])/par[2]))/(par[2] *TMath::Sqrt(2*TMath::Pi()));
 }
 
 // Quadratic background function
@@ -118,10 +118,9 @@ TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
     lp2Fcn->SetParName( 9, "norm2");
     lp2Fcn->SetParName( 10, "mean2" );
     lp2Fcn->SetParName( 11, "sigma2" );
+    
+    
     // set start values for some parameters:
-
-
-
     lp2Fcn->SetParameter( 0, bg );
     lp2Fcn->SetParameter( 1, slp );
     lp2Fcn->SetParameter( 2, 0 );
