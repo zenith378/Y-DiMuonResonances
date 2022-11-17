@@ -61,11 +61,11 @@ void SpettrumPlot(){
 			      {"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass"});
     
   //Cut around the Ys
-  auto df_mass = df_mass.Filter("Dimuon_mass > 8.5 ", "First cut on minv");
-  auto df_mass = df_mass.Filter("Dimuon_mass < 11.5 ", , "Second cut on minv");
+  auto df_mass1 = df_mass.Filter("Dimuon_mass > 8.5 ", "First cut on minv");
+  auto df_mass2 = df_mass1.Filter("Dimuon_mass < 11.5 ", "Second cut on minv");
     
   //Compute pt and pseudorapidity of dimuon
-  auto df_pt = df_mass.Define("Dimuon_pt", computePT,{"Muon_pt"});
+  auto df_pt = df_mass2.Define("Dimuon_pt", computePT,{"Muon_pt"});
     
 
   //Select events with 10 GeV < pT < 12 GeV
@@ -75,13 +75,13 @@ void SpettrumPlot(){
   auto df_pt2 = df_pt1.Filter("Dimuon_pt < 12. ", "Second cut on pt");   //sarebbe possibile unire i due tagli???
 
   // Book histogram of dimuon mass spectrum
-  const auto bins = 30000; // Number of bins in the histogram
-  const auto low = 0.25; // Lower edge of the histogram
-  const auto up = 300.0; // Upper edge of the histogram
+  const auto bins = 300; // Number of bins in the histogram
+  const auto low = 8.4;//0.25; // Lower edge of the histogram
+  const auto up = 11.6;//300.0; // Upper edge of the histogram
   auto hist = df_pt2.Histo1D({"hist", "Dimuon mass", bins, low, up}, "Dimuon_mass");
 
   // Request cut-flow report
-  auto report = df_mass.Report();
+  auto report = df_pt2.Report();
 
   // Create canvas for plotting
   gStyle->SetOptStat(0);
