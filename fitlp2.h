@@ -168,6 +168,7 @@ TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
     //cov.Print();
     //cor.Print();
     
+    //lp2Fcn->Draw();
     c1->SaveAs("fitZ.pdf");
     return r;
 
