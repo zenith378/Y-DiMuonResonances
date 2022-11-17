@@ -71,17 +71,17 @@ void SpettrumPlot(){
   //Select events with 10 GeV < pT < 12 GeV
   //const auto pt_max = 12.;
   //const auto pt_min = 10.;
-  auto df_pt1 = df_pt.Filter("Dimuon_pt > 10. ", "First cut on pt");
-  auto df_pt2 = df_pt1.Filter("Dimuon_pt < 12. ", "Second cut on pt");   //sarebbe possibile unire i due tagli???
+  //auto df_pt1 = df_pt.Filter("Dimuon_pt > 10. ", "First cut on pt");
+  //auto df_pt2 = df_pt1.Filter("Dimuon_pt < 12. ", "Second cut on pt");   //sarebbe possibile unire i due tagli???
 
   // Book histogram of dimuon mass spectrum
   const auto bins = 300; // Number of bins in the histogram
   const auto low = 8.4;//0.25; // Lower edge of the histogram
   const auto up = 11.6;//300.0; // Upper edge of the histogram
-  auto hist = df_pt2.Histo1D({"hist", "Dimuon mass", bins, low, up}, "Dimuon_mass");
+  auto hist = df_mass2.Histo1D({"hist", "Dimuon mass", bins, low, up}, "Dimuon_mass");
 
   // Request cut-flow report
-  auto report = df_pt2.Report();
+  auto report = df_mass2.Report();
 
   // Create canvas for plotting
   gStyle->SetOptStat(0);
