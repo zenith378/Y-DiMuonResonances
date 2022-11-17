@@ -76,8 +76,8 @@ void SpettrumPlot(){
 
   // Book histogram of dimuon mass spectrum
   const auto bins = 300; // Number of bins in the histogram
-  const auto low = 8.4;//0.25; // Lower edge of the histogram
-  const auto up = 11.6;//300.0; // Upper edge of the histogram
+  const auto low = 8.5;//0.25; // Lower edge of the histogram
+  const auto up = 11.5;//300.0; // Upper edge of the histogram
   auto hist = df_mass2.Histo1D({"hist", "Dimuon mass", bins, low, up}, "Dimuon_mass");
 
   // Request cut-flow report
@@ -87,8 +87,8 @@ void SpettrumPlot(){
   gStyle->SetOptStat(0);
   gStyle->SetTextFont(42);
   auto c = new TCanvas("c", "", 800, 700);
-  c->SetLogx();
-  c->SetLogy();
+  //c->SetLogx();
+  //c->SetLogy();
 
 
   // Draw histogram

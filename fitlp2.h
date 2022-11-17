@@ -39,7 +39,7 @@ Double_t fitfunction(Double_t *x, Double_t *par) {
 }
 
 //----------------------------------------------------------------------
-TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
+void fitlp2( string hs, double x1=1, double x9=0 )
 {
     TH1 *h = (TH1*)gDirectory->Get( hs.c_str() ); // perché quaggiù non passiamo fdirettamente l'istogramma anziché la stringa?
 
@@ -72,8 +72,8 @@ TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
     int i9 = h->FindBin(x9);
     double n1 = h->GetBinContent(i1);
     double n9 = h->GetBinContent(i9);
-    double bg = 0.5*(n1+n9);
-    double slp = (n9-n1)/(x9-x1);
+    double bg = 2000;// 0.5*(n1+n9);
+    double slp = -125;// (n9-n1)/(x9-x1);
 
     // find peak in boundaries:
 
@@ -115,19 +115,19 @@ TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
     lp2Fcn->SetParName( 6, "norm2");
     lp2Fcn->SetParName( 7, "mean2" );
     lp2Fcn->SetParName( 8, "sigma2" );    
-    lp2Fcn->SetParName( 9, "norm2");
-    lp2Fcn->SetParName( 10, "mean2" );
-    lp2Fcn->SetParName( 11, "sigma2" );
+    lp2Fcn->SetParName( 9, "norm3");
+    lp2Fcn->SetParName( 10, "mean3" );
+    lp2Fcn->SetParName( 11, "sigma3" );
     
-    double nm1=1;
-    double nm2=1;
-    double nm3=1;
-    double me1=9.460;
-    double me2=10.023;
-    double me3=10.355;
-    double sig1=0.000054;
-    double sig2=0.00003198;
-    double sig3=0.000020;
+    double nm1=10e4;
+    double nm2=4000;
+    double nm3=3000;
+    double me1=9.450;
+    double me2=10.005;
+    double me3=10.34;
+    double sig1=0.15;
+    double sig2=0.17;
+    double sig3=0.19;
     
     // set start values for some parameters:
     lp2Fcn->SetParameter( 0, bg );
@@ -146,8 +146,11 @@ TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
     lp2Fcn->SetLineWidth(4);
     lp2Fcn->SetNpx(500);
     lp2Fcn->SetLineColor(kMagenta);
-
+    lp2Fcn->Draw("same");
+    /*
+    lp2Fcn->SetLineColor(kBlue);
     TFitResultPtr r = h->Fit("lp2Fcn", "RS", "ep" );
+    
     // h->Fit("tp2Fcn","V+","ep");
 
     cout << "Ndata = " << lp2Fcn->GetNumberFitPoints() << endl;
@@ -156,24 +159,24 @@ TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
     cout << "chisq = " << lp2Fcn->GetChisquare() << endl;
     cout << "prob  = " << lp2Fcn->GetProb() << endl;
 
-    ///*
+    *////*
     auto c1 = new TCanvas("c", "", 800, 700);
-    c1->SetLogx();
-    c1->SetLogy();//*/
+    //c1->SetLogx();
+    //c1->SetLogy();//*/
     
     // data points on top:
     h->Draw("histpesame");
-    TMatrixD cor = r->GetCorrelationMatrix();
-    TMatrixD cov = r->GetCovarianceMatrix();
+    //TMatrixD cor = r->GetCorrelationMatrix();
+    //TMatrixD cov = r->GetCovarianceMatrix();
     //cov.Print();
     //cor.Print();
     
-    //lp2Fcn->Draw();
-    c1->SaveAs("fitZ.pdf");
-    return r;
+    //lp2Fcn->Draw("same");
+    c1->SaveAs("Y.pdf");
+    //return r;
 
 }
 
-TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 );//esecuzione fit
+//TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 );//esecuzione fit
 
 #endif /* fitlp2_h */
