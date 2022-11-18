@@ -38,7 +38,17 @@ float computePT(RVec<float>& pt)
       float pt_Dimuon = TMath::Sqrt(pt[0]*pt[0] + pt[1]*pt[1]);
       return pt_Dimuon;
   }
-
+/*
+float computeBeta(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass)
+  {
+      ROOT::Math::PtEtaPhiMVector m1(pt[0], eta[0], phi[0], mass[0]);
+      ROOT::Math::PtEtaPhiMVector m2(pt[1], eta[1], phi[1], mass[1]);
+      ROOT::Math::PtEtaPhiMVector m = m1+m2;
+      std::cout << "pt=" <<pt[0] <<"\neta=" <<eta[0] <<"\nphi=" <<phi[0] <<"\nmass=" <<mass[0] << std::endl;
+      std::cout << "\nE=" <<m1[0] << "\npx=" <<m1[1] << "\npy=" <<m1[2] << "\npz=" <<m1[3] << std::endl;
+      float beta= TMath::Sqrt(m[1]*m[1] +m[2]*m[2]+ m[3]*m[3])/m[0];
+  }
+*/
 
 //compute invariant mass
 
@@ -64,24 +74,25 @@ void SpettrumPlot(){
   auto df_mass1 = df_mass.Filter("Dimuon_mass > 8.5 ", "First cut on minv");
   auto df_mass2 = df_mass1.Filter("Dimuon_mass < 11.5 ", "Second cut on minv");
     
-  //Compute pt and pseudorapidity of dimuon
+  //Compute pt and rapidity (y) of dimuon
   auto df_pt = df_mass2.Define("Dimuon_pt", computePT,{"Muon_pt"});
+ // auto df_y = df_pt.Define("Dimuon_beta", computeBeta,{"Muon_pt", "Muon_mass", "Muon_eta", "Muon_phi"});
     
 
   //Select events with 10 GeV < pT < 12 GeV
   //const auto pt_max = 12.;
   //const auto pt_min = 10.;
-  //auto df_pt1 = df_pt.Filter("Dimuon_pt > 10. ", "First cut on pt");
-  //auto df_pt2 = df_pt1.Filter("Dimuon_pt < 12. ", "Second cut on pt");   //sarebbe possibile unire i due tagli???
+  auto df_pt1 = df_pt.Filter("Dimuon_pt > 10. ", "First cut on pt");
+  auto df_pt2 = df_pt1.Filter("Dimuon_pt < 12. ", "Second cut on pt");   //sarebbe possibile unire i due tagli???
 
   // Book histogram of dimuon mass spectrum
   const auto bins = 300; // Number of bins in the histogram
   const auto low = 8.5;//0.25; // Lower edge of the histogram
   const auto up = 11.5;//300.0; // Upper edge of the histogram
-  auto hist = df_mass2.Histo1D({"hist", "Dimuon mass", bins, low, up}, "Dimuon_mass");
+  auto hist = df_pt2.Histo1D({"hist", "Dimuon mass", bins, low, up}, "Dimuon_mass");
 
   // Request cut-flow report
-  auto report = df_mass2.Report();
+  auto report = df_pt2.Report();
 
   // Create canvas for plotting
   gStyle->SetOptStat(0);

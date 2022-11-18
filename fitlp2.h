@@ -39,7 +39,7 @@ Double_t fitfunction(Double_t *x, Double_t *par) {
 }
 
 //----------------------------------------------------------------------
-void fitlp2( string hs, double x1=1, double x9=0 )
+TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
 {
     TH1 *h = (TH1*)gDirectory->Get( hs.c_str() ); // perché quaggiù non passiamo fdirettamente l'istogramma anziché la stringa?
 
@@ -53,8 +53,8 @@ void fitlp2( string hs, double x1=1, double x9=0 )
     h->SetStats(1);
     
     gStyle->SetOptFit(101);
-    gStyle->SetStatX(0.4); // right edge
-    gStyle->SetStatY(0.45); // top edge
+    gStyle->SetStatX(0.95); // right edge
+    gStyle->SetStatY(0.95); // top edge
     gStyle->SetStatW(0.15); // width
     gStyle->SetStatH(0.15); // height
 
@@ -72,7 +72,7 @@ void fitlp2( string hs, double x1=1, double x9=0 )
     int i9 = h->FindBin(x9);
     double n1 = h->GetBinContent(i1);
     double n9 = h->GetBinContent(i9);
-    double bg = 2000;// 0.5*(n1+n9);
+    double bg = 100;// 0.5*(n1+n9);
     double slp = -125;// (n9-n1)/(x9-x1);
 
     // find peak in boundaries:
@@ -104,7 +104,7 @@ void fitlp2( string hs, double x1=1, double x9=0 )
 
     // create a TF1 with the range from x1 to x9 and 7 parameters
 
-    TF1 *lp2Fcn = new TF1( "lp2Fcn", fitfunction, x1, x9, 11 );
+    TF1 *lp2Fcn = new TF1( "lp2Fcn", fitfunction, x1, x9, 12 );
 
     lp2Fcn->SetParName( 0, "BG" );
     lp2Fcn->SetParName( 1, "slope" );
@@ -119,15 +119,15 @@ void fitlp2( string hs, double x1=1, double x9=0 )
     lp2Fcn->SetParName( 10, "mean3" );
     lp2Fcn->SetParName( 11, "sigma3" );
     
-    double nm1=10e4;
-    double nm2=4000;
-    double nm3=3000;
-    double me1=9.450;
+    double nm1=150;
+    double nm2=50;
+    double nm3=40;
+    double me1=9.420;
     double me2=10.005;
-    double me3=10.34;
-    double sig1=0.15;
-    double sig2=0.17;
-    double sig3=0.19;
+    double me3=10.35;
+    double sig1=0.08;
+    double sig2=0.08;
+    double sig3=0.08;
     
     // set start values for some parameters:
     lp2Fcn->SetParameter( 0, bg );
@@ -147,7 +147,7 @@ void fitlp2( string hs, double x1=1, double x9=0 )
     lp2Fcn->SetNpx(500);
     lp2Fcn->SetLineColor(kMagenta);
     lp2Fcn->Draw("same");
-    /*
+    
     lp2Fcn->SetLineColor(kBlue);
     TFitResultPtr r = h->Fit("lp2Fcn", "RS", "ep" );
     
@@ -159,21 +159,22 @@ void fitlp2( string hs, double x1=1, double x9=0 )
     cout << "chisq = " << lp2Fcn->GetChisquare() << endl;
     cout << "prob  = " << lp2Fcn->GetProb() << endl;
 
-    *////*
+    ///*
     auto c1 = new TCanvas("c", "", 800, 700);
     //c1->SetLogx();
     //c1->SetLogy();//*/
     
     // data points on top:
     h->Draw("histpesame");
+    
     //TMatrixD cor = r->GetCorrelationMatrix();
     //TMatrixD cov = r->GetCovarianceMatrix();
     //cov.Print();
     //cor.Print();
     
-    //lp2Fcn->Draw("same");
+    lp2Fcn->Draw("same");
     c1->SaveAs("Y.pdf");
-    //return r;
+    return r;
 
 }
 
