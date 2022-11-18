@@ -73,7 +73,7 @@ TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
     double n1 = h->GetBinContent(i1);
     double n9 = h->GetBinContent(i9);
     double bg = 100;// 0.5*(n1+n9);
-    double slp = -125;// (n9-n1)/(x9-x1);
+    double slp = 0;// (n9-n1)/(x9-x1);
 
     // find peak in boundaries:
 
@@ -119,15 +119,15 @@ TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
     lp2Fcn->SetParName( 10, "mean3" );
     lp2Fcn->SetParName( 11, "sigma3" );
     
-    double nm1=150;
+    double nm1=160;
     double nm2=50;
     double nm3=40;
     double me1=9.420;
-    double me2=10.005;
-    double me3=10.35;
+    double me2=9.80;
+    double me3=10.15;
     double sig1=0.08;
-    double sig2=0.08;
-    double sig3=0.08;
+    double sig2=0.05;
+    double sig3=0.05;
     
     // set start values for some parameters:
     lp2Fcn->SetParameter( 0, bg );

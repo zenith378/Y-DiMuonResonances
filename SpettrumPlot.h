@@ -48,6 +48,12 @@ float computeBeta(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<floa
       std::cout << "\nE=" <<m1[0] << "\npx=" <<m1[1] << "\npy=" <<m1[2] << "\npz=" <<m1[3] << std::endl;
       float beta= TMath::Sqrt(m[1]*m[1] +m[2]*m[2]+ m[3]*m[3])/m[0];
   }
+ 
+ float computeY (float& Dimuon_beta)
+ {
+ float y = TMath::ATanH(Dimuon_beta);
+ return y;
+ }
 */
 
 //compute invariant mass
@@ -76,7 +82,8 @@ void SpettrumPlot(){
     
   //Compute pt and rapidity (y) of dimuon
   auto df_pt = df_mass2.Define("Dimuon_pt", computePT,{"Muon_pt"});
- // auto df_y = df_pt.Define("Dimuon_beta", computeBeta,{"Muon_pt", "Muon_mass", "Muon_eta", "Muon_phi"});
+  //auto df_beta = df_pt.Define("Dimuon_beta", computeBeta,{"Muon_pt", "Muon_mass", "Muon_eta", "Muon_phi"});
+  //auto df_y = df_beta.Define("Dinmuon_y", computeY, {"Dimuon_beta"});
     
 
   //Select events with 10 GeV < pT < 12 GeV
