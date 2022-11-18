@@ -21,40 +21,39 @@
 
 using namespace ROOT::VecOps;
 
+void printLVec(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass){
+    ROOT::Math::PtEtaPhiMVector m1(pt[0], eta[0], phi[0], mass[0]);
+    std::cout << m1 << std::endl;
+    return;}
 
-float computeInvariantMass(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass)
-  {
+
+float computeInvariantMass(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass){
     //potremmo implementare queste due righe con un ciclo su uno dei vettori,
     //definire un vettore si vettori di lorentz che se è più lungo di 2 mi
     //restituisce un messaggio di errore, sommare gli elementi del vettore
     //(cioè sommare i duei vettori di L e fare la massa invariante)
     ROOT::Math::PtEtaPhiMVector m1(pt[0], eta[0], phi[0], mass[0]);
     ROOT::Math::PtEtaPhiMVector m2(pt[1], eta[1], phi[1], mass[1]);
-    return (m1 + m2).mass();
-  }
+    return (m1 + m2).mass();}
 
-float computePT(RVec<float>& pt)
-  {
+float computePT(RVec<float>& pt){
       float pt_Dimuon = TMath::Sqrt(pt[0]*pt[0] + pt[1]*pt[1]);
-      return pt_Dimuon;
-  }
-/*
-float computeBeta(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass)
-  {
+      return pt_Dimuon;}
+
+float computeBeta(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass){
       ROOT::Math::PtEtaPhiMVector m1(pt[0], eta[0], phi[0], mass[0]);
       ROOT::Math::PtEtaPhiMVector m2(pt[1], eta[1], phi[1], mass[1]);
       ROOT::Math::PtEtaPhiMVector m = m1+m2;
       std::cout << "pt=" <<pt[0] <<"\neta=" <<eta[0] <<"\nphi=" <<phi[0] <<"\nmass=" <<mass[0] << std::endl;
       std::cout << "\nE=" <<m1[0] << "\npx=" <<m1[1] << "\npy=" <<m1[2] << "\npz=" <<m1[3] << std::endl;
-      float beta= TMath::Sqrt(m[1]*m[1] +m[2]*m[2]+ m[3]*m[3])/m[0];
-  }
+      float beta= TMath::Sqrt(m[1]*m[1] +m[2]*m[2]+ m[3]*m[3])/m[0];}
  
  float computeY (float& Dimuon_beta)
  {
  float y = TMath::ATanH(Dimuon_beta);
  return y;
  }
-*/
+
 
 //compute invariant mass
 
@@ -73,8 +72,7 @@ void SpettrumPlot(){
   auto df_os = df_2mu.Filter("Muon_charge[0] != Muon_charge[1]", "Muons with opposite charge");
 
   // Compute invariant mass of the dimuon system
-  auto df_mass = df_os.Define("Dimuon_mass", computeInvariantMass,
-			      {"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass"});
+  auto df_mass = df_os.Define("Dimuon_mass", computeInvariantMass,{"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass"});
     
   //Cut around the Ys
   auto df_mass1 = df_mass.Filter("Dimuon_mass > 8.5 ", "First cut on minv");
@@ -82,14 +80,14 @@ void SpettrumPlot(){
     
   //Compute pt and rapidity (y) of dimuon
   auto df_pt = df_mass2.Define("Dimuon_pt", computePT,{"Muon_pt"});
-  //auto df_beta = df_pt.Define("Dimuon_beta", computeBeta,{"Muon_pt", "Muon_mass", "Muon_eta", "Muon_phi"});
-  //auto df_y = df_beta.Define("Dinmuon_y", computeY, {"Dimuon_beta"});
+  auto df_beta = df_pt.Define("Dimuon_beta", computeBeta,{"Muon_pt", "Muon_mass", "Muon_eta", "Muon_phi"});
+  auto df_y = df_beta.Define("Dinmuon_y", computeY, {"Dimuon_beta"});
     
 
   //Select events with 10 GeV < pT < 12 GeV
   //const auto pt_max = 12.;
   //const auto pt_min = 10.;
-  auto df_pt1 = df_pt.Filter("Dimuon_pt > 10. ", "First cut on pt");
+  auto df_pt1 = df_dy.Filter("Dimuon_pt > 10. ", "First cut on pt");
   auto df_pt2 = df_pt1.Filter("Dimuon_pt < 12. ", "Second cut on pt");   //sarebbe possibile unire i due tagli???
 
   // Book histogram of dimuon mass spectrum
