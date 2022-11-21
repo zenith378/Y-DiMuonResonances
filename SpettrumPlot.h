@@ -22,19 +22,18 @@
 
 using namespace ROOT::VecOps;
 
-void printLVec(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass){
+/*void printLVec(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass){
     ROOT::Math::PtEtaPhiMVector m1(pt[0], eta[0], phi[0], mass[0]);
     std::cout << m1 << std::endl;
-    return;}
+    return;}*/
 
-
+/*
 ROOT::Math::PtEtaPhiMVector computeFourVec(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass){
     /* Funzione che calcola il quadrivettore: idea di usare i metodi di questa quantità per calcolare
-    le quantità di cui abbiamo bisongo (massa invariante, beta, rapidità, etc.)*/
+    le quantità di cui abbiamo bisongo (massa invariante, beta, rapidità, etc.)
     //potremmo implementare queste due righe con un ciclo su uno dei vettori,
     //definire un vettore si vettori di lorentz che se è più lungo di 2 mi
     //restituisce un messaggio di errore, sommare gli elementi del vettore
-
     ROOT::Math::PtEtaPhiMVector m1(pt[0], eta[0], phi[0], mass[0]);
     ROOT::Math::PtEtaPhiMVector m2(pt[1], eta[1], phi[1], mass[1]);
     return (m1 + m2);}
@@ -54,6 +53,7 @@ float computeFourVecRapidity(ROOT::Math::PtEtaPhiMVector& fourvec){
 float computeFourVecBeta(ROOT::Math::PtEtaPhiMVector& fourvec){
   return fourvec.Beta();
 }
+*/
 
 float computeInvariantMass(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass){
     //potremmo implementare queste due righe con un ciclo su uno dei vettori,
@@ -104,11 +104,11 @@ void SpettrumPlot(){
   auto df_os = df_2mu.Filter("Muon_charge[0] != Muon_charge[1]", "Muons with opposite charge");
 
   //add lorentz four vector to dataframe
-  auto df_fv = df_os.Define("Dimuon_FourVec",computeFourVec,{"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass"});
+  //auto df_fv = df_os.Define("Dimuon_FourVec",computeFourVec,{"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass"});
 
   // Compute invariant mass of the dimuon system
-  //auto df_mass = df_os.Define("Dimuon_mass", computeInvariantMass,{"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass"});
-  auto df_mass = df_fv.Define("Dimuon_mass", computeFourVecInvariantMass,{"Dimuon_FourVec"});
+  auto df_mass = df_os.Define("Dimuon_mass", computeInvariantMass,{"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass"});
+  //auto df_mass = df_fv.Define("Dimuon_mass", computeFourVecInvariantMass,{"Dimuon_FourVec"});
 
   //Cut around the Ys
   auto df_mass1 = df_mass.Filter("Dimuon_mass > 8.5 ", "First cut on minv");
@@ -116,26 +116,26 @@ void SpettrumPlot(){
     
   //Compute pt and rapidity (y) of dimuon
   //auto df_pt = df_mass2.Define("Dimuon_pt", computePT,{"Muon_pt"});
-  auto df_pt = df_mass2.Define("Dimuon_pt", computeFourVecPT,{"Dimuon_FourVec"});
+  //auto df_pt = df_mass2.Define("Dimuon_pt", computeFourVecPT,{"Dimuon_FourVec"});
   //auto df_beta = df_pt.Define("Dimuon_beta", computeBeta,{"Muon_pt", "Muon_mass", "Muon_eta", "Muon_phi"});
-  auto df_beta = df_pt.Define("Dimuon_beta", computeFourVecBeta,{"Dimuon_FourVec"});
+  //auto df_beta = df_pt.Define("Dimuon_beta", computeFourVecBeta,{"Dimuon_FourVec"});
   //auto df_y = df_beta.Define("Dinmuon_y", computeY, {"Dimuon_beta"});
-  auto df_y = df_beta.Define("Dinmuon_y", computeFourVecRapidity, {"Dimuon_FourVec"});
+  //auto df_y = df_beta.Define("Dinmuon_y", computeFourVecRapidity, {"Dimuon_FourVec"});
 
   //Select events with 10 GeV < pT < 12 GeV
   //const auto pt_max = 12.;
   //const auto pt_min = 10.;
-  auto df_pt1 = df_y.Filter("Dimuon_pt > 10. ", "First cut on pt");
-  auto df_pt2 = df_pt1.Filter("Dimuon_pt < 12. ", "Second cut on pt");   //sarebbe possibile unire i due tagli???
+  //auto df_pt1 = df_y.Filter("Dimuon_pt > 10. ", "First cut on pt");
+  //auto df_pt2 = df_pt1.Filter("Dimuon_pt < 12. ", "Second cut on pt");   //sarebbe possibile unire i due tagli???
 
   // Book histogram of dimuon mass spectrum
   const auto bins = 300; // Number of bins in the histogram
   const auto low = 8.5;//0.25; // Lower edge of the histogram
   const auto up = 11.5;//300.0; // Upper edge of the histogram
-  auto hist = df_pt2.Histo1D({"hist", "Dimuon mass", bins, low, up}, "Dimuon_mass");
+  auto hist = df_mass2.Histo1D({"hist", "Dimuon mass", bins, low, up}, "Dimuon_mass");
 
   // Request cut-flow report
-  auto report = df_pt2.Report();
+  auto report = df_mass2.Report();
 
   // Create canvas for plotting
   gStyle->SetOptStat(0);
