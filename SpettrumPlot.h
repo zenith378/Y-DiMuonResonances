@@ -16,6 +16,7 @@
 #include "TMath.h"
 #include "TCanvas.h"
 #include "TH1D.h"
+#include "LorentzVector.h"
 #include "TLatex.h"
 #include "TStyle.h"
 
@@ -27,6 +28,33 @@ void printLVec(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>&
     return;}
 
 
+float computeFourVec(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass){
+    /* Funzione che calcola il quadrivettore: idea di usare i metodi di questa quantità per calcolare
+    le quantità di cui abbiamo bisongo (massa invariante, beta, rapidità, etc.)*/
+    //potremmo implementare queste due righe con un ciclo su uno dei vettori,
+    //definire un vettore si vettori di lorentz che se è più lungo di 2 mi
+    //restituisce un messaggio di errore, sommare gli elementi del vettore
+
+    ROOT::Math::PtEtaPhiMVector m1(pt[0], eta[0], phi[0], mass[0]);
+    ROOT::Math::PtEtaPhiMVector m2(pt[1], eta[1], phi[1], mass[1]);
+    return (m1 + m2);}
+
+float computeFourVecInvariantMass(RVec<float>& fourvec){
+  return fourvec[0].mass();
+}
+
+float computeFourVecPT(RVec<float>& fourvec){
+  return fourvec[0].pt();
+}
+
+float computeFourVecRapidity(RVec<float>& fourvec){
+  return fourvec[0].Rapidity();
+}
+
+float computeFourVecBeta(RVec<float>& fourvec){
+  return fourvec[0].Beta();
+}
+
 float computeInvariantMass(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass){
     //potremmo implementare queste due righe con un ciclo su uno dei vettori,
     //definire un vettore si vettori di lorentz che se è più lungo di 2 mi
@@ -35,6 +63,9 @@ float computeInvariantMass(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, 
     ROOT::Math::PtEtaPhiMVector m1(pt[0], eta[0], phi[0], mass[0]);
     ROOT::Math::PtEtaPhiMVector m2(pt[1], eta[1], phi[1], mass[1]);
     return (m1 + m2).mass();}
+
+
+
 
 float computePT(RVec<float>& pt){
       float pt_Dimuon = TMath::Sqrt(pt[0]*pt[0] + pt[1]*pt[1]);
@@ -46,7 +77,8 @@ float computeBeta(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<floa
       ROOT::Math::PtEtaPhiMVector m = m1+m2;
       std::cout << "pt=" <<pt[0] <<"\neta=" <<eta[0] <<"\nphi=" <<phi[0] <<"\nmass=" <<mass[0] << std::endl;
       std::cout << "\nE=" <<m1[0] << "\npx=" <<m1[1] << "\npy=" <<m1[2] << "\npz=" <<m1[3] << std::endl;
-      float beta= TMath::Sqrt(m[1]*m[1] +m[2]*m[2]+ m[3]*m[3])/m[0];}
+      float beta= TMath::Sqrt(m[1]*m[1] +m[2]*m[2]+ m[3]*m[3])/m[0];
+      return beta;}
  
  float computeY (float& Dimuon_beta)
  {
@@ -71,18 +103,24 @@ void SpettrumPlot(){
   // Select events with two muons of opposite charge
   auto df_os = df_2mu.Filter("Muon_charge[0] != Muon_charge[1]", "Muons with opposite charge");
 
+  //add lorentz four vector to dataframe
+  auto df_fv = df_os.Define("Dimuon_FourVec",computeFourVec,{"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass"});
+
   // Compute invariant mass of the dimuon system
-  auto df_mass = df_os.Define("Dimuon_mass", computeInvariantMass,{"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass"});
-    
+  //auto df_mass = df_os.Define("Dimuon_mass", computeInvariantMass,{"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass"});
+  auto df_mass = df_fv.Define("Dimuon_mass", computeFourVecInvariantMass,{"Dimuon_FourVec"});
+
   //Cut around the Ys
   auto df_mass1 = df_mass.Filter("Dimuon_mass > 8.5 ", "First cut on minv");
   auto df_mass2 = df_mass1.Filter("Dimuon_mass < 11.5 ", "Second cut on minv");
     
   //Compute pt and rapidity (y) of dimuon
-  auto df_pt = df_mass2.Define("Dimuon_pt", computePT,{"Muon_pt"});
-  auto df_beta = df_pt.Define("Dimuon_beta", computeBeta,{"Muon_pt", "Muon_mass", "Muon_eta", "Muon_phi"});
-  auto df_y = df_beta.Define("Dinmuon_y", computeY, {"Dimuon_beta"});
-    
+  //auto df_pt = df_mass2.Define("Dimuon_pt", computePT,{"Muon_pt"});
+  auto df_pt = df_mass2.Define("Dimuon_pt", computeFourVecPT,{"Dimuon_FourVec"});
+  //auto df_beta = df_pt.Define("Dimuon_beta", computeBeta,{"Muon_pt", "Muon_mass", "Muon_eta", "Muon_phi"});
+  auto df_beta = df_pt.Define("Dimuon_beta", computeFourVecBeta,{"Dimuon_FourVec"});
+  //auto df_y = df_beta.Define("Dinmuon_y", computeY, {"Dimuon_beta"});
+  auto df_y = df_beta.Define("Dinmuon_y", computeFourVecRapidity, {"Dimuon_FourVec"});
 
   //Select events with 10 GeV < pT < 12 GeV
   //const auto pt_max = 12.;
