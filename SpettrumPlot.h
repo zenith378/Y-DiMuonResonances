@@ -16,7 +16,7 @@
 #include "TMath.h"
 #include "TCanvas.h"
 #include "TH1D.h"
-#include "LorentzVector.h"
+//#include "LorentzVector.h"
 #include "TLatex.h"
 #include "TStyle.h"
 
@@ -28,7 +28,7 @@ void printLVec(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>&
     return;}
 
 
-float computeFourVec(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass){
+ROOT::Math::PtEtaPhiMVector computeFourVec(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass){
     /* Funzione che calcola il quadrivettore: idea di usare i metodi di questa quantità per calcolare
     le quantità di cui abbiamo bisongo (massa invariante, beta, rapidità, etc.)*/
     //potremmo implementare queste due righe con un ciclo su uno dei vettori,
@@ -39,20 +39,20 @@ float computeFourVec(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<f
     ROOT::Math::PtEtaPhiMVector m2(pt[1], eta[1], phi[1], mass[1]);
     return (m1 + m2);}
 
-float computeFourVecInvariantMass(RVec<float>& fourvec){
-  return fourvec[0].mass();
+float computeFourVecInvariantMass(ROOT::Math::PtEtaPhiMVector& fourvec){
+  return fourvec.mass();
 }
 
-float computeFourVecPT(RVec<float>& fourvec){
-  return fourvec[0].pt();
+float computeFourVecPT(ROOT::Math::PtEtaPhiMVector& fourvec){
+  return fourvec.pt();
 }
 
-float computeFourVecRapidity(RVec<float>& fourvec){
-  return fourvec[0].Rapidity();
+float computeFourVecRapidity(ROOT::Math::PtEtaPhiMVector& fourvec){
+  return fourvec.Rapidity();
 }
 
-float computeFourVecBeta(RVec<float>& fourvec){
-  return fourvec[0].Beta();
+float computeFourVecBeta(ROOT::Math::PtEtaPhiMVector& fourvec){
+  return fourvec.Beta();
 }
 
 float computeInvariantMass(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass){
@@ -66,7 +66,7 @@ float computeInvariantMass(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, 
 
 
 
-
+/*
 float computePT(RVec<float>& pt){
       float pt_Dimuon = TMath::Sqrt(pt[0]*pt[0] + pt[1]*pt[1]);
       return pt_Dimuon;}
@@ -75,8 +75,8 @@ float computeBeta(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<floa
       ROOT::Math::PtEtaPhiMVector m1(pt[0], eta[0], phi[0], mass[0]);
       ROOT::Math::PtEtaPhiMVector m2(pt[1], eta[1], phi[1], mass[1]);
       ROOT::Math::PtEtaPhiMVector m = m1+m2;
-      std::cout << "pt=" <<pt[0] <<"\neta=" <<eta[0] <<"\nphi=" <<phi[0] <<"\nmass=" <<mass[0] << std::endl;
-      std::cout << "\nE=" <<m1[0] << "\npx=" <<m1[1] << "\npy=" <<m1[2] << "\npz=" <<m1[3] << std::endl;
+      //std::cout << "pt=" <<pt[0] <<"\neta=" <<eta[0] <<"\nphi=" <<phi[0] <<"\nmass=" <<mass[0] << std::endl;
+      //std::cout << "\nE=" <<m1[0] << "\npx=" <<m1[1] << "\npy=" <<m1[2] << "\npz=" <<m1[3] << std::endl;
       float beta= TMath::Sqrt(m[1]*m[1] +m[2]*m[2]+ m[3]*m[3])/m[0];
       return beta;}
  
@@ -84,7 +84,7 @@ float computeBeta(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<floa
  {
  float y = TMath::ATanH(Dimuon_beta);
  return y;
- }
+ }*/
 
 
 //compute invariant mass
@@ -125,7 +125,7 @@ void SpettrumPlot(){
   //Select events with 10 GeV < pT < 12 GeV
   //const auto pt_max = 12.;
   //const auto pt_min = 10.;
-  auto df_pt1 = df_dy.Filter("Dimuon_pt > 10. ", "First cut on pt");
+  auto df_pt1 = df_y.Filter("Dimuon_pt > 10. ", "First cut on pt");
   auto df_pt2 = df_pt1.Filter("Dimuon_pt < 12. ", "Second cut on pt");   //sarebbe possibile unire i due tagli???
 
   // Book histogram of dimuon mass spectrum
