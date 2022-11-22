@@ -9,7 +9,7 @@
 #ifndef SpettrumPlot_h
 #define SpettrumPlot_h
 
-#include "ROOT/RDataFrame.hxx"i
+#include "ROOT/RDataFrame.hxx"
 #include "TMath.h"
 #include "TCanvas.h"
 #include "TH1D.h"
@@ -27,7 +27,7 @@ void SpettrumPlot(){
   // Create dataframe from NanoAOD files
   ROOT::RDataFrame df("Events", "root://eospublic.cern.ch//eos/opendata/cms/derived-data/AOD2NanoAODOutreachTool/Run2012BC_DoubleMuParked_Muons.root");
 
-  df_cut=Cuts(df);
+  ROOT::RDataFrame df_cut = Cuts(df);
   // Book histogram of dimuon mass spectrum
   const auto bins = 300; // Number of bins in the histogram
   const auto low = 8.5;//0.25; // Lower edge of the histogram

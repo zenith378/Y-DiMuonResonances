@@ -58,7 +58,8 @@ float computeInvariantMass(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, 
     //(cioè sommare i duei vettori di L e fare la massa invariante)
     ROOT::Math::PtEtaPhiMVector m1(pt[0], eta[0], phi[0], mass[0]);
     ROOT::Math::PtEtaPhiMVector m2(pt[1], eta[1], phi[1], mass[1]);
-    return (m1 + m2).mass();}
+    return (m1 + m2).mass();
+}
 
 
 
@@ -86,7 +87,7 @@ ROOT::RDataFrame Cuts(ROOT::RDataFrame df){
     
   //Compute pt and rapidity (y) of dimuon
   auto df_pt = df_mass2.Define("Dimuon_pt", computeFourVecPT,{"Dimuon_FourVec"});
-  //auto df_beta = df_pt.Define("Dimuon_beta", computeFourVecBeta,{"Dimuon_FourVec"});
+  auto df_beta = df_pt.Define("Dimuon_beta", computeFourVecBeta,{"Dimuon_FourVec"});
   auto df_y = df_beta.Define("Dinmuon_y", computeFourVecRapidity, {"Dimuon_FourVec"});
 
   //Select events with 10 GeV < pT < 12 GeV
