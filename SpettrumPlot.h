@@ -27,7 +27,9 @@ void SpettrumPlot(){
   // Create dataframe from NanoAOD files
   ROOT::RDataFrame df("Events", "root://eospublic.cern.ch//eos/opendata/cms/derived-data/AOD2NanoAODOutreachTool/Run2012BC_DoubleMuParked_Muons.root");
 
-  ROOT::RDataFrame df_cut = Cuts(df);
+  //Events selection
+  auto df_cut = Cuts(df);
+  
   // Book histogram of dimuon mass spectrum
   const auto bins = 300; // Number of bins in the histogram
   const auto low = 8.5;//0.25; // Lower edge of the histogram
@@ -54,14 +56,14 @@ void SpettrumPlot(){
 
   // Draw labels
   TLatex label;
-  label.SetTextAlign(22); //22= centrale verticalmente e orizzontalmente --> fare diverse prove!
-  label.DrawLatex(0.55, 3.0e4, "#eta");
-  label.DrawLatex(0.77, 7.0e4, "#rho,#omega");
-  label.DrawLatex(1.20, 4.0e4, "#phi");
-  label.DrawLatex(4.40, 1.0e5, "J/#psi");
-  label.DrawLatex(4.60, 1.0e4, "#psi'");
-  label.DrawLatex(12.0, 2.0e4, "Y(1,2,3S)");
-  label.DrawLatex(91.0, 1.5e4, "Z");
+  label.SetTextAlign(22); //22= centrale verticalmente e orizzontalmente
+//  label.DrawLatex(0.55, 3.0e4, "#eta");
+//  label.DrawLatex(0.77, 7.0e4, "#rho,#omega");
+//  label.DrawLatex(1.20, 4.0e4, "#phi");
+//  label.DrawLatex(4.40, 1.0e5, "J/#psi");
+//  label.DrawLatex(4.60, 1.0e4, "#psi'");
+  label.DrawLatex(10.0, 200, "Y(1,2,3S)");
+//  label.DrawLatex(91.0, 1.5e4, "Z");
   label.SetNDC(true); //cambio di coordinate di riferimento da quelle del grafico a quelle del pad normalizzate
   label.SetTextAlign(11); //left bottom
   label.SetTextSize(0.04);

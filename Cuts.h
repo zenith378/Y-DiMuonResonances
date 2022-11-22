@@ -63,7 +63,7 @@ float computeInvariantMass(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, 
 
 
 
-ROOT::RDataFrame Cuts(ROOT::RDataFrame df){
+ROOT::RDF::RInterface<ROOT::Detail::RDF::RJittedFilter, void> Cuts(ROOT::RDataFrame df){
   //Enable multi-threading
   ROOT::EnableImplicitMT(1);
 
