@@ -66,37 +66,26 @@ float computeInvariantMass(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, 
 ROOT::RDF::RInterface<ROOT::Detail::RDF::RJittedFilter, void> Cuts(ROOT::RDataFrame df){
   //Enable multi-threading
   ROOT::EnableImplicitMT(1);
+  auto df_def = df.Define("Dimuon_FourVec",computeFourVec,{"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass"}) //add lorentz four vector to dataframe
+                  .Define("Dimuon_mass", computeFourVecInvariantMass,{"Dimuon_FourVec"})  // Compute invariant mass of the dimuon system
+                  .Define("Dimuon_pt", computeFourVecPT,{"Dimuon_FourVec"})   //Compute pt and rapidity (y) of dimuon
+                  .Define("Dimuon_beta", computeFourVecBeta,{"Dimuon_FourVec"})
+                  .Define("Dinmuon_y", computeFourVecRapidity, {"Dimuon_FourVec"});
 
   //seci interessa solo l'ultimo DF, gli altri li possiamo sovrascrivere
-  // Select events with exactly two muons
-  auto df_2mu = df.Filter("nMuon == 2", "Events with exactly two muons");
-
-  // Select events with two muons of opposite charge
-  auto df_os = df_2mu.Filter("Muon_charge[0] != Muon_charge[1]", "Muons with opposite charge");
-
-  //add lorentz four vector to dataframe
-  auto df_fv = df_os.Define("Dimuon_FourVec",computeFourVec,{"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass"});
-
-  // Compute invariant mass of the dimuon system
-  //auto df_mass = df_os.Define("Dimuon_mass", computeInvariantMass,{"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass"});
-  auto df_mass = df_fv.Define("Dimuon_mass", computeFourVecInvariantMass,{"Dimuon_FourVec"});
-
-  //Cut around the Ys
-  auto df_mass1 = df_mass.Filter("Dimuon_mass > 8.5 ", "First cut on minv");
-  auto df_mass2 = df_mass1.Filter("Dimuon_mass < 11.5 ", "Second cut on minv");
-    
-  //Compute pt and rapidity (y) of dimuon
-  auto df_pt = df_mass2.Define("Dimuon_pt", computeFourVecPT,{"Dimuon_FourVec"});
-  auto df_beta = df_pt.Define("Dimuon_beta", computeFourVecBeta,{"Dimuon_FourVec"});
-  auto df_y = df_beta.Define("Dinmuon_y", computeFourVecRapidity, {"Dimuon_FourVec"});
-
-  //Select events with 10 GeV < pT < 12 GeV
+  auto df_cut = df_def.Filter("nMuon == 2", "Events with exactly two muons")   // Select events with exactly two muons
+                      .Filter("Muon_charge[0] != Muon_charge[1]", "Muons with opposite charge") // Select events with two muons of opposite charge
+                      //.Filter([](double Dimuon_mass) { return Dimuon_mass> 8.5 && Dimuon_mass < 11.5; })
+                      //.Filter([](double Dimuon_pt) { return Dimuon_pt > 10. && Dimuon_pt < 12.; });
+                      .Filter("Dimuon_mass > 8.5 ", "First cut on minv")  //Cut around the Ys
+                      .Filter("Dimuon_mass < 11.5 ", "Second cut on minv")
+                      .Filter("Dimuon_pt > 10. ", "First cut on pt")   //Select events with 10 GeV < pT < 12 GeV
+                      .Filter("Dimuon_pt < 12. ", "Second cut on pt");
+  
   //const auto pt_max = 12.;
   //const auto pt_min = 10.;
-  auto df_pt1 = df_y.Filter("Dimuon_pt > 10. ", "First cut on pt");
-  auto df_pt2 = df_pt1.Filter("Dimuon_pt < 12. ", "Second cut on pt");   //sarebbe possibile unire i due tagli???
-
-    return df_pt2;
+  df_cut.Snapshot("Cuts","./Data/data_cut.root");
+  return df_cut;
 }
 
 

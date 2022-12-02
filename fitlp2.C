@@ -123,7 +123,7 @@ TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
     //cov.Print();
     //cor.Print();
     
-    c->SaveAs("fitZ.pdf");
+    c->SaveAs("fitUpsilon.pdf");
     return r;
 
 }

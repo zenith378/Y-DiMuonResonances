@@ -23,9 +23,9 @@
 Double_t lorentzianPeak(Double_t *x, Double_t *par) {
     /*Definitin of the lorentzian function:
      par[0] is the area
-     par[1] is FWHWM
-     par[2] is the mean*/
-    return (0.5*par[0]*par[1]/TMath::Pi()) / TMath::Max(1.e-10,(x[0]-par[2])*(x[0]-par[2])+ .25*par[1]*par[1]);
+     par[2] is FWHWM
+     par[1] is the mean*/
+    return (0.5*par[0]*par[2]/TMath::Pi()) / TMath::Max(1.e-10,(x[0]-par[1])*(x[0]-par[1])+ .25*par[2]*par[2]);
 }
 
 Double_t gaussianPeak(Double_t *x, Double_t *par) {
@@ -33,7 +33,7 @@ Double_t gaussianPeak(Double_t *x, Double_t *par) {
      par[0] is the area
      par[1] is the mean
      par[2] is the FWHM*/
-    return par[0]*exp(-0.5* ((x[0]-par[1])/par[2]) * ((x[0]-par[1])/par[2]) /(par[2] *TMath::Sqrt(2*TMath::Pi())));
+    return par[0]*exp(-0.5* ((x[0]-par[1])/par[2]) * ((x[0]-par[1])/par[2])); ///(par[2] *TMath::Sqrt(2*TMath::Pi()));
 }
 
 // Linear background function
@@ -41,12 +41,18 @@ Double_t background(Double_t *x, Double_t *par) {
     /*Definitin of a p2 function:
      par[0] is theheight at the origin
      par[1] is the slope */
-    return par[0] + par[1]*x[0];// + par[2]*x[0]*x[0];
+    return par[0] + par[1]*x[0]; // + par[2]*x[0]*x[0];
 }
 
 // Sum of background and peak function
 Double_t fitfunction(Double_t *x, Double_t *par) {
-    return background(x,par) + gaussianPeak(x,&par[3])+ gaussianPeak(x,&par[6])+ gaussianPeak(x,&par[9]);
+    
+    //if(functype=="gaus") return background(x,par) + gaussianPeak(x,&par[3])+ gaussianPeak(x,&par[6])+ gaussianPeak(x,&par[9]);
+    //else if(functype=="lorentz") 
+    return background(x,par) + lorentzianPeak(x,&par[2])+ lorentzianPeak(x,&par[5])+ lorentzianPeak(x,&par[8]);
+    //else{
+    //exit(1);
+    //}
 }
 
 //----------------------------------------------------------------------
@@ -90,9 +96,9 @@ TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
     double n1 = h->GetBinContent(i1);
     double n9 = h->GetBinContent(i9);
     //mean between the occurencies at the border -->we have to find a better implementatio (we are far away from the y axis)
-    double bg = 100;// 0.5*(n1+n9);
-    double slp = 0;// (n9-n1)/(x9-x1);
 
+    double slp =  (n9-n1)/(x9-x1);
+    double bg =  (n1+slp*x1);
     // find peak in boundaries:
 
     double npk = bg;
@@ -126,7 +132,7 @@ TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
 
     lp2Fcn->SetParName( 0, "BG" );
     lp2Fcn->SetParName( 1, "slope" );
-    //lp2Fcn->SetParName( 2, "curv" );
+   // lp2Fcn->SetParName( 2, "curv" );
     lp2Fcn->SetParName( 2, "norm1");
     lp2Fcn->SetParName( 3, "mean1" );
     lp2Fcn->SetParName( 4, "sigma1" );
@@ -137,27 +143,32 @@ TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 )
     lp2Fcn->SetParName( 9, "mean3" );
     lp2Fcn->SetParName( 10, "sigma3" );
     
-    double nm1=160;
-    double nm2=50;
-    double nm3=40;
-    double me1=9.420;
-    double me2=9.80;
-    double me3=10.15;
-    double sig1=0.08;
-    double sig2=0.05;
-    double sig3=0.05;
+    double nm1=90200;
+    double a1=240;
+    double nm2=4000;
+    double a2=4;
+    double nm3=2300;
+    double a3=1;
+    double me1=9.460;
+    double me2=10.01;
+    double me3=10.335;
+    double sig1=0.054;
+    double sig2=0.331;
+    double sig3=0.331;
+    //double bg=22; //2650
+    //double slp=-3.3; //-100
     
     // set start values for some parameters:
     lp2Fcn->SetParameter( 0, bg );
     lp2Fcn->SetParameter( 1, slp );
     //lp2Fcn->SetParameter( 2, 0 );
-    lp2Fcn->SetParameter( 2, nm1 ); //norm
+    lp2Fcn->SetParameter( 2, a1 ); //norm
     lp2Fcn->SetParameter( 3, me1 ); // mean
     lp2Fcn->SetParameter( 4, sig1 ); // sigma
-    lp2Fcn->SetParameter( 5, nm2 );
+    lp2Fcn->SetParameter( 5, a2 );
     lp2Fcn->SetParameter( 6, me2 );
     lp2Fcn->SetParameter( 7, sig2 );
-    lp2Fcn->SetParameter( 8, nm3 );
+    lp2Fcn->SetParameter( 8, a3 );
     lp2Fcn->SetParameter( 9, me3 );
     lp2Fcn->SetParameter( 10, sig3 ); 
 

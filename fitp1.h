@@ -20,7 +20,11 @@
 
 
 Double_t lorentzianPeak(Double_t *x, Double_t *par) {
-    return (0.5*par[0]*par[2]/TMath::Pi()) / TMath::Max(1.e-10,(x[0]-par[1])*(x[0]-par[1])+ .25*par[2]*par[2]);
+    /*Definition of the lorentzian pdf:
+     par[0] is the area
+     par[2] is FWHWM
+     par[1] is the mean*/
+    return (par[0]) / TMath::Max(1.e-10,(x[0]-par[1])*(x[0]-par[1])+ par[2]*par[2]);
 }
 
 Double_t gaussianPeak(Double_t *x, Double_t *par) {
@@ -123,14 +127,14 @@ TFitResultPtr fitp1( string hs, double x1=1, double x9=0 )
 //    double nm2=50;
 //    double nm3=40;
     double me1=9.45;
-    double me2=10.0;
-    double me3=10.34;
+    double me2=10.01;
+    double me3=10.35;
     double nm1=h->GetBinContent(h->FindBin(me1));
     double nm2=h->GetBinContent(h->FindBin(me2));
     double nm3=h->GetBinContent(h->FindBin(me3));
-    double sig1=0.08;
-    double sig2=0.08;
-    double sig3=0.08;
+    double sig1=0.054;
+    double sig2=0.032;
+    double sig3=0.020;
     
     std::cout << "nm1:" << nm1 << std::endl;
     std::cout << "nm2:" << nm2 << std::endl;
