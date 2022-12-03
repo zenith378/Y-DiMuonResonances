@@ -12,7 +12,6 @@
 #include "ROOT/RDataFrame.hxx"
 #include "TMath.h"
 #include "TCanvas.h"
-#include "TFile.h"
 #include "TH1D.h"
 #include "TLatex.h"
 #include "TStyle.h"
@@ -21,40 +20,9 @@
 using namespace ROOT::VecOps;
 
 
-void SpettrumPlot(){
+TH1* SpettrumPlot(ROOT::RDataFrame df_cut){
   //Enable multi-threading
   ROOT::EnableImplicitMT(1);
-  //filename
-  TString fname("./Data/data.root");
-  //try opening file
-  TFile *rootfile = TFile::Open(fname);
-  //if file does not open
-  if (!rootfile){
-    std::cout << "Reading dataset from web"<< std::endl;
-    //reading dataframe from online NanoAOD
-    ROOT::RDataFrame df_temp("Events", "root://eospublic.cern.ch//eos/opendata/cms/derived-data/AOD2NanoAODOutreachTool/Run2012BC_DoubleMuParked_Muons.root");
-    //write dataframe to file
-    df_temp.Snapshot("Events","./Data/data.root");
-      }
-  else if(rootfile->IsZombie()){
-    std::cout << "Problems reading file " << fname << std::endl;
-    exit(1);
-  }
-
-  // read dataframe from file 
-  ROOT::RDataFrame df("Events", fname);
-
-  //Events selection
-  TFile *cutfile = TFile::Open("./Data/data_cut.root");
-  if (!cutfile){
-    std::cout << "Recreating cut file"<< std::endl;
-    Cuts(df);
-    }
-  else if(cutfile->IsZombie()){
-    std::cout << "Problems reading file ./Data/data.root"<< std::endl;
-    exit(1);
-  }
-  ROOT::RDataFrame df_cut("Cuts", "./Data/data_cut.root"); 
   
   // Book histogram of dimuon mass spectrum
   const auto bins = 300; // Number of bins in the histogram
@@ -98,6 +66,11 @@ void SpettrumPlot(){
 
   // Print cut-flow report
   report->Print();
+
+  std::string hs;
+  hs="hist";
+  TH1 *h = (TH1*)gDirectory->Get(hs.c_str());
+  return h;
 }
 
 

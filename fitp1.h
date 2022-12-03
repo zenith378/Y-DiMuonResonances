@@ -28,7 +28,7 @@ Double_t lorentzianPeak(Double_t *x, Double_t *par) {
 }
 
 Double_t gaussianPeak(Double_t *x, Double_t *par) {
-    return par[0]*exp(-0.5* ((x[0]-par[1])/par[2]) * ((x[0]-par[1])/par[2]) /(par[2] *TMath::Sqrt(2*TMath::Pi())));
+    return par[0]*exp(-0.5* ((x[0]-par[1])/par[2]) * ((x[0]-par[1])/par[2]));
 }
 
 // Quadratic background function
@@ -38,16 +38,28 @@ Double_t background(Double_t *x, Double_t *par) {
 
 // Sum of background and peak function
 Double_t fitfunction(Double_t *x, Double_t *par) {
-    return background(x,par) + lorentzianPeak(x,&par[2])+ lorentzianPeak(x,&par[5])+ lorentzianPeak(x,&par[8]);
+
+        if(par[11]==0) return background(x,par) + lorentzianPeak(x,&par[2])+ lorentzianPeak(x,&par[5])+ lorentzianPeak(x,&par[8]);
+        if(par[11]==1) return background(x,par) + gaussianPeak(x,&par[2])+ gaussianPeak(x,&par[5])+ gaussianPeak(x,&par[8]);
+        else exit(1);
+}
+
+Double_t findPeaks(Double_t centralbin, Double_t slope, Double_t background, TH1 *h) {
+    Double_t initial_x=h->FindBin(centralbin);
+    Double_t initial_guess=(h->GetBinContent(initial_x)-background-slope*initial_x);
+    Double_t peak=initial_guess;
+    for( int i=initial_x-3; i <= initial_x+3; i++ ) {
+        if( h->GetBinContent(i) > peak ) peak = h->GetBinContent(i);
+    }
+    return peak;
 }
 
 //----------------------------------------------------------------------
-TFitResultPtr fitp1( string hs, double x1=1, double x9=0 )
+TFitResultPtr fitp1( TH1* h, Double_t x1=1, Double_t x9=0 )
 {
-    TH1 *h = (TH1*)gDirectory->Get( hs.c_str() ); // perché quaggiù non passiamo fdirettamente l'istogramma anziché la stringa?
     
     if( h == NULL ){
-        cout << hs << " does not exist\n";
+        std::cout << "histogram does not exist\n";
         return nullptr;
     }
     
@@ -63,20 +75,20 @@ TFitResultPtr fitp1( string hs, double x1=1, double x9=0 )
     
     //gROOT->ForceStyle();
     
-    double bwt2 = h->GetBinWidth(1);
+    Double_t bwt2 = h->GetBinWidth(1);
     
-    int nb = h->GetNbinsX();
+    Int_t nb = h->GetNbinsX();
     
     if( x9 < x1 ) {
         x1 = h->GetBinCenter(1);
         x9 = h->GetBinCenter(nb);
     }
-    int i1 = h->FindBin(x1);
-    int i9 = h->FindBin(x9);
-    double n1 = h->GetBinContent(i1);
-    double n9 = h->GetBinContent(i9);
-    double slp = (n9-n1)/(x9-x1);
-    double bg = n1 + slp*x1; //NO VA IMPLEMENTATA MEGLIO PERCHè BG è PER X=0
+    Int_t i1 = h->FindBin(x1);
+    Int_t i9 = h->FindBin(x9);
+    Double_t n1 = h->GetBinContent(i1);
+    Double_t n9 = h->GetBinContent(i9);
+    Double_t slp = (n9-n1)/(x9-x1);
+    Double_t bg = n1 - slp*x1; //NO VA IMPLEMENTATA MEGLIO PERCHè BG è PER X=0
     
     
     // find peak in boundaries:
@@ -101,13 +113,12 @@ TFitResultPtr fitp1( string hs, double x1=1, double x9=0 )
     double aa = 2.5 * ( npk - bg ) * sm / bwt2;
     
     //stampiamo su shell qualche valore utile
-    cout << hs << ": " << x1 << " - " << x9 << endl;
-    cout << hs << ": xpk=" << xpk << ", xhwhm=" << xhwhm << ", sm=" << sm << endl;
-    cout << hs << ": bwt2=" << bwt2 << ", npk=" << npk << ", aa=" << aa << endl;
+    //cout << hs << ": " << x1 << " - " << x9 << endl;
+    //cout << hs << ": xpk=" << xpk << ", xhwhm=" << xhwhm << ", sm=" << sm << endl;
+    //cout << hs << ": bwt2=" << bwt2 << ", npk=" << npk << ", aa=" << aa << endl;
     
     // create a TF1 with the range from x1 to x9 and 11 parameters
-    
-    TF1 *lp2Fcn = new TF1( "lp2Fcn", fitfunction, x1, x9, 11 );
+    TF1 *lp2Fcn = new TF1( "lp2Fcn", fitfunction, x1, x9, 12 );
     
     //Set name parameters
     lp2Fcn->SetParName( 0, "BG" );
@@ -121,21 +132,22 @@ TFitResultPtr fitp1( string hs, double x1=1, double x9=0 )
     lp2Fcn->SetParName( 8, "norm3");
     lp2Fcn->SetParName( 9, "mean3" );
     lp2Fcn->SetParName( 10, "sigma3" );
-    
-    //trovare una logica per implementare questi valori
 //    double nm1=160;
 //    double nm2=50;
 //    double nm3=40;
     double me1=9.45;
     double me2=10.01;
     double me3=10.35;
-    double nm1=h->GetBinContent(h->FindBin(me1));
-    double nm2=h->GetBinContent(h->FindBin(me2));
-    double nm3=h->GetBinContent(h->FindBin(me3));
     double sig1=0.054;
     double sig2=0.032;
     double sig3=0.020;
-    
+    double nm1=findPeaks(me1,slp,bg,h);
+    double nm2=findPeaks(me2,slp,bg,h);
+    double nm3=findPeaks(me3,slp,bg,h);
+    //me1=h->FindBin(nm1);
+    //me2=h->FindBin(nm2);
+    //me3=h->FindBin(nm3);
+
     std::cout << "nm1:" << nm1 << std::endl;
     std::cout << "nm2:" << nm2 << std::endl;
     std::cout << "nm3:" << nm3 << std::endl;
@@ -152,6 +164,7 @@ TFitResultPtr fitp1( string hs, double x1=1, double x9=0 )
     lp2Fcn->SetParameter( 8, nm3 );
     lp2Fcn->SetParameter( 9, me3 );
     lp2Fcn->SetParameter( 10, sig3 );
+    lp2Fcn->FixParameter(11,0);
     
     lp2Fcn->SetLineWidth(4);
     lp2Fcn->SetNpx(500);
@@ -164,11 +177,11 @@ TFitResultPtr fitp1( string hs, double x1=1, double x9=0 )
     // h->Fit("tp2Fcn","V+","ep");
     
     //stampiamo su shell qualche valore utile
-    cout << "Ndata = " << lp2Fcn->GetNumberFitPoints() << endl;
-    cout << "Npar  = " << lp2Fcn->GetNumberFreeParameters() << endl;
-    cout << "NDoF  = " << lp2Fcn->GetNDF() << endl;
-    cout << "chisq = " << lp2Fcn->GetChisquare() << endl;
-    cout << "prob  = " << lp2Fcn->GetProb() << endl;
+    std::cout << "Ndata = " << lp2Fcn->GetNumberFitPoints() << std::endl;
+    std::cout << "Npar  = " << lp2Fcn->GetNumberFreeParameters() << std::endl;
+    std::cout << "NDoF  = " << lp2Fcn->GetNDF() << std::endl;
+    std::cout << "chisq = " << lp2Fcn->GetChisquare() << std::endl;
+    std::cout << "prob  = " << lp2Fcn->GetProb() << std::endl;
     
     ///*
     auto c1 = new TCanvas("c", "", 800, 700);

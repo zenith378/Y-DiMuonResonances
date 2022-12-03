@@ -1,8 +1,14 @@
+#include "df_set.h"
+#include "Cuts.h"
 #include "SpettrumPlot.h"
 #include "fitp1.h"
+#include "ROOT/RDataFrame.hxx"
+
 
 int prova(){
-    SpettrumPlot();
-    fitp1("hist",8.5,11.5);
+    ROOT::RDataFrame df=df_set();
+    ROOT::RDataFrame df_cut=Cuts(df);
+    TH1* h=SpettrumPlot(df_cut);
+    fitp1(h,8.5,11.5);
     return 0;
 }
