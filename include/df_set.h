@@ -68,7 +68,7 @@ ROOT::RDataFrame df_set(){
   //Enable multi-threading
   ROOT::EnableImplicitMT(1);
 
-  TString fname("./Data/data.root");
+  TString fname("Data/data.root");
   //try opening file
   TFile *rootfile = TFile::Open(fname);
   //if file does not open
@@ -85,7 +85,7 @@ ROOT::RDataFrame df_set(){
 
     
     //write dataframe to file
-    df_set.Snapshot("Events","./Data/data.root");
+    df_set.Snapshot("Events",fname);
     }
   else if(rootfile->IsZombie()){ //file not read corectly
     std::cout << "Problems reading file " << fname << std::endl;

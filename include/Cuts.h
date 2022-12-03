@@ -18,7 +18,8 @@ ROOT::RDataFrame Cuts(ROOT::RDataFrame df){
   ROOT::EnableImplicitMT(1);
 
   //Events selection
-  TFile *cutfile = TFile::Open("./Data/data_cut.root"); //try open cut file
+  TString fname("Data/data_cut.root");
+  TFile *cutfile = TFile::Open(fname); //try open cut file
   if (!cutfile){ //if the cutfile does not exist
     std::cout << "Recreating cut file"<< std::endl;
 
@@ -33,14 +34,14 @@ ROOT::RDataFrame Cuts(ROOT::RDataFrame df){
                     .Filter("Dimuon_y < 0.6 ", "First cut on rapidity")
                     .Filter("Dimuon_y > -0.6 ", "Second cut on rapidity");
     //save cut file
-    df_cut.Snapshot("Cuts","./Data/data_cut.root");
+    df_cut.Snapshot("Cuts",fname);
     }
 
   else if(cutfile->IsZombie()){ //file not read correctly
-    std::cout << "Problems reading file ./Data/data.root"<< std::endl;
+    std::cout << "Problems reading file" << fname << std::endl;
     exit(1);
   }
-  ROOT::RDataFrame df_cut("Cuts", "./Data/data_cut.root"); 
+  ROOT::RDataFrame df_cut("Cuts", fname); 
   
   //const auto pt_max = 12.;
   //const auto pt_min = 10.;

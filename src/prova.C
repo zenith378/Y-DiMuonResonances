@@ -1,7 +1,7 @@
-#include "df_set.h"
-#include "Cuts.h"
-#include "SpettrumPlot.h"
-#include "fitp1.h"
+#include "../include/df_set.h"
+#include "../include/Cuts.h"
+#include "../include/SpettrumPlot.h"
+#include "../include/fitp1.h"
 #include "ROOT/RDataFrame.hxx"
 
 

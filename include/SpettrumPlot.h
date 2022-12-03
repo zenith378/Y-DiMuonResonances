@@ -15,7 +15,7 @@
 #include "TH1D.h"
 #include "TLatex.h"
 #include "TStyle.h"
-#include "Cuts.h"
+#include "../include/Cuts.h"
 
 using namespace ROOT::VecOps;
 
@@ -62,7 +62,7 @@ TH1* SpettrumPlot(ROOT::RDataFrame df_cut){
   label.DrawLatex(0.90, 0.92, "#sqrt{s} = 8 TeV, L_{int} = 11.6 fb^{-1}");
 
   // Save plot
-  c->SaveAs("dimuonSpectrum_cut_pt2.pdf");
+  c->SaveAs("Plots/dimuonSpectrum_cut_pt2.pdf");
 
   // Print cut-flow report
   report->Print();

@@ -197,7 +197,7 @@ TFitResultPtr fitp1( TH1* h, Double_t x1=1, Double_t x9=0 )
     //cor.Print();
     
     lp2Fcn->Draw("same");
-    c1->SaveAs("fitp1Y.pdf");
+    c1->SaveAs("Plots/fitp1Y.pdf");
     return r;
     
 }
