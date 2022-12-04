@@ -1,43 +1,23 @@
-//
-//  SpettrumPlot.h
-//
-//
-//  Created by Giulio Cordova on 10/11/22.
-//
-//
-
-#ifndef SpettrumPlot_h
-#define SpettrumPlot_h
-
 #include "ROOT/RDataFrame.hxx"
 #include "TMath.h"
 #include "TCanvas.h"
 #include "TH1D.h"
 #include "TLatex.h"
 #include "TStyle.h"
-#include "Cuts.h"
+#include "SpectrumPlot.h"
 
 using namespace ROOT::VecOps;
 
 
-void SpettrumPlot(){
+TH1* SpectrumPlot(ROOT::RDataFrame df_cut){
   //Enable multi-threading
   ROOT::EnableImplicitMT(1);
-
-  // Create dataframe from NanoAOD files
-  ROOT::RDataFrame df("Events", "root://eospublic.cern.ch//eos/opendata/cms/derived-data/AOD2NanoAODOutreachTool/Run2012BC_DoubleMuParked_Muons.root");
-
-  //Events selection
-  auto df_cut = Cuts(df);
   
   // Book histogram of dimuon mass spectrum
   const auto bins = 300; // Number of bins in the histogram
   const auto low = 8.5;//0.25; // Lower edge of the histogram
   const auto up = 11.5;//300.0; // Upper edge of the histogram
   auto hist = df_cut.Histo1D({"hist", "Dimuon mass", bins, low, up}, "Dimuon_mass");
-
-  // Request cut-flow report
-  auto report = df_cut.Report();
 
   // Create canvas for plotting
   gStyle->SetOptStat(0);
@@ -57,13 +37,9 @@ void SpettrumPlot(){
   // Draw labels
   TLatex label;
   label.SetTextAlign(22); //22= centrale verticalmente e orizzontalmente
-//  label.DrawLatex(0.55, 3.0e4, "#eta");
-//  label.DrawLatex(0.77, 7.0e4, "#rho,#omega");
-//  label.DrawLatex(1.20, 4.0e4, "#phi");
-//  label.DrawLatex(4.40, 1.0e5, "J/#psi");
-//  label.DrawLatex(4.60, 1.0e4, "#psi'");
+
   label.DrawLatex(10.0, 200, "Y(1,2,3S)");
-//  label.DrawLatex(91.0, 1.5e4, "Z");
+
   label.SetNDC(true); //cambio di coordinate di riferimento da quelle del grafico a quelle del pad normalizzate
   label.SetTextAlign(11); //left bottom
   label.SetTextSize(0.04);
@@ -72,11 +48,10 @@ void SpettrumPlot(){
   label.DrawLatex(0.90, 0.92, "#sqrt{s} = 8 TeV, L_{int} = 11.6 fb^{-1}");
 
   // Save plot
-  c->SaveAs("dimuonSpectrum_cut_pt2.pdf");
+  c->SaveAs("Plots/dimuonSpectrum_cut_pt2.pdf");
 
-  // Print cut-flow report
-  report->Print();
+  std::string hs;
+  hs="hist";
+  TH1 *h = (TH1*)gDirectory->Get(hs.c_str()); //da riguardare, forse c'è un modo migliore per farlo
+  return h;
 }
-
-
-#endif /* SpettrumPlot_h */
