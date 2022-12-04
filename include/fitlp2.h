@@ -5,6 +5,12 @@
 //  Created by Giulio Cordova on 10/11/22.
 //
 //
+/*********************************
+ * \file fitlp2.h
+ * \brief A Documented file.
+ *
+ * Details.
+ ***********************************/
 
 #ifndef fitlp2_h
 #define fitlp2_h
@@ -19,28 +25,33 @@
 #include "TFitResult.h"
 #include "TMatrixD.h"
 
-
+/***************************************
+ * Definitin of the lorentzian function:
+ * @param par[0] The area
+ * @param par[2] The FWHWM
+ * @param par[1] The mean
+ ****************************************/
 Double_t lorentzianPeak(Double_t *x, Double_t *par) {
-    /*Definitin of the lorentzian function:
-     par[0] is the area
-     par[2] is FWHWM
-     par[1] is the mean*/
     return (0.5*par[0]*par[2]/TMath::Pi()) / TMath::Max(1.e-10,(x[0]-par[1])*(x[0]-par[1])+ .25*par[2]*par[2]);
 }
 
+/***************************************
+ * Definitin of the gaussian function:
+ * @param par[0] The area
+ * @param par[1] The mean
+ * @param par[2] The FWHM
+ ****************************************/
 Double_t gaussianPeak(Double_t *x, Double_t *par) {
-    /*Definitin of the gaussian function:
-     par[0] is the area
-     par[1] is the mean
-     par[2] is the FWHM*/
     return par[0]*exp(-0.5* ((x[0]-par[1])/par[2]) * ((x[0]-par[1])/par[2])); ///(par[2] *TMath::Sqrt(2*TMath::Pi()));
 }
 
 // Linear background function
+/***************************************
+ * Definitin of a p2 function:
+ * @param par[0] The height at the origin
+ * @param par[1] The slope
+ ****************************************/
 Double_t background(Double_t *x, Double_t *par) {
-    /*Definitin of a p2 function:
-     par[0] is theheight at the origin
-     par[1] is the slope */
     return par[0] + par[1]*x[0]; // + par[2]*x[0]*x[0];
 }
 

@@ -1,3 +1,13 @@
+//##########################################################################################
+//#                                                                                        #
+//#g++ -o prova prova.C `root-config --cflag --libs` -L ../include/ -lnamelibrary          #
+//#./prova                                                                                 #
+//# oppure                                                                                 #
+//#g++ prova.C $(root-config --glibs --cflag --libs) -L ../include/ -lnamelibrary -o prova #
+//#./prova                                                                                 #
+//#                                                                                        #
+//##########################################################################################
+
 #include "../include/df_set.h"
 #include "../include/Cuts.h"
 #include "../include/SpettrumPlot.h"

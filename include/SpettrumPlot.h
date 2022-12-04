@@ -1,4 +1,7 @@
 //
+// gcc -c -fpic SpettrumPlot.c Cuts.c df_set.c fitlp2.c fitp1.c -o librarycode.o
+// gcc -shared -fpic -o libnamelibrary.so librarycode.o
+//
 //  SpettrumPlot.h
 //
 //
