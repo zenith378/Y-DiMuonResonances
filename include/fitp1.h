@@ -20,7 +20,7 @@
 
 
 Double_t lorentzianPeak(Double_t *x, Double_t *par) {
-    /*Definition of the lorentzian pdf:
+    /**Definition of the lorentzian pdf:
      par[0] is the area
      par[2] is FWHWM
      par[1] is the mean*/
