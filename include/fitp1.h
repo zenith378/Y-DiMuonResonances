@@ -33,10 +33,17 @@ Double_t findPeaks(Double_t centralbin, Double_t slope, Double_t background, TH1
 TFitResultPtr fitp1( TH1* h, Double_t x1=1, Double_t x9=0 );
 /*
 Double_t lorentzianPeak(Double_t *x, Double_t *par) {
+<<<<<<< HEAD
     //Definition of the lorentzian pdf:
      //par[0] is the area
      //par[2] is FWHWM
      //par[1] is the mean
+=======
+    /**Definition of the lorentzian pdf:
+     par[0] is the area
+     par[2] is FWHWM
+     par[1] is the mean*/
+>>>>>>> b2a30a27e7869fd0cca1e21fc43fffc2d0260463
     return (par[0]) / TMath::Max(1.e-10,(x[0]-par[1])*(x[0]-par[1])+ par[2]*par[2]);
 }
 

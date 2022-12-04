@@ -1,0 +1,9 @@
+- tagli per una stessa variabile in un unico comando
+- capire come fare la documentazione
+- compilare con cmake
+- shared library
+- unit test
+- finire di implementare l'opzione di scelta tra fit gaussiano, loretziano o tstudentiano
+- implementare scelta tagli
+- grafici di Pull
+- grafici della sezione d'urto
