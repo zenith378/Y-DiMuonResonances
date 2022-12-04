@@ -1,7 +1,7 @@
-- tagli per una stessa variabile in un unico comando
-- capire come fare la documentazione
-- compilare con cmake
-- shared library
+- <del>tagli per una stessa variabile in un unico comando</del>
+- <del>capire come fare la documentazione </del>
+- <del>compilare con cmake</del>
+- <del>shared library</del>
 - unit test
 - finire di implementare l'opzione di scelta tra fit gaussiano, loretziano o tstudentiano
 - implementare scelta tagli

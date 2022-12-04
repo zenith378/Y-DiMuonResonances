@@ -1,6 +1,8 @@
 #include "ROOT/RDataFrame.hxx"
 #include "TMath.h"
 #include "Cuts.h"
+#include <filesystem> // or #include <filesystem> for C++17 and up
+
 
 ROOT::RDataFrame Cuts(ROOT::RDataFrame df){
   //Enable multi-threading
@@ -23,6 +25,10 @@ ROOT::RDataFrame Cuts(ROOT::RDataFrame df){
     // Print cut-flow report
     report->Print();  
     //save cut file
+    namespace fs = std::filesystem;
+    if (!fs::is_directory("./Data") || !fs::exists("./Data")) { // Check if src folder exists
+        fs::create_directory("./Data"); // create src folder
+        }
     df_cut.Snapshot("Cuts",fname);
     }
 
@@ -30,9 +36,10 @@ ROOT::RDataFrame Cuts(ROOT::RDataFrame df){
     std::cout << "Problems reading file" << fname << std::endl;
     exit(1);
   }
-  ROOT::RDataFrame df_cut("Cuts", fname); 
+
+  ROOT::RDataFrame df_off("Cuts", fname); 
   
   //const auto pt_max = 12.;
   //const auto pt_min = 10.;
-  return df_cut;
+  return df_off;
 }

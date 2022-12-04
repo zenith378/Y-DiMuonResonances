@@ -5,6 +5,7 @@
 #include "TMath.h"
 #include "TFile.h"
 #include "df_set.h"
+#include <filesystem> 
 
 
 using namespace ROOT::VecOps;
@@ -63,7 +64,10 @@ ROOT::RDataFrame df_set(){
                           .Define("Dimuon_beta", computeFourVecBeta,{"Dimuon_FourVec"})
                           .Define("Dimuon_y", computeFourVecRapidity, {"Dimuon_FourVec"});
 
-    
+    namespace fs = std::filesystem;
+    if (!fs::is_directory("./Data") || !fs::exists("./Data")) { 
+    fs::create_directory("./Data"); 
+        }
     //write dataframe to file
     df_set.Snapshot("Events",fname);
     }

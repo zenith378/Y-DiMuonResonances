@@ -1,3 +1,14 @@
+/*********************************
+ * \file fitp1.C
+ * \brief A Documented file.
+ *
+ * Details.
+ ***********************************/
+
+
+
+
+
 #include "TDirectory.h"
 #include "TH1.h"
 #include "TMath.h"
@@ -11,7 +22,12 @@
 #include "TApplication.h"
 #include "TRootCanvas.h"
 
-
+/***************************************
+ * Definitin of the lorentzian function:
+ * @param par[0] The area
+ * @param par[2] The FWHWM
+ * @param par[1] The mean
+ ****************************************/
 Double_t lorentzianPeak(Double_t *x, Double_t *par) {
     /*Definition of the lorentzian pdf:
      par[0] is the area
@@ -19,12 +35,21 @@ Double_t lorentzianPeak(Double_t *x, Double_t *par) {
      par[1] is the mean*/
     return (par[0]) / TMath::Max(1.e-10,(x[0]-par[1])*(x[0]-par[1])+ par[2]*par[2]);
 }
-
+/***************************************
+ * Definitin of the gaussian function:
+ * @param par[0] The area
+ * @param par[1] The mean
+ * @param par[2] The FWHM
+ ****************************************/
 Double_t gaussianPeak(Double_t *x, Double_t *par) {
     return par[0]*exp(-0.5* ((x[0]-par[1])/par[2]) * ((x[0]-par[1])/par[2]));
 }
-
-// Quadratic background function
+// Linear background function
+/***************************************
+ * Definitin of a p2 function:
+ * @param par[0] The height at the origin
+ * @param par[1] The slope
+ ****************************************/
 Double_t background(Double_t *x, Double_t *par) {
     return par[0] + par[1]*x[0];
 }
