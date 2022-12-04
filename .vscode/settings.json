@@ -84,6 +84,14 @@
         "numbers": "cpp",
         "semaphore": "cpp",
         "stop_token": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "YDimuon.C": "cpp",
+        "rdataframe.hxx": "c",
+        "fitp1.C": "cpp",
+        "dimuonSpectrum.C": "cpp",
+        "df_set.C": "cpp",
+        "Cuts.C": "cpp",
+        "SpectrumPlot.C": "cpp",
+        "main.C": "cpp"
     }
 }

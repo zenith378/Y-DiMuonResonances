@@ -1,42 +1,22 @@
-//
-//  fitp1.h
-//  
-//
-//  Created by Matilde Carminati on 22/11/22.
-//
-
-#ifndef fitp1_h
-#define fitp1_h
-
 #include "TDirectory.h"
 #include "TH1.h"
 #include "TMath.h"
 #include "TF1.h"
 //#include "TLegend.h"
-//#include "TCanvas.h"
+#include "TCanvas.h"
 #include "TStyle.h"
 #include "TFitResult.h"
 #include "TMatrixD.h"
+#include "fitp1.h"
+#include "TApplication.h"
+#include "TRootCanvas.h"
 
 
-
-Double_t lorentzianPeak(Double_t *x, Double_t *par);
-
-Double_t gaussianPeak(Double_t *x, Double_t *par);
-
-Double_t background(Double_t *x, Double_t *par);
-
-Double_t fitfunction(Double_t *x, Double_t *par);
-
-Double_t findPeaks(Double_t centralbin, Double_t slope, Double_t background, TH1 *h);
-
-TFitResultPtr fitp1( TH1* h, Double_t x1=1, Double_t x9=0 );
-/*
 Double_t lorentzianPeak(Double_t *x, Double_t *par) {
-    //Definition of the lorentzian pdf:
-     //par[0] is the area
-     //par[2] is FWHWM
-     //par[1] is the mean
+    /*Definition of the lorentzian pdf:
+     par[0] is the area
+     par[2] is FWHWM
+     par[1] is the mean*/
     return (par[0]) / TMath::Max(1.e-10,(x[0]-par[1])*(x[0]-par[1])+ par[2]*par[2]);
 }
 
@@ -68,9 +48,10 @@ Double_t findPeaks(Double_t centralbin, Double_t slope, Double_t background, TH1
 }
 
 //----------------------------------------------------------------------
-TFitResultPtr fitp1( TH1* h, Double_t x1=1, Double_t x9=0 )
+TFitResultPtr fitp1( TH1* h, Double_t x1, Double_t x9 )
 {
-    
+    TApplication *theApp = new TApplication("app",0,0);
+
     if( h == NULL ){
         std::cout << "histogram does not exist\n";
         return nullptr;
@@ -196,10 +177,12 @@ TFitResultPtr fitp1( TH1* h, Double_t x1=1, Double_t x9=0 )
     std::cout << "chisq = " << lp2Fcn->GetChisquare() << std::endl;
     std::cout << "prob  = " << lp2Fcn->GetProb() << std::endl;
     
-    //
-    //auto c1 = new TCanvas("c", "", 800, 700);
+    ///*
+    auto c1 = new TCanvas("c", "", 800, 700);
+    TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
+    rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
     //c1->SetLogx();
-    //c1->SetLogy();//
+    //c1->SetLogy();//*/
     
     // data points on top:
     h->Draw("histpesame");
@@ -211,11 +194,7 @@ TFitResultPtr fitp1( TH1* h, Double_t x1=1, Double_t x9=0 )
     
     lp2Fcn->Draw("same");
     c1->SaveAs("Plots/fitp1Y.pdf");
+    theApp->Run();
     return r;
     
 }
-*/
-//TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 );//esecuzione fit
-
-
-#endif /* fitp1_h */

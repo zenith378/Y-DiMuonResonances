@@ -1,45 +1,24 @@
-//
-//  df_set.h
-//
-//
-//  Created by Giulio Cordova on 21/11/22.
-//
-
-#ifndef df_set_h
-#define df_set_h
-
 #include "ROOT/RDataFrame.hxx"
 #include "ROOT/RVec.hxx" //per usare ROOT::VecOps::RVec<T>
 #include "Math/Vector4Dfwd.h"
 #include "Math/Vector4D.h" //per usare PtEtaPhiMVector e le sue funzioni
 #include "TMath.h"
 #include "TFile.h"
+#include "df_set.h"
 
 
 using namespace ROOT::VecOps;
-
-ROOT::Math::PtEtaPhiMVector computeFourVec(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass);
-
-float computeFourVecInvariantMass(ROOT::Math::PtEtaPhiMVector& fourvec);
-
-float computeFourVecPT(ROOT::Math::PtEtaPhiMVector& fourvec);
-
-float computeFourVecRapidity(ROOT::Math::PtEtaPhiMVector& fourvec);
-
-float computeFourVecBeta(ROOT::Math::PtEtaPhiMVector& fourvec);
-
-ROOT::RDataFrame df_set();
 
 /*
 void printLVec(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass){
     ROOT::Math::PtEtaPhiMVector m1(pt[0], eta[0], phi[0], mass[0]);
     std::cout << m1 << std::endl;
     return;}
-
+*/
 
 ROOT::Math::PtEtaPhiMVector computeFourVec(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass){
-    // Funzione che calcola il quadrivettore: idea di usare i metodi di questa quantità per calcolare
-    le quantità di cui abbiamo bisongo (massa invariante, beta, rapidità, etc.)
+    /* Funzione che calcola il quadrivettore: idea di usare i metodi di questa quantità per calcolare
+    le quantità di cui abbiamo bisongo (massa invariante, beta, rapidità, etc.)*/
     //potremmo implementare queste due righe con un ciclo su uno dei vettori,
     //definire un vettore si vettori di lorentz che se è più lungo di 2 mi
     //restituisce un messaggio di errore, sommare gli elementi del vettore
@@ -98,6 +77,3 @@ ROOT::RDataFrame df_set(){
 
   return df;
 }
-*/
-
-#endif /* Cuts_h */

@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef SpettrumPlot_h
-#define SpettrumPlot_h
+#ifndef SpectrumPlot_h
+#define SpectrumPlot_h
 
 #include "ROOT/RDataFrame.hxx"
 #include "TMath.h"
@@ -19,8 +19,10 @@
 
 using namespace ROOT::VecOps;
 
+TH1* SpectrumPlot(ROOT::RDataFrame df_cut);
 
-TH1* SpettrumPlot(ROOT::RDataFrame df_cut){
+/*
+TH1* SpectrumPlot(ROOT::RDataFrame df_cut){
   //Enable multi-threading
   ROOT::EnableImplicitMT(1);
   
@@ -29,9 +31,6 @@ TH1* SpettrumPlot(ROOT::RDataFrame df_cut){
   const auto low = 8.5;//0.25; // Lower edge of the histogram
   const auto up = 11.5;//300.0; // Upper edge of the histogram
   auto hist = df_cut.Histo1D({"hist", "Dimuon mass", bins, low, up}, "Dimuon_mass");
-
-  // Request cut-flow report
-  auto report = df_cut.Report();
 
   // Create canvas for plotting
   gStyle->SetOptStat(0);
@@ -64,14 +63,11 @@ TH1* SpettrumPlot(ROOT::RDataFrame df_cut){
   // Save plot
   c->SaveAs("Plots/dimuonSpectrum_cut_pt2.pdf");
 
-  // Print cut-flow report
-  report->Print();
-
   std::string hs;
   hs="hist";
-  TH1 *h = (TH1*)gDirectory->Get(hs.c_str());
+  TH1 *h = (TH1*)gDirectory->Get(hs.c_str()); //da riguardare, forse c'è un modo migliore per farlo
   return h;
 }
+*/
 
-
-#endif /* SpettrumPlot_h */
+#endif /* SpectrumPlot_h */
