@@ -1,0 +1,208 @@
+\hypertarget{fitlp2_8h_source}{}\doxysection{fitlp2.\+h}
+\label{fitlp2_8h_source}\index{/Users/matilde/Documents/CMEPDA/Y-\/DiMuonResonances/include/fitlp2.h@{/Users/matilde/Documents/CMEPDA/Y-\/DiMuonResonances/include/fitlp2.h}}
+\mbox{\hyperlink{fitlp2_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{//  fitlp2.h}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 \textcolor{comment}{//}}
+\DoxyCodeLine{5 \textcolor{comment}{//  Created by Giulio Cordova on 10/11/22.}}
+\DoxyCodeLine{6 \textcolor{comment}{//}}
+\DoxyCodeLine{7 \textcolor{comment}{//}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#ifndef fitlp2\_h}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define fitlp2\_h}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}TDirectory.h"{}}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}TH1.h"{}}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include "{}TMath.h"{}}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include "{}TF1.h"{}}}
+\DoxyCodeLine{22 \textcolor{comment}{//\#include "{}TLegend.h"{}}}
+\DoxyCodeLine{23 \textcolor{comment}{//\#include "{}TCanvas.h"{}}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#include "{}TStyle.h"{}}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include "{}TFitResult.h"{}}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include "{}TMatrixD.h"{}}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 }
+\DoxyCodeLine{34 Double\_t \mbox{\hyperlink{fitlp2_8h_a3ab718113ef7daafe48a3b35496349f2}{lorentzianPeak}}(Double\_t *x, Double\_t *par) \{}
+\DoxyCodeLine{35     \textcolor{keywordflow}{return} (0.5*par[0]*par[2]/TMath::Pi()) / TMath::Max(1.e-\/10,(x[0]-\/par[1])*(x[0]-\/par[1])+ .25*par[2]*par[2]);}
+\DoxyCodeLine{36 \}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 }
+\DoxyCodeLine{44 Double\_t \mbox{\hyperlink{fitlp2_8h_a620d60f66121ac0a0d37ce2ae3e8cd34}{gaussianPeak}}(Double\_t *x, Double\_t *par) \{}
+\DoxyCodeLine{45     \textcolor{keywordflow}{return} par[0]*exp(-\/0.5* ((x[0]-\/par[1])/par[2]) * ((x[0]-\/par[1])/par[2])); }
+\DoxyCodeLine{46 \}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{comment}{// Linear background function}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{54 Double\_t \mbox{\hyperlink{fitlp2_8h_a60ce0e91a5ee7f0c23e68b709d0f7a9e}{background}}(Double\_t *x, Double\_t *par) \{}
+\DoxyCodeLine{55     \textcolor{keywordflow}{return} par[0] + par[1]*x[0]; \textcolor{comment}{// + par[2]*x[0]*x[0];}}
+\DoxyCodeLine{56 \}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{comment}{// Sum of background and peak function}}
+\DoxyCodeLine{59 Double\_t fitfunction(Double\_t *x, Double\_t *par) \{}
+\DoxyCodeLine{60     }
+\DoxyCodeLine{61     \textcolor{comment}{//if(functype=="{}gaus"{}) return background(x,par) + gaussianPeak(x,\&par[3])+ gaussianPeak(x,\&par[6])+ gaussianPeak(x,\&par[9]);}}
+\DoxyCodeLine{62     \textcolor{comment}{//else if(functype=="{}lorentz"{}) }}
+\DoxyCodeLine{63     \textcolor{keywordflow}{return} \mbox{\hyperlink{fitlp2_8h_a60ce0e91a5ee7f0c23e68b709d0f7a9e}{background}}(x,par) + \mbox{\hyperlink{fitlp2_8h_a3ab718113ef7daafe48a3b35496349f2}{lorentzianPeak}}(x,\&par[2])+ \mbox{\hyperlink{fitlp2_8h_a3ab718113ef7daafe48a3b35496349f2}{lorentzianPeak}}(x,\&par[5])+ \mbox{\hyperlink{fitlp2_8h_a3ab718113ef7daafe48a3b35496349f2}{lorentzianPeak}}(x,\&par[8]);}
+\DoxyCodeLine{64     \textcolor{comment}{//else\{}}
+\DoxyCodeLine{65     \textcolor{comment}{//exit(1);}}
+\DoxyCodeLine{66     \textcolor{comment}{//\}}}
+\DoxyCodeLine{67 \}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{70 TFitResultPtr \mbox{\hyperlink{fitlp2_8h_aef710c7db8210f717e30e9676e81f7ae}{fitlp2}}( \textcolor{keywordtype}{string} hs, \textcolor{keywordtype}{double} x1=1, \textcolor{keywordtype}{double} x9=0 )}
+\DoxyCodeLine{71 \{}
+\DoxyCodeLine{72     TH1 *h = (TH1*)gDirectory-\/>Get( hs.c\_str() ); \textcolor{comment}{// perché quaggiù non passiamo fare direttamente l'istogramma anziché la stringa?}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     \textcolor{keywordflow}{if}( h == NULL )\{}
+\DoxyCodeLine{75         cout << hs << \textcolor{stringliteral}{"{} does not exist\(\backslash\)n"{}};}
+\DoxyCodeLine{76         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{77     \}}
+\DoxyCodeLine{78     }
+\DoxyCodeLine{79     \textcolor{comment}{//Style histogramm}}
+\DoxyCodeLine{80     h-\/>SetMarkerStyle(21);}
+\DoxyCodeLine{81     h-\/>SetMarkerSize(0.2);}
+\DoxyCodeLine{82     h-\/>SetStats(1);}
+\DoxyCodeLine{83     }
+\DoxyCodeLine{84     \textcolor{comment}{//Style legend}}
+\DoxyCodeLine{85     gStyle-\/>SetOptFit(101);}
+\DoxyCodeLine{86     gStyle-\/>SetStatX(0.95); \textcolor{comment}{// right edge}}
+\DoxyCodeLine{87     gStyle-\/>SetStatY(0.95); \textcolor{comment}{// top edge}}
+\DoxyCodeLine{88     gStyle-\/>SetStatW(0.15); \textcolor{comment}{// width}}
+\DoxyCodeLine{89     gStyle-\/>SetStatH(0.15); \textcolor{comment}{// height}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91     \textcolor{comment}{//gROOT-\/>ForceStyle();}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93     \textcolor{comment}{//inizializzazione parametri}}
+\DoxyCodeLine{94     \textcolor{comment}{//bin's width}}
+\DoxyCodeLine{95     \textcolor{keywordtype}{double} bwt2 = h-\/>GetBinWidth(1);}
+\DoxyCodeLine{96     \textcolor{comment}{//bins' number}}
+\DoxyCodeLine{97     \textcolor{keywordtype}{int} nb = h-\/>GetNbinsX();}
+\DoxyCodeLine{98     \textcolor{comment}{//if you don't give the extreme of the fit the fit will be done on all the width of the histogram}}
+\DoxyCodeLine{99     \textcolor{keywordflow}{if}( x9 < x1 ) \{}
+\DoxyCodeLine{100         x1 = h-\/>GetBinCenter(1);}
+\DoxyCodeLine{101         x9 = h-\/>GetBinCenter(nb);}
+\DoxyCodeLine{102     \}}
+\DoxyCodeLine{103     \textcolor{comment}{//index of the bins who set the range}}
+\DoxyCodeLine{104     \textcolor{keywordtype}{int} i1 = h-\/>FindBin(x1);}
+\DoxyCodeLine{105     \textcolor{keywordtype}{int} i9 = h-\/>FindBin(x9);}
+\DoxyCodeLine{106     \textcolor{comment}{//occurencies at the border of the range}}
+\DoxyCodeLine{107     \textcolor{keywordtype}{double} n1 = h-\/>GetBinContent(i1);}
+\DoxyCodeLine{108     \textcolor{keywordtype}{double} n9 = h-\/>GetBinContent(i9);}
+\DoxyCodeLine{109     \textcolor{comment}{//mean between the occurencies at the border -\/-\/>we have to find a better implementatio (we are far away from the y axis)}}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111     \textcolor{keywordtype}{double} slp =  (n9-\/n1)/(x9-\/x1);}
+\DoxyCodeLine{112     \textcolor{keywordtype}{double} bg =  (n1+slp*x1);}
+\DoxyCodeLine{113     \textcolor{comment}{// find peak in boundaries:}}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115     \textcolor{keywordtype}{double} npk = bg;}
+\DoxyCodeLine{116     \textcolor{keywordtype}{double} xpk = 0.5*(x1+x9);}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118     \textcolor{keywordtype}{double} xhwhm = x1;}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120     \textcolor{keywordflow}{for}( \textcolor{keywordtype}{int} ii = i1; ii <= i9; ++ii ) \{}
+\DoxyCodeLine{121         \textcolor{keywordflow}{if}( h-\/>GetBinContent(ii) > npk ) \{}
+\DoxyCodeLine{122             npk = h-\/>GetBinContent(ii);}
+\DoxyCodeLine{123             xpk = h-\/>GetBinCenter(ii);}
+\DoxyCodeLine{124         \}}
+\DoxyCodeLine{125         \textcolor{keywordflow}{if}( h-\/>GetBinContent(ii)-\/bg > 0.5*(npk-\/bg) )}
+\DoxyCodeLine{126         xhwhm = h-\/>GetBinCenter(ii); \textcolor{comment}{// overwritten until right flank}}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128     \}}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131     \textcolor{keywordtype}{double} sm = 2*(xhwhm-\/xpk);}
+\DoxyCodeLine{132     \textcolor{keywordtype}{double} aa = 2.5 * ( npk -\/ bg ) * sm / bwt2;}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     cout << hs << \textcolor{stringliteral}{"{}: "{}} << x1 << \textcolor{stringliteral}{"{} -\/ "{}} << x9 << endl;}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136     cout << hs << \textcolor{stringliteral}{"{}: xpk="{}} << xpk << \textcolor{stringliteral}{"{}, xhwhm="{}} << xhwhm << \textcolor{stringliteral}{"{}, sm="{}} << sm << endl;}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138     cout << hs << \textcolor{stringliteral}{"{}: bwt2="{}} << bwt2 << \textcolor{stringliteral}{"{}, npk="{}} << npk << \textcolor{stringliteral}{"{}, aa="{}} << aa << endl;}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140     \textcolor{comment}{// create a TF1 with the range from x1 to x9 and 7 parameters}}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142     TF1 *lp2Fcn = \textcolor{keyword}{new} TF1( \textcolor{stringliteral}{"{}lp2Fcn"{}}, fitfunction, x1, x9, 11 );}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144     lp2Fcn-\/>SetParName( 0, \textcolor{stringliteral}{"{}BG"{}} );}
+\DoxyCodeLine{145     lp2Fcn-\/>SetParName( 1, \textcolor{stringliteral}{"{}slope"{}} );}
+\DoxyCodeLine{146    \textcolor{comment}{// lp2Fcn-\/>SetParName( 2, "{}curv"{} );}}
+\DoxyCodeLine{147     lp2Fcn-\/>SetParName( 2, \textcolor{stringliteral}{"{}norm1"{}});}
+\DoxyCodeLine{148     lp2Fcn-\/>SetParName( 3, \textcolor{stringliteral}{"{}mean1"{}} );}
+\DoxyCodeLine{149     lp2Fcn-\/>SetParName( 4, \textcolor{stringliteral}{"{}sigma1"{}} );}
+\DoxyCodeLine{150     lp2Fcn-\/>SetParName( 5, \textcolor{stringliteral}{"{}norm2"{}});}
+\DoxyCodeLine{151     lp2Fcn-\/>SetParName( 6, \textcolor{stringliteral}{"{}mean2"{}} );}
+\DoxyCodeLine{152     lp2Fcn-\/>SetParName( 7, \textcolor{stringliteral}{"{}sigma2"{}} );}
+\DoxyCodeLine{153     lp2Fcn-\/>SetParName( 8, \textcolor{stringliteral}{"{}norm3"{}});}
+\DoxyCodeLine{154     lp2Fcn-\/>SetParName( 9, \textcolor{stringliteral}{"{}mean3"{}} );}
+\DoxyCodeLine{155     lp2Fcn-\/>SetParName( 10, \textcolor{stringliteral}{"{}sigma3"{}} );}
+\DoxyCodeLine{156     }
+\DoxyCodeLine{157     \textcolor{keywordtype}{double} nm1=90200;}
+\DoxyCodeLine{158     \textcolor{keywordtype}{double} a1=240;}
+\DoxyCodeLine{159     \textcolor{keywordtype}{double} nm2=4000;}
+\DoxyCodeLine{160     \textcolor{keywordtype}{double} a2=4;}
+\DoxyCodeLine{161     \textcolor{keywordtype}{double} nm3=2300;}
+\DoxyCodeLine{162     \textcolor{keywordtype}{double} a3=1;}
+\DoxyCodeLine{163     \textcolor{keywordtype}{double} me1=9.460;}
+\DoxyCodeLine{164     \textcolor{keywordtype}{double} me2=10.01;}
+\DoxyCodeLine{165     \textcolor{keywordtype}{double} me3=10.335;}
+\DoxyCodeLine{166     \textcolor{keywordtype}{double} sig1=0.054;}
+\DoxyCodeLine{167     \textcolor{keywordtype}{double} sig2=0.331;}
+\DoxyCodeLine{168     \textcolor{keywordtype}{double} sig3=0.331;}
+\DoxyCodeLine{169     \textcolor{comment}{//double bg=22; //2650}}
+\DoxyCodeLine{170     \textcolor{comment}{//double slp=-\/3.3; //-\/100}}
+\DoxyCodeLine{171     }
+\DoxyCodeLine{172     \textcolor{comment}{// set start values for some parameters:}}
+\DoxyCodeLine{173     lp2Fcn-\/>SetParameter( 0, bg );}
+\DoxyCodeLine{174     lp2Fcn-\/>SetParameter( 1, slp );}
+\DoxyCodeLine{175     \textcolor{comment}{//lp2Fcn-\/>SetParameter( 2, 0 );}}
+\DoxyCodeLine{176     lp2Fcn-\/>SetParameter( 2, a1 ); \textcolor{comment}{//norm}}
+\DoxyCodeLine{177     lp2Fcn-\/>SetParameter( 3, me1 ); \textcolor{comment}{// mean}}
+\DoxyCodeLine{178     lp2Fcn-\/>SetParameter( 4, sig1 ); \textcolor{comment}{// sigma}}
+\DoxyCodeLine{179     lp2Fcn-\/>SetParameter( 5, a2 );}
+\DoxyCodeLine{180     lp2Fcn-\/>SetParameter( 6, me2 );}
+\DoxyCodeLine{181     lp2Fcn-\/>SetParameter( 7, sig2 );}
+\DoxyCodeLine{182     lp2Fcn-\/>SetParameter( 8, a3 );}
+\DoxyCodeLine{183     lp2Fcn-\/>SetParameter( 9, me3 );}
+\DoxyCodeLine{184     lp2Fcn-\/>SetParameter( 10, sig3 ); }
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186     lp2Fcn-\/>SetLineWidth(4);}
+\DoxyCodeLine{187     lp2Fcn-\/>SetNpx(500);}
+\DoxyCodeLine{188     lp2Fcn-\/>SetLineColor(kMagenta);}
+\DoxyCodeLine{189     lp2Fcn-\/>Draw(\textcolor{stringliteral}{"{}same"{}});}
+\DoxyCodeLine{190     }
+\DoxyCodeLine{191     lp2Fcn-\/>SetLineColor(kBlue);}
+\DoxyCodeLine{192     TFitResultPtr r = h-\/>Fit(\textcolor{stringliteral}{"{}lp2Fcn"{}}, \textcolor{stringliteral}{"{}RS"{}}, \textcolor{stringliteral}{"{}ep"{}} );}
+\DoxyCodeLine{193     }
+\DoxyCodeLine{194     \textcolor{comment}{// h-\/>Fit("{}tp2Fcn"{},"{}V+"{},"{}ep"{});}}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196     cout << \textcolor{stringliteral}{"{}Ndata = "{}} << lp2Fcn-\/>GetNumberFitPoints() << endl;}
+\DoxyCodeLine{197     cout << \textcolor{stringliteral}{"{}Npar  = "{}} << lp2Fcn-\/>GetNumberFreeParameters() << endl;}
+\DoxyCodeLine{198     cout << \textcolor{stringliteral}{"{}NDoF  = "{}} << lp2Fcn-\/>GetNDF() << endl;}
+\DoxyCodeLine{199     cout << \textcolor{stringliteral}{"{}chisq = "{}} << lp2Fcn-\/>GetChisquare() << endl;}
+\DoxyCodeLine{200     cout << \textcolor{stringliteral}{"{}prob  = "{}} << lp2Fcn-\/>GetProb() << endl;}
+\DoxyCodeLine{201 }
+\DoxyCodeLine{203     \textcolor{keyword}{auto} c1 = \textcolor{keyword}{new} TCanvas(\textcolor{stringliteral}{"{}c"{}}, \textcolor{stringliteral}{"{}"{}}, 800, 700);}
+\DoxyCodeLine{204     \textcolor{comment}{//c1-\/>SetLogx();}}
+\DoxyCodeLine{205     \textcolor{comment}{//c1-\/>SetLogy();//*/}}
+\DoxyCodeLine{206     }
+\DoxyCodeLine{207     \textcolor{comment}{// data points on top:}}
+\DoxyCodeLine{208     h-\/>Draw(\textcolor{stringliteral}{"{}histpesame"{}});}
+\DoxyCodeLine{209     }
+\DoxyCodeLine{210     \textcolor{comment}{//TMatrixD cor = r-\/>GetCorrelationMatrix();}}
+\DoxyCodeLine{211     \textcolor{comment}{//TMatrixD cov = r-\/>GetCovarianceMatrix();}}
+\DoxyCodeLine{212     \textcolor{comment}{//cov.Print();}}
+\DoxyCodeLine{213     \textcolor{comment}{//cor.Print();}}
+\DoxyCodeLine{214     }
+\DoxyCodeLine{215     lp2Fcn-\/>Draw(\textcolor{stringliteral}{"{}same"{}});}
+\DoxyCodeLine{216     c1-\/>SaveAs(\textcolor{stringliteral}{"{}Y.pdf"{}});}
+\DoxyCodeLine{217     \textcolor{keywordflow}{return} r;}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219 \}}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{221 \textcolor{comment}{//TFitResultPtr fitlp2( string hs, double x1=1, double x9=0 );//esecuzione fit}}
+\DoxyCodeLine{222 }
+\DoxyCodeLine{223 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* fitlp2\_h */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}
