@@ -15,19 +15,22 @@
 
 using namespace RooFit;
 
+/**************************************************************
+ \brief three peaks fit plus a linear background
+ 
+ 
+ *******************************************************************************/
 void fitRoo(TH1 *hh)
 {
     // S e t u p   c o m p o n e n t   p d f s
     // ---------------------------------------
-
-    // Declare observable x
-
+    
+    //Histogram style
     hh->SetMarkerStyle(21);
     hh->SetMarkerSize(0.2);
     hh->SetStats(1);
-
-
-
+    
+    // Declare observable x
     RooRealVar x("x", "invariant mass (GeV/c2)", 8.5, 11.5);
     RooDataHist rh("rh", "rh", x, Import(*hh));
     TApplication *theApp = new TApplication("app", 0, 0);
@@ -101,9 +104,11 @@ void fitRoo(TH1 *hh)
     model.Print("t");
 
     RooHist *hpull = xframe->pullHist();
+    
     // Draw the frame on the canvas
-    auto c1 = new TCanvas("rf201_composite", "rf201_composite", 800, 600);
-    TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
+    TCanvas c1 = new TCanvas("rf201_composite", "rf201_composite", 800, 600);
+    c1->Divide(1,2);
+    /*TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
     rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
 
     TPad *pad1 = new TPad("pad1", "The pad 80 of the height",0.0,0.2,1.0,1.0);
@@ -114,8 +119,11 @@ void fitRoo(TH1 *hh)
     xframe->GetYaxis()->SetTitleOffset(1.4);
     xframe->Draw();
     pad2->cd();
-    xframe->GetYaxis()->SetTitleOffset(1.4);
-
+    xframe->GetYaxis()->SetTitleOffset(1.4);*/
+    c1->cd(1);
+    xframe->Draw();
+    c1->cd(2);
+    frame2->Draw();
     hpull->Draw();
     //gPad->SetLeftMargin(0.3);
 
