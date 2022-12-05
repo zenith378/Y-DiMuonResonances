@@ -1,0 +1,58 @@
+\hypertarget{_cuts_8h_source}{}\doxysection{Cuts.\+h}
+\label{_cuts_8h_source}\index{/Users/matilde/Documents/CMEPDA/Y-\/DiMuonResonances/include/Cuts.h@{/Users/matilde/Documents/CMEPDA/Y-\/DiMuonResonances/include/Cuts.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{//  Cuts.h}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 \textcolor{comment}{//}}
+\DoxyCodeLine{5 \textcolor{comment}{//  Created by Giulio Cordova on 21/11/22.}}
+\DoxyCodeLine{6 \textcolor{comment}{//}}
+\DoxyCodeLine{7 \textcolor{comment}{// è da modificare. io voglio che in questo file ci sia una funzione che mi faccia dei tagli a seconda dei paramteri di }}
+\DoxyCodeLine{8 \textcolor{comment}{// ingresso della funzione cuts. Se nessun parametro è impostato fa i tagli nostri.}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#ifndef Cuts\_h}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define Cuts\_h}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}ROOT/RDataFrame.hxx"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}TMath.h"{}}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 ROOT::RDataFrame Cuts(ROOT::RDataFrame df)\{}
+\DoxyCodeLine{17   \textcolor{comment}{//Enable multi-\/threading}}
+\DoxyCodeLine{18   ROOT::EnableImplicitMT(1);}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20   \textcolor{comment}{//Events selection}}
+\DoxyCodeLine{21   TString fname(\textcolor{stringliteral}{"{}Data/data\_cut.root"{}});}
+\DoxyCodeLine{22   TFile *cutfile = TFile::Open(fname); \textcolor{comment}{//try open cut file}}
+\DoxyCodeLine{23   \textcolor{keywordflow}{if} (!cutfile)\{ \textcolor{comment}{//if the cutfile does not exist}}
+\DoxyCodeLine{24     std::cout << \textcolor{stringliteral}{"{}Recreating cut file"{}}<< std::endl;}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \textcolor{keyword}{auto} df\_cut = df.Filter(\textcolor{stringliteral}{"{}nMuon == 2"{}}, \textcolor{stringliteral}{"{}Events with exactly two muons"{}})   \textcolor{comment}{// Select events with exactly two muons}}
+\DoxyCodeLine{27                     .Filter(\textcolor{stringliteral}{"{}Muon\_charge[0] != Muon\_charge[1]"{}}, \textcolor{stringliteral}{"{}Muons with opposite charge"{}}) \textcolor{comment}{// Select events with two muons of opposite charge}}
+\DoxyCodeLine{28                     \textcolor{comment}{//.Filter([](double Dimuon\_mass) \{ return Dimuon\_mass> 8.5 \&\& Dimuon\_mass < 11.5; \})}}
+\DoxyCodeLine{29                     \textcolor{comment}{//.Filter([](double Dimuon\_pt) \{ return Dimuon\_pt > 10. \&\& Dimuon\_pt < 12.; \});}}
+\DoxyCodeLine{30                     .Filter(\textcolor{stringliteral}{"{}Dimuon\_mass > 8.5 "{}}, \textcolor{stringliteral}{"{}First cut on minv"{}})  \textcolor{comment}{//Cut around the Ys}}
+\DoxyCodeLine{31                     .Filter(\textcolor{stringliteral}{"{}Dimuon\_mass < 11.5 "{}}, \textcolor{stringliteral}{"{}Second cut on minv"{}})}
+\DoxyCodeLine{32                     .Filter(\textcolor{stringliteral}{"{}Dimuon\_pt > 10. "{}}, \textcolor{stringliteral}{"{}First cut on pt"{}})   \textcolor{comment}{//Select events with 10 GeV < pT < 12 GeV}}
+\DoxyCodeLine{33                     .Filter(\textcolor{stringliteral}{"{}Dimuon\_pt < 12. "{}}, \textcolor{stringliteral}{"{}Second cut on pt"{}})}
+\DoxyCodeLine{34                     .Filter(\textcolor{stringliteral}{"{}Dimuon\_y < 0.6 "{}}, \textcolor{stringliteral}{"{}First cut on rapidity"{}})}
+\DoxyCodeLine{35                     .Filter(\textcolor{stringliteral}{"{}Dimuon\_y > -\/0.6 "{}}, \textcolor{stringliteral}{"{}Second cut on rapidity"{}});}
+\DoxyCodeLine{36     \textcolor{comment}{//save cut file}}
+\DoxyCodeLine{37     df\_cut.Snapshot(\textcolor{stringliteral}{"{}Cuts"{}},fname);}
+\DoxyCodeLine{38     \}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(cutfile-\/>IsZombie())\{ \textcolor{comment}{//file not read correctly}}
+\DoxyCodeLine{41     std::cout << \textcolor{stringliteral}{"{}Problems reading file"{}} << fname << std::endl;}
+\DoxyCodeLine{42     exit(1);}
+\DoxyCodeLine{43   \}}
+\DoxyCodeLine{44   ROOT::RDataFrame df\_cut(\textcolor{stringliteral}{"{}Cuts"{}}, fname); }
+\DoxyCodeLine{45   }
+\DoxyCodeLine{46   \textcolor{comment}{//const auto pt\_max = 12.;}}
+\DoxyCodeLine{47   \textcolor{comment}{//const auto pt\_min = 10.;}}
+\DoxyCodeLine{48   \textcolor{keywordflow}{return} df\_cut;}
+\DoxyCodeLine{49 \}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* Cuts\_h */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}
