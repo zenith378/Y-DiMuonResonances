@@ -28,7 +28,9 @@ Double_t background(Double_t *x, Double_t *par);
 
 Double_t fitfunction(Double_t *x, Double_t *par);
 
-Double_t findPeaks(Double_t centralbin, Double_t slope, Double_t background, TH1 *h);
+Double_t findxPeaks(Double_t centralbin, Double_t slope, Double_t background, TH1 *h);
+
+Double_t findHwhm(Int_t binpeak,Double_t slope, Double_t background, TH1 *h);
 
 TFitResultPtr fitp1( TH1* h, Double_t x1=1, Double_t x9=0 );
 

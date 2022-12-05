@@ -62,14 +62,44 @@ Double_t fitfunction(Double_t *x, Double_t *par) {
         else exit(1);
 }
 
-Double_t findPeaks(Double_t centralbin, Double_t slope, Double_t background, TH1 *h) {
+Double_t findxPeaks(Double_t centralbin, Double_t slope, Double_t background, TH1 *h) {
     Double_t initial_x=h->FindBin(centralbin);
     Double_t initial_guess=(h->GetBinContent(initial_x)-background-slope*initial_x);
     Double_t peak=initial_guess;
+    Double_t xpeak=initial_x;
     for( int i=initial_x-10; i <= initial_x+10; i++ ) {
-        if( h->GetBinContent(i) > peak ) peak = h->GetBinContent(i);
+        if( h->GetBinContent(i) > peak ){
+             peak = h->GetBinContent(i);
+             xpeak= h->GetBinCenter(i);
+        }
     }
-    return peak;
+    return xpeak;
+}
+
+Double_t findHwhm(Int_t binpeak, Double_t slope, Double_t background, TH1 *h){
+    Double_t xpk=h->GetBinCenter(binpeak);
+    Double_t peak =(h->GetBinContent(binpeak)-background-slope*xpk);
+    std::cout << xpk << std::endl;
+
+    Double_t hm= peak/2;
+    std::cout << hm << std::endl;
+    Double_t xhm=0;
+    Int_t i=binpeak;
+    while(h->GetBinContent(i) < hm){
+        xhm= h->GetBinCenter(i);
+        i++;
+    }
+    /*
+    for( int i=binpeak; i <= binpeak+50; i++ ) {
+        if( h->GetBinContent(i) < hm ) {
+            xhm= h->GetBinCenter(i); 
+            break;
+        }
+    }
+    */
+    //Double_t hwhm= h->FindLastBinAbove(hm,1,xpk,xpk+10);
+    std::cout << xhm << std::endl;
+    return (xhm-xpk)*2;
 }
 
 //----------------------------------------------------------------------
@@ -102,12 +132,12 @@ TFitResultPtr fitp1( TH1* h, Double_t x1, Double_t x9 )
         x1 = h->GetBinCenter(1);
         x9 = h->GetBinCenter(nb);
     }
-    Int_t i1 = h->FindBin(x1);
-    Int_t i9 = h->FindBin(x9);
+    Int_t i1 = h->FindBin(x1)+1;
+    Int_t i9 = h->FindBin(x9)-1;
     Double_t n1 = h->GetBinContent(i1);
     Double_t n9 = h->GetBinContent(i9);
     Double_t slp = (n9-n1)/(x9-x1);
-    Double_t bg = n1 - slp*x1; //NO VA IMPLEMENTATA MEGLIO PERCHè BG è PER X=0
+    Double_t bg = n9 - slp*x9; 
     
     
     // find peak in boundaries:
@@ -151,21 +181,25 @@ TFitResultPtr fitp1( TH1* h, Double_t x1, Double_t x9 )
     lp2Fcn->SetParName( 8, "norm3");
     lp2Fcn->SetParName( 9, "mean3" );
     lp2Fcn->SetParName( 10, "sigma3" );
-//    double nm1=160;
-//    double nm2=50;
-//    double nm3=40;
+    lp2Fcn->SetParName( 11, "FuncType" );
+
     double me1=9.45;
     double me2=10.01;
     double me3=10.35;
-    double sig1=0.054;
-    double sig2=0.032;
-    double sig3=0.020;
-    double nm1=findPeaks(me1,slp,bg,h);
-    double nm2=findPeaks(me2,slp,bg,h);
-    double nm3=findPeaks(me3,slp,bg,h);
-    //me1=h->FindBin(nm1);
-    //me2=h->FindBin(nm2);
-    //me3=h->FindBin(nm3);
+    Double_t xnm1=findxPeaks(me1,slp,bg,h);
+    std::cout<<xnm1<<std::endl;
+    Double_t xnm2=findxPeaks(me2,slp,bg,h);
+    std::cout<<xnm2<<std::endl;
+    Double_t xnm3=findxPeaks(me3,slp,bg,h);
+    std::cout<<xnm3<<std::endl;
+
+    double nm1=h->GetBinContent(xnm1);
+    double nm2=h->GetBinContent(xnm2);
+    double nm3=h->GetBinContent(xnm3);
+    double sig1=0.054; //findHwhm(xnm1,slp,bg,h);//0.054;
+    double sig2=0.032; //findHwhm(xnm2,slp,bg,h);//0.032;
+    double sig3=0.020; //findHwhm(xnm3,slp,bg,h);//0.020;
+
 
     std::cout << "nm1:" << nm1 << std::endl;
     std::cout << "nm2:" << nm2 << std::endl;
