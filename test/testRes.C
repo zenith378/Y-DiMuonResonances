@@ -39,12 +39,18 @@ void plotResidual1() {
       h2->SetBinError(ibin, 1  );
    } 
 
-   TCanvas * c1 = new TCanvas(); 
-   c1->Divide(1,2);
-   c1->cd(1);
-   h1->Draw(); 
-   c1->cd(2);
-   h2->Draw("E");
+   TCanvas * c1 = new TCanvas();
+//
+    auto rp = new TRatioPlot(h1, h2);
+//   c1->SetTicks(0, 1);
+//
+    rp->Draw();
+//rp->GetLowYaxis()->SetNdivisions(505);
+//   c1->Divide(1,2);
+//   c1->cd(1);
+//   h1->Draw();
+//   c1->cd(2);
+//   h2->Draw("E");
 }
 
 /***************************************************************************
@@ -91,6 +97,6 @@ void plotResidual2() {
 
 int testRes(){
     plotResidual1();
-    plotResidual2();
+    //plotResidual2();
     return 0;
 }
