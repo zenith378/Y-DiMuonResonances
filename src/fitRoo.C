@@ -31,7 +31,7 @@ void fitRoo(TH1 *hh)
     hh->SetStats(1);
     
     // Declare observable x
-    RooRealVar x("x", "invariant mass (GeV/c2)", 8.5, 11.5);
+    RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5, 11.5);
     RooDataHist rh("rh", "rh", x, Import(*hh));
     TApplication *theApp = new TApplication("app", 0, 0);
 
@@ -104,11 +104,21 @@ void fitRoo(TH1 *hh)
     model.Print("t");
 
     RooHist *hpull = xframe->pullHist();
+    hpull->SetMarkerStyle(21);
+    hpull->SetMarkerSize(0.2);
+
+    RooPlot *frame2 = x.frame(Title(" "));
+    frame2->addPlotable(hpull, "P");
     
     // Draw the frame on the canvas
-    TCanvas c1 = new TCanvas("rf201_composite", "rf201_composite", 800, 600);
-    c1->Divide(1,2);
-    /*TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
+    TCanvas * c1 = new TCanvas("rf201_composite", "rf201_composite", 800, 600);
+    /*c1->Divide(1,2);
+    c1->cd(1);
+    xframe->Draw();
+    c1->cd(2);
+    frame2->Draw();*/
+
+    TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
     rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
 
     TPad *pad1 = new TPad("pad1", "The pad 80 of the height",0.0,0.2,1.0,1.0);
@@ -119,22 +129,10 @@ void fitRoo(TH1 *hh)
     xframe->GetYaxis()->SetTitleOffset(1.4);
     xframe->Draw();
     pad2->cd();
-    xframe->GetYaxis()->SetTitleOffset(1.4);*/
-    c1->cd(1);
-    xframe->Draw();
-    c1->cd(2);
+    xframe->GetYaxis()->SetTitleOffset(1.4);
     frame2->Draw();
-    hpull->Draw();
-    //gPad->SetLeftMargin(0.3);
-
-
-    gStyle->SetOptFit(101);
-    gStyle->SetStatX(0.95); // right edge
-    gStyle->SetStatY(0.95); // top edge
-    gStyle->SetStatW(0.15); // width
-    gStyle->SetStatH(0.15); // height
-    //xframe->GetYaxis()->SetTitleOffset(1.4);
-    //xframe->Draw();
-    c1->SaveAs("RooFit.pdf");
+    
+    
+    c1->SaveAs("RooFit1.pdf");
     theApp->Run();
 }
