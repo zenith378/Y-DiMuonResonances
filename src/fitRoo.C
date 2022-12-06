@@ -120,7 +120,7 @@ void fitRoo(TH1 *hh)
 
     TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
     rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
-
+    /*
     TPad *pad1 = new TPad("pad1", "The pad 80 of the height",0.0,0.2,1.0,1.0);
     TPad *pad2 = new TPad("pad2", "The pad 20 of the height",0.0,0.0,1.0,0.2);
     pad1->Draw();
@@ -130,7 +130,7 @@ void fitRoo(TH1 *hh)
     xframe->Draw();
     pad2->cd();
     xframe->GetYaxis()->SetTitleOffset(1.4);
-    frame2->Draw();
+    frame2->Draw();*/
     
     
     c1->SaveAs("RooFit1.pdf");
