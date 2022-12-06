@@ -5,10 +5,6 @@
  * Details.
  ***********************************/
 
-
-
-
-
 #include "TDirectory.h"
 #include "TH1.h"
 #include "TMath.h"
@@ -23,11 +19,12 @@
 #include "TRootCanvas.h"
 
 /***************************************
- * Definitin of the lorentzian function:
- * @param par[0] The area
- * @param par[2] The FWHWM
- * @param par[1] The mean
- ****************************************/
+Definitin of the lorentzian function:
+
+@param par[0] The area
+@param par[2] The FWHWM
+@param par[1] The mean
+***************************************/
 Double_t lorentzianPeak(Double_t *x, Double_t *par) {
     /*Definition of the lorentzian pdf:
      par[0] is the area
@@ -35,8 +32,12 @@ Double_t lorentzianPeak(Double_t *x, Double_t *par) {
      par[1] is the mean*/
     return (par[0]) / TMath::Max(1.e-10,(x[0]-par[1])*(x[0]-par[1])+ par[2]*par[2]);
 }
+
 /***************************************
  * Definitin of the gaussian function:
+ *
+ *  \f$ par[0]*e^{ -\frac{ (x-par[1])^2 }{ 2 par[2]^2} } \f$
+ *
  * @param par[0] The area
  * @param par[1] The mean
  * @param par[2] The FWHM
@@ -44,6 +45,29 @@ Double_t lorentzianPeak(Double_t *x, Double_t *par) {
 Double_t gaussianPeak(Double_t *x, Double_t *par) {
     return par[0]*exp(-0.5* ((x[0]-par[1])/par[2]) * ((x[0]-par[1])/par[2]));
 }
+
+/***************************************
+Definitin of the t-student function:
+
+ ****************************************/
+Double_t tstudentPeak(Double_t *x, Double_t *par) {
+    double bwt2{0.01};
+//    width:
+    double sm = par[1];
+    double t = dx / sm;
+    double tt = t*t;
+
+  // exponent:
+    double rn = par[2];
+    if( rn > 0.0 ) {
+        double xn = 0.5 * ( rn + 1.0 );
+        double pi = TMath::Pi();
+        double aa = bwt2 / sm / sqrt(rn*pi) * TMath::Gamma(xn) / TMath::Gamma(0.5*rn);
+    }
+    
+    return par[3] * aa * exp( -xn * log( 1.0 + tt/rn ) );
+//}
+
 // Linear background function
 /***************************************
  * Definitin of a p2 function:
@@ -59,6 +83,8 @@ Double_t fitfunction(Double_t *x, Double_t *par) {
 
         if(par[11]==0) return background(x,par) + lorentzianPeak(x,&par[2])+ lorentzianPeak(x,&par[5])+ lorentzianPeak(x,&par[8]);
         if(par[11]==1) return background(x,par) + gaussianPeak(x,&par[2])+ gaussianPeak(x,&par[5])+ gaussianPeak(x,&par[8]);
+//        IL T-STUDENT HA UN PARAMETRO IN PIÙ!!!!!!!!!!!!!
+//        if(par[11]==2) return background(x,par) + tstudentPeak(x,&par[2])+ tstudentPeak(x,&par[5])+ tstudentPeak(x,&par[8]);
         else exit(1);
 }
 
