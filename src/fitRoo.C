@@ -30,13 +30,19 @@ RooAddPdf model_gaus(RooPolynomial bakg, RooRealVar x,RooRealVar mean1, RooRealV
 */
 
 void fitRoo(TH1 *hh, int functype)
+/**************************************************************
+ \brief three peaks fit plus a linear background
+ 
+ 
+ *******************************************************************************/
+void fitRoo(TH1 *hh)
 {
     // Set up   component   pdfs
     // ---------------------------------------
+    
 
     // Declare observable x
-    RooRealVar x("x", "invariant mass (GeV/c2)", 8.5, 11.5);
-    // Declare histogram from argument one
+    RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5, 11.5);
     RooDataHist rh("rh", "rh", x, Import(*hh));
     // create application to display the canvas while root runs
     TApplication *theApp = new TApplication("app", 0, 0);
@@ -168,7 +174,7 @@ void fitRoo(TH1 *hh, int functype)
 
     xframe->GetYaxis()->SetTitleOffset(1.5);
     xframe->GetXaxis()->SetTitleSize(0);
-    xframe->GetXaxis()->SetLabelSize(0);
+    //xframe->GetXaxis()->SetLabelSize(0);
     // xframe->GetXaxis()->SetTitleOffset(999);
     xframe->SetMinimum(0.001);
 
