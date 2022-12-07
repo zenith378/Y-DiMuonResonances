@@ -15,9 +15,9 @@ ROOT::RDataFrame Cuts(ROOT::RDataFrame df){
     std::cout << "Recreating cut file"<< std::endl;
 
     auto df_cut = df.Filter([](unsigned int x) { return x==2;}, {"nMuon"}, {"Events with exactly two muons"})   // Select events with exactly two muons
-                    .Filter("Muon_charge[0] != Muon_charge[1]", "Muons with opposite charge"); // Select events with two muons of opposite charge
-                    //.Filter([](float x) { return x> 8.5 && x < 11.5; }, {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}) //Cut around the Ys
-                    //.Filter([](float x) { return x > 10. && x < 12.; }, {"Dimuon_pt"}, {"Pt between 10 and 100 GeV"}); //Select events with 10 GeV < pT < 12 GeV
+                    .Filter("Muon_charge[0] != Muon_charge[1]", "Muons with opposite charge") // Select events with two muons of opposite charge
+                    .Filter([](float x) { return x> 8.5 && x < 11.5; }, {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}); //Cut around the Ys
+                    //.Filter([](float x) { return x > 10. && x < 12.; }, {"Dimuon_pt"}, {"Pt between 10 and 100 GeV"}) //Select events with 10 GeV < pT < 12 GeV
                     //.Filter([](float x) { return x > -0.6 && x < 0.6; }, {"Dimuon_y"}, {"Rapidity between -0.6 and 0.6"});
 
     // Request cut-flow report

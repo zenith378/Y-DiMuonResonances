@@ -31,6 +31,6 @@ int main(){
     ROOT::RDataFrame df_cut=Cuts(df);
     TH1* h=SpectrumPlot(df_cut);
     //fitp1(h,8.5,11.5);
-    fitRoo(h);
+    fitRoo(h,0);
     return 0;
 }

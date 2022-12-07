@@ -28,14 +28,12 @@ RooAddPdf model_gaus(RooPolynomial bakg, RooRealVar x,RooRealVar mean1, RooRealV
 
 }
 */
-
-void fitRoo(TH1 *hh, int functype)
 /**************************************************************
  \brief three peaks fit plus a linear background
  
  
  *******************************************************************************/
-void fitRoo(TH1 *hh)
+void fitRoo(TH1 *hh, int functype)
 {
     // Set up   component   pdfs
     // ---------------------------------------
@@ -50,15 +48,16 @@ void fitRoo(TH1 *hh)
     // Build polynomial pdf
     RooRealVar a0("a0", "a0", 3101, 0, 10000);
     RooRealVar a1("a1", "a1", -140.3, -300., 300.);
-    RooPolynomial bkg("bkg", "Background", x, RooArgSet(a0, a1));
+    RooRealVar a2("a2", "a2", 0, -300., 300.);
+    RooPolynomial bkg("bkg", "Background", x, RooArgSet(a0, a1,a2));
 
     // Create three Gaussian PDFs and their parameters
     RooRealVar mean1("mean1", "mean of gaussians", 9.45, 3.3, 9.6);
     RooRealVar mean2("mean2", "mean of gaussians", 10.01, 9.9, 10.2);
     RooRealVar mean3("mean3", "mean of gaussians", 10.35, 10.2, 10.5);
-    RooRealVar sigma1("sigma1", "width of gaussians", 0.054, 0.001, 0.1);
-    RooRealVar sigma2("sigma2", "width of gaussians", 0.032, 0.001, 0.1);
-    RooRealVar sigma3("sigma3", "width of gaussians", 0.020, 0.001, 0.1);
+    RooRealVar sigma1("sigma1", "width of gaussians", 0.054, 0.001, 10);
+    RooRealVar sigma2("sigma2", "width of gaussians", 0.032, 0.001, 10);
+    RooRealVar sigma3("sigma3", "width of gaussians", 0.020, 0.001, 10);
 
     // Add signal and background
 
