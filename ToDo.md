@@ -1,5 +1,6 @@
 - <del>tagli per una stessa variabile in un unico comando</del>
 - <del>capire come fare la documentazione </del>
+- fare la documentazione
 - <del>compilare con cmake</del>
 - <del>shared library</del>
 - unit test

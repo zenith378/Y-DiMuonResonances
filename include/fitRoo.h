@@ -21,6 +21,6 @@
 #include "RooDataHist.h"
 using namespace RooFit;
  
-void fitRoo(TH1* hh);
+void fitRoo(TH1* hh, int functype=0);
 
 #endif
