@@ -30,7 +30,7 @@ void fitRoo(TH1 *hh, int functype)
     // ---------------------------------------
 
     // Declare observable x
-    RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5, 11.5);
+    RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5001, 11.5);
     RooDataHist rh("rh", "rh", x, Import(*hh));
     // create application to display the canvas while root runs
     TApplication *theApp = new TApplication("app", 0, 0);
@@ -43,8 +43,8 @@ void fitRoo(TH1 *hh, int functype)
 
     // Create three Gaussian PDFs and their parameters
     RooRealVar mean1("mean1", "mean of gaussians", 9.45, 3.3, 9.6);
-    RooRealVar mean2("mean2", "mean of gaussians", 10.01, 9.9, 10.2);
-    RooRealVar mean3("mean3", "mean of gaussians", 10.35, 10.2, 10.5);
+    RooRealVar mean2("mean2", "mean of gaussians", 10.01, 9.8, 10.2);
+    RooRealVar mean3("mean3", "mean of gaussians", 10.35, 10.15, 10.5);
     RooRealVar sigma1("sigma1", "width of gaussians", 0.054, 0.001, 10);
     RooRealVar sigma2("sigma2", "width of gaussians", 0.032, 0.001, 10);
     RooRealVar sigma3("sigma3", "width of gaussians", 0.020, 0.001, 10);
@@ -70,9 +70,7 @@ void fitRoo(TH1 *hh, int functype)
         std::cout << "Using Breit-Wigner" << std::endl;
 
         sig1 = new RooBreitWigner("sig1", "Signal component 1", x, mean1, sigma1);
-
         sig2 = new RooBreitWigner("sig2", "Signal component 2", x, mean2, sigma2);
-
         sig3 = new RooBreitWigner("sig3", "Signal component 3", x, mean3, sigma3);
 
         break;
@@ -85,33 +83,12 @@ void fitRoo(TH1 *hh, int functype)
         sig2 = new RooGaussian("sig2", "Signal component 2", x, mean2, sigma2);
         sig3 = new RooGaussian("sig3", "Signal component 3", x, mean3, sigma3);
         break;
-        /*
-                RooAddPdf model_gaus("model_gaus", "model", RooArgList(sig_gaus1, sig_gaus2, sig_gaus3, bkg), RooArgList(fsig1, fsig2, fsig3), kTRUE);
-                //  Fit model to data
-                model_gaus.fitTo(rh);
-
-                // Draw options
-                // ---------------------------------------
-
-                // Plot data and PDF overlaid
-                rh.plotOn(xframe, MarkerStyle(6), MarkerSize(1));
-
-                // Overlay the background component of model with a dashed line
-                model_gaus.plotOn(xframe, Components(bkg), LineColor(kBlue), LineStyle(kDashed));
-                // Overlay the sig1 components of model with a dashed-dotted line
-                model_gaus.plotOn(xframe, Components(RooArgSet(sig_gaus1)), LineColor(kRed), LineStyle(8));
-                // Overlay the background+sig2 components of model with a long dashed line
-                model_gaus.plotOn(xframe, Components(RooArgSet(sig_gaus2)), LineColor(kGreen), LineStyle(9));
-
-                model_gaus.plotOn(xframe, Components(RooArgSet(sig_gaus3)), LineStyle(kDotted));
-
-                // Print structure of composite pdf
-                model_gaus.Print("t"); // previous was t
-
-                model_gaus.plotOn(xframe);
-                break;
-
-                */
+    }
+    case 2:
+    {
+        //qui da implementare tstudent
+        //sig1 = new RooGenericPdf("studentt","((exp(lgamma((r+1)/2.0)-lgamma(r/2.0)))/(sqrt((22/7)*r)*sigmat))*pow((1+(((deltam-meant)/sigmat)*((deltam-meant)/sigmat))/r),-(r+1)/2.0)",RooArgList(deltam,r,meant,sigmat));
+        break;
     }
     }
 
@@ -127,25 +104,27 @@ void fitRoo(TH1 *hh, int functype)
     rh.plotOn(xframe, MarkerStyle(6), MarkerSize(1));
 
     // Overlay the background component of model with a dashed line
-    model.plotOn(xframe, Components(bkg), LineColor(kBlue), LineStyle(kDashed));
+    model.plotOn(xframe, Components(bkg), LineColor(41), LineStyle(kDashed));
     // Overlay the sig1 components of model with a dashed-dotted line
-    model.plotOn(xframe, Components(RooArgSet(*sig1)), LineColor(kRed), LineStyle(8));
+    model.plotOn(xframe, Components(RooArgSet(*sig1)), LineColor(46), LineStyle(8));
     // Overlay the background+sig2 components of model with a long dashed line
-    model.plotOn(xframe, Components(RooArgSet(*sig2)), LineColor(kGreen), LineStyle(9));
+    model.plotOn(xframe, Components(RooArgSet(*sig2)), LineColor(30), LineStyle(9));
 
-    model.plotOn(xframe, Components(RooArgSet(*sig3)), LineStyle(kDotted));
+    model.plotOn(xframe, Components(RooArgSet(*sig3)), LineColor(38), LineStyle(kDotted));
 
     // Print structure of composite pdf
     fitResult->Print("v"); // previous was t
 
-    model.plotOn(xframe);
+    model.plotOn(xframe,LineWidth(2),LineColor(kRed));
 
     // Define model and fit
     // ---------------------------------------
 
     RooHist *hpull = xframe->pullHist();
-    hpull->SetMarkerSize(1);
+    //hpull->SetMarkerSize(1);
     hpull->SetMarkerStyle(6);
+    hpull->SetLineWidth(0);
+
 
     // Draw the frame on the canvas
     auto c1 = new TCanvas("Fit", "Y Resonances Fit", 800, 800);
@@ -162,7 +141,7 @@ void fitRoo(TH1 *hh, int functype)
     xframe->GetXaxis()->SetTitleSize(0);
     // xframe->GetXaxis()->SetLabelSize(0);
     //  xframe->GetXaxis()->SetTitleOffset(999);
-    xframe->SetMinimum(0.001);
+    //xframe->SetMinimum(0.001);
 
     xframe->Draw();
     pad2->cd();

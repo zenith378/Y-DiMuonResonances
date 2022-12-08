@@ -13,6 +13,10 @@
 #include "ROOT/RDataFrame.hxx"
 #include "TMath.h"
 
-ROOT::RDataFrame Cuts(ROOT::RDataFrame df);
+ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int depth);
+
+ROOT::RDF::RNode customFilter(ROOT::RDF::RNode df, float ptm, float ptM, float ym, float yM );
+
+ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int depth,float ptm, float ptM, float ym, float yM );
 
 #endif /* Cuts_h */

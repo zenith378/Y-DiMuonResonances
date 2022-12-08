@@ -22,7 +22,7 @@
 
 using namespace ROOT::VecOps;
 
-TH1* SpectrumPlot(ROOT::RDataFrame df_cut);
+TH1* SpectrumPlot(ROOT::RDF::RNode df_cut);
 
 
 #endif /* SpectrumPlot_h */
