@@ -131,6 +131,6 @@ int main(int argc, char *argv[])
     ROOT::RDataFrame df = df_set();
     ROOT::RDF::RNode df_cut = Cuts(df, depth, ptm,  ptM,  ym,  yM );
     TH1 *h = SpectrumPlot(df_cut);
-    fitRoo(h, fitfunc);
+    fitRoo(h, fitfunc, depth, ptm,  ptM,  ym,  yM);
     return 0;
 }

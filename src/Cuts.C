@@ -1,6 +1,7 @@
 /*********************************
  \file Cuts.C
  \brief Selection of the data.
+
  The data are selected to be two muon of opposite charge with an invariant mass around the mass of the Y resonances. Also it is possible to choose other cuts on the trasverse momentum and the pseudorapidity of the dimuon state.
 ************************************************/
 
@@ -9,6 +10,7 @@
 #include "Cuts.h"
 #include <filesystem>
 
+
 ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int depth)
 {
   switch (depth)
@@ -16,11 +18,7 @@ ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int depth)
   default:
   case 0:
   {
-    auto df_cut = df.Filter([](unsigned int x)
-                            { return x == 2; },
-                            {"nMuon"}, {"Events with exactly two muons"})                       // Select events with exactly two muons
-                      .Filter("Muon_charge[0] != Muon_charge[1]", "Muons with opposite charge") // Select events with two muons of opposite charge
-                      .Filter([](float x)
+    auto df_cut = df.Filter([](unsigned int x){ return x == 2; },{"nMuon"}, {"Events with exactly two muons"}).Filter([](float x)
                               { return x > 8.5 && x < 11.5; },
                               {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}); // Cut around the Ys
     return df_cut;
@@ -35,7 +33,7 @@ ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int depth)
                               { return x > 8.5 && x < 11.5; },
                               {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}) // Cut around the Ys
                       .Filter([](float x)
-                              { return x > 10. && x < 12.; },
+                              { return x > 10. && x < 100.; },
                               {"Dimuon_pt"}, {"Pt between 10 and 100 GeV"}); // Select events with 10 GeV < pT < 12 GeV
     return df_cut;
   }
@@ -49,8 +47,8 @@ ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int depth)
                               { return x > 8.5 && x < 11.5; },
                               {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}) // Cut around the Ys
                       .Filter([](float x)
-                              { return x > 10. && x < 12.; },
-                              {"Dimuon_pt"}, {"Pt between 10 and 100 GeV"}) // Select events with 10 GeV < pT < 12 GeV
+                              { return x > 10. && x < 100.; },
+                              {"Dimuon_pt"}, {"Pt between 10 and 100 GeV"}) // Select events with 10 GeV < pT < 100 GeV
                       .Filter([](float x)
                               { return x > -0.6 && x < 0.6; },
                               {"Dimuon_y"}, {"Rapidity between -0.6 and 0.6"});
@@ -60,44 +58,68 @@ ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int depth)
   exit(1);
 }
 
-ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode df_custom_cut, float var, ROOT::RDF::ColumnNames_t obs, std::string_view message)
-{
-  df_custom_cut = df_custom_cut.Filter([var](float x){ return x > var; },obs, {message});
-  auto report = df_custom_cut.Report();
-  // Print cut-flow report
-  report->Print();
-  std::cout<<"\n"<<std::endl;
-  return df_custom_cut;
+ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode df_custom_cut, std::string_view filter, std::string_view name){
+  df_custom_cut = df_custom_cut.Filter(filter,name);
+
+    auto count = df_custom_cut.Count();
+    if(*count<800){
+      std::cout << "Too few events to fit. Try relaxing cuts."<< std::endl;
+      exit(1);
+    }
+    return df_custom_cut;
 }
+
 
 ROOT::RDF::RNode customFilter(ROOT::RDF::RNode df, float ptm, float ptM, float ym, float yM)
 {
   ROOT::RDF::RNode df_custom_cut = df;
   if (ptm == ptm)
   {
-    df_custom_cut = applyFilter(df_custom_cut, ptm, {"Dimuon_pt"}, "Custom cut on minimum pt");
+    std::string fil = "Dimuon_pt >" +std::to_string(ptm);
+    df_custom_cut = applyFilter(df_custom_cut,fil,"Custom cut on minimum pt");
   }
   if (ptM == ptM)
   {
-    df_custom_cut = applyFilter(df_custom_cut, ptM, {"Dimuon_pt"}, "Custom cut on maximum pt");
+    std::string fil = "Dimuon_pt <" +std::to_string(ptM);
+    df_custom_cut = applyFilter(df_custom_cut,fil,"Custom cut on maximum pt");
   }
-  if (ym == ym)
+
+  if (ym == ym && yM == yM)
   {
-    df_custom_cut = applyFilter(df_custom_cut, ym, {"Dimuon_y"}, "Custom cut on minimum rapidity");
+    //std::string_view fil ="("+std::to_string(-yM)+ "<Dimuon_y <" +std::to_string(-ym)+")"
+    //                      +"||("+std::to_string(ym)+ "<Dimuon_y <" +std::to_string(yM)+")";
+    //df_custom_cut = applyFilter(df_custom_cut,fil,"Custom cut on rapidity");
+    //std::string_view filt =std::to_string(ym)+ "<Dimuon_y <" +std::to_string(yM);
+    //df_custom_cut = applyFilter(df_custom_cut,filt,"Custom cut on rapidity 2");
+    
+    df_custom_cut = df_custom_cut.Filter([ym,yM](float x)
+                                         { return ((x > -yM && x < -ym)||(x > ym && x > yM)); },
+                                         {"Dimuon_y"}, {"Custom cut on rapidity"});
+    auto count = df_custom_cut.Count();
+    if(*count<800){
+      std::cout << "Too few events to fit. Try relaxing cuts."<< std::endl;
+      exit(1);
+    }
   }
-  if (yM == yM)
+
+  if (ym == ym && yM!=yM)
   {
-    df_custom_cut = applyFilter(df_custom_cut, yM, {"Dimuon_y"}, "Custom cut on maximum rapidity");
+    std::string fil ="Dimuon_y >" +std::to_string(ym);
+    df_custom_cut = applyFilter(df_custom_cut,fil,"Custom cut on minimum rapidity");
+  }
+  if (yM == yM && ym!=ym)
+  {
+    std::string fil ="Dimuon_y <" +std::to_string(yM);
+    df_custom_cut = applyFilter(df_custom_cut,fil,"Custom cut on maximum rapidity");
   }
   return df_custom_cut;
 }
 
 /*********************************
  \brief Modified a muon DataFrame cutting on nMuon, Muon_charge, Dimuon_mass, Dimuon_pt and Dimuon_y
+
  UNa descrizione più dettagliata della funzione
  @param df Data Frame in input
- @param mm lower extreme for the cut on the dimuon invariant mass
- @param mM upper extreme for the cut on the dimuon invariant mass
  @param ptm lower extreme for the cut on the dimuon trasverse momentum
  @param ptM upper extreme for the cut on the dimuon trasverse momentum
  @param ym lower extreme for the cut on the dimuon pseudorapidity
@@ -160,6 +182,10 @@ ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int depth, float ptm, float ptM, floa
   ROOT::RDataFrame df_off("Cuts", *fname);
 
   ROOT::RDF::RNode df_def = customFilter(df_off, ptm, ptM, ym, yM);
+
+  auto report = df_def.Report();
+  report->Print();
+  std::cout <<"\n"<<std::endl;
 
   // const auto pt_max = 12.;
   // const auto pt_min = 10.;
