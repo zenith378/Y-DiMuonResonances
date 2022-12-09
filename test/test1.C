@@ -22,6 +22,7 @@
 using namespace RooFit;
 
 int test1(){
+    int j=0;
     RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5001, 11.5);
     
     // Build polynomial pdf
@@ -53,6 +54,12 @@ int test1(){
     TH1 *hdata = data->createHistogram("x", 300);
     RooFitResult* fitResult = fitRoo(hdata);
     //manca da controllare che i valori uscenti siano quelli inizializzati
-    std::list = fitResult->floatParsFinal();
-    return 0;
+    RooArgList lf = fitResult->floatParsFinal();
+    RooArgList lv = [a0,a1,a2,fsig1,fsig2,fsig3,mean1,mean2,mean3,sigma1,sigma2,sigma3];
+    for(int i=0; i<12; i++){
+        if(std::abs(lf[i]-lv[i]) > 0.1){//il valore si potrebbe scegliere prendendo l'errore sul parametro del fit
+            j=-1;
+        }
+    }
+    return j;
 }
