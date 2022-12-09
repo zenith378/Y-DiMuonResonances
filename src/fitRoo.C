@@ -77,19 +77,19 @@ RooFitResult *fitRoo(TH1 *hh, int functype, int depth, float ptm, float ptM, flo
 {
     // Set up   component   pdfs
     // ---------------------------------------
-
+    
     // Declare observable x
     RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5001, 11.5);
     RooDataHist rh("rh", "rh", x, Import(*hh));
     // create application to display the canvas while root runs
     TApplication *theApp = new TApplication("app", 0, 0);
-
+    
     // Build polynomial pdf
     RooRealVar a0("a0", "a0", 3101, 0, 10000);
     RooRealVar a1("a1", "a1", -140.3, -300., 0.);
     RooRealVar a2("a2", "a2", 0, -30., 30.);
     RooPolynomial bkg("bkg", "Background", x, RooArgSet(a0, a1, a2));
-
+    
     // Create three Gaussian PDFs and their parameters
     RooRealVar mean1("mean1", "mean of gaussians", 9.45, 9.3, 9.6);
     RooRealVar mean2("mean2", "mean of gaussians", 10.01, 9.8, 10.2);
@@ -97,23 +97,23 @@ RooFitResult *fitRoo(TH1 *hh, int functype, int depth, float ptm, float ptM, flo
     RooRealVar sigma1("sigma1", "width of gaussians", 0.054, 0.001, 10);
     RooRealVar sigma2("sigma2", "width of gaussians", 0.032, 0.001, 10);
     RooRealVar sigma3("sigma3", "width of gaussians", 0.020, 0.001, 10);
-
+    
     RooRealVar r1("r1", "r1", 10, 0.00, 100);
     RooRealVar r2("r2", "r2", 1, 0.00, 100);
     RooRealVar r3("r3", "r3", 1, 0.00, 100);
-
+    
     // Add signal and background
 
     RooRealVar fsig1("fsig1", "signal1", 0.4, 0., 1.);
     RooRealVar fsig2("fsig2", "signal2", 0.3, 0., 1.);
     RooRealVar fsig3("fsig3", "signal3", 0.2, 0., 1.);
-
+    
     RooPlot *xframe = x.frame(Title("Y Resonances Fit"));
-
+    
     RooAbsPdf *sig1;
     RooAbsPdf *sig2;
     RooAbsPdf *sig3;
-
+    
     switch (functype)
     {
 
@@ -147,27 +147,27 @@ RooFitResult *fitRoo(TH1 *hh, int functype, int depth, float ptm, float ptM, flo
         break;
     }
     }
-
+    
     RooAddPdf model("model", "model", RooArgList(*sig1, *sig2, *sig3, bkg), RooArgList(fsig1, fsig2, fsig3), kTRUE);
-
+    
     //  Fit model to data
     RooFitResult *fitResult = model.fitTo(rh, Verbose(false), PrintLevel(-1), Warnings(false), PrintEvalErrors(-1), Timer(true), Save());
 
     // Draw options
     // ---------------------------------------
-
+    
     // Plot data and PDF overlaid
     rh.plotOn(xframe, MarkerStyle(6), MarkerSize(1));
-
+    
     // Overlay the background component of model with a dashed line
     model.plotOn(xframe, Components(bkg), LineColor(41), LineStyle(kDashed));
     // Overlay the sig1 components of model with a dashed-dotted line
     model.plotOn(xframe, Components(RooArgSet(*sig1)), LineColor(46), LineStyle(8));
     // Overlay the background+sig2 components of model with a long dashed line
     model.plotOn(xframe, Components(RooArgSet(*sig2)), LineColor(30), LineStyle(9));
-
+    
     model.plotOn(xframe, Components(RooArgSet(*sig3)), LineColor(38), LineStyle(kDotted));
-
+    
     // Print structure of composite pdf
     fitResult->Print("v"); // previous was t
 
@@ -175,23 +175,24 @@ RooFitResult *fitRoo(TH1 *hh, int functype, int depth, float ptm, float ptM, flo
 
     // Define model and fit
     // ---------------------------------------
-
+    
     RooHist *hpull = xframe->pullHist();
     // hpull->SetMarkerSize(1);
     hpull->SetMarkerStyle(6);
     hpull->SetLineWidth(0);
-
+    
+    
     // Draw the frame on the canvas
     auto c1 = new TCanvas("Fit", "Y Resonances Fit", 950, 800);
     TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
     rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
-
+    
     TPad *pad1 = new TPad("pad1", "The pad 80 of the height", 0.0, 0.2, 1.0, 1.0);
     TPad *pad2 = new TPad("pad2", "The pad 20 of the height", 0.0, 0.05, 1.0, 0.25);
     pad1->Draw();
     pad2->Draw();
     pad1->cd();
-
+    
     xframe->GetYaxis()->SetTitleOffset(1.5);
     xframe->GetXaxis()->SetTitleSize(0);
     // xframe->GetXaxis()->SetLabelSize(0);
@@ -217,7 +218,7 @@ RooFitResult *fitRoo(TH1 *hh, int functype, int depth, float ptm, float ptM, flo
     pad2->cd();
     pad2->SetBottomMargin(0.4);
     // auto axis = hpull->GetXaxis();
-
+    
     // axis->SetLimits(8.5001,11.5);
     hpull->GetYaxis()->SetNdivisions(6);
     // hpull->SetMinimum(-9.999);
@@ -236,7 +237,7 @@ RooFitResult *fitRoo(TH1 *hh, int functype, int depth, float ptm, float ptM, flo
     hpull->SetTitle("");
     hpull->Draw();
     c1->Update();
-
+    
     c1->SaveAs("RooFit.pdf");
     theApp->Run();
     return fitResult;
