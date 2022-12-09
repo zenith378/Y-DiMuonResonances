@@ -51,7 +51,8 @@ int test1(){
 
     RooDataSet *data = model.generate(x, 100e3);
     TH1 *hdata = data->createHistogram("x", 300);
-    fitRoo(hdata);
+    RooFitResult* fitResult = fitRoo(hdata);
     //manca da controllare che i valori uscenti siano quelli inizializzati
+    std::list = fitResult->floatParsFinal();
     return 0;
 }
