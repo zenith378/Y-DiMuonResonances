@@ -15,6 +15,8 @@
 
 ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int depth);
 
+ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode df_custom_cut, float var, ROOT::RDF::ColumnNames_t obs, std::string_view message);
+
 ROOT::RDF::RNode customFilter(ROOT::RDF::RNode df, float ptm, float ptM, float ym, float yM );
 
 ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int depth,float ptm, float ptM, float ym, float yM );

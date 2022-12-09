@@ -9,8 +9,6 @@
 #include "Cuts.h"
 #include <filesystem>
 
-
-
 ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int depth)
 {
   switch (depth)
@@ -62,24 +60,37 @@ ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int depth)
   exit(1);
 }
 
-ROOT::RDF::RNode customFilter(ROOT::RDF::RNode df, float ptm, float ptM, float ym, float yM ){
+ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode df_custom_cut, float var, ROOT::RDF::ColumnNames_t obs, std::string_view message)
+{
+  df_custom_cut = df_custom_cut.Filter([var](float x){ return x > var; },obs, {message});
+  auto report = df_custom_cut.Report();
+  // Print cut-flow report
+  report->Print();
+  std::cout<<"\n"<<std::endl;
+  return df_custom_cut;
+}
+
+ROOT::RDF::RNode customFilter(ROOT::RDF::RNode df, float ptm, float ptM, float ym, float yM)
+{
   ROOT::RDF::RNode df_custom_cut = df;
-  if(ptm==ptm){
-       df_custom_cut = df_custom_cut.Filter([ptm](float x){ return x> ptm; }, {"Dimuon_pt"}, {"Custom cut on minimum pt"});
+  if (ptm == ptm)
+  {
+    df_custom_cut = applyFilter(df_custom_cut, ptm, {"Dimuon_pt"}, "Custom cut on minimum pt");
   }
-  if(ptM==ptM){
-       df_custom_cut = df_custom_cut.Filter([ptM](float x){ return x< ptM; }, {"Dimuon_pt"}, {"Custom cut on maximum pt"});
+  if (ptM == ptM)
+  {
+    df_custom_cut = applyFilter(df_custom_cut, ptM, {"Dimuon_pt"}, "Custom cut on maximum pt");
   }
-  if(ym==ym){
-       df_custom_cut = df_custom_cut.Filter([ym](float x){ return x> -ym && x < ym; }, {"Dimuon_y"}, {"Custom cut on minimum rapidity"});
+  if (ym == ym)
+  {
+    df_custom_cut = applyFilter(df_custom_cut, ym, {"Dimuon_y"}, "Custom cut on minimum rapidity");
   }
-  if(yM==yM){
-       df_custom_cut = df_custom_cut.Filter([yM](float x){ return x < -yM && x > yM; }, {"Dimuon_y"}, {"Custom cut on maximum rapidity"});
+  if (yM == yM)
+  {
+    df_custom_cut = applyFilter(df_custom_cut, yM, {"Dimuon_y"}, "Custom cut on maximum rapidity");
   }
   return df_custom_cut;
-  }
-
-
+}
 
 /*********************************
  \brief Modified a muon DataFrame cutting on nMuon, Muon_charge, Dimuon_mass, Dimuon_pt and Dimuon_y
@@ -94,8 +105,7 @@ ROOT::RDF::RNode customFilter(ROOT::RDF::RNode df, float ptm, float ptM, float y
  @return df_cut DataFrame withthe selection decided by the cuts
 ************************************************/
 
-
-ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int depth,float ptm, float ptM, float ym, float yM )
+ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int depth, float ptm, float ptM, float ym, float yM)
 {
   // Enable multi-threading
   ROOT::EnableImplicitMT(1);
@@ -105,15 +115,18 @@ ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int depth,float ptm, float ptM, float
   switch (depth)
   {
   default:
-  case 0:{
+  case 0:
+  {
     fname = new TString("Data/data_cut0.root");
     break;
   }
-  case 1:{
+  case 1:
+  {
     fname = new TString("Data/data_cut1.root");
     break;
   }
-  case 2:{
+  case 2:
+  {
     fname = new TString("Data/data_cut2.root");
     break;
   }
@@ -146,8 +159,7 @@ ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int depth,float ptm, float ptM, float
 
   ROOT::RDataFrame df_off("Cuts", *fname);
 
-  ROOT::RDF::RNode df_def=customFilter(df_off, ptm, ptM,  ym, yM );
-
+  ROOT::RDF::RNode df_def = customFilter(df_off, ptm, ptM, ym, yM);
 
   // const auto pt_max = 12.;
   // const auto pt_min = 10.;

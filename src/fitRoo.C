@@ -5,7 +5,7 @@
 #include "RooBreitWigner.h"
 #include "RooAddPdf.h"
 #include "RooAbsPdf.h"
-#include "RooGlobalFunc.h"
+#include "RooGenericPdf.h"
 #include "TCanvas.h"
 #include "TAxis.h"
 #include "RooPlot.h"
@@ -42,12 +42,16 @@ void fitRoo(TH1 *hh, int functype)
     RooPolynomial bkg("bkg", "Background", x, RooArgSet(a0, a1, a2));
 
     // Create three Gaussian PDFs and their parameters
-    RooRealVar mean1("mean1", "mean of gaussians", 9.45, 3.3, 9.6);
+    RooRealVar mean1("mean1", "mean of gaussians", 9.45, 9.3, 9.6);
     RooRealVar mean2("mean2", "mean of gaussians", 10.01, 9.8, 10.2);
     RooRealVar mean3("mean3", "mean of gaussians", 10.35, 10.15, 10.5);
     RooRealVar sigma1("sigma1", "width of gaussians", 0.054, 0.001, 10);
     RooRealVar sigma2("sigma2", "width of gaussians", 0.032, 0.001, 10);
     RooRealVar sigma3("sigma3", "width of gaussians", 0.020, 0.001, 10);
+
+    RooRealVar r1("r1", "r1", 10, 0.00, 100);
+    RooRealVar r2("r2", "r2", 1, 0.00, 100);
+    RooRealVar r3("r3", "r3", 1, 0.00, 100);
 
     // Add signal and background
 
@@ -86,8 +90,11 @@ void fitRoo(TH1 *hh, int functype)
     }
     case 2:
     {
-        //qui da implementare tstudent
-        //sig1 = new RooGenericPdf("studentt","((exp(lgamma((r+1)/2.0)-lgamma(r/2.0)))/(sqrt((22/7)*r)*sigmat))*pow((1+(((deltam-meant)/sigmat)*((deltam-meant)/sigmat))/r),-(r+1)/2.0)",RooArgList(deltam,r,meant,sigmat));
+        //tstudent
+        sig1 = new RooGenericPdf("sig1","((exp(lgamma((r1+1)/2.0)-lgamma(r1/2.0)))/(sqrt((22/7)*r1)*sigma1))*pow((1+(((x-mean1)/sigma1)*((x-mean1)/sigma1))/r1),-(r1+1)/2.0)",RooArgList(x,r1,mean1,sigma1));
+        sig2 = new RooGenericPdf("sig2","((exp(lgamma((r2+1)/2.0)-lgamma(r2/2.0)))/(sqrt((22/7)*r2)*sigma2))*pow((1+(((x-mean2)/sigma2)*((x-mean2)/sigma2))/r2),-(r2+1)/2.0)",RooArgList(x,r2,mean2,sigma2));
+        sig3 = new RooGenericPdf("sig3","((exp(lgamma((r3+1)/2.0)-lgamma(r3/2.0)))/(sqrt((22/7)*r3)*sigma3))*pow((1+(((x-mean3)/sigma3)*((x-mean3)/sigma3))/r3),-(r3+1)/2.0)",RooArgList(x,r3,mean3,sigma3));
+
         break;
     }
     }

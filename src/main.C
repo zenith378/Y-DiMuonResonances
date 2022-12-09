@@ -81,13 +81,15 @@ void ProcessArgs(int argc, char **argv)
                 fitfunc = 1;
             else if (strcmp(optarg, "bw") == 0)
                 fitfunc = 0;
-            else
+            else if (strcmp(optarg, "stud") == 0)
+                fitfunc = 2;    
+            /*else
             {
                 std::cout << "First argument bust be either gaus or bw" << std::endl;
                 exit(1);
             }
             std::cout << "Fit Function set to: " << optarg << std::endl;
-
+            */
             break;
         }
         case 'p':
