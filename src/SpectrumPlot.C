@@ -48,7 +48,7 @@ TH1* SpectrumPlot(ROOT::RDF::RNode df_cut){
   label.DrawLatex(0.90, 0.92, "#sqrt{s} = 8 TeV, L_{int} = 11.6 fb^{-1}");
 
   // Save plot
-  //c->SaveAs("Plots/dimuonSpectrum_cut_pt2.pdf");
+  c->SaveAs("Plots/Preliminary_histo.pdf");
 
   std::string hs;
   hs="hist";
