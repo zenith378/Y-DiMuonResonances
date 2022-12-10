@@ -11,9 +11,9 @@
 #include <filesystem>
 
 
-ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int depth)
+ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int &dr)
 {
-  switch (depth)
+  switch (dr)
   {
   default:
   case 0:
@@ -70,30 +70,30 @@ ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode df_custom_cut, std::string_view fi
 }
 
 
-ROOT::RDF::RNode customFilter(ROOT::RDF::RNode df, float ptm, float ptM, float ym, float yM)
+ROOT::RDF::RNode customFilter(ROOT::RDF::RNode df, float &pmr, float &pMr, float &ymr, float &yMr)
 {
   ROOT::RDF::RNode df_custom_cut = df;
-  if (ptm == ptm)
+  if (pmr == pmr)
   {
-    std::string fil = "Dimuon_pt >" +std::to_string(ptm);
+    std::string fil = "Dimuon_pt >" +std::to_string(pmr);
     df_custom_cut = applyFilter(df_custom_cut,fil,"Custom cut on minimum pt");
   }
-  if (ptM == ptM)
+  if (pMr == pMr)
   {
-    std::string fil = "Dimuon_pt <" +std::to_string(ptM);
+    std::string fil = "Dimuon_pt <" +std::to_string(pMr);
     df_custom_cut = applyFilter(df_custom_cut,fil,"Custom cut on maximum pt");
   }
 
-  if (ym == ym && yM == yM)
+  if (ymr == ymr && yMr == yMr)
   {
-    //std::string_view fil ="("+std::to_string(-yM)+ "<Dimuon_y <" +std::to_string(-ym)+")"
-    //                      +"||("+std::to_string(ym)+ "<Dimuon_y <" +std::to_string(yM)+")";
+    //std::string_view fil ="("+std::to_string(-yMr)+ "<Dimuon_y <" +std::to_string(-ymr)+")"
+    //                      +"||("+std::to_string(ymr)+ "<Dimuon_y <" +std::to_string(yMr)+")";
     //df_custom_cut = applyFilter(df_custom_cut,fil,"Custom cut on rapidity");
-    //std::string_view filt =std::to_string(ym)+ "<Dimuon_y <" +std::to_string(yM);
+    //std::string_view filt =std::to_string(ymr)+ "<Dimuon_y <" +std::to_string(yMr);
     //df_custom_cut = applyFilter(df_custom_cut,filt,"Custom cut on rapidity 2");
     
-    df_custom_cut = df_custom_cut.Filter([ym,yM](float x)
-                                         { return ((x > -yM && x < -ym)||(x > ym && x > yM)); },
+    df_custom_cut = df_custom_cut.Filter([ymr,yMr](float x)
+                                         { return ((x > -yMr && x < -ymr)||(x > ymr && x > yMr)); },
                                          {"Dimuon_y"}, {"Custom cut on rapidity"});
     auto count = df_custom_cut.Count();
     if(*count<800){
@@ -102,14 +102,14 @@ ROOT::RDF::RNode customFilter(ROOT::RDF::RNode df, float ptm, float ptM, float y
     }
   }
 
-  if (ym == ym && yM!=yM)
+  if (ymr == ymr && yMr!=yMr)
   {
-    std::string fil ="Dimuon_y >" +std::to_string(ym);
+    std::string fil ="Dimuon_y >" +std::to_string(ymr);
     df_custom_cut = applyFilter(df_custom_cut,fil,"Custom cut on minimum rapidity");
   }
-  if (yM == yM && ym!=ym)
+  if (yMr == yMr && ymr!=ymr)
   {
-    std::string fil ="Dimuon_y <" +std::to_string(yM);
+    std::string fil ="Dimuon_y <" +std::to_string(yMr);
     df_custom_cut = applyFilter(df_custom_cut,fil,"Custom cut on maximum rapidity");
   }
   return df_custom_cut;
@@ -120,21 +120,21 @@ ROOT::RDF::RNode customFilter(ROOT::RDF::RNode df, float ptm, float ptM, float y
 
  UNa descrizione più dettagliata della funzione
  @param df Data Frame in input
- @param ptm lower extreme for the cut on the dimuon trasverse momentum
- @param ptM upper extreme for the cut on the dimuon trasverse momentum
- @param ym lower extreme for the cut on the dimuon pseudorapidity
- @param yM upper extreme for the cut on the dimuon pseudorapidity
+ @param pmr lower extreme for the cut on the dimuon trasverse momentum
+ @param pMr upper extreme for the cut on the dimuon trasverse momentum
+ @param ymr lower extreme for the cut on the dimuon pseudorapidity
+ @param yMr upper extreme for the cut on the dimuon pseudorapidity
  @return df_cut DataFrame withthe selection decided by the cuts
 ************************************************/
 
-ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int depth, float ptm, float ptM, float ym, float yM)
+ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int &dr, float &pmr, float &pMr, float &ymr, float &yMr)
 {
   // Enable multi-threading
   ROOT::EnableImplicitMT(1);
   TString *fname;
 
   // Events selection
-  switch (depth)
+  switch (dr)
   {
   default:
   case 0:
@@ -159,7 +159,7 @@ ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int depth, float ptm, float ptM, floa
   { // if the cutfile does not exist
     std::cout << "Recreating cut file" << std::endl;
 
-    auto df_cut = DFFilter(df, depth);
+    auto df_cut = DFFilter(df, dr);
     // Request cut-flow report
     auto report = df_cut.Report();
     // Print cut-flow report
@@ -181,7 +181,7 @@ ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int depth, float ptm, float ptM, floa
 
   ROOT::RDataFrame df_off("Cuts", *fname);
 
-  ROOT::RDF::RNode df_def = customFilter(df_off, ptm, ptM, ym, yM);
+  ROOT::RDF::RNode df_def = customFilter(df_off, pmr, pMr, ymr, yMr);
 
   auto report = df_def.Report();
   report->Print();

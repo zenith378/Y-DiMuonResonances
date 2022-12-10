@@ -18,51 +18,53 @@
 #include "TLatex.h"
 #include "TStyle.h"
 #include <string.h>
+#include <filesystem> 
+
 
 using namespace RooFit;
 
-std::string formatPtString(int depth, float ptm, float ptM)
+std::string formatPtString(int &dr, float &pmr, float &pMr)
 {
     std::string tmp = "";
 
-    if (ptm == ptm && ptM == ptM)
+    if (pmr == pmr && pMr == pMr)
     {
-        tmp = std::to_string((int)ptm) + " < p_{T}< " + std::to_string((int)ptM) + "GeV";
+        tmp = std::to_string((int)pmr) + " < p_{T}< " + std::to_string((int)pMr) + " GeV";
     }
-    if (ptm == ptm && ptM != ptM)
+    if (pmr == pmr && pMr != pMr)
     {
-        tmp = tmp + "p_{T}> " + std::to_string((int)ptm) + "GeV";
+        tmp = tmp + "p_{T} > " + std::to_string((int)pmr) + " GeV";
     }
-    if (ptm != ptm && ptM != ptM)
+    if (pmr != pmr && pMr == pMr)
     {
-        tmp = tmp + "p_{T}< " + std::to_string((int)ptM) + "GeV";
+        tmp = tmp + "p_{T}< " + std::to_string((int)pMr) + " GeV";
     }
-    if(ptm!=ptm&&ptM!=ptM)
+    if(pmr!=pmr&&pMr!=pMr)
     {
-       if(depth==1||depth==2) tmp = "10 < p_{T}< 100 GeV";
+       if(dr==1||dr==2) tmp = "10 < p_{T}< 100 GeV";
 
     }
     return tmp;
 }
 
-std::string formatYString(int depth, float ym, float yM){
+std::string formatYString(int &dr, float &ymr, float &yMr){
     std::string tmp = "";
 
-    if (ym == ym && yM == yM)
+    if (ymr == ymr && yMr == yMr)
     {
-        tmp = std::to_string(ym).substr(0, std::to_string(ym).find(".") + 2 + 1) + " < |y| < " + std::to_string(yM).substr(0, std::to_string(yM).find(".") + 2 + 1);
+        tmp = std::to_string(ymr).substr(0, std::to_string(ymr).find(".") + 2 + 1) + " < |y| < " + std::to_string(yMr).substr(0, std::to_string(yMr).find(".") + 2 + 1);
     }
-    if (ym == ym && yM != yM)
+    if (ymr == ymr && yMr != yMr)
     {
-        tmp = tmp + "|y| > " + std::to_string(ym).substr(0, std::to_string(ym).find(".") + 2 + 1);
+        tmp = tmp + "|y| > " + std::to_string(ymr).substr(0, std::to_string(ymr).find(".") + 2 + 1);
     }
-    if (ym != ym && yM == yM)
+    if (ymr != ymr && yMr == yMr)
     {
-        tmp = tmp + "|y| < " + std::to_string(yM).substr(0, std::to_string(yM).find(".") + 2 + 1);
+        tmp = tmp + "|y| < " + std::to_string(yMr).substr(0, std::to_string(yMr).find(".") + 2 + 1);
     }
-    if(ym!=ym&&yM!=yM)
+    if(ymr!=ymr&&yMr!=yMr)
     {
-       if(depth==2) tmp= "|y| < 0.6";
+       if(dr==2) tmp= "|y| < 0.6";
 
     }
     return tmp;
@@ -73,7 +75,7 @@ std::string formatYString(int depth, float ym, float yM){
 
 
  *******************************************************************************/
-RooFitResult *fitRoo(TH1 *hh, int functype, int depth, float ptm, float ptM, float ym, float yM)
+RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &ymr, float &yMr,std::string &nfr )
 {
     // Set up   component   pdfs
     // ---------------------------------------
@@ -114,7 +116,7 @@ RooFitResult *fitRoo(TH1 *hh, int functype, int depth, float ptm, float ptM, flo
     RooAbsPdf *sig2;
     RooAbsPdf *sig3;
     
-    switch (functype)
+    switch (fr)
     {
 
     case 0:
@@ -199,7 +201,7 @@ RooFitResult *fitRoo(TH1 *hh, int functype, int depth, float ptm, float ptM, flo
     //  xframe->GetXaxis()->SetTitleOffset(999);
     xframe->SetMinimum(0.001);
     xframe->Draw();
-    std::string cut1 = formatPtString(depth,ptm, ptM);
+    std::string cut1 = formatPtString(dr,pmr, pMr);
     const char *result1 = cut1.c_str();
 
     auto text1 = new TLatex(0.6, 0.75, result1);
@@ -207,7 +209,7 @@ RooFitResult *fitRoo(TH1 *hh, int functype, int depth, float ptm, float ptM, flo
     text1->SetTextSize(0.05);
     text1->Draw();
 
-    std::string cut2 = formatYString(depth,ym, yM);
+    std::string cut2 = formatYString(dr,ymr, yMr);
     const char *result2 = cut2.c_str();
 
     auto text2 = new TLatex(0.6, 0.65, result2);
@@ -238,7 +240,13 @@ RooFitResult *fitRoo(TH1 *hh, int functype, int depth, float ptm, float ptM, flo
     hpull->Draw();
     c1->Update();
     
-    c1->SaveAs("RooFit.pdf");
+    namespace fs = std::filesystem;
+    if (!fs::is_directory("./Plots") || !fs::exists("./Plots")) { 
+    fs::create_directory("./Plots"); 
+        }
+    std::string tmp="./Plots/"+nfr+".pdf";
+    const char* fname=tmp.c_str();
+    c1->SaveAs(fname);
     theApp->Run();
     return fitResult;
 }

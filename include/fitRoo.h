@@ -19,12 +19,13 @@
 #include "RooPlot.h"
 #include "TH1.h"
 #include "RooDataHist.h"
+
 using namespace RooFit;
  
-std::string formatPtString(int depth, float ptm, float ptM);
+std::string formatPtString(int &dr, float &pmr, float &pMr);
 
-std::string formatYString(int depth, float ym, float yM);
+std::string formatYString(int &dr, float &ymr, float &yMr);
 
-RooFitResult* fitRoo(TH1* hh, int functype, int depth, float ptm, float ptM, float ym, float yM);
+RooFitResult* fitRoo(TH1* hh, int &fr, int &dr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &fnr);
 
 #endif

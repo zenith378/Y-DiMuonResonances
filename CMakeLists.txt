@@ -21,10 +21,10 @@ include_directories(./include/)
 include_directories(./src/)
 add_definitions(${ROOT_CXX_FLAGS})
 
-ROOT_GENERATE_DICTIONARY(G__CorCar include/Cuts.h include/df_set.h include/SpectrumPlot.h include/fitRoo.h)
+ROOT_GENERATE_DICTIONARY(G__CorCar include/Cuts.h include/df_set.h include/SpectrumPlot.h include/fitRoo.h include/optionParse.h)
 
 #---Create a shared library with geneated dictionary
-add_library(libCorCar SHARED src/Cuts.C src/df_set.C src/SpectrumPlot.C src/fitRoo.C)
+add_library(libCorCar SHARED src/Cuts.C src/df_set.C src/SpectrumPlot.C src/fitRoo.C src/optionParse.C)
 
 
 target_link_libraries(libCorCar ${ROOT_LIBRARIES})
