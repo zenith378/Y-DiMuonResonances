@@ -4,7 +4,7 @@
  *
  *
  *
- * Here are implemented the options and the functions are called
+ * Here the default options are defined and the functions are called in order to execute the programs
  *
  * dalla cartella Y-Dimuon
  *
@@ -31,14 +31,14 @@
 int main(int argc, char *argv[])
 {
     // initialize default values for options
-    int depth = 0;
-    int fitfunc = 0;
-    float ptm = std::nanf("1");
-    float ptM = std::nanf("2");
-    float ym = std::nanf("3");
-    float yM = std::nanf("4");
-    std::string nameFile = "YResonancesFit";
-    int verbose = 0;
+    int depth = 0; ///Depth value initialized to 0, i.e. no cuts
+    int fitfunc = 0; ///Fit Function initilized to 0, i.e. Breit-Wigner
+    float ptm = std::nanf("1"); ///The default parameters for the cuts are initialized to NaN, so that they are used only if they become a number
+    float ptM = std::nanf("2"); ///see first parameter
+    float ym = std::nanf("3"); ///see first parameter
+    float yM = std::nanf("4"); ///see first parameter
+    std::string nameFile = "YResonancesFit"; ///The name of the file in which the figure is saved
+    int verbose = 0; ///verbose flag initialized to zero, i.e. no output stream for Minuit
 
     ProcessArgs(argc, argv, depth, fitfunc, ptm, ptM, ym, yM, nameFile, verbose);
 

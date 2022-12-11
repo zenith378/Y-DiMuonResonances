@@ -63,7 +63,7 @@ ROOT::RDataFrame df_set()
     }
     if (gSystem->AccessPathName(fname.c_str()))
     {
-      throw(std::runtime_error("Problem reading data file (it might not exist)\n"));
+      throw(std::runtime_error("Problem reading data file (it might not exist or might be corrupted)\n"));
     }
   }
   catch (const char *pathToData)

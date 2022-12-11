@@ -92,16 +92,16 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
     // Build polynomial pdf
     RooRealVar a0("a0", "a0", bg, 0, 5000);
     RooRealVar a1("a1", "a1", slp, -500., 500.);
-    RooRealVar a2("a2", "a2", 0, -30., 30.);
-    RooPolynomial bkg("bkg", "Background", x, RooArgSet(a0, a1, a2));
+    //RooRealVar a2("a2", "a2", 0, -30., 30.);
+    RooPolynomial bkg("bkg", "Background", x, RooArgSet(a0, a1));
 
     // Create parameters
     RooRealVar mean1("mean1", "mean of gaussians", 9.45, 9.3, 9.6);
     RooRealVar mean2("mean2", "mean of gaussians", 10.01, 9.8, 10.2);
     RooRealVar mean3("mean3", "mean of gaussians", 10.35, 10.15, 10.5);
-    RooRealVar sigma1("sigma1", "width of gaussians", 0.054, 0.01, 10);
-    RooRealVar sigma2("sigma2", "width of gaussians", 0.032, 0.01, 10);
-    RooRealVar sigma3("sigma3", "width of gaussians", 0.020, 0.01, 10);
+    RooRealVar sigma1("sigma1", "width of gaussians", 0.054, 0.01, 0.5);
+    RooRealVar sigma2("sigma2", "width of gaussians", 0.032, 0.01, 0.5);
+    RooRealVar sigma3("sigma3", "width of gaussians", 0.020, 0.01, 0.5);
 
     RooRealVar r1("r1", "r1", 10, 0.00, 100);
     RooRealVar r2("r2", "r2", 1, 0.00, 100);
@@ -113,9 +113,9 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
     RooAbsPdf *sig2;
     RooAbsPdf *sig3;
 
-    RooRealVar fsig1("fsig1", "signal1", 0.4, 0., 1.);
-    RooRealVar fsig2("fsig2", "signal2", 0.3, 0., 1.);
-    RooRealVar fsig3("fsig3", "signal3", 0.2, 0., 1.);
+    RooRealVar fsig1("fsig1", "signal1", 0.4, 0.01, 1.);
+    RooRealVar fsig2("fsig2", "signal2", 0.3, 0.01, 1.);
+    RooRealVar fsig3("fsig3", "signal3", 0.2, 0.01, 1.);
 
 
     switch (fr)
@@ -158,10 +158,10 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
     try
     {
         if (vr == 0)
-            fitResult = model.fitTo(rh, Verbose(false), Warnings(false), Save(),RecoverFromUndefinedRegions(1.), PrintEvalErrors(-1), PrintLevel(-1));
+            fitResult = model.fitTo(rh, Verbose(false), Warnings(false), Save(),RecoverFromUndefinedRegions(1), PrintEvalErrors(-1), PrintLevel(-1));
 
         if (vr == 1)
-            fitResult = model.fitTo(rh, Timer(true), Save(),RecoverFromUndefinedRegions(1.),PrintEvalErrors(0));
+            fitResult = model.fitTo(rh, Timer(true), Save(),RecoverFromUndefinedRegions(1),PrintEvalErrors(0));
  
 
         // Print structure of composite pdf
@@ -231,14 +231,14 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
     label.SetNDC(true); // cambio di coordinate di riferimento da quelle del grafico a quelle del pad normalizzate
     label.SetTextSize(0.05);
     label.SetTextAlign(22); // central vertically and horizontally
-    label.DrawLatex(0.75, 0.7, ("#bf{" + cut1 + "}").c_str());
-    label.DrawLatex(0.75, 0.6, ("#bf{" + cut2 + "}").c_str());
+    label.DrawLatex(0.75, 0.8, ("#bf{" + cut1 + "}").c_str());
+    label.DrawLatex(0.75, 0.7, ("#bf{" + cut2 + "}").c_str());
 
     label.SetTextSize(0.04);
     label.SetTextAlign(11); // left bottom
     label.DrawLatex(0.10, 0.92, "#bf{CMS Open Data}");
     label.SetTextAlign(31); // right bottom
-    label.DrawLatex(0.90, 0.92, "#sqrt{s} = 8 TeV, L_{int} = 11.6 fb^{-1}");
+    label.DrawLatex(0.90, 0.92, "11.6 fb^{-1} (8 TeV)"); //#sqrt{s} = 8 TeV, L_{int} = 11.6 fb^{-1}
     label.Draw();
 
     pad2->cd();

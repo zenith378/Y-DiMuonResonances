@@ -4,9 +4,9 @@
 - <del>compilare con cmake</del>
 - <del>shared library</del>
 - unit test
-- <del>finire di implementare l'opzione di scelta tra fit gaussiano, loretziano</del> o tstudentiano
+- <del>finire di implementare l'opzione di scelta tra fit gaussiano, loretziano o tstudentiano </del>>
 - <del>implementare scelta tagli</del>
-- Funzione per riconoscere quando i tagli sono troppo stretti e non entrare nella funzione di fit
+- <del> Funzione per riconoscere quando i tagli sono troppo stretti e non entrare nella funzione di fit</del>
 - <del>grafici di Pull</del>
 - grafici della sezione d'urto
 - implementare installazione

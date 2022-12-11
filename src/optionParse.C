@@ -1,11 +1,52 @@
+/**************************************************************
+ * \file optionParse.C
+ * \brief Handling flags and option parameters
+ *
+ *
+ *
+ * In this file are defined the functions used in order to handle flags and command line options.
+ * In particular, it is defined:
+ * 
+ * void PrintHelp(): output of the option help. It shows the available options and flags;
+ * 
+ * void outOfRangeErrorHandling(std::string opt, std::string range, const char *insrtvl): 
+ * it handles an exception of type "Out of Range";
+ * 
+ * void conversionErrorHandling(std::string opt, std::string range, std::invalid_argument err):
+ * it handles an exception of type Conversion Error (string to float or string to int);
+ * 
+ * void unknowErrorHandling(): it handles an error of uknown type;
+ * 
+ * voi ProcessArgs(...): it handles command line inputs and stores the values of flags or options.
+ *
+ *******************************************************************************/
 #include <iostream>
 #include "getopt.h"
 #include <string>
 #include <algorithm>
 
 /***************************************
- * Print help stream for understanding what options are available
- *
+ * PrintHelp()
+ * \brief Print help stream for understanding what options and flags are available
+ * 
+ *It prints the following output:
+ * 
+ * --cutDepth [-d] <n>:             Choose Cut Depth between the options:
+ *                                  0 (default): select events with two muons of opposite charge
+ *                                  1: select dimuon pT between 10 and 100 GeV
+ *                                  2: select dimuon pT between 10 and 100 GeV
+ *                                  and a rapidity less than 0.6 in abs value
+ * --fitFunction [-f] <PDFName>:    Choose PDF to use as Fit Function between three options:
+ *                                  gaus: Gaussian PDF
+ *                                  bw: Breit - Wigner PDF
+ *                                  stud: t-Student PDF
+ * --nameFig [-n] <figName>         name of file in which the figure of the fit is going to be saved
+ * --ptmin [-p] <val>:              Set minimum cut on pt (GeV)
+ * --ptMax [-P] <val>:              Set maximum cut on pt (GeV)
+ * --ymin [-y] <val>:               Set minimum cut on rapidity
+ * --yMax [-Y] <val>:               Set maximum cut on rapidity
+ * --help [-h]:                     Show help
+ * --verbose [-v]:                  Verbose Fit, shows minimisation steps.
  ****************************************/
 void PrintHelp()
 {
@@ -23,10 +64,21 @@ void PrintHelp()
                  "--ptMax [-P] <val>:             Set maximum cut on pt (GeV)\n"
                  "--ymin [-y] <val>:              Set minimum cut on rapidity\n"
                  "--yMax [-Y] <val>:              Set maximum cut on rapidity\n"
-                 "--help [-h]:                    Show help\n";
+                 "--help [-h]:                    Show help\n"
                  "--verbose [-v]:                 Verbose Fit, shows minimisation steps.\n";
     exit(0);
 }
+
+/***************************************
+ * outOfRangeErrorHandling
+ * \brief it handles an exception of type "Out of Range";
+ * @param opt option in case (e.g. depth, fitFunction, etc...)
+ * @param range range accepted of the desired option (e.g. 0,1,2 for depth)
+ * @param insrtvl invalid value entered by the user in the command line stream
+ * 
+ * \return error exit
+ * 
+ ****************************************/
 
 void outOfRangeErrorHandling(std::string opt, std::string range, const char *insrtvl)
 {
@@ -36,6 +88,16 @@ void outOfRangeErrorHandling(std::string opt, std::string range, const char *ins
     exit(1);
 }
 
+/***************************************
+ * conversionErrorHandling()
+ * \brief it handles an exception of type "conversion Error";
+ * @param opt option in case (e.g. depth, fitFunction, etc...)
+ * @param range range accepted of the desired option (e.g. 0,1,2 for depth)
+ * @param err invalid argument raised by the standard library
+ * 
+ * \return error exit
+ * 
+ ****************************************/
 void conversionErrorHandling(std::string opt, std::string range, std::invalid_argument err)
 {
     std::cerr << err.what() << std::endl;
@@ -43,6 +105,13 @@ void conversionErrorHandling(std::string opt, std::string range, std::invalid_ar
     exit(1);
 }
 
+/***************************************
+ * unknownErrorHandling()
+ * \brief it handles an exception of type "unknown"
+ * 
+ * \return error exit
+ * 
+ ****************************************/
 void unknownErrorHandling()
 {
     std::cout << "Unknown error occured. Please contact the authors or open an issue at https://github.com/zenith378/Y-DiMuonResonances\n" << std::endl;
@@ -51,13 +120,21 @@ void unknownErrorHandling()
 
 /***********************************************************
  * Implementation of the option arguments with the library <getopt>
- * @param argc
- * @param argv
+ * @param argc command line arguments number
+ * @param argv array of command line arguments passed
+ * @param dr reference of depth defined in main
+ * @param fr reference of fitFunction defined in main
+ * @param pmr recerence of ptm (minimum pt) defined in main
+ * @param pMr recerence of ptM (maximum pt) defined in main
+ * @param ymr recerence of ym (minimum rapidity) defined in main
+ * @param yMr recerence of yM (maximum rapidity) defined in main
+ * @param nfr recerence of nameFile defined in main
+ * @param vr reference of varaible verbose defined in main
  *************************************************************/
 void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &nfr, int &vr)
 {
-    const char *const short_opts = "d:f:n:p:P:y:Y:hv";
-    const option long_opts[] = {
+    const char *const short_opts = "d:f:n:p:P:y:Y:hv"; ///Define short options and whether an argument is expected
+    const option long_opts[] = { ///define long options
         {"cutDepth", required_argument, 0, 'd'},
         {"fitFunction", required_argument, 0, 'f'},
         {"nameFig", required_argument, 0, 'n'},
@@ -68,8 +145,8 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
         {"help", no_argument, 0, 'h'},
         {"verbose", no_argument, 0, 'v'},
         {0, 0, 0, 0}};
-    int option_index = 0;
-    while (true)
+    int option_index = 0; ///initialize index to 0
+    while (true) ///
     {
         const auto opt = getopt_long(argc, argv, short_opts, long_opts, &option_index);
 
