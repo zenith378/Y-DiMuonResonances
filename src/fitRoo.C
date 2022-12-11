@@ -76,14 +76,22 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
     // create application to display the canvas while root runs
     TApplication *theApp = new TApplication("app", 0, 0);
 
-
+    Int_t nb = hh->GetNbinsX();
+    Double_t x1 = hh->GetBinCenter(1);
+    Double_t x9 = hh->GetBinCenter(nb);
+    Int_t i1 = hh->FindBin(x1);
+    Int_t i9 = hh->FindBin(x9);
+    Double_t n1 = hh->GetBinContent(i1);
+    Double_t n9 = hh->GetBinContent(i9);
+    Double_t slp = (n9-n1)/(x9-x1);
+    Double_t bg = n1 - slp*x1; 
 
     // Set up   component   pdfs
     // ---------------------------------------
 
     // Build polynomial pdf
-    RooRealVar a0("a0", "a0", 3101, 0, 10000);
-    RooRealVar a1("a1", "a1", -140.3, -300., 0.);
+    RooRealVar a0("a0", "a0", bg, 0, 5000);
+    RooRealVar a1("a1", "a1", slp, -500., 500.);
     RooRealVar a2("a2", "a2", 0, -30., 30.);
     RooPolynomial bkg("bkg", "Background", x, RooArgSet(a0, a1, a2));
 
@@ -91,9 +99,9 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
     RooRealVar mean1("mean1", "mean of gaussians", 9.45, 9.3, 9.6);
     RooRealVar mean2("mean2", "mean of gaussians", 10.01, 9.8, 10.2);
     RooRealVar mean3("mean3", "mean of gaussians", 10.35, 10.15, 10.5);
-    RooRealVar sigma1("sigma1", "width of gaussians", 0.054, 0.001, 10);
-    RooRealVar sigma2("sigma2", "width of gaussians", 0.032, 0.001, 10);
-    RooRealVar sigma3("sigma3", "width of gaussians", 0.020, 0.001, 10);
+    RooRealVar sigma1("sigma1", "width of gaussians", 0.054, 0.01, 10);
+    RooRealVar sigma2("sigma2", "width of gaussians", 0.032, 0.01, 10);
+    RooRealVar sigma3("sigma3", "width of gaussians", 0.020, 0.01, 10);
 
     RooRealVar r1("r1", "r1", 10, 0.00, 100);
     RooRealVar r2("r2", "r2", 1, 0.00, 100);
@@ -146,30 +154,29 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
 
     RooAddPdf model("model", "model", RooArgList(*sig1, *sig2, *sig3, bkg), RooArgList(fsig1, fsig2, fsig3), kTRUE);
 
-
-
-
-
-
     RooFitResult *fitResult;
     try
     {
         if (vr == 0)
-            fitResult = model.fitTo(rh, Verbose(false), PrintLevel(-1), Warnings(false), PrintEvalErrors(-1), Timer(true), Save());
+            fitResult = model.fitTo(rh, Verbose(false), Warnings(false), Save(),RecoverFromUndefinedRegions(1.), PrintEvalErrors(-1), PrintLevel(-1));
+
         if (vr == 1)
-            fitResult = model.fitTo(rh, Timer(true), Save());
+            fitResult = model.fitTo(rh, Timer(true), Save(),RecoverFromUndefinedRegions(1.),PrintEvalErrors(0));
+ 
 
         // Print structure of composite pdf
         fitResult->Print("v"); // previous was t
 
-        if (fitResult->status() != 0 || fitResult->covQual() < 2)
+        if (fitResult->status()!=0) // fitResult->covQual() < 2
         {
-            throw(std::runtime_error("Fit did not converge. Try relaxing cut filters or changing PDF. Set verbose flag on in order to print the current function value and the parameters that have been updated in each minimisation step."));
+            throw(std::runtime_error("Fit did not converge. Try relaxing cut filters or changing PDF."));
         }
     }
     catch (std::exception &msg)
     {
         std::cerr << msg.what() << std::endl;
+        if(vr==0)
+        std::cerr <<"Set verbose flag on [-v], in order to print the parameters that have been updated in each minimisation step (MINUIT LOG).\n" << std::endl;
         exit(1);
     }
 
@@ -255,12 +262,7 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
     c1->Update();
 
     namespace fs = std::filesystem;
-    /*
-    if (!fs::is_directory("./Plots") || !fs::exists("./Plots"))
-    {
-        fs::create_directory("./Plots");
-    }
-    */
+
     std::string tmp = "./Plots/" + nfr + ".pdf";
     const char *fname = tmp.c_str();
     try
