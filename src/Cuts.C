@@ -110,9 +110,9 @@ ROOT::RDF::RNode customFilter(ROOT::RDataFrame df, float &pmr, float &pMr, float
     try
     {
       auto count = df_custom_cut.Count();
-      if (*count < 800)
+      if (*count < 100)
       {
-        throw(std::runtime_error("Too few events. Fit might not converge. Please relaxe cuts.\n"));
+        throw(std::runtime_error("Too few events. Fit might not converge. Try relaxing cuts.\n"));
       }
     }
     catch (std::exception &ex)

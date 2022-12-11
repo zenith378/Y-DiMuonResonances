@@ -38,8 +38,9 @@ int main(int argc, char *argv[])
     float ym = std::nanf("3");
     float yM = std::nanf("4");
     std::string nameFile = "YResonancesFit";
+    int verbose = 0;
 
-    ProcessArgs(argc, argv, depth, fitfunc, ptm, ptM, ym, yM, nameFile);
+    ProcessArgs(argc, argv, depth, fitfunc, ptm, ptM, ym, yM, nameFile, verbose);
 
     ROOT::RDataFrame df = df_set();
 
@@ -47,7 +48,7 @@ int main(int argc, char *argv[])
 
     TH1 *h = SpectrumPlot(df_cut);
 
-    fitRoo(h, fitfunc, depth, ptm, ptM, ym, yM, nameFile);
+    fitRoo(h, fitfunc, depth, ptm, ptM, ym, yM, nameFile, verbose);
 
     return 0;
 }

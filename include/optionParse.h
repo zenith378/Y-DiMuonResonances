@@ -28,6 +28,6 @@ void unknownErrorHandling();
  * @param ymr
  * @param yMr
  *************************************************************/
-void ProcessArgs(int argc, char **argv,int &dr,int &fr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &nfr);
+void ProcessArgs(int argc, char **argv,int &dr,int &fr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &nfr, int &vr);
 
 #endif

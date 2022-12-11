@@ -24,6 +24,7 @@ void PrintHelp()
                  "--ymin [-y] <val>:              Set minimum cut on rapidity\n"
                  "--yMax [-Y] <val>:              Set maximum cut on rapidity\n"
                  "--help [-h]:                    Show help\n";
+                 "--verbose [-v]:                 Verbose Fit, shows minimisation steps.\n";
     exit(0);
 }
 
@@ -31,20 +32,20 @@ void outOfRangeErrorHandling(std::string opt, std::string range, const char *ins
 {
     std::cerr << opt << " option must be " << range << std::endl;
     std::cerr << "You have entered " << insrtvl << std::endl;
-    std::cerr << "Please enter a correct value and retry" << std::endl;
+    std::cerr << "Please enter a correct value and retry\n" << std::endl;
     exit(1);
 }
 
 void conversionErrorHandling(std::string opt, std::string range, std::invalid_argument err)
 {
-    std::cerr << err.what() << "\n";
-    std::cerr << opt << " insertion incorrect, please use " << range << std::endl;
+    std::cerr << err.what() << std::endl;
+    std::cerr << opt << " insertion incorrect, please use " << range <<"\n"<< std::endl;
     exit(1);
 }
 
 void unknownErrorHandling()
 {
-    std::cout << "Unknown error occured. Please contact the authors or open an issue at https://github.com/zenith378/Y-DiMuonResonances" << std::endl;
+    std::cout << "Unknown error occured. Please contact the authors or open an issue at https://github.com/zenith378/Y-DiMuonResonances\n" << std::endl;
     exit(1);
 }
 
@@ -53,9 +54,9 @@ void unknownErrorHandling()
  * @param argc
  * @param argv
  *************************************************************/
-void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &nfr)
+void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &nfr, int &vr)
 {
-    const char *const short_opts = "d:f:n:p:P:y:Y:h";
+    const char *const short_opts = "d:f:n:p:P:y:Y:hv";
     const option long_opts[] = {
         {"cutDepth", required_argument, 0, 'd'},
         {"fitFunction", required_argument, 0, 'f'},
@@ -65,6 +66,7 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
         {"ymin", required_argument, 0, 'y'},
         {"yMax", required_argument, 0, 'Y'},
         {"help", no_argument, 0, 'h'},
+        {"verbose", no_argument, 0, 'v'},
         {0, 0, 0, 0}};
     int option_index = 0;
     while (true)
@@ -98,7 +100,7 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
             {
                 unknownErrorHandling();
             }
-            std::cout << "Cut Depth set to: " << dr << std::endl;
+            std::cout << "Cut Depth set to: " << dr << "\n" << std::endl;
 
             break;
         }
@@ -123,7 +125,7 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
             {
                 unknownErrorHandling();
             }
-            std::cout << "Fit Function set to: " << optarg << std::endl;
+            std::cout << "Fit Function set to: " << optarg << "\n" << std::endl;
             break;
         }
         case 'n':
@@ -154,7 +156,7 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
             {
                 unknownErrorHandling();
             }   
-            std::cout << "Filename set to: " << nfr << std::endl;
+            std::cout << "Filename set to: " << nfr << "\n" << std::endl;
             break;
 
         }
@@ -172,7 +174,7 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
             {
                 unknownErrorHandling();
             }
-            std::cout << "Minimum pt set to: " << pmr << std::endl;
+            std::cout << "Minimum pt set to: " << pmr << "\n" << std::endl;
             break;
         }
         case 'P':
@@ -189,7 +191,7 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
             {
                 unknownErrorHandling();
             }
-            std::cout << "Maximum pt set to: " << pMr << std::endl;
+            std::cout << "Maximum pt set to: " << pMr << "\n" << std::endl;
             break;
         }
         case 'y':
@@ -206,7 +208,7 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
             {
                 unknownErrorHandling();
             }
-            std::cout << "Minimum rapidity set to: " << ymr << std::endl;
+            std::cout << "Minimum rapidity set to: " << ymr << "\n" << std::endl;
             break;
         }
         case 'Y':
@@ -223,11 +225,19 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
             {
                 unknownErrorHandling();
             }
-            std::cout << "Maximum rapidity set to: " << yMr << std::endl;
+            std::cout << "Maximum rapidity set to: " << yMr <<  "\n" << std::endl;
             break;
         }
-        case 'h': // -h or --help
+        case 'v': 
+        {
+            std::cout << "Verbose flag set on\n" << std::endl;
+            vr=1;
+            break;
+        }
         case '?': // Unrecognized option
+            std::cout << "Unrecognized option. Options and flags accepted are the followings:\n" << std::endl;
+
+        case 'h': // -h or --help
         default:
             PrintHelp();
             break;
