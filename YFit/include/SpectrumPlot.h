@@ -1,13 +1,9 @@
-//
-// gcc -c -fpic SpettrumPlot.c Cuts.c df_set.c fitlp2.c fitp1.c -o librarycode.o
-// gcc -shared -fpic -o libnamelibrary.so librarycode.o
-//
-//  SpettrumPlot.h
-//
-//
-//  Created by Giulio Cordova on 10/11/22.
-//
-//
+/**************************************************************
+ * \file SpectrumPlot.C
+ * \brief Function to plot the spectrum of the dataset which is currently used and create an histogram. 
+ *
+ 
+ *******************************************************************************/
 
 #ifndef SpectrumPlot_h
 #define SpectrumPlot_h
@@ -20,8 +16,11 @@
 #include "TStyle.h"
 #include "Cuts.h"
 
-using namespace ROOT::VecOps;
-
+/***********************************************************
+ * Simple Function to plot the spectrum of the dataset which is currently used and create an histogram. 
+ * @param df_cut dataframe containg the data
+ * \return histogram of the data
+ *************************************************************/
 TH1* SpectrumPlot(ROOT::RDF::RNode df_cut);
 
 

@@ -33,6 +33,7 @@
  * 
  * --cutDepth [-d] <n>:             Choose Cut Depth between the options:
  *                                  0 (default): select events with two muons of opposite charge
+ *                                               and invariant mass around Y-State
  *                                  1: select dimuon pT between 10 and 100 GeV
  *                                  2: select dimuon pT between 10 and 100 GeV
  *                                  and a rapidity less than 0.6 in abs value
@@ -79,7 +80,6 @@ void PrintHelp()
  * \return error exit
  * 
  ****************************************/
-
 void outOfRangeErrorHandling(std::string opt, std::string range, const char *insrtvl)
 {
     std::cerr << opt << " option must be " << range << std::endl;

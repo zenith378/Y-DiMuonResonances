@@ -22,7 +22,6 @@
 #include "df_set.h"
 #include "Cuts.h"
 #include "SpectrumPlot.h"
-#include "fitp1.h"
 #include "fitRoo.h"
 #include "optionParse.h"
 #include "ROOT/RDataFrame.hxx"

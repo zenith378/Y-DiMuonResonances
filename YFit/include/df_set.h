@@ -1,10 +1,25 @@
-//
-//  df_set.h
-//
-//
-//  Created by Giulio Cordova on 21/11/22.
-//
-
+/**************************************************************
+ * \file df_set.h
+ * \brief Header file of df_set.C
+ *
+ *
+ *
+ * In this file are defined the functions used in order to read the dataframe (or create it if it is not already there)
+ * and setting it up with useful variables
+ * In particular, it is defined:
+ * 
+ * computeFourVector(): computes a four vector of a dimuon starting from pt, eta, phi and mass
+ * 
+ * computeFourVecInvariantMass(): computes invariant mass of given four vector
+ * 
+ * computeFourVecPT(): computes pt of given FourVector
+ * 
+ * computeFourVecRapidity(): computes rapidity of given four vector
+ * 
+ * computeFourVecBeta(): computes beta of given four vector
+ * 
+ * df_set(): defines the dataframe
+ *******************************************************************************/
 #ifndef df_set_h
 #define df_set_h
 
@@ -18,16 +33,66 @@
 
 using namespace ROOT::VecOps;
 
+/***************************************
+ * 
+ * \brief it calculates the four vector of a dimuon starting from pt, eta, phi and mass of muon pair
+ * @param pt transverse momentum
+ * @param eta azimuthal angle
+ * @param phi angle
+ * @param mass mass
+ * 
+ * \return PtEtaPhiMVector
+ * 
+ ****************************************/
 ROOT::Math::PtEtaPhiMVector computeFourVec(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass);
 
+/***************************************
+ * 
+ * \brief it calculates the invariant mass of a dimuon Four Vector
+ * @param fourvec four vector of dimuon pair
+ * 
+ * \return mass
+ * 
+ ****************************************/
 float computeFourVecInvariantMass(ROOT::Math::PtEtaPhiMVector& fourvec);
 
+/***************************************
+ * 
+ * \brief it calculates the transverse momentum of a dimuon Four Vector
+ * @param fourvec four vector of dimuon pair
+ * 
+ * \return pt (transverse momentum)
+ * 
+ ****************************************/
 float computeFourVecPT(ROOT::Math::PtEtaPhiMVector& fourvec);
 
+/***************************************
+ * 
+ * \brief it calculates the rapidity of a dimuon Four Vector //inserire formula rapidità
+ * @param fourvec four vector of dimuon pair
+ * 
+ * \return rapidity
+ * 
+ ****************************************/
 float computeFourVecRapidity(ROOT::Math::PtEtaPhiMVector& fourvec);
 
+/***************************************
+ * 
+ * \brief it calculates beta (p_t/E) of a dimuon Four Vector
+ * @param fourvec four vector of dimuon pair
+ * 
+ * \return beta
+ * 
+ ****************************************/
 float computeFourVecBeta(ROOT::Math::PtEtaPhiMVector& fourvec);
 
+/***************************************
+ * 
+ * \brief it defines the dataframe used in the analysis or it creates it if it is not found
+ * 
+ * \return Dataframe
+ * 
+ ****************************************/
 ROOT::RDataFrame df_set();
 
 
