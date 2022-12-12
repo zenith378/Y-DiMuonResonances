@@ -11,7 +11,7 @@ foreach(path ${CMAKE_PREFIX_PATH})
 endforeach(path)
 
 #---Locate the ROOT package and defines a number of variables (e.g. ROOT_INCLUDE_DIRS)
-find_package(ROOT REQUIRED COMPONENTS RIO Hist Tree Net)
+find_package(ROOT REQUIRED COMPONENTS RIO Hist Tree Net RooFit RooStats RooFitCore)
 
 #---Define useful ROOT functions and macros (e.g. ROOT_GENERATE_DICTIONARY)
 include(${ROOT_USE_FILE})
@@ -21,10 +21,10 @@ include_directories(./include/)
 include_directories(./src/)
 add_definitions(${ROOT_CXX_FLAGS})
 
-ROOT_GENERATE_DICTIONARY(G__CorCar include/Cuts.h include/df_set.h include/fitp1.h include/SpectrumPlot.h)
+ROOT_GENERATE_DICTIONARY(G__CorCar include/Cuts.h include/df_set.h include/SpectrumPlot.h include/fitRoo.h include/optionParse.h)
 
 #---Create a shared library with geneated dictionary
-add_library(libCorCar SHARED src/Cuts.C src/df_set.C src/fitp1.C src/SpectrumPlot.C )
+add_library(libCorCar SHARED src/Cuts.C src/df_set.C src/SpectrumPlot.C src/fitRoo.C src/optionParse.C)
 
 
 target_link_libraries(libCorCar ${ROOT_LIBRARIES})
