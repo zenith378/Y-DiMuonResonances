@@ -53,11 +53,17 @@ int test1(){
     RooDataSet *data = model.generate(x, 100e3);
     TH1 *hdata = data->createHistogram("x", 300);
     RooFitResult* fitResult = fitRoo(hdata);
+    
+    //se non fa il fit il test fallisce
+    if (fitResult->status()!=0) j=-1;// fitResult->covQual() < 2
+    
     //manca da controllare che i valori uscenti siano quelli inizializzati
     RooArgList lf = fitResult->floatParsFinal();
     RooArgList lv = [a0,a1,a2,fsig1,fsig2,fsig3,mean1,mean2,mean3,sigma1,sigma2,sigma3];
+    const TMatrixDSym &cov = fitResult->covarianceMatrix()
     for(int i=0; i<12; i++){
-        if(std::abs(lf[i]-lv[i]) > 0.1){//il valore si potrebbe scegliere prendendo l'errore sul parametro del fit
+        /* Se la differenza tra il valore vero e quello uscente dal fit è maggiore di una deviazione std allora il test fallisce (return -1)*/
+        if(std::abs(lf[i]-lv[i]) > 1 * std::sqrt(cov(i,i))){
             j=-1;
         }
     }
