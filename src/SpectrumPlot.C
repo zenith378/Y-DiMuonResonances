@@ -1,3 +1,25 @@
+/**************************************************************
+ * \file SpectrumPlot.h
+ * \brief Handling flags and option parameters
+ *
+ *
+ *
+ * In this file are defined the functions used in order to handle flags and command line options.
+ * In particular, it is defined:
+ * 
+ * void PrintHelp(): output of the option help. It shows the available options and flags;
+ * 
+ * void outOfRangeErrorHandling(std::string opt, std::string range, const char *insrtvl): 
+ * it handles an exception of type "Out of Range";
+ * 
+ * void conversionErrorHandling(std::string opt, std::string range, std::invalid_argument err):
+ * it handles an exception of type Conversion Error (string to float or string to int);
+ * 
+ * void unknowErrorHandling(): it handles an error of uknown type;
+ * 
+ * voi ProcessArgs(...): it handles command line inputs and stores the values of flags or options.
+ *
+ *******************************************************************************/
 #include "ROOT/RDataFrame.hxx"
 #include "TMath.h"
 #include "TCanvas.h"
@@ -8,14 +30,18 @@
 
 using namespace ROOT::VecOps;
 
-
+/***********************************************************
+ * Simple Function to plot the spectrum of the dataset which is currently used and create an histogram. 
+ * @param df_cut dataframe containg the data
+ * \return histogram of the data
+ *************************************************************/
 TH1* SpectrumPlot(ROOT::RDF::RNode df_cut){
   //Enable multi-threading
   ROOT::EnableImplicitMT(1);
   
   // Book histogram of dimuon mass spectrum
   const auto bins = 300; // Number of bins in the histogram
-  const auto low = 8.5001;//0.25; // Lower edge of the histogram
+  const auto low = 8.5;//0.25; // Lower edge of the histogram
   const auto up = 11.5;//300.0; // Upper edge of the histogram
   auto hist = df_cut.Histo1D({"hist", "Dimuon mass", bins, low, up}, "Dimuon_mass");
 
@@ -23,8 +49,6 @@ TH1* SpectrumPlot(ROOT::RDF::RNode df_cut){
   gStyle->SetOptStat(0);
   gStyle->SetTextFont(42);
   auto c = new TCanvas("c", "", 800, 700);
-  //c->SetLogx();
-  //c->SetLogy();
 
 
   // Draw histogram
@@ -48,7 +72,7 @@ TH1* SpectrumPlot(ROOT::RDF::RNode df_cut){
   label.DrawLatex(0.90, 0.92, "#sqrt{s} = 8 TeV, L_{int} = 11.6 fb^{-1}");
 
   // Save plot
-  //c->SaveAs("Plots/dimuonSpectrum_cut_pt2.pdf");
+  c->SaveAs("Plots/Preliminary_histo.pdf");
 
   std::string hs;
   hs="hist";

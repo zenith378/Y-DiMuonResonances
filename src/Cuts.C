@@ -1,6 +1,7 @@
 /*********************************
  \file Cuts.C
  \brief Selection of the data.
+
  The data are selected to be two muon of opposite charge with an invariant mass around the mass of the Y resonances. Also it is possible to choose other cuts on the trasverse momentum and the pseudorapidity of the dimuon state.
 ************************************************/
 
@@ -8,18 +9,19 @@
 #include "TMath.h"
 #include "Cuts.h"
 #include <filesystem>
+#include "TSystem.h"
+#include "optionParse.h"
 
-ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int depth)
+ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int &dr)
 {
-  switch (depth)
+  switch (dr)
   {
   default:
   case 0:
   {
     auto df_cut = df.Filter([](unsigned int x)
                             { return x == 2; },
-                            {"nMuon"}, {"Events with exactly two muons"})                       // Select events with exactly two muons
-                      .Filter("Muon_charge[0] != Muon_charge[1]", "Muons with opposite charge") // Select events with two muons of opposite charge
+                            {"nMuon"}, {"Events with exactly two muons"})
                       .Filter([](float x)
                               { return x > 8.5 && x < 11.5; },
                               {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}); // Cut around the Ys
@@ -35,7 +37,7 @@ ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int depth)
                               { return x > 8.5 && x < 11.5; },
                               {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}) // Cut around the Ys
                       .Filter([](float x)
-                              { return x > 10. && x < 12.; },
+                              { return x > 10. && x < 100.; },
                               {"Dimuon_pt"}, {"Pt between 10 and 100 GeV"}); // Select events with 10 GeV < pT < 12 GeV
     return df_cut;
   }
@@ -49,8 +51,8 @@ ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int depth)
                               { return x > 8.5 && x < 11.5; },
                               {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}) // Cut around the Ys
                       .Filter([](float x)
-                              { return x > 10. && x < 12.; },
-                              {"Dimuon_pt"}, {"Pt between 10 and 100 GeV"}) // Select events with 10 GeV < pT < 12 GeV
+                              { return x > 10. && x < 100.; },
+                              {"Dimuon_pt"}, {"Pt between 10 and 100 GeV"}) // Select events with 10 GeV < pT < 100 GeV
                       .Filter([](float x)
                               { return x > -0.6 && x < 0.6; },
                               {"Dimuon_y"}, {"Rapidity between -0.6 and 0.6"});
@@ -60,108 +62,205 @@ ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int depth)
   exit(1);
 }
 
-ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode df_custom_cut, float var, ROOT::RDF::ColumnNames_t obs, std::string_view message)
+ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode df_custom_cut, std::string_view filter, std::string_view name)
 {
-  df_custom_cut = df_custom_cut.Filter([var](float x){ return x > var; },obs, {message});
-  auto report = df_custom_cut.Report();
-  // Print cut-flow report
-  report->Print();
-  std::cout<<"\n"<<std::endl;
+
+  df_custom_cut = df_custom_cut.Filter(filter, name);
+  try
+  {
+    auto count = df_custom_cut.Count();
+    if (*count < 800)
+    {
+      throw(std::runtime_error("Too few events. Fit might not converge. Please relaxe cuts.\n"));
+    }
+  }
+  catch (std::exception &ex)
+  {
+    std::cerr << ex.what() << std::endl;
+    exit(1);
+  }
   return df_custom_cut;
 }
 
-ROOT::RDF::RNode customFilter(ROOT::RDF::RNode df, float ptm, float ptM, float ym, float yM)
+ROOT::RDF::RNode customFilter(ROOT::RDataFrame df, float &pmr, float &pMr, float &ymr, float &yMr)
 {
   ROOT::RDF::RNode df_custom_cut = df;
-  if (ptm == ptm)
+  if (pmr == pmr)
   {
-    df_custom_cut = applyFilter(df_custom_cut, ptm, {"Dimuon_pt"}, "Custom cut on minimum pt");
+    std::string fil = "Dimuon_pt >" + std::to_string(pmr);
+    df_custom_cut = applyFilter(df_custom_cut, fil, "Custom cut on minimum pt");
   }
-  if (ptM == ptM)
+  if (pMr == pMr)
   {
-    df_custom_cut = applyFilter(df_custom_cut, ptM, {"Dimuon_pt"}, "Custom cut on maximum pt");
+    std::string fil = "Dimuon_pt <" + std::to_string(pMr);
+    df_custom_cut = applyFilter(df_custom_cut, fil, "Custom cut on maximum pt");
   }
-  if (ym == ym)
+
+  if (ymr == ymr && yMr == yMr)
   {
-    df_custom_cut = applyFilter(df_custom_cut, ym, {"Dimuon_y"}, "Custom cut on minimum rapidity");
+    // std::string_view fil ="("+std::to_string(-yMr)+ "<Dimuon_y <" +std::to_string(-ymr)+")"
+    //                       +"||("+std::to_string(ymr)+ "<Dimuon_y <" +std::to_string(yMr)+")";
+    // df_custom_cut = applyFilter(df_custom_cut,fil,"Custom cut on rapidity");
+    // std::string_view filt =std::to_string(ymr)+ "<Dimuon_y <" +std::to_string(yMr);
+    // df_custom_cut = applyFilter(df_custom_cut,filt,"Custom cut on rapidity 2");
+
+    df_custom_cut = df_custom_cut.Filter([ymr, yMr](float x)
+                                         { return ((x > -yMr && x < -ymr) || (x > ymr && x > yMr)); },
+                                         {"Dimuon_y"}, {"Custom cut on rapidity"});
+    try
+    {
+      auto count = df_custom_cut.Count();
+      if (*count < 100)
+      {
+        throw(std::runtime_error("Too few events. Fit might not converge. Try relaxing cuts.\n"));
+      }
+    }
+    catch (std::exception &ex)
+    {
+      std::cerr << ex.what() << std::endl;
+      exit(1);
+    }
   }
-  if (yM == yM)
+
+  if (ymr == ymr && yMr != yMr)
   {
-    df_custom_cut = applyFilter(df_custom_cut, yM, {"Dimuon_y"}, "Custom cut on maximum rapidity");
+    std::string fil = "Dimuon_y >" + std::to_string(ymr);
+    df_custom_cut = applyFilter(df_custom_cut, fil, "Custom cut on minimum rapidity");
+  }
+  if (yMr == yMr && ymr != ymr)
+  {
+    std::string fil = "Dimuon_y <" + std::to_string(yMr);
+    df_custom_cut = applyFilter(df_custom_cut, fil, "Custom cut on maximum rapidity");
   }
   return df_custom_cut;
 }
 
-/*********************************
- \brief Modified a muon DataFrame cutting on nMuon, Muon_charge, Dimuon_mass, Dimuon_pt and Dimuon_y
- UNa descrizione più dettagliata della funzione
- @param df Data Frame in input
- @param mm lower extreme for the cut on the dimuon invariant mass
- @param mM upper extreme for the cut on the dimuon invariant mass
- @param ptm lower extreme for the cut on the dimuon trasverse momentum
- @param ptM upper extreme for the cut on the dimuon trasverse momentum
- @param ym lower extreme for the cut on the dimuon pseudorapidity
- @param yM upper extreme for the cut on the dimuon pseudorapidity
- @return df_cut DataFrame withthe selection decided by the cuts
-************************************************/
 
-ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int depth, float ptm, float ptM, float ym, float yM)
-{
-  // Enable multi-threading
+
+
+
+
+
+
+ROOT::RDataFrame generateDataFrame(ROOT::RDataFrame df, int &dr){
+  
   ROOT::EnableImplicitMT(1);
-  TString *fname;
+  ROOT::RDataFrame *df_off;
+  namespace fs = std::filesystem;
+  std::string *fname;
 
   // Events selection
-  switch (depth)
+  switch (dr)
   {
   default:
   case 0:
   {
-    fname = new TString("Data/data_cut0.root");
+    fname = new std::string("Data/data_cut0.root");
     break;
   }
   case 1:
   {
-    fname = new TString("Data/data_cut1.root");
+    fname = new std::string("Data/data_cut1.root");
     break;
   }
   case 2:
   {
-    fname = new TString("Data/data_cut2.root");
+    fname = new std::string("Data/data_cut2.root");
     break;
   }
   }
+  try
+  {
+    df_off = new ROOT::RDataFrame("Cuts", *fname);
+    // if file does not open
+    if (!fs::is_directory("./Data") || !fs::exists("./Data"))
+    {
+      throw("./Data");
+    }
+    if (gSystem->AccessPathName(fname->c_str()))
+    {
+      throw(std::runtime_error("Problem reading cut file (it might not exist or it might be corrupted)\n"));
+    }
+  }
+  catch (const char *pathToData)
+  {
+    std::cerr << "Directory " << pathToData << " does not exist.\n"
+              << std::endl;
+    std::cerr << "Creating directory...\n"
+              << std::endl;
 
-  TFile *cutfile = TFile::Open(*fname); // try open cut file
-  if (!cutfile)
-  { // if the cutfile does not exist
-    std::cout << "Recreating cut file" << std::endl;
+    fs::create_directory(pathToData);
+    std::cout << "Directory " << pathToData << " successfully created\n"
+              << std::endl;
+  }
+  catch (std::exception &exp)
+  {
 
-    auto df_cut = DFFilter(df, depth);
+    std::cerr << exp.what() << std::endl;
+    std::cout << "Recreating cut dataframe...\n"
+              << std::endl;
+    auto df_cut = DFFilter(df, dr);
+    std::cout << "Cut Dataframe recreated. Cut report follows\n"
+              << std::endl;
+
     // Request cut-flow report
     auto report = df_cut.Report();
     // Print cut-flow report
     report->Print();
-    // save cut file
-    namespace fs = std::filesystem;
-    if (!fs::is_directory("./Data") || !fs::exists("./Data"))
-    {                                 // Check if src folder exists
-      fs::create_directory("./Data"); // create src folder
-    }
-    df_cut.Snapshot("Cuts", *fname);
+    std::cout << "\nSaving cut file for future usage...\n"
+              << std::endl;
+    df_cut.Snapshot("Cuts", *fname); // qui forse devo mettere un'altra exception
+    std::cout << "Cut File successfully saved\n"
+              << std::endl;
+    ROOT::RDataFrame df_upt("Cuts", *fname);
+    std::cout << " Cut File successfully opened\n"
+              << std::endl;
+
+    return df_upt;
   }
-
-  else if (cutfile->IsZombie())
-  { // file not read correctly
-    std::cout << "Problems reading file " << *fname << std::endl;
-    exit(1);
+  catch (...)
+  {
+    unknownErrorHandling();
   }
+  return (*df_off);
+}
 
-  ROOT::RDataFrame df_off("Cuts", *fname);
 
-  ROOT::RDF::RNode df_def = customFilter(df_off, ptm, ptM, ym, yM);
 
-  // const auto pt_max = 12.;
-  // const auto pt_min = 10.;
+
+
+
+
+
+/*********************************
+ \brief Modified a muon DataFrame cutting on nMuon, Muon_charge, Dimuon_mass, Dimuon_pt and Dimuon_y
+
+ UNa descrizione più dettagliata della funzione
+ @param df Data Frame in input
+ @param pmr lower extreme for the cut on the dimuon trasverse momentum
+ @param pMr upper extreme for the cut on the dimuon trasverse momentum
+ @param ymr lower extreme for the cut on the dimuon pseudorapidity
+ @param yMr upper extreme for the cut on the dimuon pseudorapidity
+ @return df_cut DataFrame withthe selection decided by the cuts
+************************************************/
+
+
+
+
+
+ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int &dr, float &pmr, float &pMr, float &ymr, float &yMr)
+{
+  // Enable multi-threading
+  ROOT::EnableImplicitMT(1);
+
+  ROOT::RDataFrame df_off= generateDataFrame(df, dr);
+
+  ROOT::RDF::RNode df_def = customFilter(df_off, pmr, pMr, ymr, yMr);
+
+  auto report = df_def.Report();
+  report->Print();
+  std::cout << "\n"
+            << std::endl;
+
   return df_def;
 }

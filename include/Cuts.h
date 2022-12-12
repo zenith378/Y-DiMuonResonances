@@ -13,12 +13,14 @@
 #include "ROOT/RDataFrame.hxx"
 #include "TMath.h"
 
-ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int depth);
+ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int &dr);
 
-ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode df_custom_cut, float var, ROOT::RDF::ColumnNames_t obs, std::string_view message);
+ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode df_custom_cut, std::string_view filter, std::string_view name);
 
-ROOT::RDF::RNode customFilter(ROOT::RDF::RNode df, float ptm, float ptM, float ym, float yM );
+ROOT::RDF::RNode customFilter(ROOT::RDataFrame df, float &pmr, float &pMr, float &ymr, float &yMr );
 
-ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int depth,float ptm, float ptM, float ym, float yM );
+ROOT::RDataFrame generateDataFrame(ROOT::RDataFrame df, int &dr);
+
+ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int &dr,float &pmr, float &pMr, float &ymr, float &yMr );
 
 #endif /* Cuts_h */
