@@ -128,12 +128,6 @@ ROOT::RDF::RNode customFilter(ROOT::RDataFrame df, float &pmr, float &pMr, float
 }
 
 
-
-
-
-
-
-
 ROOT::RDataFrame generateDataFrame(ROOT::RDataFrame df, int &dr){
   
   ROOT::EnableImplicitMT(1);
@@ -216,28 +210,6 @@ ROOT::RDataFrame generateDataFrame(ROOT::RDataFrame df, int &dr){
   }
   return (*df_off);
 }
-
-
-
-
-
-
-
-
-/*********************************
- \brief Modified a muon DataFrame cutting on nMuon, Muon_charge, Dimuon_mass, Dimuon_pt and Dimuon_y
-
- UNa descrizione più dettagliata della funzione
- @param df Data Frame in input
- @param pmr lower extreme for the cut on the dimuon trasverse momentum
- @param pMr upper extreme for the cut on the dimuon trasverse momentum
- @param ymr lower extreme for the cut on the dimuon pseudorapidity
- @param yMr upper extreme for the cut on the dimuon pseudorapidity
- @return df_cut DataFrame withthe selection decided by the cuts
-************************************************/
-
-
-
 
 
 ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int &dr, float &pmr, float &pMr, float &ymr, float &yMr)
