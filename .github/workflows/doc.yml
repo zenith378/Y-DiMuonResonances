@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: docs
+name: creating documentation
 on:
   push:
     branches: [ "main" ]
@@ -25,9 +25,9 @@ jobs:
       uses: pviscone/doxygenize@v1.6.3
       with:
         # Doxygen configuration file path
-        doxygenconf: ./Doxyfile
+        doxygenconf: ./doc/Doxyfile
         # Generated HTML documents output folder
-        htmloutput: ./
+        htmloutput: ./doc
         # GitHub Pages branch name
         ghpagesbranch: docs
         # GitHub Pages directory path
