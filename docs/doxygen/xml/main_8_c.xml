@@ -1,0 +1,248 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="main_8_c" kind="file" language="C++">
+    <compoundname>main.C</compoundname>
+    <includes refid="df__set_8h" local="yes">df_set.h</includes>
+    <includes refid="_cuts_8h" local="yes">Cuts.h</includes>
+    <includes refid="_spectrum_plot_8h" local="yes">SpectrumPlot.h</includes>
+    <includes refid="fit_roo_8h" local="yes">fitRoo.h</includes>
+    <includes refid="option_parse_8h" local="yes">optionParse.h</includes>
+    <includes local="yes">ROOT/RDataFrame.hxx</includes>
+    <includes local="no">iostream</includes>
+    <incdepgraph>
+      <node id="9">
+        <label>Cuts.h</label>
+        <link refid="_cuts_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>SpectrumPlot.h</label>
+        <link refid="_spectrum_plot_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>df_set.h</label>
+        <link refid="df__set_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>fitRoo.h</label>
+        <link refid="fit_roo_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>optionParse.h</label>
+        <link refid="option_parse_8h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/main/main.C</label>
+        <link refid="main_8_c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Math/Vector4D.h</label>
+      </node>
+      <node id="5">
+        <label>Math/Vector4Dfwd.h</label>
+      </node>
+      <node id="3">
+        <label>ROOT/RDataFrame.hxx</label>
+      </node>
+      <node id="4">
+        <label>ROOT/RVec.hxx</label>
+      </node>
+      <node id="20">
+        <label>RooAddPdf.h</label>
+      </node>
+      <node id="19">
+        <label>RooChebychev.h</label>
+      </node>
+      <node id="24">
+        <label>RooDataHist.h</label>
+      </node>
+      <node id="17">
+        <label>RooDataSet.h</label>
+      </node>
+      <node id="18">
+        <label>RooGaussian.h</label>
+      </node>
+      <node id="22">
+        <label>RooPlot.h</label>
+      </node>
+      <node id="16">
+        <label>RooRealVar.h</label>
+      </node>
+      <node id="21">
+        <label>TAxis.h</label>
+      </node>
+      <node id="11">
+        <label>TCanvas.h</label>
+      </node>
+      <node id="8">
+        <label>TFile.h</label>
+      </node>
+      <node id="23">
+        <label>TH1.h</label>
+      </node>
+      <node id="12">
+        <label>TH1D.h</label>
+      </node>
+      <node id="13">
+        <label>TLatex.h</label>
+      </node>
+      <node id="7">
+        <label>TMath.h</label>
+      </node>
+      <node id="14">
+        <label>TStyle.h</label>
+      </node>
+      <node id="27">
+        <label>getopt.h</label>
+      </node>
+      <node id="26">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="main_8_c_1a0ddf1224851353fc92bfbff6f499fa97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>(int argc, char *argv[])</argsstring>
+        <name>main</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>argv</declname>
+          <array>[]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>Depth value initialized to 0, i.e. no cuts</para>
+<para>Fit Function initilized to 0, i.e. Breit-Wigner</para>
+<para>The default parameters for the cuts are initialized to NaN, so that they are used only if they become a number</para>
+<para>see first parameter</para>
+<para>see first parameter</para>
+<para>see first parameter</para>
+<para>The name of the file in which the figure is saved</para>
+<para>verbose flag initialized to zero, i.e. no output stream for Minuit</para>
+        </inbodydescription>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/main/main.C" line="30" column="5" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/main/main.C" bodystart="30" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Main source code of the program. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Here the default options are defined and the functions are called in order to execute the programs</para>
+<para>dalla cartella Y-Dimuon</para>
+<para>cmake -S . -B ./build questo dice dove buildare il codice da quale sorgente (e crea il makefile)</para>
+<para>make -C build con questo si compila propriamente e si crea la libreria</para>
+<para>./build/ComputingMethodsCorCar questo è un normale comando che dice di far partire l&apos;eseguibile </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="df__set_8h" kindref="compound">df_set.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_cuts_8h" kindref="compound">Cuts.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_spectrum_plot_8h" kindref="compound">SpectrumPlot.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fit_roo_8h" kindref="compound">fitRoo.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="option_parse_8h" kindref="compound">optionParse.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ROOT/RDataFrame.hxx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="main_8_c_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*argv[])</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialize<sp/>default<sp/>values<sp/>for<sp/>options</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>depth<sp/>=<sp/>0;<sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>fitfunc<sp/>=<sp/>0;<sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>ptm<sp/>=<sp/>std::nanf(</highlight><highlight class="stringliteral">&quot;1&quot;</highlight><highlight class="normal">);<sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>ptM<sp/>=<sp/>std::nanf(</highlight><highlight class="stringliteral">&quot;2&quot;</highlight><highlight class="normal">);<sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>ym<sp/>=<sp/>std::nanf(</highlight><highlight class="stringliteral">&quot;3&quot;</highlight><highlight class="normal">);<sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>yM<sp/>=<sp/>std::nanf(</highlight><highlight class="stringliteral">&quot;4&quot;</highlight><highlight class="normal">);<sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>nameFile<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;YResonancesFit&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>verbose<sp/>=<sp/>0;<sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;pass&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="option_parse_8h_1aca42904c9676201145e82289b4b97f47" kindref="member">ProcessArgs</ref>(argc,<sp/>argv,<sp/>depth,<sp/>fitfunc,<sp/>ptm,<sp/>ptM,<sp/>ym,<sp/>yM,<sp/>nameFile,<sp/>verbose);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;pass&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>ROOT::RDataFrame<sp/>df<sp/>=<sp/><ref refid="df__set_8h_1ad8de3c0c9c809d0cdc00ba1bcfe996e4" kindref="member">df_set</ref>();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;pass&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>ROOT::RDF::RNode<sp/>df_cut<sp/>=<sp/><ref refid="_cuts_8h_1a881a676022acb37d96b60e0227b5893e" kindref="member">Cuts</ref>(df,<sp/>depth,<sp/>ptm,<sp/>ptM,<sp/>ym,<sp/>yM);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;pass&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>TH1<sp/>*h<sp/>=<sp/><ref refid="_spectrum_plot_8h_1afef3adcc4a5647352f99615cd5bc1f63" kindref="member">SpectrumPlot</ref>(df_cut);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;pass&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="fit_roo_8h_1ae27b1286b8f342d0a639eed87957ac88" kindref="member">fitRoo</ref>(h,<sp/>fitfunc,<sp/>depth,<sp/>ptm,<sp/>ptM,<sp/>ym,<sp/>yM,<sp/>nameFile,<sp/>verbose);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;pass&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/main/main.C"/>
+  </compounddef>
+</doxygen>

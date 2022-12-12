@@ -38,16 +38,16 @@ int main(int argc, char *argv[])
     float yM = std::nanf("4"); ///see first parameter
     std::string nameFile = "YResonancesFit"; ///The name of the file in which the figure is saved
     int verbose = 0; ///verbose flag initialized to zero, i.e. no output stream for Minuit
-
+    std::cout << "pass" << std::endl;
     ProcessArgs(argc, argv, depth, fitfunc, ptm, ptM, ym, yM, nameFile, verbose);
-
+    std::cout << "pass" << std::endl;
     ROOT::RDataFrame df = df_set();
-
+    std::cout << "pass" << std::endl;
     ROOT::RDF::RNode df_cut = Cuts(df, depth, ptm, ptM, ym, yM);
-
+    std::cout << "pass" << std::endl;
     TH1 *h = SpectrumPlot(df_cut);
-
+    std::cout << "pass" << std::endl;
     fitRoo(h, fitfunc, depth, ptm, ptM, ym, yM, nameFile, verbose);
-
+    std::cout << "pass" << std::endl;
     return 0;
 }

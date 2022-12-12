@@ -1,5 +1,5 @@
 /**************************************************************
- * \file SpectrumPlot.C
+ * \file SpectrumPlot.h
  * \brief Function to plot the spectrum of the dataset which is currently used and create an histogram. 
  *
  

@@ -63,11 +63,7 @@ std::string formatYString(int &dr, float &ymr, float &yMr)
 }
 
 
-/**************************************************************
- \brief three peaks fit plus a quadratic background
 
-
- *******************************************************************************/
 RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &nfr, int &vr)
 {
     // Declare observable x
@@ -75,7 +71,7 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
     RooDataHist rh("rh", "rh", x, Import(*hh));
     // create application to display the canvas while root runs
     TApplication *theApp = new TApplication("app", 0, 0);
-
+    
     Int_t nb = hh->GetNbinsX();
     Double_t x1 = hh->GetBinCenter(1);
     Double_t x9 = hh->GetBinCenter(nb);

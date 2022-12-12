@@ -141,17 +141,17 @@ ROOT::RDataFrame generateDataFrame(ROOT::RDataFrame df, int &dr){
   default:
   case 0:
   {
-    fname = new std::string("Data/data_cut0.root");
+    fname = new std::string("./Data/data_cut0.root");
     break;
   }
   case 1:
   {
-    fname = new std::string("Data/data_cut1.root");
+    fname = new std::string("./Data/data_cut1.root");
     break;
   }
   case 2:
   {
-    fname = new std::string("Data/data_cut2.root");
+    fname = new std::string("./Data/data_cut2.root");
     break;
   }
   }
@@ -178,6 +178,8 @@ ROOT::RDataFrame generateDataFrame(ROOT::RDataFrame df, int &dr){
     fs::create_directory(pathToData);
     std::cout << "Directory " << pathToData << " successfully created\n"
               << std::endl;
+    throw(std::runtime_error("Problem reading cut file (it might not exist or it might be corrupted)\n"));
+
   }
   catch (std::exception &exp)
   {
