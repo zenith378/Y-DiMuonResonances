@@ -1,0 +1,56 @@
+\hypertarget{main_8_c}{}\doxysection{/\+Users/zenith378/\+Documents/\+Uni/\+Computing/\+Y-\/\+Di\+Muon\+Resonances/main/main.C File Reference}
+\label{main_8_c}\index{/Users/zenith378/Documents/Uni/Computing/Y-\/DiMuonResonances/main/main.C@{/Users/zenith378/Documents/Uni/Computing/Y-\/DiMuonResonances/main/main.C}}
+
+
+Main source code of the program.  
+
+
+{\ttfamily \#include \char`\"{}df\+\_\+set.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Cuts.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Spectrum\+Plot.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fit\+Roo.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}option\+Parse.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ROOT/\+RData\+Frame.\+hxx\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8_c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main source code of the program. 
+
+Here the default options are defined and the functions are called in order to execute the programs
+
+dalla cartella Y-\/\+Dimuon
+
+cmake -\/S . -\/B ./build questo dice dove buildare il codice da quale sorgente (e crea il makefile)
+
+make -\/C build con questo si compila propriamente e si crea la libreria
+
+./build/\+Computing\+Methods\+Cor\+Car questo è un normale comando che dice di far partire l\textquotesingle{}eseguibile 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8_c_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8_c_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{main.C@{main.C}!main@{main}}
+\index{main@{main}!main.C@{main.C}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Depth value initialized to 0, i.\+e. no cuts
+
+Fit Function initilized to 0, i.\+e. Breit-\/\+Wigner
+
+The default parameters for the cuts are initialized to NaN, so that they are used only if they become a number
+
+see first parameter
+
+see first parameter
+
+see first parameter
+
+The name of the file in which the figure is saved
+
+verbose flag initialized to zero, i.\+e. no output stream for Minuit

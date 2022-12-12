@@ -1,0 +1,116 @@
+\hypertarget{fit_roo_8h}{}\doxysection{/\+Users/zenith378/\+Documents/\+Uni/\+Computing/\+Y-\/\+Di\+Muon\+Resonances/\+YFit/include/fit\+Roo.h File Reference}
+\label{fit_roo_8h}\index{/Users/zenith378/Documents/Uni/Computing/Y-\/DiMuonResonances/YFit/include/fitRoo.h@{/Users/zenith378/Documents/Uni/Computing/Y-\/DiMuonResonances/YFit/include/fitRoo.h}}
+
+
+Function for fitting the data and displying the canvas.  
+
+
+{\ttfamily \#include \char`\"{}Roo\+Real\+Var.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Roo\+Data\+Set.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Roo\+Gaussian.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Roo\+Chebychev.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Roo\+Add\+Pdf.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}TCanvas.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}TAxis.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Roo\+Plot.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}TH1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Roo\+Data\+Hist.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{fit_roo_8h_a3486da7fabe684039983850799d99617}{format\+Pt\+String}} (int \&dr, float \&pmr, float \&p\+Mr)
+\item 
+std\+::string \mbox{\hyperlink{fit_roo_8h_a47519f963af9cc34c19ff7d6f465dc6c}{format\+YString}} (int \&dr, float \&ymr, float \&y\+Mr)
+\item 
+Roo\+Fit\+Result $\ast$ \mbox{\hyperlink{fit_roo_8h_ae27b1286b8f342d0a639eed87957ac88}{fit\+Roo}} (TH1 $\ast$hh, int \&fr, int \&dr, float \&pmr, float \&p\+Mr, float \&ymr, float \&y\+Mr, std\+::string \&fnr, int \&vr)
+\begin{DoxyCompactList}\small\item\em three peaks fit plus a quadratic background \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Function for fitting the data and displying the canvas. 
+
+In this file are defined the function used to fit the data and to fit the canvas In particular, it is defined\+:
+
+format\+Pt\+String\+: it formats the string regarding the cut on pt to be displayed on the canvas
+
+format\+YString\+: it format the string regarding the cut on Y to be displayed on the canvas
+
+fit\+Roo\+: function that fit the data, print the result and the canvas 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{fit_roo_8h_ae27b1286b8f342d0a639eed87957ac88}\label{fit_roo_8h_ae27b1286b8f342d0a639eed87957ac88}} 
+\index{fitRoo.h@{fitRoo.h}!fitRoo@{fitRoo}}
+\index{fitRoo@{fitRoo}!fitRoo.h@{fitRoo.h}}
+\doxysubsubsection{\texorpdfstring{fitRoo()}{fitRoo()}}
+{\footnotesize\ttfamily Roo\+Fit\+Result $\ast$ fit\+Roo (\begin{DoxyParamCaption}\item[{TH1 $\ast$}]{hh,  }\item[{int \&}]{fr,  }\item[{int \&}]{dr,  }\item[{float \&}]{pmr,  }\item[{float \&}]{p\+Mr,  }\item[{float \&}]{ymr,  }\item[{float \&}]{y\+Mr,  }\item[{std\+::string \&}]{nfr,  }\item[{int \&}]{vr }\end{DoxyParamCaption})}
+
+
+
+three peaks fit plus a quadratic background 
+
+Implementation of the fit function
+
+
+\begin{DoxyParams}{Parameters}
+{\em hh} & histogram to be fitted \\
+\hline
+{\em dr} & reference of depth defined in main \\
+\hline
+{\em fr} & reference of fit\+Function defined in main \\
+\hline
+{\em pmr} & recerence of ptm (minimum pt) defined in main \\
+\hline
+{\em p\+Mr} & recerence of ptM (maximum pt) defined in main \\
+\hline
+{\em ymr} & recerence of ym (minimum rapidity) defined in main \\
+\hline
+{\em y\+Mr} & recerence of yM (maximum rapidity) defined in main \\
+\hline
+{\em nfr} & recerence of name\+File defined in main \\
+\hline
+{\em vr} & reference of varaible verbose defined in main\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+result of the fit
+\end{DoxyReturn}
+\mbox{\Hypertarget{fit_roo_8h_a3486da7fabe684039983850799d99617}\label{fit_roo_8h_a3486da7fabe684039983850799d99617}} 
+\index{fitRoo.h@{fitRoo.h}!formatPtString@{formatPtString}}
+\index{formatPtString@{formatPtString}!fitRoo.h@{fitRoo.h}}
+\doxysubsubsection{\texorpdfstring{formatPtString()}{formatPtString()}}
+{\footnotesize\ttfamily std\+::string format\+Pt\+String (\begin{DoxyParamCaption}\item[{int \&}]{dr,  }\item[{float \&}]{pmr,  }\item[{float \&}]{p\+Mr }\end{DoxyParamCaption})}
+
+Formatting the string to be displayed on the canvas regarding the cuts made on pt
+
+
+\begin{DoxyParams}{Parameters}
+{\em dr} & reference of depth defined in main \\
+\hline
+{\em pmr} & recerence of ptm (minimum pt) defined in main \\
+\hline
+{\em p\+Mr} & recerence of ptM (maximum pt) defined in main\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+result of the fit 
+\end{DoxyReturn}
+\mbox{\Hypertarget{fit_roo_8h_a47519f963af9cc34c19ff7d6f465dc6c}\label{fit_roo_8h_a47519f963af9cc34c19ff7d6f465dc6c}} 
+\index{fitRoo.h@{fitRoo.h}!formatYString@{formatYString}}
+\index{formatYString@{formatYString}!fitRoo.h@{fitRoo.h}}
+\doxysubsubsection{\texorpdfstring{formatYString()}{formatYString()}}
+{\footnotesize\ttfamily std\+::string format\+YString (\begin{DoxyParamCaption}\item[{int \&}]{dr,  }\item[{float \&}]{ymr,  }\item[{float \&}]{y\+Mr }\end{DoxyParamCaption})}
+
+Formatting the string to be displayed on the canvas regarding the cuts made on y
+
+
+\begin{DoxyParams}{Parameters}
+{\em dr} & reference of depth defined in main \\
+\hline
+{\em ymr} & recerence of ym (minimum rapidity) defined in main \\
+\hline
+{\em y\+Mr} & recerence of yM (maximum rapidity) defined in main\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+result of the fit 
+\end{DoxyReturn}
