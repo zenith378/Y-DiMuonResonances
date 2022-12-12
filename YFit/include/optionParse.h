@@ -1,10 +1,10 @@
 /**************************************************************
- * \file optionParse.h
- * \brief header file of optionParse.C
+ * \file{optionParse.h}
+ * \brief{header file of optionParse.C}
  *
  *
  *
- * In this file are defined the functions used in order to handle flags and command line options.
+ * {In this file are defined the functions used in order to handle flags and command line options.
  * In particular, it is defined:
  * 
  * void PrintHelp(): output of the option help. It shows the available options and flags;
@@ -18,7 +18,7 @@
  * void unknowErrorHandling(): it handles an error of uknown type;
  * 
  * voi ProcessArgs(...): it handles command line inputs and stores the values of flags or options.
- *
+ *}
  *******************************************************************************/
 #ifndef optionParse_h
 #define optionParse_h
@@ -27,8 +27,8 @@
 #include "getopt.h"
 
 /***************************************
- * PrintHelp()
- * \brief Print help stream for understanding what options and flags are available
+ * \fn{PrintHelp()}
+ * \brief{Print help stream for understanding what options and flags are available}
  * 
  *It prints the following output:
  * 
@@ -53,11 +53,11 @@
 void PrintHelp();
 
 /***************************************
- * outOfRangeErrorHandling
- * \brief it handles an exception of type "Out of Range";
- * @param opt option in case (e.g. depth, fitFunction, etc...)
- * @param range range accepted of the desired option (e.g. 0,1,2 for depth)
- * @param insrtvl invalid value entered by the user in the command line stream
+ * \fn{outOfRangeErrorHandling}
+ * \brief{it handles an exception of type "Out of Range";}
+ * \param[in] <opt> {option in case (e.g. depth, fitFunction, etc...)}
+ * \param [in] <range> {range accepted of the desired option (e.g. 0,1,2 for depth)}
+ * \param [in] <insrtvl> {invalid value entered by the user in the command line stream}
  * 
  * \return error exit
  * 
@@ -65,11 +65,11 @@ void PrintHelp();
 void outOfRangeErrorHandling(std::string opt, std::string range, const char *insrtvl);
 
 /***************************************
- * conversionErrorHandling()
- * \brief it handles an exception of type "conversion Error";
- * @param opt option in case (e.g. depth, fitFunction, etc...)
- * @param range range accepted of the desired option (e.g. 0,1,2 for depth)
- * @param err invalid argument raised by the standard library
+ * \fn{conversionErrorHandling()}
+ * \brief{it handles an exception of type "conversion Error";}
+ * \param [in] <opt> {option in case (e.g. depth, fitFunction, etc...)}
+ * \param [in]  <range> {range accepted of the desired option (e.g. 0,1,2 for depth)}
+ * \param [in] <err> {invalid argument raised by the standard library}
  * 
  * \return error exit
  * 
@@ -77,7 +77,7 @@ void outOfRangeErrorHandling(std::string opt, std::string range, const char *ins
 void conversionErrorHandling(std::string opt, std::string range, std::invalid_argument err);
 
 /***************************************
- * unknownErrorHandling()
+ * \fn unknownErrorHandling()
  * \brief it handles an exception of type "unknown"
  * 
  * \return error exit
@@ -87,17 +87,18 @@ void unknownErrorHandling();
 
 
 /***********************************************************
+ * \fn ProcessArgs
  * Implementation of the option arguments with the library <getopt>
- * @param argc command line arguments number
- * @param argv array of command line arguments passed
- * @param dr reference of depth defined in main
- * @param fr reference of fitFunction defined in main
- * @param pmr recerence of ptm (minimum pt) defined in main
- * @param pMr recerence of ptM (maximum pt) defined in main
- * @param ymr recerence of ym (minimum rapidity) defined in main
- * @param yMr recerence of yM (maximum rapidity) defined in main
- * @param nfr recerence of nameFile defined in main
- * @param vr reference of varaible verbose defined in main
+ * \param argc command line arguments number
+ * \param argv array of command line arguments passed
+ * \param dr reference of depth defined in main
+ * \param fr reference of fitFunction defined in main
+ * \param pmr recerence of ptm (minimum pt) defined in main
+ * \param pMr recerence of ptM (maximum pt) defined in main
+ * \param ymr recerence of ym (minimum rapidity) defined in main
+ * \param yMr recerence of yM (maximum rapidity) defined in main
+ * \param nfr recerence of nameFile defined in main
+ * \param vr reference of varaible verbose defined in main
  *************************************************************/
 void ProcessArgs(int argc, char **argv,int &dr,int &fr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &nfr, int &vr);
 
