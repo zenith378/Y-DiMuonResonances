@@ -25,7 +25,7 @@ jobs:
       uses: pviscone/doxygenize@v1.6.3
       with:
         # Doxygen configuration file path
-        doxygenconf: ./doc/Doxyfile
+        doxygenconf: ./doc/ConfigFile
         # Generated HTML documents output folder
         htmloutput: ./doc
         # GitHub Pages branch name
