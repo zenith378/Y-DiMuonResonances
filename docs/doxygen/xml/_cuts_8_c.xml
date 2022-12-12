@@ -78,7 +78,7 @@
 <para>it applies default cuts </para>
         </briefdescription>
         <detaileddescription>
-<para>Depth 0: two muons of opposite charge and invariant mass between 8.5 and 11.5 GeV Depth 1: select dimuon pT between 10 and 100 GeV Dept 2: select dimuon pT between 10 and 100 GeV and a rapidity less than 0.6 in abs value</para>
+<para>Depth 0: two muons of opposite charge and invariant mass between 8.5 and 11.5 GeV Depth 1: select dimuon pT between 10 and 100 GeV Depth 2: select dimuon pT between 10 and 100 GeV and a rapidity less than 0.6 in abs value</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>df</parametername>
@@ -101,11 +101,6 @@
 </para>
         </detaileddescription>
         <inbodydescription>
-<para>Cut around the Ys</para>
-<para>Select events with exactly two muons</para>
-<para>Select events with two muons of opposite charge</para>
-<para>Cut around the Ys</para>
-<para>Select events with 10 GeV &lt; pT &lt; 100 GeV</para>
         </inbodydescription>
         <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" line="15" column="18" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" bodystart="15" bodyend="63"/>
       </memberdef>
@@ -160,9 +155,6 @@
 </para>
         </detaileddescription>
         <inbodydescription>
-<para>apply filter</para>
-<para>count remaining events</para>
-<para>handles exception thrown at 74</para>
         </inbodydescription>
         <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" line="65" column="18" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" bodystart="65" bodyend="82"/>
       </memberdef>
@@ -241,10 +233,6 @@
 </para>
         </detaileddescription>
         <inbodydescription>
-<para>initialize datafrmae</para>
-<para>if pmr is not nan</para>
-<para>format string to pass to the filter function</para>
-<para>apply filter</para>
         </inbodydescription>
         <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" line="84" column="18" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" bodystart="84" bodyend="128"/>
       </memberdef>
@@ -377,7 +365,6 @@
 <para>Selection of the data. </para>
     </briefdescription>
     <detaileddescription>
-<para>The data are selected to be two muons of opposite charge with an invariant mass around the mass of the Y resonances. Also it is possible to choose other cuts on the trasverse momentum and the pseudorapidity of the dimuon state.</para>
 <para>The data are selected to be two muon of opposite charge with an invariant mass around the mass of the Y resonances. Also it is possible to choose other cuts on the trasverse momentum and the pseudorapidity of the dimuon state. </para>
     </detaileddescription>
     <programlisting>
@@ -401,21 +388,21 @@
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;nMuon&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Events<sp/>with<sp/>exactly<sp/>two<sp/>muons&quot;</highlight><highlight class="normal">})</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.Filter([](</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x)</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x<sp/>&gt;<sp/>8.5<sp/>&amp;&amp;<sp/>x<sp/>&lt;<sp/>11.5;<sp/>},</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;Dimuon_mass&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Inviariant<sp/>mass<sp/>between<sp/>8.5<sp/>and<sp/>11.5&quot;</highlight><highlight class="normal">});<sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;Dimuon_mass&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Inviariant<sp/>mass<sp/>between<sp/>8.5<sp/>and<sp/>11.5&quot;</highlight><highlight class="normal">});<sp/></highlight><highlight class="comment">//<sp/>Cut<sp/>around<sp/>the<sp/>Ys</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>df_cut;</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>df_cut<sp/>=<sp/>df.Filter([](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x)</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x<sp/>==<sp/>2;<sp/>},</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;nMuon&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Events<sp/>with<sp/>exactly<sp/>two<sp/>muons&quot;</highlight><highlight class="normal">})<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.Filter(</highlight><highlight class="stringliteral">&quot;Muon_charge[0]<sp/>!=<sp/>Muon_charge[1]&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Muons<sp/>with<sp/>opposite<sp/>charge&quot;</highlight><highlight class="normal">)<sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;nMuon&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Events<sp/>with<sp/>exactly<sp/>two<sp/>muons&quot;</highlight><highlight class="normal">})<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Select<sp/>events<sp/>with<sp/>exactly<sp/>two<sp/>muons</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.Filter(</highlight><highlight class="stringliteral">&quot;Muon_charge[0]<sp/>!=<sp/>Muon_charge[1]&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Muons<sp/>with<sp/>opposite<sp/>charge&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="comment">//<sp/>Select<sp/>events<sp/>with<sp/>two<sp/>muons<sp/>of<sp/>opposite<sp/>charge</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.Filter([](</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x)</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x<sp/>&gt;<sp/>8.5<sp/>&amp;&amp;<sp/>x<sp/>&lt;<sp/>11.5;<sp/>},</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;Dimuon_mass&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Inviariant<sp/>mass<sp/>between<sp/>8.5<sp/>and<sp/>11.5&quot;</highlight><highlight class="normal">})<sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;Dimuon_mass&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Inviariant<sp/>mass<sp/>between<sp/>8.5<sp/>and<sp/>11.5&quot;</highlight><highlight class="normal">})<sp/></highlight><highlight class="comment">//<sp/>Cut<sp/>around<sp/>the<sp/>Ys</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.Filter([](</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x)</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x<sp/>&gt;<sp/>10.<sp/>&amp;&amp;<sp/>x<sp/>&lt;<sp/>100.;<sp/>},</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;Dimuon_pt&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Pt<sp/>between<sp/>10<sp/>and<sp/>100<sp/>GeV&quot;</highlight><highlight class="normal">});<sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;Dimuon_pt&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Pt<sp/>between<sp/>10<sp/>and<sp/>100<sp/>GeV&quot;</highlight><highlight class="normal">});<sp/></highlight><highlight class="comment">//<sp/>Select<sp/>events<sp/>with<sp/>10<sp/>GeV<sp/>&lt;<sp/>pT<sp/>&lt;<sp/>100<sp/>GeV</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>df_cut;</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:</highlight></codeline>
@@ -442,16 +429,16 @@
 <codeline lineno="65"><highlight class="normal">ROOT::RDF::RNode<sp/><ref refid="_cuts_8_c_1ad88e5867f055c448c9ea50fbc484e032" kindref="member">applyFilter</ref>(ROOT::RDF::RNode<sp/>df_custom_cut,<sp/>std::string_view<sp/>filter,<sp/>std::string_view<sp/>name)</highlight></codeline>
 <codeline lineno="66"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/>df_custom_cut<sp/>=<sp/>df_custom_cut.Filter(filter,<sp/>name);<sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>df_custom_cut<sp/>=<sp/>df_custom_cut.Filter(filter,<sp/>name);<sp/></highlight><highlight class="comment">//<sp/>apply<sp/>filter<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>df_custom_cut.Count();<sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>df_custom_cut.Count();<sp/></highlight><highlight class="comment">//count<sp/>remaining<sp/>events</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*count<sp/>&lt;<sp/>800)</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(std::runtime_error(</highlight><highlight class="stringliteral">&quot;Too<sp/>few<sp/>events.<sp/>Fit<sp/>might<sp/>not<sp/>converge.<sp/>Please<sp/>relaxe<sp/>cuts.\n&quot;</highlight><highlight class="normal">));</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::exception<sp/>&amp;ex)<sp/></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::exception<sp/>&amp;ex)<sp/></highlight><highlight class="comment">//handles<sp/>exception<sp/>thrown<sp/>at<sp/>74</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>ex.what()<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -460,11 +447,11 @@
 <codeline lineno="83"><highlight class="normal"></highlight></codeline>
 <codeline lineno="84"><highlight class="normal">ROOT::RDF::RNode<sp/><ref refid="_cuts_8_c_1a515639bbb9e11a7276c3930bbe236486" kindref="member">customFilter</ref>(ROOT::RDataFrame<sp/>df,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;pmr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;pMr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;ymr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;yMr)</highlight></codeline>
 <codeline lineno="85"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/>ROOT::RDF::RNode<sp/>df_custom_cut<sp/>=<sp/>df;<sp/></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pmr<sp/>==<sp/>pmr)<sp/></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>ROOT::RDF::RNode<sp/>df_custom_cut<sp/>=<sp/>df;<sp/></highlight><highlight class="comment">//initialize<sp/>datafrmae</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pmr<sp/>==<sp/>pmr)<sp/></highlight><highlight class="comment">//if<sp/>pmr<sp/>is<sp/>not<sp/>nan</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>fil<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Dimuon_pt<sp/>&gt;&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(pmr);<sp/></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>df_custom_cut<sp/>=<sp/><ref refid="_cuts_8_c_1ad88e5867f055c448c9ea50fbc484e032" kindref="member">applyFilter</ref>(df_custom_cut,<sp/>fil,<sp/></highlight><highlight class="stringliteral">&quot;Custom<sp/>cut<sp/>on<sp/>minimum<sp/>pt&quot;</highlight><highlight class="normal">);<sp/></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>fil<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Dimuon_pt<sp/>&gt;&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(pmr);<sp/></highlight><highlight class="comment">//<sp/>format<sp/>string<sp/>to<sp/>pass<sp/>to<sp/>the<sp/>filter<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>df_custom_cut<sp/>=<sp/><ref refid="_cuts_8_c_1ad88e5867f055c448c9ea50fbc484e032" kindref="member">applyFilter</ref>(df_custom_cut,<sp/>fil,<sp/></highlight><highlight class="stringliteral">&quot;Custom<sp/>cut<sp/>on<sp/>minimum<sp/>pt&quot;</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//apply<sp/>filter</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pMr<sp/>==<sp/>pMr)</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/>{</highlight></codeline>

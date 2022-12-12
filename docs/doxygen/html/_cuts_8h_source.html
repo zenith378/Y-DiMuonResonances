@@ -77,28 +77,28 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="_cuts_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifndef Cuts_h</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define Cuts_h</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef Cuts_h</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define Cuts_h</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;ROOT/RDataFrame.hxx&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;TMath.h&quot;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;ROOT/RDataFrame.hxx&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;TMath.h&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>ROOT::RDF::RNode <a class="code hl_function" href="_cuts_8h.html#a82224e5a346917e96fd9e992f1e2f5ae">DFFilter</a>(ROOT::RDataFrame df, <span class="keywordtype">int</span> &amp;dr);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>ROOT::RDF::RNode <a class="code hl_function" href="_cuts_8h.html#ad88e5867f055c448c9ea50fbc484e032">applyFilter</a>(ROOT::RDF::RNode df_custom_cut, std::string_view filter, std::string_view name);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>ROOT::RDF::RNode <a class="code hl_function" href="_cuts_8h.html#a515639bbb9e11a7276c3930bbe236486">customFilter</a>(ROOT::RDataFrame df, <span class="keywordtype">float</span> &amp;pmr, <span class="keywordtype">float</span> &amp;pMr, <span class="keywordtype">float</span> &amp;ymr, <span class="keywordtype">float</span> &amp;yMr );</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>ROOT::RDataFrame <a class="code hl_function" href="_cuts_8h.html#a46fe84d0ea4a598bb0b22ad6caf8fca4">generateDataFrame</a>(ROOT::RDataFrame df, <span class="keywordtype">int</span> &amp;dr);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>ROOT::RDF::RNode <a class="code hl_function" href="_cuts_8h.html#a881a676022acb37d96b60e0227b5893e">Cuts</a>(ROOT::RDataFrame df, <span class="keywordtype">int</span> &amp;dr,<span class="keywordtype">float</span> &amp;pmr, <span class="keywordtype">float</span> &amp;pMr, <span class="keywordtype">float</span> &amp;ymr, <span class="keywordtype">float</span> &amp;yMr );</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">#endif </span><span class="comment">/* Cuts_h */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>ROOT::RDF::RNode <a class="code hl_function" href="_cuts_8h.html#a82224e5a346917e96fd9e992f1e2f5ae">DFFilter</a>(ROOT::RDataFrame df, <span class="keywordtype">int</span> &amp;dr);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>ROOT::RDF::RNode <a class="code hl_function" href="_cuts_8h.html#ad88e5867f055c448c9ea50fbc484e032">applyFilter</a>(ROOT::RDF::RNode df_custom_cut, std::string_view filter, std::string_view name);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>ROOT::RDF::RNode <a class="code hl_function" href="_cuts_8h.html#a515639bbb9e11a7276c3930bbe236486">customFilter</a>(ROOT::RDataFrame df, <span class="keywordtype">float</span> &amp;pmr, <span class="keywordtype">float</span> &amp;pMr, <span class="keywordtype">float</span> &amp;ymr, <span class="keywordtype">float</span> &amp;yMr );</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>ROOT::RDataFrame <a class="code hl_function" href="_cuts_8h.html#a46fe84d0ea4a598bb0b22ad6caf8fca4">generateDataFrame</a>(ROOT::RDataFrame df, <span class="keywordtype">int</span> &amp;dr);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>ROOT::RDF::RNode <a class="code hl_function" href="_cuts_8h.html#a881a676022acb37d96b60e0227b5893e">Cuts</a>(ROOT::RDataFrame df, <span class="keywordtype">int</span> &amp;dr,<span class="keywordtype">float</span> &amp;pmr, <span class="keywordtype">float</span> &amp;pMr, <span class="keywordtype">float</span> &amp;ymr, <span class="keywordtype">float</span> &amp;yMr );</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">#endif </span><span class="comment">/* Cuts_h */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="a_cuts_8h_html_a46fe84d0ea4a598bb0b22ad6caf8fca4"><div class="ttname"><a href="_cuts_8h.html#a46fe84d0ea4a598bb0b22ad6caf8fca4">generateDataFrame</a></div><div class="ttdeci">ROOT::RDataFrame generateDataFrame(ROOT::RDataFrame df, int &amp;dr)</div><div class="ttdoc">tries to read cutted dataframe from file and generates it, if it does not exists</div><div class="ttdef"><b>Definition:</b> Cuts.C:131</div></div>
 <div class="ttc" id="a_cuts_8h_html_a515639bbb9e11a7276c3930bbe236486"><div class="ttname"><a href="_cuts_8h.html#a515639bbb9e11a7276c3930bbe236486">customFilter</a></div><div class="ttdeci">ROOT::RDF::RNode customFilter(ROOT::RDataFrame df, float &amp;pmr, float &amp;pMr, float &amp;ymr, float &amp;yMr)</div><div class="ttdoc">looks for active otpion parameters and applies custom cuts</div><div class="ttdef"><b>Definition:</b> Cuts.C:84</div></div>
 <div class="ttc" id="a_cuts_8h_html_a82224e5a346917e96fd9e992f1e2f5ae"><div class="ttname"><a href="_cuts_8h.html#a82224e5a346917e96fd9e992f1e2f5ae">DFFilter</a></div><div class="ttdeci">ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int &amp;dr)</div><div class="ttdoc">it applies default cuts</div><div class="ttdef"><b>Definition:</b> Cuts.C:15</div></div>

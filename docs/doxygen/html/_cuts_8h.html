@@ -78,6 +78,9 @@ $(function() {
   <div class="headertitle"><div class="title">Cuts.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Selection of the data.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;ROOT/RDataFrame.hxx&quot;</code><br />
 <code>#include &quot;TMath.h&quot;</code><br />
 </div>
@@ -101,7 +104,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:a881a676022acb37d96b60e0227b5893e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modified a muon DataFrame cutting on nMuon, Muon_charge, Dimuon_mass, Dimuon_pt and Dimuon_y.  <a href="_cuts_8h.html#a881a676022acb37d96b60e0227b5893e">More...</a><br /></td></tr>
 <tr class="separator:a881a676022acb37d96b60e0227b5893e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Selection of the data. </p>
+<p >The data are selected to be two muons of opposite charge with an invariant mass round the mass of the Y resonances. Also it is possible to choose other cuts on the trasverse momentum and the pseudorapidity of the dimuon state. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="ad88e5867f055c448c9ea50fbc484e032" name="ad88e5867f055c448c9ea50fbc484e032"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad88e5867f055c448c9ea50fbc484e032">&#9670;&#160;</a></span>applyFilter()</h2>
 
@@ -144,9 +150,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Cutted Dataframe </dd></dl>
-<p >apply filter</p>
-<p >count remaining events</p>
-<p >handles exception thrown at 74</p>
 
 </div>
 </div>
@@ -206,10 +209,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Cutted Dataframe </dd></dl>
-<p >initialize datafrmae</p>
-<p >if pmr is not nan</p>
-<p >format string to pass to the filter function</p>
-<p >apply filter</p>
 
 </div>
 </div>
@@ -305,7 +304,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>it applies default cuts </p>
-<p >Depth 0: two muons of opposite charge and invariant mass between 8.5 and 11.5 GeV Depth 1: select dimuon pT between 10 and 100 GeV Dept 2: select dimuon pT between 10 and 100 GeV and a rapidity less than 0.6 in abs value</p>
+<p >Depth 0: two muons of opposite charge and invariant mass between 8.5 and 11.5 GeV Depth 1: select dimuon pT between 10 and 100 GeV Depth 2: select dimuon pT between 10 and 100 GeV and a rapidity less than 0.6 in abs value</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">df</td><td>dataframe to be cutted </td></tr>
@@ -314,11 +313,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Cutted Dataframe </dd></dl>
-<p >Cut around the Ys</p>
-<p >Select events with exactly two muons</p>
-<p >Select events with two muons of opposite charge</p>
-<p >Cut around the Ys</p>
-<p >Select events with 10 GeV &lt; pT &lt; 100 GeV</p>
 
 </div>
 </div>

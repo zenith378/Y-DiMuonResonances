@@ -227,14 +227,12 @@
         <param>
           <type>std::string &amp;</type>
           <declname>fnr</declname>
-          <defname>nfr</defname>
         </param>
         <param>
           <type>int &amp;</type>
           <declname>vr</declname>
         </param>
         <briefdescription>
-<para>three peaks fit plus a quadratic background </para>
         </briefdescription>
         <detaileddescription>
 <para>Implementation of the fit function</para>
@@ -311,13 +309,13 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>result of the fit</para>
+<simplesect kind="return"><para>result of the fit </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/fitRoo.h" line="70" column="14" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/fitRoo.C" bodystart="71" bodyend="292" declfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/fitRoo.h" declline="70" declcolumn="14"/>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/fitRoo.h" line="70" column="14" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/fitRoo.C" bodystart="67" bodyend="285" declfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/fitRoo.h" declline="70" declcolumn="14"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

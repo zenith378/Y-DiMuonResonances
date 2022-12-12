@@ -3,38 +3,38 @@
 \mbox{\hyperlink{df__set_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 }
-\DoxyCodeLine{23 \textcolor{preprocessor}{\#ifndef df\_set\_h}}
-\DoxyCodeLine{24 \textcolor{preprocessor}{\#define df\_set\_h}}
-\DoxyCodeLine{25 }
-\DoxyCodeLine{26 \textcolor{preprocessor}{\#include "{}ROOT/RDataFrame.hxx"{}}}
-\DoxyCodeLine{27 \textcolor{preprocessor}{\#include "{}ROOT/RVec.hxx"{}} \textcolor{comment}{//per usare ROOT::VecOps::RVec<T>}}
-\DoxyCodeLine{28 \textcolor{preprocessor}{\#include "{}Math/Vector4Dfwd.h"{}}}
-\DoxyCodeLine{29 \textcolor{preprocessor}{\#include "{}Math/Vector4D.h"{}} \textcolor{comment}{//per usare PtEtaPhiMVector e le sue funzioni}}
-\DoxyCodeLine{30 \textcolor{preprocessor}{\#include "{}TMath.h"{}}}
-\DoxyCodeLine{31 \textcolor{preprocessor}{\#include "{}TFile.h"{}}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#ifndef df\_set\_h}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define df\_set\_h}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include "{}ROOT/RDataFrame.hxx"{}}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include "{}ROOT/RVec.hxx"{}} \textcolor{comment}{//per usare ROOT::VecOps::RVec<T>}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#include "{}Math/Vector4Dfwd.h"{}}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include "{}Math/Vector4D.h"{}} \textcolor{comment}{//per usare PtEtaPhiMVector e le sue funzioni}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#include "{}TMath.h"{}}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#include "{}TFile.h"{}}}
+\DoxyCodeLine{31 }
 \DoxyCodeLine{32 }
-\DoxyCodeLine{33 }
-\DoxyCodeLine{34 \textcolor{keyword}{using namespace }ROOT::VecOps;}
+\DoxyCodeLine{33 \textcolor{keyword}{using namespace }ROOT::VecOps;}
+\DoxyCodeLine{34 }
 \DoxyCodeLine{35 }
-\DoxyCodeLine{36 }
-\DoxyCodeLine{47 ROOT::Math::PtEtaPhiMVector \mbox{\hyperlink{df__set_8h_a2827f39a40e4b4fae93e112b77caabd7}{computeFourVec}}(RVec<float>\& pt, RVec<float>\& eta, RVec<float>\& phi, RVec<float>\& mass);}
+\DoxyCodeLine{46 ROOT::Math::PtEtaPhiMVector \mbox{\hyperlink{df__set_8h_af438380d6514d79f1f7e8c9e0abfe4a9}{computeDiMuonFourVec}}(RVec<float>\& pt, RVec<float>\& eta, RVec<float>\& phi, RVec<float>\& mass);}
+\DoxyCodeLine{47 }
 \DoxyCodeLine{48 }
-\DoxyCodeLine{49 }
-\DoxyCodeLine{57 \textcolor{keywordtype}{float} \mbox{\hyperlink{df__set_8h_a43136d27aec318f3aed40fb8bf91d419}{computeFourVecInvariantMass}}(ROOT::Math::PtEtaPhiMVector\& fourvec);}
+\DoxyCodeLine{56 \textcolor{keywordtype}{float} \mbox{\hyperlink{df__set_8h_af34623f885412e03b09394c01f1b36cf}{computeDiMuonInvariantMass}}(ROOT::Math::PtEtaPhiMVector\& fourvec);}
+\DoxyCodeLine{57 }
 \DoxyCodeLine{58 }
-\DoxyCodeLine{59 }
-\DoxyCodeLine{67 \textcolor{keywordtype}{float} \mbox{\hyperlink{df__set_8h_af52c5f7a0059aeb7705901bb4f997a84}{computeFourVecPT}}(ROOT::Math::PtEtaPhiMVector\& fourvec);}
+\DoxyCodeLine{66 \textcolor{keywordtype}{float} \mbox{\hyperlink{df__set_8h_abc3dcc064a14d81643ca53fb4476cb58}{computeDiMuonPT}}(ROOT::Math::PtEtaPhiMVector\& fourvec);}
+\DoxyCodeLine{67 }
 \DoxyCodeLine{68 }
-\DoxyCodeLine{69 }
-\DoxyCodeLine{77 \textcolor{keywordtype}{float} \mbox{\hyperlink{df__set_8h_a843d5848125590711f1322a95913618e}{computeFourVecRapidity}}(ROOT::Math::PtEtaPhiMVector\& fourvec);}
+\DoxyCodeLine{76 \textcolor{keywordtype}{float} \mbox{\hyperlink{df__set_8h_aa008d9f6ecf77c07b6af80b1ef7cf9af}{computeDiMuonRapidity}}(ROOT::Math::PtEtaPhiMVector\& fourvec);}
+\DoxyCodeLine{77 }
 \DoxyCodeLine{78 }
-\DoxyCodeLine{79 }
-\DoxyCodeLine{87 \textcolor{keywordtype}{float} \mbox{\hyperlink{df__set_8h_a4df46765a50745c9d281e1d5b59b9bbd}{computeFourVecBeta}}(ROOT::Math::PtEtaPhiMVector\& fourvec);}
+\DoxyCodeLine{86 \textcolor{keywordtype}{float} \mbox{\hyperlink{df__set_8h_a57a6e40352ae3e1653a413240f4db8bf}{computeDiMuonBeta}}(ROOT::Math::PtEtaPhiMVector\& fourvec);}
+\DoxyCodeLine{87 }
 \DoxyCodeLine{88 }
-\DoxyCodeLine{89 }
-\DoxyCodeLine{96 ROOT::RDataFrame \mbox{\hyperlink{df__set_8h_ad8de3c0c9c809d0cdc00ba1bcfe996e4}{df\_set}}();}
+\DoxyCodeLine{95 ROOT::RDataFrame \mbox{\hyperlink{df__set_8h_ad8de3c0c9c809d0cdc00ba1bcfe996e4}{df\_set}}();}
+\DoxyCodeLine{96 }
 \DoxyCodeLine{97 }
-\DoxyCodeLine{98 }
-\DoxyCodeLine{99 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* Cuts\_h */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* Cuts\_h */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

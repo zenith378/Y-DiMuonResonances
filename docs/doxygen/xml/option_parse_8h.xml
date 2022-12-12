@@ -57,16 +57,13 @@
 <para>Print help stream for understanding what options and flags are available. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="option_parse_8_c_1ae964ff8411b4fdcaf65cb5529aea4bef" kindref="member">PrintHelp()</ref> </para>
-<para>It prints the following output:</para>
-<para><ndash/>cutDepth [-d] &lt;n&gt;: Choose Cut Depth between the options: 0 (default): select events with two muons of opposite charge and invariant mass around Y-State 1: select dimuon pT between 10 and 100 GeV 2: select dimuon pT between 10 and 100 GeV and a rapidity less than 0.6 in abs value <ndash/>fitFunction [-f] &lt;PDFName&gt;: Choose PDF to use as Fit Function between three options: gaus: Gaussian PDF bw: Breit - Wigner PDF stud: t-Student PDF <ndash/>nameFig [-n] &lt;figName&gt; name of file in which the figure of the fit is going to be saved <ndash/>ptmin [-p] &lt;val&gt;: Set minimum cut on pt (GeV) <ndash/>ptMax [-P] &lt;val&gt;: Set maximum cut on pt (GeV) <ndash/>ymin [-y] &lt;val&gt;: Set minimum cut on rapidity <ndash/>yMax [-Y] &lt;val&gt;: Set maximum cut on rapidity <ndash/>help [-h]: Show help <ndash/>verbose [-v]: Verbose Fit, shows minimisation steps.</para>
-<para><ref refid="option_parse_8_c_1ae964ff8411b4fdcaf65cb5529aea4bef" kindref="member">PrintHelp()</ref> </para>
+<para><ref refid="option_parse_8h_1ae964ff8411b4fdcaf65cb5529aea4bef" kindref="member">PrintHelp()</ref> </para>
 <para>It prints the following output:</para>
 <para><ndash/>cutDepth [-d] &lt;n&gt;: Choose Cut Depth between the options: 0 (default): select events with two muons of opposite charge and invariant mass around Y-State 1: select dimuon pT between 10 and 100 GeV 2: select dimuon pT between 10 and 100 GeV and a rapidity less than 0.6 in abs value <ndash/>fitFunction [-f] &lt;PDFName&gt;: Choose PDF to use as Fit Function between three options: gaus: Gaussian PDF bw: Breit - Wigner PDF stud: t-Student PDF <ndash/>nameFig [-n] &lt;figName&gt; name of file in which the figure of the fit is going to be saved <ndash/>ptmin [-p] &lt;val&gt;: Set minimum cut on pt (GeV) <ndash/>ptMax [-P] &lt;val&gt;: Set maximum cut on pt (GeV) <ndash/>ymin [-y] &lt;val&gt;: Set minimum cut on rapidity <ndash/>yMax [-Y] &lt;val&gt;: Set maximum cut on rapidity <ndash/>help [-h]: Show help <ndash/>verbose [-v]: Verbose Fit, shows minimisation steps. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" line="53" column="6" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/optionParse.C" bodystart="52" bodyend="71" declfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" declline="53" declcolumn="6"/>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" line="53" column="6" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/optionParse.C" bodystart="29" bodyend="48" declfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" declline="53" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="option_parse_8h_1a9c0e386a8b56ce160fedfc90034b93af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -120,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" line="65" column="6" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/optionParse.C" bodystart="83" bodyend="89" declfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" declline="65" declcolumn="6"/>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" line="65" column="6" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/optionParse.C" bodystart="51" bodyend="57" declfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" declline="65" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="option_parse_8h_1aaaac65a9c94bb3634948df7d2d9e1164" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -174,7 +171,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" line="77" column="6" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/optionParse.C" bodystart="101" bodyend="106" declfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" declline="77" declcolumn="6"/>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" line="77" column="6" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/optionParse.C" bodystart="59" bodyend="64" declfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" declline="77" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="option_parse_8h_1acd083c726f0de0e35447b9d4176abc76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -185,17 +182,14 @@
 <para>it handles an exception of type &quot;unknown&quot; </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="option_parse_8_c_1acd083c726f0de0e35447b9d4176abc76" kindref="member">unknownErrorHandling()</ref> </para>
-<para><simplesect kind="return"><para>error exit</para>
-</simplesect>
-<ref refid="option_parse_8_c_1acd083c726f0de0e35447b9d4176abc76" kindref="member">unknownErrorHandling()</ref> </para>
+<para><ref refid="option_parse_8h_1acd083c726f0de0e35447b9d4176abc76" kindref="member">unknownErrorHandling()</ref> </para>
 <para><simplesect kind="return"><para>error exit </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" line="86" column="6" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/optionParse.C" bodystart="115" bodyend="119" declfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" declline="86" declcolumn="6"/>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" line="86" column="6" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/optionParse.C" bodystart="67" bodyend="71" declfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" declline="86" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="option_parse_8h_1aca42904c9676201145e82289b4b97f47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -329,11 +323,8 @@
 </para>
         </detaileddescription>
         <inbodydescription>
-<para>Define short options and whether an argument is expected</para>
-<para>define long options</para>
-<para>initialize index to 0</para>
         </inbodydescription>
-        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" line="102" column="6" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/optionParse.C" bodystart="134" bodyend="323" declfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" declline="102" declcolumn="6"/>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" line="102" column="6" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/optionParse.C" bodystart="73" bodyend="262" declfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/optionParse.h" declline="102" declcolumn="6"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

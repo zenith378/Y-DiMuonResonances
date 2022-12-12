@@ -15,11 +15,11 @@
     <member refid="_cuts_8h_1a881a676022acb37d96b60e0227b5893e" kind="function"><name>Cuts</name></member>
   </compound>
   <compound refid="df__set_8h" kind="file"><name>df_set.h</name>
-    <member refid="df__set_8h_1a2827f39a40e4b4fae93e112b77caabd7" kind="function"><name>computeFourVec</name></member>
-    <member refid="df__set_8h_1a43136d27aec318f3aed40fb8bf91d419" kind="function"><name>computeFourVecInvariantMass</name></member>
-    <member refid="df__set_8h_1af52c5f7a0059aeb7705901bb4f997a84" kind="function"><name>computeFourVecPT</name></member>
-    <member refid="df__set_8h_1a843d5848125590711f1322a95913618e" kind="function"><name>computeFourVecRapidity</name></member>
-    <member refid="df__set_8h_1a4df46765a50745c9d281e1d5b59b9bbd" kind="function"><name>computeFourVecBeta</name></member>
+    <member refid="df__set_8h_1af438380d6514d79f1f7e8c9e0abfe4a9" kind="function"><name>computeDiMuonFourVec</name></member>
+    <member refid="df__set_8h_1af34623f885412e03b09394c01f1b36cf" kind="function"><name>computeDiMuonInvariantMass</name></member>
+    <member refid="df__set_8h_1abc3dcc064a14d81643ca53fb4476cb58" kind="function"><name>computeDiMuonPT</name></member>
+    <member refid="df__set_8h_1aa008d9f6ecf77c07b6af80b1ef7cf9af" kind="function"><name>computeDiMuonRapidity</name></member>
+    <member refid="df__set_8h_1a57a6e40352ae3e1653a413240f4db8bf" kind="function"><name>computeDiMuonBeta</name></member>
     <member refid="df__set_8h_1ad8de3c0c9c809d0cdc00ba1bcfe996e4" kind="function"><name>df_set</name></member>
   </compound>
   <compound refid="fit_roo_8h" kind="file"><name>fitRoo.h</name>
@@ -45,11 +45,11 @@
     <member refid="_cuts_8_c_1a881a676022acb37d96b60e0227b5893e" kind="function"><name>Cuts</name></member>
   </compound>
   <compound refid="df__set_8_c" kind="file"><name>df_set.C</name>
-    <member refid="df__set_8_c_1a2827f39a40e4b4fae93e112b77caabd7" kind="function"><name>computeFourVec</name></member>
-    <member refid="df__set_8_c_1a43136d27aec318f3aed40fb8bf91d419" kind="function"><name>computeFourVecInvariantMass</name></member>
-    <member refid="df__set_8_c_1af52c5f7a0059aeb7705901bb4f997a84" kind="function"><name>computeFourVecPT</name></member>
-    <member refid="df__set_8_c_1a843d5848125590711f1322a95913618e" kind="function"><name>computeFourVecRapidity</name></member>
-    <member refid="df__set_8_c_1a4df46765a50745c9d281e1d5b59b9bbd" kind="function"><name>computeFourVecBeta</name></member>
+    <member refid="df__set_8_c_1af438380d6514d79f1f7e8c9e0abfe4a9" kind="function"><name>computeDiMuonFourVec</name></member>
+    <member refid="df__set_8_c_1af34623f885412e03b09394c01f1b36cf" kind="function"><name>computeDiMuonInvariantMass</name></member>
+    <member refid="df__set_8_c_1abc3dcc064a14d81643ca53fb4476cb58" kind="function"><name>computeDiMuonPT</name></member>
+    <member refid="df__set_8_c_1aa008d9f6ecf77c07b6af80b1ef7cf9af" kind="function"><name>computeDiMuonRapidity</name></member>
+    <member refid="df__set_8_c_1a57a6e40352ae3e1653a413240f4db8bf" kind="function"><name>computeDiMuonBeta</name></member>
     <member refid="df__set_8_c_1ad8de3c0c9c809d0cdc00ba1bcfe996e4" kind="function"><name>df_set</name></member>
   </compound>
   <compound refid="fit_roo_8_c" kind="file"><name>fitRoo.C</name>

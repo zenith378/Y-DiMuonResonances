@@ -14,18 +14,18 @@ Header file of \mbox{\hyperlink{df__set_8_c}{df\+\_\+set.\+C}}.
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector \mbox{\hyperlink{df__set_8h_a2827f39a40e4b4fae93e112b77caabd7}{compute\+Four\+Vec}} (RVec$<$ float $>$ \&pt, RVec$<$ float $>$ \&eta, RVec$<$ float $>$ \&phi, RVec$<$ float $>$ \&mass)
+ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector \mbox{\hyperlink{df__set_8h_af438380d6514d79f1f7e8c9e0abfe4a9}{compute\+Di\+Muon\+Four\+Vec}} (RVec$<$ float $>$ \&pt, RVec$<$ float $>$ \&eta, RVec$<$ float $>$ \&phi, RVec$<$ float $>$ \&mass)
 \begin{DoxyCompactList}\small\item\em it calculates the four vector of a dimuon starting from pt, eta, phi and mass of muon pair \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{df__set_8h_a43136d27aec318f3aed40fb8bf91d419}{compute\+Four\+Vec\+Invariant\+Mass}} (ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector \&fourvec)
+float \mbox{\hyperlink{df__set_8h_af34623f885412e03b09394c01f1b36cf}{compute\+Di\+Muon\+Invariant\+Mass}} (ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector \&fourvec)
 \begin{DoxyCompactList}\small\item\em it calculates the invariant mass of a dimuon Four Vector \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{df__set_8h_af52c5f7a0059aeb7705901bb4f997a84}{compute\+Four\+Vec\+PT}} (ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector \&fourvec)
-\begin{DoxyCompactList}\small\item\em it calculates the transverse momentum of a dimuon Four Vector \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{df__set_8h_a843d5848125590711f1322a95913618e}{compute\+Four\+Vec\+Rapidity}} (ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector \&fourvec)
-\begin{DoxyCompactList}\small\item\em it calculates the rapidity of a dimuon Four Vector //inserire formula rapidità \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{df__set_8h_a4df46765a50745c9d281e1d5b59b9bbd}{compute\+Four\+Vec\+Beta}} (ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector \&fourvec)
-\begin{DoxyCompactList}\small\item\em it calculates beta (p\+\_\+t/E) of a dimuon Four Vector \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{df__set_8h_abc3dcc064a14d81643ca53fb4476cb58}{compute\+Di\+Muon\+PT}} (ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector \&fourvec)
+\item 
+float \mbox{\hyperlink{df__set_8h_aa008d9f6ecf77c07b6af80b1ef7cf9af}{compute\+Di\+Muon\+Rapidity}} (ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector \&fourvec)
+\begin{DoxyCompactList}\small\item\em \{it calculates the rapidity of a dimuon Four Vector //inserire formula rapidità\} \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{df__set_8h_a57a6e40352ae3e1653a413240f4db8bf}{compute\+Di\+Muon\+Beta}} (ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector \&fourvec)
+\begin{DoxyCompactList}\small\item\em \{it calculates beta (p\+\_\+t/E) of a dimuon Four Vector\} \end{DoxyCompactList}\item 
 ROOT\+::\+RData\+Frame \mbox{\hyperlink{df__set_8h_ad8de3c0c9c809d0cdc00ba1bcfe996e4}{df\+\_\+set}} ()
-\begin{DoxyCompactList}\small\item\em it defines the dataframe used in the analysis or it creates it if it is not found \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -35,50 +35,26 @@ In this file are defined the functions used in order to read the dataframe (or c
 
 compute\+Four\+Vector()\+: computes a four vector of a dimuon starting from pt, eta, phi and mass
 
-\mbox{\hyperlink{df__set_8h_a43136d27aec318f3aed40fb8bf91d419}{compute\+Four\+Vec\+Invariant\+Mass()}}\+: computes invariant mass of given four vector
+compute\+Four\+Vec\+Invariant\+Mass()\+: computes invariant mass of given four vector
 
-\mbox{\hyperlink{df__set_8h_af52c5f7a0059aeb7705901bb4f997a84}{compute\+Four\+Vec\+PT()}}\+: computes pt of given Four\+Vector
+compute\+Four\+Vec\+PT()\+: computes pt of given Four\+Vector
 
-\mbox{\hyperlink{df__set_8h_a843d5848125590711f1322a95913618e}{compute\+Four\+Vec\+Rapidity()}}\+: computes rapidity of given four vector
+compute\+Four\+Vec\+Rapidity()\+: computes rapidity of given four vector
 
-\mbox{\hyperlink{df__set_8h_a4df46765a50745c9d281e1d5b59b9bbd}{compute\+Four\+Vec\+Beta()}}\+: computes beta of given four vector
+compute\+Four\+Vec\+Beta()\+: computes beta of given four vector
 
 \mbox{\hyperlink{df__set_8h_ad8de3c0c9c809d0cdc00ba1bcfe996e4}{df\+\_\+set()}}\+: defines the dataframe 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{df__set_8h_a2827f39a40e4b4fae93e112b77caabd7}\label{df__set_8h_a2827f39a40e4b4fae93e112b77caabd7}} 
-\index{df\_set.h@{df\_set.h}!computeFourVec@{computeFourVec}}
-\index{computeFourVec@{computeFourVec}!df\_set.h@{df\_set.h}}
-\doxysubsubsection{\texorpdfstring{computeFourVec()}{computeFourVec()}}
-{\footnotesize\ttfamily ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector compute\+Four\+Vec (\begin{DoxyParamCaption}\item[{RVec$<$ float $>$ \&}]{pt,  }\item[{RVec$<$ float $>$ \&}]{eta,  }\item[{RVec$<$ float $>$ \&}]{phi,  }\item[{RVec$<$ float $>$ \&}]{mass }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{df__set_8h_a57a6e40352ae3e1653a413240f4db8bf}\label{df__set_8h_a57a6e40352ae3e1653a413240f4db8bf}} 
+\index{df\_set.h@{df\_set.h}!computeDiMuonBeta@{computeDiMuonBeta}}
+\index{computeDiMuonBeta@{computeDiMuonBeta}!df\_set.h@{df\_set.h}}
+\doxysubsubsection{\texorpdfstring{computeDiMuonBeta()}{computeDiMuonBeta()}}
+{\footnotesize\ttfamily float compute\+Di\+Muon\+Beta (\begin{DoxyParamCaption}\item[{ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector \&}]{fourvec }\end{DoxyParamCaption})}
 
 
 
-it calculates the four vector of a dimuon starting from pt, eta, phi and mass of muon pair 
-
-
-\begin{DoxyParams}{Parameters}
-{\em pt} & transverse momentum \\
-\hline
-{\em eta} & azimuthal angle \\
-\hline
-{\em phi} & angle \\
-\hline
-{\em mass} & mass\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Pt\+Eta\+Phi\+MVector 
-\end{DoxyReturn}
-\mbox{\Hypertarget{df__set_8h_a4df46765a50745c9d281e1d5b59b9bbd}\label{df__set_8h_a4df46765a50745c9d281e1d5b59b9bbd}} 
-\index{df\_set.h@{df\_set.h}!computeFourVecBeta@{computeFourVecBeta}}
-\index{computeFourVecBeta@{computeFourVecBeta}!df\_set.h@{df\_set.h}}
-\doxysubsubsection{\texorpdfstring{computeFourVecBeta()}{computeFourVecBeta()}}
-{\footnotesize\ttfamily float compute\+Four\+Vec\+Beta (\begin{DoxyParamCaption}\item[{ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector \&}]{fourvec }\end{DoxyParamCaption})}
-
-
-
-it calculates beta (p\+\_\+t/E) of a dimuon Four Vector 
+\{it calculates beta (p\+\_\+t/E) of a dimuon Four Vector\} 
 
 
 \begin{DoxyParams}{Parameters}
@@ -88,11 +64,35 @@ it calculates beta (p\+\_\+t/E) of a dimuon Four Vector
 \begin{DoxyReturn}{Returns}
 beta 
 \end{DoxyReturn}
-\mbox{\Hypertarget{df__set_8h_a43136d27aec318f3aed40fb8bf91d419}\label{df__set_8h_a43136d27aec318f3aed40fb8bf91d419}} 
-\index{df\_set.h@{df\_set.h}!computeFourVecInvariantMass@{computeFourVecInvariantMass}}
-\index{computeFourVecInvariantMass@{computeFourVecInvariantMass}!df\_set.h@{df\_set.h}}
-\doxysubsubsection{\texorpdfstring{computeFourVecInvariantMass()}{computeFourVecInvariantMass()}}
-{\footnotesize\ttfamily float compute\+Four\+Vec\+Invariant\+Mass (\begin{DoxyParamCaption}\item[{ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector \&}]{fourvec }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{df__set_8h_af438380d6514d79f1f7e8c9e0abfe4a9}\label{df__set_8h_af438380d6514d79f1f7e8c9e0abfe4a9}} 
+\index{df\_set.h@{df\_set.h}!computeDiMuonFourVec@{computeDiMuonFourVec}}
+\index{computeDiMuonFourVec@{computeDiMuonFourVec}!df\_set.h@{df\_set.h}}
+\doxysubsubsection{\texorpdfstring{computeDiMuonFourVec()}{computeDiMuonFourVec()}}
+{\footnotesize\ttfamily ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector compute\+Di\+Muon\+Four\+Vec (\begin{DoxyParamCaption}\item[{RVec$<$ float $>$ \&}]{pt,  }\item[{RVec$<$ float $>$ \&}]{eta,  }\item[{RVec$<$ float $>$ \&}]{phi,  }\item[{RVec$<$ float $>$ \&}]{mass }\end{DoxyParamCaption})}
+
+
+
+it calculates the four vector of a dimuon starting from pt, eta, phi and mass of muon pair 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pt} & transverse momentum \\
+\hline
+{\em eta} & \\
+\hline
+{\em phi} & \\
+\hline
+{\em mass} & mass\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pt\+Eta\+Phi\+MVector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{df__set_8h_af34623f885412e03b09394c01f1b36cf}\label{df__set_8h_af34623f885412e03b09394c01f1b36cf}} 
+\index{df\_set.h@{df\_set.h}!computeDiMuonInvariantMass@{computeDiMuonInvariantMass}}
+\index{computeDiMuonInvariantMass@{computeDiMuonInvariantMass}!df\_set.h@{df\_set.h}}
+\doxysubsubsection{\texorpdfstring{computeDiMuonInvariantMass()}{computeDiMuonInvariantMass()}}
+{\footnotesize\ttfamily float compute\+Di\+Muon\+Invariant\+Mass (\begin{DoxyParamCaption}\item[{ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector \&}]{fourvec }\end{DoxyParamCaption})}
 
 
 
@@ -106,15 +106,11 @@ it calculates the invariant mass of a dimuon Four Vector
 \begin{DoxyReturn}{Returns}
 mass 
 \end{DoxyReturn}
-\mbox{\Hypertarget{df__set_8h_af52c5f7a0059aeb7705901bb4f997a84}\label{df__set_8h_af52c5f7a0059aeb7705901bb4f997a84}} 
-\index{df\_set.h@{df\_set.h}!computeFourVecPT@{computeFourVecPT}}
-\index{computeFourVecPT@{computeFourVecPT}!df\_set.h@{df\_set.h}}
-\doxysubsubsection{\texorpdfstring{computeFourVecPT()}{computeFourVecPT()}}
-{\footnotesize\ttfamily float compute\+Four\+Vec\+PT (\begin{DoxyParamCaption}\item[{ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector \&}]{fourvec }\end{DoxyParamCaption})}
-
-
-
-it calculates the transverse momentum of a dimuon Four Vector 
+\mbox{\Hypertarget{df__set_8h_abc3dcc064a14d81643ca53fb4476cb58}\label{df__set_8h_abc3dcc064a14d81643ca53fb4476cb58}} 
+\index{df\_set.h@{df\_set.h}!computeDiMuonPT@{computeDiMuonPT}}
+\index{computeDiMuonPT@{computeDiMuonPT}!df\_set.h@{df\_set.h}}
+\doxysubsubsection{\texorpdfstring{computeDiMuonPT()}{computeDiMuonPT()}}
+{\footnotesize\ttfamily float compute\+Di\+Muon\+PT (\begin{DoxyParamCaption}\item[{ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector \&}]{fourvec }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
@@ -124,15 +120,15 @@ it calculates the transverse momentum of a dimuon Four Vector
 \begin{DoxyReturn}{Returns}
 pt (transverse momentum) 
 \end{DoxyReturn}
-\mbox{\Hypertarget{df__set_8h_a843d5848125590711f1322a95913618e}\label{df__set_8h_a843d5848125590711f1322a95913618e}} 
-\index{df\_set.h@{df\_set.h}!computeFourVecRapidity@{computeFourVecRapidity}}
-\index{computeFourVecRapidity@{computeFourVecRapidity}!df\_set.h@{df\_set.h}}
-\doxysubsubsection{\texorpdfstring{computeFourVecRapidity()}{computeFourVecRapidity()}}
-{\footnotesize\ttfamily float compute\+Four\+Vec\+Rapidity (\begin{DoxyParamCaption}\item[{ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector \&}]{fourvec }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{df__set_8h_aa008d9f6ecf77c07b6af80b1ef7cf9af}\label{df__set_8h_aa008d9f6ecf77c07b6af80b1ef7cf9af}} 
+\index{df\_set.h@{df\_set.h}!computeDiMuonRapidity@{computeDiMuonRapidity}}
+\index{computeDiMuonRapidity@{computeDiMuonRapidity}!df\_set.h@{df\_set.h}}
+\doxysubsubsection{\texorpdfstring{computeDiMuonRapidity()}{computeDiMuonRapidity()}}
+{\footnotesize\ttfamily float compute\+Di\+Muon\+Rapidity (\begin{DoxyParamCaption}\item[{ROOT\+::\+Math\+::\+Pt\+Eta\+Phi\+MVector \&}]{fourvec }\end{DoxyParamCaption})}
 
 
 
-it calculates the rapidity of a dimuon Four Vector //inserire formula rapidità 
+\{it calculates the rapidity of a dimuon Four Vector //inserire formula rapidità\} 
 
 
 \begin{DoxyParams}{Parameters}
@@ -148,44 +144,9 @@ rapidity
 \doxysubsubsection{\texorpdfstring{df\_set()}{df\_set()}}
 {\footnotesize\ttfamily ROOT\+::\+RData\+Frame df\+\_\+set (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-
-
-it defines the dataframe used in the analysis or it creates it if it is not found 
-
-\begin{DoxyReturn}{Returns}
-Dataframe
-\end{DoxyReturn}
-
-
 \begin{DoxyReturn}{Returns}
 Dataframe 
 \end{DoxyReturn}
-try opening file
-
-if data directory does not exists
-
-throw an exception to handle
-
-handle exception of not found directory
-
-try opening file
-
-if filesystem cannot access pathname
-
 throw exception to handle
 
-hadles exception of not found file
-
-reading dataframe from online Nano\+AOD
-
-define more useful variables in the dataframe
-
-save dataframe in a root file to avoid downloading it all the times
-
-read dataframe from file stored
-
-this last step is necessary in order to be coherent with return type of the function \mbox{\hyperlink{df__set_8_c_ad8de3c0c9c809d0cdc00ba1bcfe996e4}{df\+\_\+set()}}
-
-if it happens anything that is not caught
-
-function defined in \mbox{\hyperlink{option_parse_8_c}{option\+Parse.\+C}}
+throw exception to handle

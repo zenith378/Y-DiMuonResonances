@@ -107,7 +107,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a47519f963af9cc34c19ff7d6f465dc6c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fit_roo_8_c.html#a47519f963af9cc34c19ff7d6f465dc6c">formatYString</a> (int &amp;dr, float &amp;ymr, float &amp;yMr)</td></tr>
 <tr class="separator:a47519f963af9cc34c19ff7d6f465dc6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a9508331d97be33788890aa55dc1dd7"><td class="memItemLeft" align="right" valign="top">RooFitResult *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fit_roo_8_c.html#a8a9508331d97be33788890aa55dc1dd7">fitRoo</a> (TH1 *hh, int &amp;fr, int &amp;dr, float &amp;pmr, float &amp;pMr, float &amp;ymr, float &amp;yMr, std::string &amp;nfr, int &amp;vr)</td></tr>
-<tr class="memdesc:a8a9508331d97be33788890aa55dc1dd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">three peaks fit plus a quadratic background  <a href="fit_roo_8_c.html#a8a9508331d97be33788890aa55dc1dd7">More...</a><br /></td></tr>
 <tr class="separator:a8a9508331d97be33788890aa55dc1dd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -163,7 +162,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>nfr</em>, </td>
+          <td class="paramname"><em>fnr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -178,8 +177,22 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>three peaks fit plus a quadratic background </p>
+<p >Implementation of the fit function</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hh</td><td>histogram to be fitted </td></tr>
+    <tr><td class="paramname">dr</td><td>reference of depth defined in main </td></tr>
+    <tr><td class="paramname">fr</td><td>reference of fitFunction defined in main </td></tr>
+    <tr><td class="paramname">pmr</td><td>recerence of ptm (minimum pt) defined in main </td></tr>
+    <tr><td class="paramname">pMr</td><td>recerence of ptM (maximum pt) defined in main </td></tr>
+    <tr><td class="paramname">ymr</td><td>recerence of ym (minimum rapidity) defined in main </td></tr>
+    <tr><td class="paramname">yMr</td><td>recerence of yM (maximum rapidity) defined in main </td></tr>
+    <tr><td class="paramname">nfr</td><td>recerence of nameFile defined in main </td></tr>
+    <tr><td class="paramname">vr</td><td>reference of varaible verbose defined in main</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>result of the fit </dd></dl>
 
 </div>
 </div>

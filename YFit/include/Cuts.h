@@ -1,11 +1,8 @@
 /*********************************
-*\file Cuts.C
+*\file Cuts.h
 *\brief Selection of the data.
 *
-* The data are selected to be two muons of opposite charge with an invariant mass 
-* around the mass of the Y resonances. 
-* Also it is possible to choose other cuts on the trasverse momentum and 
-* the pseudorapidity of the dimuon state.
+* The data are selected to be two muons of opposite charge with an invariant mass round the mass of the Y resonances. Also it is possible to choose other cuts on the trasverse momentum and the pseudorapidity of the dimuon state.
 ************************************************/
 
 #ifndef Cuts_h
@@ -20,7 +17,7 @@
  * 
  * Depth 0: two muons of opposite charge and invariant mass between 8.5 and 11.5 GeV
  * Depth 1: select dimuon pT between 10 and 100 GeV
- * Dept  2: select dimuon pT between 10 and 100 GeV
+ * Depth 2: select dimuon pT between 10 and 100 GeV
  *          and a rapidity less than 0.6 in abs value
  * 
  * @param df dataframe to be cutted

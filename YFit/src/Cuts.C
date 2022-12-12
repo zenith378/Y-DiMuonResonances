@@ -24,21 +24,21 @@ ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int &dr)
                             {"nMuon"}, {"Events with exactly two muons"})
                       .Filter([](float x)
                               { return x > 8.5 && x < 11.5; },
-                              {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}); /// Cut around the Ys
+                              {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}); // Cut around the Ys
     return df_cut;
   }
   case 1:
   {
     auto df_cut = df.Filter([](unsigned int x)
                             { return x == 2; },
-                            {"nMuon"}, {"Events with exactly two muons"})                       /// Select events with exactly two muons
-                      .Filter("Muon_charge[0] != Muon_charge[1]", "Muons with opposite charge") /// Select events with two muons of opposite charge
+                            {"nMuon"}, {"Events with exactly two muons"})                       // Select events with exactly two muons
+                      .Filter("Muon_charge[0] != Muon_charge[1]", "Muons with opposite charge") // Select events with two muons of opposite charge
                       .Filter([](float x)
                               { return x > 8.5 && x < 11.5; },
-                              {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}) /// Cut around the Ys
+                              {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}) // Cut around the Ys
                       .Filter([](float x)
                               { return x > 10. && x < 100.; },
-                              {"Dimuon_pt"}, {"Pt between 10 and 100 GeV"}); /// Select events with 10 GeV < pT < 100 GeV
+                              {"Dimuon_pt"}, {"Pt between 10 and 100 GeV"}); // Select events with 10 GeV < pT < 100 GeV
     return df_cut;
   }
   case 2:
@@ -65,16 +65,16 @@ ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int &dr)
 ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode df_custom_cut, std::string_view filter, std::string_view name)
 {
 
-  df_custom_cut = df_custom_cut.Filter(filter, name); /// apply filter 
+  df_custom_cut = df_custom_cut.Filter(filter, name); // apply filter 
   try
   {
-    auto count = df_custom_cut.Count(); ///count remaining events
+    auto count = df_custom_cut.Count(); //count remaining events
     if (*count < 800)
     {
       throw(std::runtime_error("Too few events. Fit might not converge. Please relaxe cuts.\n"));
     }
   }
-  catch (std::exception &ex) ///handles exception thrown at 74
+  catch (std::exception &ex) //handles exception thrown at 74
   {
     std::cerr << ex.what() << std::endl;
   }
@@ -83,11 +83,11 @@ ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode df_custom_cut, std::string_view fi
 
 ROOT::RDF::RNode customFilter(ROOT::RDataFrame df, float &pmr, float &pMr, float &ymr, float &yMr)
 {
-  ROOT::RDF::RNode df_custom_cut = df; ///initialize datafrmae
-  if (pmr == pmr) ///if pmr is not nan
+  ROOT::RDF::RNode df_custom_cut = df; //initialize datafrmae
+  if (pmr == pmr) //if pmr is not nan
   {
-    std::string fil = "Dimuon_pt >" + std::to_string(pmr); /// format string to pass to the filter function
-    df_custom_cut = applyFilter(df_custom_cut, fil, "Custom cut on minimum pt"); ///apply filter
+    std::string fil = "Dimuon_pt >" + std::to_string(pmr); // format string to pass to the filter function
+    df_custom_cut = applyFilter(df_custom_cut, fil, "Custom cut on minimum pt"); //apply filter
   }
   if (pMr == pMr)
   {

@@ -29,7 +29,7 @@ std\+::string \mbox{\hyperlink{fit_roo_8_c_a3486da7fabe684039983850799d99617}{fo
 std\+::string \mbox{\hyperlink{fit_roo_8_c_a47519f963af9cc34c19ff7d6f465dc6c}{format\+YString}} (int \&dr, float \&ymr, float \&y\+Mr)
 \item 
 Roo\+Fit\+Result $\ast$ \mbox{\hyperlink{fit_roo_8_c_a8a9508331d97be33788890aa55dc1dd7}{fit\+Roo}} (TH1 $\ast$hh, int \&fr, int \&dr, float \&pmr, float \&p\+Mr, float \&ymr, float \&y\+Mr, std\+::string \&nfr, int \&vr)
-\begin{DoxyCompactList}\small\item\em three peaks fit plus a quadratic background \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -37,12 +37,34 @@ Roo\+Fit\+Result $\ast$ \mbox{\hyperlink{fit_roo_8_c_a8a9508331d97be33788890aa55
 \index{fitRoo.C@{fitRoo.C}!fitRoo@{fitRoo}}
 \index{fitRoo@{fitRoo}!fitRoo.C@{fitRoo.C}}
 \doxysubsubsection{\texorpdfstring{fitRoo()}{fitRoo()}}
-{\footnotesize\ttfamily Roo\+Fit\+Result $\ast$ fit\+Roo (\begin{DoxyParamCaption}\item[{TH1 $\ast$}]{hh,  }\item[{int \&}]{fr,  }\item[{int \&}]{dr,  }\item[{float \&}]{pmr,  }\item[{float \&}]{p\+Mr,  }\item[{float \&}]{ymr,  }\item[{float \&}]{y\+Mr,  }\item[{std\+::string \&}]{nfr,  }\item[{int \&}]{vr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Roo\+Fit\+Result $\ast$ fit\+Roo (\begin{DoxyParamCaption}\item[{TH1 $\ast$}]{hh,  }\item[{int \&}]{fr,  }\item[{int \&}]{dr,  }\item[{float \&}]{pmr,  }\item[{float \&}]{p\+Mr,  }\item[{float \&}]{ymr,  }\item[{float \&}]{y\+Mr,  }\item[{std\+::string \&}]{fnr,  }\item[{int \&}]{vr }\end{DoxyParamCaption})}
+
+Implementation of the fit function
 
 
-
-three peaks fit plus a quadratic background 
-
+\begin{DoxyParams}{Parameters}
+{\em hh} & histogram to be fitted \\
+\hline
+{\em dr} & reference of depth defined in main \\
+\hline
+{\em fr} & reference of fit\+Function defined in main \\
+\hline
+{\em pmr} & recerence of ptm (minimum pt) defined in main \\
+\hline
+{\em p\+Mr} & recerence of ptM (maximum pt) defined in main \\
+\hline
+{\em ymr} & recerence of ym (minimum rapidity) defined in main \\
+\hline
+{\em y\+Mr} & recerence of yM (maximum rapidity) defined in main \\
+\hline
+{\em nfr} & recerence of name\+File defined in main \\
+\hline
+{\em vr} & reference of varaible verbose defined in main\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+result of the fit 
+\end{DoxyReturn}
 \mbox{\Hypertarget{fit_roo_8_c_a3486da7fabe684039983850799d99617}\label{fit_roo_8_c_a3486da7fabe684039983850799d99617}} 
 \index{fitRoo.C@{fitRoo.C}!formatPtString@{formatPtString}}
 \index{formatPtString@{formatPtString}!fitRoo.C@{fitRoo.C}}
