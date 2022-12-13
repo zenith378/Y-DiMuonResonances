@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -47,6 +51,22 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('globals.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -83,26 +103,26 @@ $(function() {
 <li>computeDiMuonPT()&#160;:&#160;<a class="el" href="df__set_8h.html#abc3dcc064a14d81643ca53fb4476cb58">df_set.h</a>, <a class="el" href="df__set_8_c.html#abc3dcc064a14d81643ca53fb4476cb58">df_set.C</a></li>
 <li>computeDiMuonRapidity()&#160;:&#160;<a class="el" href="df__set_8h.html#aa008d9f6ecf77c07b6af80b1ef7cf9af">df_set.h</a>, <a class="el" href="df__set_8_c.html#aa008d9f6ecf77c07b6af80b1ef7cf9af">df_set.C</a></li>
 <li>conversionErrorHandling()&#160;:&#160;<a class="el" href="option_parse_8h.html#aaaac65a9c94bb3634948df7d2d9e1164">optionParse.h</a>, <a class="el" href="option_parse_8_c.html#aaaac65a9c94bb3634948df7d2d9e1164">optionParse.C</a></li>
-<li>customFilter()&#160;:&#160;<a class="el" href="_cuts_8h.html#a515639bbb9e11a7276c3930bbe236486">Cuts.h</a>, <a class="el" href="_cuts_8_c.html#a515639bbb9e11a7276c3930bbe236486">Cuts.C</a></li>
-<li>Cuts()&#160;:&#160;<a class="el" href="_cuts_8h.html#a881a676022acb37d96b60e0227b5893e">Cuts.h</a>, <a class="el" href="_cuts_8_c.html#a881a676022acb37d96b60e0227b5893e">Cuts.C</a></li>
+<li>customFilter()&#160;:&#160;<a class="el" href="_cuts_8h.html#a3f56f7040ce095fc4bbdebb1e56885d9">Cuts.h</a>, <a class="el" href="_cuts_8_c.html#a5b9ce53044461569dee6be77bc38dab1">Cuts.C</a></li>
+<li>Cuts()&#160;:&#160;<a class="el" href="_cuts_8h.html#aa92f896b8492969206a3a7bf7ed7ca58">Cuts.h</a>, <a class="el" href="_cuts_8_c.html#a4ae91476a3113362a222b6c4804a21cc">Cuts.C</a></li>
 </ul>
 
 
 <h3><a id="index_d" name="index_d"></a>- d -</h3><ul>
 <li>df_set()&#160;:&#160;<a class="el" href="df__set_8h.html#ad8de3c0c9c809d0cdc00ba1bcfe996e4">df_set.h</a>, <a class="el" href="df__set_8_c.html#ad8de3c0c9c809d0cdc00ba1bcfe996e4">df_set.C</a></li>
-<li>DFFilter()&#160;:&#160;<a class="el" href="_cuts_8h.html#a82224e5a346917e96fd9e992f1e2f5ae">Cuts.h</a>, <a class="el" href="_cuts_8_c.html#a82224e5a346917e96fd9e992f1e2f5ae">Cuts.C</a></li>
+<li>DFFilter()&#160;:&#160;<a class="el" href="_cuts_8h.html#a999581a4b8a61d1c3a0992618995a202">Cuts.h</a>, <a class="el" href="_cuts_8_c.html#ad5c4ba5c55e37105ec5143ca514baff9">Cuts.C</a></li>
 </ul>
 
 
 <h3><a id="index_f" name="index_f"></a>- f -</h3><ul>
-<li>fitRoo()&#160;:&#160;<a class="el" href="fit_roo_8h.html#ae27b1286b8f342d0a639eed87957ac88">fitRoo.h</a>, <a class="el" href="fit_roo_8_c.html#a8a9508331d97be33788890aa55dc1dd7">fitRoo.C</a></li>
-<li>formatPtString()&#160;:&#160;<a class="el" href="fit_roo_8h.html#a3486da7fabe684039983850799d99617">fitRoo.h</a>, <a class="el" href="fit_roo_8_c.html#a3486da7fabe684039983850799d99617">fitRoo.C</a></li>
-<li>formatYString()&#160;:&#160;<a class="el" href="fit_roo_8h.html#a47519f963af9cc34c19ff7d6f465dc6c">fitRoo.h</a>, <a class="el" href="fit_roo_8_c.html#a47519f963af9cc34c19ff7d6f465dc6c">fitRoo.C</a></li>
+<li>fitRoo()&#160;:&#160;<a class="el" href="fit_roo_8h.html#a84fb8d2142c443d16fb022c61687a943">fitRoo.h</a>, <a class="el" href="fit_roo_8_c.html#a67d8224e3ad8659124dc75a3171ac39f">fitRoo.C</a></li>
+<li>formatPtString()&#160;:&#160;<a class="el" href="fit_roo_8h.html#afd959a903e62b8f764046aef9c4a50ce">fitRoo.h</a>, <a class="el" href="fit_roo_8_c.html#a226096555f03ef4766b14ef26ad180aa">fitRoo.C</a></li>
+<li>formatYString()&#160;:&#160;<a class="el" href="fit_roo_8h.html#add30b3055a445a8e22e3b6c0bdca4f14">fitRoo.h</a>, <a class="el" href="fit_roo_8_c.html#ae8c22851ee74909f46fb519b367b4131">fitRoo.C</a></li>
 </ul>
 
 
 <h3><a id="index_g" name="index_g"></a>- g -</h3><ul>
-<li>generateDataFrame()&#160;:&#160;<a class="el" href="_cuts_8h.html#a46fe84d0ea4a598bb0b22ad6caf8fca4">Cuts.h</a>, <a class="el" href="_cuts_8_c.html#a46fe84d0ea4a598bb0b22ad6caf8fca4">Cuts.C</a></li>
+<li>generateDataFrame()&#160;:&#160;<a class="el" href="_cuts_8h.html#a491b9b7b1eeb0d05013c87a0517ff106">Cuts.h</a>, <a class="el" href="_cuts_8_c.html#ae9fcedecb7b51edc0dc07482618ce27b">Cuts.C</a></li>
 </ul>
 
 
@@ -117,7 +137,7 @@ $(function() {
 
 
 <h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
-<li>PrintHelp()&#160;:&#160;<a class="el" href="option_parse_8h.html#ae964ff8411b4fdcaf65cb5529aea4bef">optionParse.h</a>, <a class="el" href="option_parse_8_c.html#ae964ff8411b4fdcaf65cb5529aea4bef">optionParse.C</a></li>
+<li>PrintHelp()&#160;:&#160;<a class="el" href="option_parse_8h.html#a59a0451629f08aaf9c102537bdc5f6f8">optionParse.h</a>, <a class="el" href="option_parse_8_c.html#ae964ff8411b4fdcaf65cb5529aea4bef">optionParse.C</a></li>
 <li>ProcessArgs()&#160;:&#160;<a class="el" href="option_parse_8h.html#aca42904c9676201145e82289b4b97f47">optionParse.h</a>, <a class="el" href="option_parse_8_c.html#aca42904c9676201145e82289b4b97f47">optionParse.C</a></li>
 </ul>
 
@@ -128,12 +148,15 @@ $(function() {
 
 
 <h3><a id="index_u" name="index_u"></a>- u -</h3><ul>
-<li>unknownErrorHandling()&#160;:&#160;<a class="el" href="option_parse_8h.html#acd083c726f0de0e35447b9d4176abc76">optionParse.h</a>, <a class="el" href="option_parse_8_c.html#acd083c726f0de0e35447b9d4176abc76">optionParse.C</a></li>
+<li>unknownErrorHandling()&#160;:&#160;<a class="el" href="option_parse_8h.html#a8fe99fcd80b89fe5bb6082476741c91e">optionParse.h</a>, <a class="el" href="option_parse_8_c.html#acd083c726f0de0e35447b9d4176abc76">optionParse.C</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -39,7 +39,7 @@ using namespace RooFit;
  * 
  * \return result of the fit
  *************************************************************/
-std::string formatPtString(int &dr, float &pmr, float &pMr);
+std::string formatPtString(int dr=0, float pmr= std::nanf("1"), float pMr= std::nanf("1"));
 
 /***********************************************************
  * Formatting the string to be displayed on the canvas regarding the cuts made on y
@@ -50,7 +50,7 @@ std::string formatPtString(int &dr, float &pmr, float &pMr);
  * 
  * \return result of the fit
  *************************************************************/
-std::string formatYString(int &dr, float &ymr, float &yMr);
+std::string formatYString(int dr=0, float ymr= std::nanf("1"), float yMr= std::nanf("1"));
 
 /***********************************************************
  * Implementation of the fit function
@@ -67,6 +67,6 @@ std::string formatYString(int &dr, float &ymr, float &yMr);
  * 
  * \return result of the fit
  *************************************************************/
-RooFitResult* fitRoo(TH1* hh, int &fr, int &dr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &fnr, int &vr);
+RooFitResult* fitRoo(TH1* hh, int fr=0, int dr=0, float pmr= std::nanf("1"), float pMr= std::nanf("1"), float ymr= std::nanf("1"), float yMr= std::nanf("1"), std::string fnr="YResonancesFit", int vr=0);
 
 #endif

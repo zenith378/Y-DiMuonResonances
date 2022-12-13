@@ -21,9 +21,18 @@
 
 using namespace RooFit;
 
-int test1(){
-    int j=0;
-    RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5001, 11.5);
+void test1(){
+
+    int depth = 0; //Depth value initialized to 0, i.e. no cuts
+    int fitfunc = 0; //Fit Function initilized to 0, i.e. Breit-Wigner
+    float ptm = std::nanf("1"); //The default parameters for the cuts are initialized to NaN, so that they are used only if they become a number
+    float ptM = std::nanf("2"); //see first parameter
+    float ym = std::nanf("3"); //see first parameter
+    float yM = std::nanf("4"); //see first parameter
+    std::string nameFile = "YResonancesFitTest"; //The name of the file in which the figure is saved
+    int verbose = 0; //verbose flag initialized to zero, i.e. no output stream for Minuit
+
+    RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5, 11.5);
     
     // Build polynomial pdf
     RooRealVar a0("a0", "a0", 3101, 0, 10000);
@@ -52,20 +61,22 @@ int test1(){
 
     RooDataSet *data = model.generate(x, 100e3);
     TH1 *hdata = data->createHistogram("x", 300);
-    RooFitResult* fitResult = fitRoo(hdata);
+    RooFitResult* fitResult = fitRoo(hdata,depth,fitfunc,ptm,ptM,ym,yM,nameFile,verbose);
     
     //se non fa il fit il test fallisce
-    if (fitResult->status()!=0) j=-1;// fitResult->covQual() < 2
+    if (fitResult->status()!=0) exit(1);// fitResult->covQual() < 2
     
     //manca da controllare che i valori uscenti siano quelli inizializzati
     RooArgList lf = fitResult->floatParsFinal();
+    /*
     RooArgList lv = [a0,a1,a2,fsig1,fsig2,fsig3,mean1,mean2,mean3,sigma1,sigma2,sigma3];
     const TMatrixDSym &cov = fitResult->covarianceMatrix()
     for(int i=0; i<12; i++){
-        /* Se la differenza tra il valore vero e quello uscente dal fit è maggiore di una deviazione std allora il test fallisce (return -1)*/
+        // Se la differenza tra il valore vero e quello uscente dal fit è maggiore di una deviazione std allora il test fallisce (return -1)
         if(std::abs(lf[i]-lv[i]) > 1 * std::sqrt(cov(i,i))){
-            j=-1;
+            exit(1);
         }
     }
-    return j;
+    */
+    exit(0);
 }

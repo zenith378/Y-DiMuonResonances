@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -46,6 +50,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('option_parse_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,11 +88,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_13a6baedfa387399723bfc39e0bc3cc4.html">YFit</a></li><li class="navelem"><a class="el" href="dir_33bf31e38b0246880c826fe6c405ac4f.html">include</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">optionParse.h</div></div>
 </div><!--header-->
@@ -84,7 +100,7 @@ $(function() {
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;getopt.h&quot;</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keywordtype">void</span> <a class="code hl_function" href="option_parse_8h.html#ae964ff8411b4fdcaf65cb5529aea4bef">PrintHelp</a>();</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keywordtype">void</span> <a class="code hl_function" href="option_parse_8h.html#a59a0451629f08aaf9c102537bdc5f6f8">PrintHelp</a>();</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keywordtype">void</span> <a class="code hl_function" href="option_parse_8h.html#a9c0e386a8b56ce160fedfc90034b93af">outOfRangeErrorHandling</a>(std::string opt, std::string range, <span class="keyword">const</span> <span class="keywordtype">char</span> *insrtvl);</div>
@@ -93,22 +109,26 @@ $(function() {
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keywordtype">void</span> <a class="code hl_function" href="option_parse_8h.html#aaaac65a9c94bb3634948df7d2d9e1164">conversionErrorHandling</a>(std::string opt, std::string range, std::invalid_argument err);</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keywordtype">void</span> <a class="code hl_function" href="option_parse_8h.html#acd083c726f0de0e35447b9d4176abc76">unknownErrorHandling</a>();</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keywordtype">void</span> <a class="code hl_function" href="option_parse_8h.html#a8fe99fcd80b89fe5bb6082476741c91e">unknownErrorHandling</a>();</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="keywordtype">void</span> <a class="code hl_function" href="option_parse_8h.html#aca42904c9676201145e82289b4b97f47">ProcessArgs</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv,<span class="keywordtype">int</span> &amp;dr,<span class="keywordtype">int</span> &amp;fr, <span class="keywordtype">float</span> &amp;pmr, <span class="keywordtype">float</span> &amp;pMr, <span class="keywordtype">float</span> &amp;ymr, <span class="keywordtype">float</span> &amp;yMr, std::string &amp;nfr, <span class="keywordtype">int</span> &amp;vr);</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aoption_parse_8h_html_a9c0e386a8b56ce160fedfc90034b93af"><div class="ttname"><a href="option_parse_8h.html#a9c0e386a8b56ce160fedfc90034b93af">outOfRangeErrorHandling</a></div><div class="ttdeci">void outOfRangeErrorHandling(std::string opt, std::string range, const char *insrtvl)</div><div class="ttdoc">it handles an exception of type &quot;Out of Range&quot;;</div><div class="ttdef"><b>Definition:</b> optionParse.C:51</div></div>
-<div class="ttc" id="aoption_parse_8h_html_aaaac65a9c94bb3634948df7d2d9e1164"><div class="ttname"><a href="option_parse_8h.html#aaaac65a9c94bb3634948df7d2d9e1164">conversionErrorHandling</a></div><div class="ttdeci">void conversionErrorHandling(std::string opt, std::string range, std::invalid_argument err)</div><div class="ttdoc">it handles an exception of type &quot;conversion Error&quot;;</div><div class="ttdef"><b>Definition:</b> optionParse.C:59</div></div>
+<div class="ttc" id="aoption_parse_8h_html_a59a0451629f08aaf9c102537bdc5f6f8"><div class="ttname"><a href="option_parse_8h.html#a59a0451629f08aaf9c102537bdc5f6f8">PrintHelp</a></div><div class="ttdeci">void PrintHelp()</div><div class="ttdoc">Print help stream for understanding what options and flags are available.</div><div class="ttdef"><b>Definition:</b> optionParse.C:29</div></div>
+<div class="ttc" id="aoption_parse_8h_html_a8fe99fcd80b89fe5bb6082476741c91e"><div class="ttname"><a href="option_parse_8h.html#a8fe99fcd80b89fe5bb6082476741c91e">unknownErrorHandling</a></div><div class="ttdeci">void unknownErrorHandling()</div><div class="ttdoc">it handles an exception of type &quot;unknown&quot;</div><div class="ttdef"><b>Definition:</b> optionParse.C:67</div></div>
+<div class="ttc" id="aoption_parse_8h_html_a9c0e386a8b56ce160fedfc90034b93af"><div class="ttname"><a href="option_parse_8h.html#a9c0e386a8b56ce160fedfc90034b93af">outOfRangeErrorHandling</a></div><div class="ttdeci">void outOfRangeErrorHandling(std::string opt, std::string range, const char *insrtvl)</div><div class="ttdef"><b>Definition:</b> optionParse.C:51</div></div>
+<div class="ttc" id="aoption_parse_8h_html_aaaac65a9c94bb3634948df7d2d9e1164"><div class="ttname"><a href="option_parse_8h.html#aaaac65a9c94bb3634948df7d2d9e1164">conversionErrorHandling</a></div><div class="ttdeci">void conversionErrorHandling(std::string opt, std::string range, std::invalid_argument err)</div><div class="ttdef"><b>Definition:</b> optionParse.C:59</div></div>
 <div class="ttc" id="aoption_parse_8h_html_aca42904c9676201145e82289b4b97f47"><div class="ttname"><a href="option_parse_8h.html#aca42904c9676201145e82289b4b97f47">ProcessArgs</a></div><div class="ttdeci">void ProcessArgs(int argc, char **argv, int &amp;dr, int &amp;fr, float &amp;pmr, float &amp;pMr, float &amp;ymr, float &amp;yMr, std::string &amp;nfr, int &amp;vr)</div><div class="ttdef"><b>Definition:</b> optionParse.C:73</div></div>
-<div class="ttc" id="aoption_parse_8h_html_acd083c726f0de0e35447b9d4176abc76"><div class="ttname"><a href="option_parse_8h.html#acd083c726f0de0e35447b9d4176abc76">unknownErrorHandling</a></div><div class="ttdeci">void unknownErrorHandling()</div><div class="ttdoc">it handles an exception of type &quot;unknown&quot;</div><div class="ttdef"><b>Definition:</b> optionParse.C:67</div></div>
-<div class="ttc" id="aoption_parse_8h_html_ae964ff8411b4fdcaf65cb5529aea4bef"><div class="ttname"><a href="option_parse_8h.html#ae964ff8411b4fdcaf65cb5529aea4bef">PrintHelp</a></div><div class="ttdeci">void PrintHelp()</div><div class="ttdoc">Print help stream for understanding what options and flags are available.</div><div class="ttdef"><b>Definition:</b> optionParse.C:29</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_13a6baedfa387399723bfc39e0bc3cc4.html">YFit</a></li><li class="navelem"><a class="el" href="dir_33bf31e38b0246880c826fe6c405ac4f.html">include</a></li><li class="navelem"><a class="el" href="option_parse_8h.html">optionParse.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+  </ul>
+</div>
 </body>
 </html>

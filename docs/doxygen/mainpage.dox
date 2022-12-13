@@ -1,0 +1,36 @@
+/*************************************
+ * \mainpage YFit YFit Library Documentation
+ *
+ * This C++ Library was created by Giulio Cordova and Matilde Carminati for the Computing Methods exam.
+ *
+ * \section intro_sec Introduction
+ * YFit Library is a simple library used to fit the first three Y resonances from the open cms dimuon dataset
+ * It comes together with its own main in order to use it.
+ *
+ * Brief descrption of the program workflow (main) and the main function.
+ *
+ * \section example_usage A simple example usage
+ * *
+ * \section program_des Description of main (and functionality of libraries)
+ * 
+ * \subsection option_param Choose of the parameters and flags
+ * 
+ * \subsection data_load Data Loading
+ *
+ * \subsection apply_cut Apply some cuts!
+ *
+ * \subsection spectrum_draw Draw a preliminary Spectrum Plot
+ *
+ * \subsection fit_roo Fit the Function and save it in a Canvas
+ * 
+ * \section test_doc Testing
+ * 
+ * brief description of the testing
+ * 
+ * \subsection test1 Test 1
+ * 
+ * ...
+ * 
+ * \section Documentation
+ * 
+ *******************************/

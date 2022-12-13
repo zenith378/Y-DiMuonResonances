@@ -12,7 +12,7 @@
 #include "TSystem.h"
 #include "optionParse.h"
 
-ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int &dr)
+ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int dr)
 {
   switch (dr)
   {
@@ -81,7 +81,7 @@ ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode df_custom_cut, std::string_view fi
   return df_custom_cut;
 }
 
-ROOT::RDF::RNode customFilter(ROOT::RDataFrame df, float &pmr, float &pMr, float &ymr, float &yMr)
+ROOT::RDF::RNode customFilter(ROOT::RDataFrame df, float pmr, float pMr, float ymr, float yMr)
 {
   ROOT::RDF::RNode df_custom_cut = df; //initialize datafrmae
   if (pmr == pmr) //if pmr is not nan
@@ -128,7 +128,7 @@ ROOT::RDF::RNode customFilter(ROOT::RDataFrame df, float &pmr, float &pMr, float
 }
 
 
-ROOT::RDataFrame generateDataFrame(ROOT::RDataFrame df, int &dr){
+ROOT::RDataFrame generateDataFrame(ROOT::RDataFrame df, int dr){
   
   ROOT::EnableImplicitMT(1);
   ROOT::RDataFrame *df_off;
@@ -214,7 +214,7 @@ ROOT::RDataFrame generateDataFrame(ROOT::RDataFrame df, int &dr){
 }
 
 
-ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int &dr, float &pmr, float &pMr, float &ymr, float &yMr)
+ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int dr, float pmr, float pMr, float ymr, float yMr)
 {
   // Enable multi-threading
   ROOT::EnableImplicitMT(1);

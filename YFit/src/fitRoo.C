@@ -22,7 +22,7 @@
 
 using namespace RooFit;
 
-std::string formatPtString(int &dr, float &pmr, float &pMr)
+std::string formatPtString(int dr, float pmr, float pMr)
 {
     std::string tmp = "";
 
@@ -42,7 +42,7 @@ std::string formatPtString(int &dr, float &pmr, float &pMr)
     return tmp;
 }
 
-std::string formatYString(int &dr, float &ymr, float &yMr)
+std::string formatYString(int dr, float ymr, float yMr)
 {
     std::string tmp = "";
 
@@ -64,7 +64,7 @@ std::string formatYString(int &dr, float &ymr, float &yMr)
 
 
 
-RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &nfr, int &vr)
+RooFitResult *fitRoo(TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, float yMr, std::string nfr, int vr)
 {
     // Declare observable x
     RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5001, 11.5);

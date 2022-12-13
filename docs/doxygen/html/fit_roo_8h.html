@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -46,6 +50,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('fit_roo_8h.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,11 +88,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_13a6baedfa387399723bfc39e0bc3cc4.html">YFit</a></li><li class="navelem"><a class="el" href="dir_33bf31e38b0246880c826fe6c405ac4f.html">include</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
@@ -96,12 +112,12 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3486da7fabe684039983850799d99617"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fit_roo_8h.html#a3486da7fabe684039983850799d99617">formatPtString</a> (int &amp;dr, float &amp;pmr, float &amp;pMr)</td></tr>
-<tr class="separator:a3486da7fabe684039983850799d99617"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47519f963af9cc34c19ff7d6f465dc6c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fit_roo_8h.html#a47519f963af9cc34c19ff7d6f465dc6c">formatYString</a> (int &amp;dr, float &amp;ymr, float &amp;yMr)</td></tr>
-<tr class="separator:a47519f963af9cc34c19ff7d6f465dc6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae27b1286b8f342d0a639eed87957ac88"><td class="memItemLeft" align="right" valign="top">RooFitResult *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fit_roo_8h.html#ae27b1286b8f342d0a639eed87957ac88">fitRoo</a> (TH1 *hh, int &amp;fr, int &amp;dr, float &amp;pmr, float &amp;pMr, float &amp;ymr, float &amp;yMr, std::string &amp;fnr, int &amp;vr)</td></tr>
-<tr class="separator:ae27b1286b8f342d0a639eed87957ac88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd959a903e62b8f764046aef9c4a50ce"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fit_roo_8h.html#afd959a903e62b8f764046aef9c4a50ce">formatPtString</a> (int dr=0, float pmr=std::nanf(&quot;1&quot;), float pMr=std::nanf(&quot;1&quot;))</td></tr>
+<tr class="separator:afd959a903e62b8f764046aef9c4a50ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add30b3055a445a8e22e3b6c0bdca4f14"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fit_roo_8h.html#add30b3055a445a8e22e3b6c0bdca4f14">formatYString</a> (int dr=0, float ymr=std::nanf(&quot;1&quot;), float yMr=std::nanf(&quot;1&quot;))</td></tr>
+<tr class="separator:add30b3055a445a8e22e3b6c0bdca4f14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84fb8d2142c443d16fb022c61687a943"><td class="memItemLeft" align="right" valign="top">RooFitResult *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fit_roo_8h.html#a84fb8d2142c443d16fb022c61687a943">fitRoo</a> (TH1 *hh, int fr=0, int dr=0, float pmr=std::nanf(&quot;1&quot;), float pMr=std::nanf(&quot;1&quot;), float ymr=std::nanf(&quot;1&quot;), float yMr=std::nanf(&quot;1&quot;), std::string fnr=&quot;YResonancesFit&quot;, int vr=0)</td></tr>
+<tr class="separator:a84fb8d2142c443d16fb022c61687a943"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Function for fitting the data and displying the canvas. </p>
@@ -110,8 +126,8 @@ Functions</h2></td></tr>
 <p >formatYString: it format the string regarding the cut on Y to be displayed on the canvas</p>
 <p >fitRoo: function that fit the data, print the result and the canvas </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="ae27b1286b8f342d0a639eed87957ac88" name="ae27b1286b8f342d0a639eed87957ac88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae27b1286b8f342d0a639eed87957ac88">&#9670;&#160;</a></span>fitRoo()</h2>
+<a id="a84fb8d2142c443d16fb022c61687a943" name="a84fb8d2142c443d16fb022c61687a943"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84fb8d2142c443d16fb022c61687a943">&#9670;&#160;</a></span>fitRoo()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -125,50 +141,50 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>fr</em>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fr</em> = <code>0</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>dr</em>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dr</em> = <code>0</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float &amp;&#160;</td>
-          <td class="paramname"><em>pmr</em>, </td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>pmr</em> = <code>std::nanf(&quot;1&quot;)</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float &amp;&#160;</td>
-          <td class="paramname"><em>pMr</em>, </td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>pMr</em> = <code>std::nanf(&quot;1&quot;)</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float &amp;&#160;</td>
-          <td class="paramname"><em>ymr</em>, </td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>ymr</em> = <code>std::nanf(&quot;1&quot;)</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float &amp;&#160;</td>
-          <td class="paramname"><em>yMr</em>, </td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>yMr</em> = <code>std::nanf(&quot;1&quot;)</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>fnr</em>, </td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fnr</em> = <code>&quot;YResonancesFit&quot;</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>vr</em>&#160;</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>vr</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -196,8 +212,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a3486da7fabe684039983850799d99617" name="a3486da7fabe684039983850799d99617"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3486da7fabe684039983850799d99617">&#9670;&#160;</a></span>formatPtString()</h2>
+<a id="afd959a903e62b8f764046aef9c4a50ce" name="afd959a903e62b8f764046aef9c4a50ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd959a903e62b8f764046aef9c4a50ce">&#9670;&#160;</a></span>formatPtString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -205,20 +221,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">std::string formatPtString </td>
           <td>(</td>
-          <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>dr</em>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dr</em> = <code>0</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float &amp;&#160;</td>
-          <td class="paramname"><em>pmr</em>, </td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>pmr</em> = <code>std::nanf(&quot;1&quot;)</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float &amp;&#160;</td>
-          <td class="paramname"><em>pMr</em>&#160;</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>pMr</em> = <code>std::nanf(&quot;1&quot;)</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -240,8 +256,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a47519f963af9cc34c19ff7d6f465dc6c" name="a47519f963af9cc34c19ff7d6f465dc6c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47519f963af9cc34c19ff7d6f465dc6c">&#9670;&#160;</a></span>formatYString()</h2>
+<a id="add30b3055a445a8e22e3b6c0bdca4f14" name="add30b3055a445a8e22e3b6c0bdca4f14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add30b3055a445a8e22e3b6c0bdca4f14">&#9670;&#160;</a></span>formatYString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -249,20 +265,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">std::string formatYString </td>
           <td>(</td>
-          <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>dr</em>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dr</em> = <code>0</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float &amp;&#160;</td>
-          <td class="paramname"><em>ymr</em>, </td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>ymr</em> = <code>std::nanf(&quot;1&quot;)</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float &amp;&#160;</td>
-          <td class="paramname"><em>yMr</em>&#160;</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>yMr</em> = <code>std::nanf(&quot;1&quot;)</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -285,9 +301,13 @@ Functions</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_13a6baedfa387399723bfc39e0bc3cc4.html">YFit</a></li><li class="navelem"><a class="el" href="dir_33bf31e38b0246880c826fe6c405ac4f.html">include</a></li><li class="navelem"><a class="el" href="fit_roo_8h.html">fitRoo.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+  </ul>
+</div>
 </body>
 </html>

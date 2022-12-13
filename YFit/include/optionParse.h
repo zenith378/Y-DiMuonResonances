@@ -27,7 +27,7 @@
 #include "getopt.h"
 
 /***************************************
- * PrintHelp()
+ * \fn PrintHelp
  * \brief Print help stream for understanding what options and flags are available
  * 
  *It prints the following output:
@@ -53,7 +53,7 @@
 void PrintHelp();
 
 /***************************************
- * outOfRangeErrorHandling
+ * \fn outOfRangeErrorHandling
  * \brief it handles an exception of type "Out of Range";
  * @param opt option in case (e.g. depth, fitFunction, etc...)
  * @param range range accepted of the desired option (e.g. 0,1,2 for depth)
@@ -65,7 +65,7 @@ void PrintHelp();
 void outOfRangeErrorHandling(std::string opt, std::string range, const char *insrtvl);
 
 /***************************************
- * conversionErrorHandling()
+ * \fn conversionErrorHandling
  * \brief it handles an exception of type "conversion Error";
  * @param opt option in case (e.g. depth, fitFunction, etc...)
  * @param range range accepted of the desired option (e.g. 0,1,2 for depth)
@@ -77,7 +77,7 @@ void outOfRangeErrorHandling(std::string opt, std::string range, const char *ins
 void conversionErrorHandling(std::string opt, std::string range, std::invalid_argument err);
 
 /***************************************
- * unknownErrorHandling()
+ * \fn unknownErrorHandling
  * \brief it handles an exception of type "unknown"
  * 
  * \return error exit
