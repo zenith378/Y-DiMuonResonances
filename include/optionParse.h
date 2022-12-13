@@ -1,5 +1,5 @@
 /**************************************************************
- * \file optionParse.C
+ * \file optionParse.h
  * \brief Handling flags and option parameters
  *
  *

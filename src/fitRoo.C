@@ -208,7 +208,7 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
     hpull->SetLineWidth(0);
 
     // Draw the frame on the canvas
-    auto c1 = new TCanvas("Fit", "Y Resonances Fit", 950, 800);
+    TCanvas c1 = new TCanvas("Fit", "Y Resonances Fit", 950, 800);
     TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
     rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
 

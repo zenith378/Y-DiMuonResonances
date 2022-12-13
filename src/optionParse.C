@@ -29,7 +29,7 @@
  * PrintHelp()
  * \brief Print help stream for understanding what options and flags are available
  * 
- *It prints the following output:
+ * When the flag --help [-h] is called, it prints the following output:
  * 
  * --cutDepth [-d] <n>:             Choose Cut Depth between the options:
  *                                  0 (default): select events with two muons of opposite charge
@@ -72,6 +72,7 @@ void PrintHelp()
 /***************************************
  * outOfRangeErrorHandling
  * \brief it handles an exception of type "Out of Range";
+ *
  * @param opt option in case (e.g. depth, fitFunction, etc...)
  * @param range range accepted of the desired option (e.g. 0,1,2 for depth)
  * @param insrtvl invalid value entered by the user in the command line stream
@@ -79,7 +80,6 @@ void PrintHelp()
  * \return error exit
  * 
  ****************************************/
-
 void outOfRangeErrorHandling(std::string opt, std::string range, const char *insrtvl)
 {
     std::cerr << opt << " option must be " << range << std::endl;
@@ -207,7 +207,7 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
         }
         case 'n':
         {
-            std::string forbiddenChars("\\/:?\"<>|");
+            std::string forbiddenChars("\\/:?\"<>|"); //E SE VOGLIO DARE IL PATH DI UN FILE? MI SERVE "/"
             const char * invalidChars= forbiddenChars.c_str();
             try
             {
