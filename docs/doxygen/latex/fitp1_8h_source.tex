@@ -1,0 +1,43 @@
+\hypertarget{fitp1_8h_source}{}\doxysection{fitp1.\+h}
+\label{fitp1_8h_source}\index{/Users/zenith378/Documents/Uni/Computing/Y-\/DiMuonResonances/YFit/include/fitp1.h@{/Users/zenith378/Documents/Uni/Computing/Y-\/DiMuonResonances/YFit/include/fitp1.h}}
+\mbox{\hyperlink{fitp1_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{//  fitp1.h}}
+\DoxyCodeLine{3 \textcolor{comment}{//  }}
+\DoxyCodeLine{4 \textcolor{comment}{//}}
+\DoxyCodeLine{5 \textcolor{comment}{//  Created by Matilde Carminati on 22/11/22.}}
+\DoxyCodeLine{6 \textcolor{comment}{//}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef fitp1\_h}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define fitp1\_h}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}TDirectory.h"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}TH1.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}TMath.h"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}TF1.h"{}}}
+\DoxyCodeLine{15 \textcolor{comment}{//\#include "{}TLegend.h"{}}}
+\DoxyCodeLine{16 \textcolor{comment}{//\#include "{}TCanvas.h"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}TStyle.h"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}TFitResult.h"{}}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}TMatrixD.h"{}}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 Double\_t \mbox{\hyperlink{fitp1_8h_a3ab718113ef7daafe48a3b35496349f2}{lorentzianPeak}}(Double\_t *x, Double\_t *par);}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 Double\_t \mbox{\hyperlink{fitp1_8h_a620d60f66121ac0a0d37ce2ae3e8cd34}{gaussianPeak}}(Double\_t *x, Double\_t *par);}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 Double\_t \mbox{\hyperlink{fitp1_8h_a60ce0e91a5ee7f0c23e68b709d0f7a9e}{background}}(Double\_t *x, Double\_t *par);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 Double\_t \mbox{\hyperlink{fitp1_8h_af556da8adfe3b499e67b8a528b8c5fa9}{fitfunction}}(Double\_t *x, Double\_t *par);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 Double\_t \mbox{\hyperlink{fitp1_8h_a028359826645974491f4dcb56a1a6a8d}{findxPeaks}}(Double\_t centralbin, Double\_t slope, Double\_t \mbox{\hyperlink{fitp1_8h_a60ce0e91a5ee7f0c23e68b709d0f7a9e}{background}}, TH1 *h);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 Double\_t \mbox{\hyperlink{fitp1_8h_a2fd0e0be1b6a5b89fda775eb4587fc97}{findHwhm}}(Int\_t binpeak,Double\_t slope, Double\_t \mbox{\hyperlink{fitp1_8h_a60ce0e91a5ee7f0c23e68b709d0f7a9e}{background}}, TH1 *h);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 TFitResultPtr \mbox{\hyperlink{fitp1_8h_a9897b46155c1c5020d41c270c17c466e}{fitp1}}( TH1* h, Double\_t x1=1, Double\_t x9=0 );}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* fitp1\_h */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

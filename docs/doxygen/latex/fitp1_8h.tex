@@ -1,0 +1,71 @@
+\hypertarget{fitp1_8h}{}\doxysection{/\+Users/zenith378/\+Documents/\+Uni/\+Computing/\+Y-\/\+Di\+Muon\+Resonances/\+YFit/include/fitp1.h File Reference}
+\label{fitp1_8h}\index{/Users/zenith378/Documents/Uni/Computing/Y-\/DiMuonResonances/YFit/include/fitp1.h@{/Users/zenith378/Documents/Uni/Computing/Y-\/DiMuonResonances/YFit/include/fitp1.h}}
+{\ttfamily \#include \char`\"{}TDirectory.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}TH1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}TMath.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}TF1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}TStyle.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}TFit\+Result.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}TMatrix\+D.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Double\+\_\+t \mbox{\hyperlink{fitp1_8h_a3ab718113ef7daafe48a3b35496349f2}{lorentzian\+Peak}} (Double\+\_\+t $\ast$x, Double\+\_\+t $\ast$par)
+\item 
+Double\+\_\+t \mbox{\hyperlink{fitp1_8h_a620d60f66121ac0a0d37ce2ae3e8cd34}{gaussian\+Peak}} (Double\+\_\+t $\ast$x, Double\+\_\+t $\ast$par)
+\item 
+Double\+\_\+t \mbox{\hyperlink{fitp1_8h_a60ce0e91a5ee7f0c23e68b709d0f7a9e}{background}} (Double\+\_\+t $\ast$x, Double\+\_\+t $\ast$par)
+\item 
+Double\+\_\+t \mbox{\hyperlink{fitp1_8h_af556da8adfe3b499e67b8a528b8c5fa9}{fitfunction}} (Double\+\_\+t $\ast$x, Double\+\_\+t $\ast$par)
+\item 
+Double\+\_\+t \mbox{\hyperlink{fitp1_8h_a028359826645974491f4dcb56a1a6a8d}{findx\+Peaks}} (Double\+\_\+t centralbin, Double\+\_\+t slope, Double\+\_\+t \mbox{\hyperlink{fitp1_8h_a60ce0e91a5ee7f0c23e68b709d0f7a9e}{background}}, TH1 $\ast$h)
+\item 
+Double\+\_\+t \mbox{\hyperlink{fitp1_8h_a2fd0e0be1b6a5b89fda775eb4587fc97}{find\+Hwhm}} (Int\+\_\+t binpeak, Double\+\_\+t slope, Double\+\_\+t \mbox{\hyperlink{fitp1_8h_a60ce0e91a5ee7f0c23e68b709d0f7a9e}{background}}, TH1 $\ast$h)
+\item 
+TFit\+Result\+Ptr \mbox{\hyperlink{fitp1_8h_a9897b46155c1c5020d41c270c17c466e}{fitp1}} (TH1 $\ast$h, Double\+\_\+t x1=1, Double\+\_\+t x9=0)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{fitp1_8h_a60ce0e91a5ee7f0c23e68b709d0f7a9e}\label{fitp1_8h_a60ce0e91a5ee7f0c23e68b709d0f7a9e}} 
+\index{fitp1.h@{fitp1.h}!background@{background}}
+\index{background@{background}!fitp1.h@{fitp1.h}}
+\doxysubsubsection{\texorpdfstring{background()}{background()}}
+{\footnotesize\ttfamily Double\+\_\+t background (\begin{DoxyParamCaption}\item[{Double\+\_\+t $\ast$}]{x,  }\item[{Double\+\_\+t $\ast$}]{par }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fitp1_8h_a2fd0e0be1b6a5b89fda775eb4587fc97}\label{fitp1_8h_a2fd0e0be1b6a5b89fda775eb4587fc97}} 
+\index{fitp1.h@{fitp1.h}!findHwhm@{findHwhm}}
+\index{findHwhm@{findHwhm}!fitp1.h@{fitp1.h}}
+\doxysubsubsection{\texorpdfstring{findHwhm()}{findHwhm()}}
+{\footnotesize\ttfamily Double\+\_\+t find\+Hwhm (\begin{DoxyParamCaption}\item[{Int\+\_\+t}]{binpeak,  }\item[{Double\+\_\+t}]{slope,  }\item[{Double\+\_\+t}]{background,  }\item[{TH1 $\ast$}]{h }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fitp1_8h_a028359826645974491f4dcb56a1a6a8d}\label{fitp1_8h_a028359826645974491f4dcb56a1a6a8d}} 
+\index{fitp1.h@{fitp1.h}!findxPeaks@{findxPeaks}}
+\index{findxPeaks@{findxPeaks}!fitp1.h@{fitp1.h}}
+\doxysubsubsection{\texorpdfstring{findxPeaks()}{findxPeaks()}}
+{\footnotesize\ttfamily Double\+\_\+t findx\+Peaks (\begin{DoxyParamCaption}\item[{Double\+\_\+t}]{centralbin,  }\item[{Double\+\_\+t}]{slope,  }\item[{Double\+\_\+t}]{background,  }\item[{TH1 $\ast$}]{h }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fitp1_8h_af556da8adfe3b499e67b8a528b8c5fa9}\label{fitp1_8h_af556da8adfe3b499e67b8a528b8c5fa9}} 
+\index{fitp1.h@{fitp1.h}!fitfunction@{fitfunction}}
+\index{fitfunction@{fitfunction}!fitp1.h@{fitp1.h}}
+\doxysubsubsection{\texorpdfstring{fitfunction()}{fitfunction()}}
+{\footnotesize\ttfamily Double\+\_\+t fitfunction (\begin{DoxyParamCaption}\item[{Double\+\_\+t $\ast$}]{x,  }\item[{Double\+\_\+t $\ast$}]{par }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fitp1_8h_a9897b46155c1c5020d41c270c17c466e}\label{fitp1_8h_a9897b46155c1c5020d41c270c17c466e}} 
+\index{fitp1.h@{fitp1.h}!fitp1@{fitp1}}
+\index{fitp1@{fitp1}!fitp1.h@{fitp1.h}}
+\doxysubsubsection{\texorpdfstring{fitp1()}{fitp1()}}
+{\footnotesize\ttfamily TFit\+Result\+Ptr fitp1 (\begin{DoxyParamCaption}\item[{TH1 $\ast$}]{h,  }\item[{Double\+\_\+t}]{x1 = {\ttfamily 1},  }\item[{Double\+\_\+t}]{x9 = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fitp1_8h_a620d60f66121ac0a0d37ce2ae3e8cd34}\label{fitp1_8h_a620d60f66121ac0a0d37ce2ae3e8cd34}} 
+\index{fitp1.h@{fitp1.h}!gaussianPeak@{gaussianPeak}}
+\index{gaussianPeak@{gaussianPeak}!fitp1.h@{fitp1.h}}
+\doxysubsubsection{\texorpdfstring{gaussianPeak()}{gaussianPeak()}}
+{\footnotesize\ttfamily Double\+\_\+t gaussian\+Peak (\begin{DoxyParamCaption}\item[{Double\+\_\+t $\ast$}]{x,  }\item[{Double\+\_\+t $\ast$}]{par }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{fitp1_8h_a3ab718113ef7daafe48a3b35496349f2}\label{fitp1_8h_a3ab718113ef7daafe48a3b35496349f2}} 
+\index{fitp1.h@{fitp1.h}!lorentzianPeak@{lorentzianPeak}}
+\index{lorentzianPeak@{lorentzianPeak}!fitp1.h@{fitp1.h}}
+\doxysubsubsection{\texorpdfstring{lorentzianPeak()}{lorentzianPeak()}}
+{\footnotesize\ttfamily Double\+\_\+t lorentzian\+Peak (\begin{DoxyParamCaption}\item[{Double\+\_\+t $\ast$}]{x,  }\item[{Double\+\_\+t $\ast$}]{par }\end{DoxyParamCaption})}
+

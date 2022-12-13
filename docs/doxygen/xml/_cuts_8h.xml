@@ -1,0 +1,392 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="_cuts_8h" kind="file" language="C++">
+    <compoundname>Cuts.h</compoundname>
+    <includes local="yes">ROOT/RDataFrame.hxx</includes>
+    <includes local="yes">TMath.h</includes>
+    <includedby refid="_spectrum_plot_8h" local="yes">/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/SpectrumPlot.h</includedby>
+    <includedby refid="_cuts_8_c" local="yes">/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C</includedby>
+    <includedby refid="main_8_c" local="yes">/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/main/main.C</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/Cuts.h</label>
+        <link refid="_cuts_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ROOT/RDataFrame.hxx</label>
+      </node>
+      <node id="3">
+        <label>TMath.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/Cuts.h</label>
+        <link refid="_cuts_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/SpectrumPlot.h</label>
+        <link refid="_spectrum_plot_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C</label>
+        <link refid="_cuts_8_c"/>
+      </node>
+      <node id="3">
+        <label>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/SpectrumPlot.C</label>
+        <link refid="_spectrum_plot_8_c"/>
+      </node>
+      <node id="4">
+        <label>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/main/main.C</label>
+        <link refid="main_8_c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_cuts_8h_1a82224e5a346917e96fd9e992f1e2f5ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ROOT::RDF::RNode</type>
+        <definition>ROOT::RDF::RNode DFFilter</definition>
+        <argsstring>(ROOT::RDataFrame df, int &amp;dr)</argsstring>
+        <name>DFFilter</name>
+        <param>
+          <type>ROOT::RDataFrame</type>
+          <declname>df</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>dr</declname>
+        </param>
+        <briefdescription>
+<para>it applies default cuts </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Depth 0: two muons of opposite charge and invariant mass between 8.5 and 11.5 GeV Depth 1: select dimuon pT between 10 and 100 GeV Depth 2: select dimuon pT between 10 and 100 GeV and a rapidity less than 0.6 in abs value</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>df</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dataframe to be cutted </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>depth of the cut to be applied</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Cutted Dataframe </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/Cuts.h" line="29" column="18" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" bodystart="15" bodyend="63" declfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/Cuts.h" declline="29" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="function" id="_cuts_8h_1ad88e5867f055c448c9ea50fbc484e032" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ROOT::RDF::RNode</type>
+        <definition>ROOT::RDF::RNode applyFilter</definition>
+        <argsstring>(ROOT::RDF::RNode df_custom_cut, std::string_view filter, std::string_view name)</argsstring>
+        <name>applyFilter</name>
+        <param>
+          <type>ROOT::RDF::RNode</type>
+          <declname>df_custom_cut</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>it applies custom cuts on a variable given string containing the filter </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>df_custom_cut</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dataframe to be cutted </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>filter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string containing the definition of the filter to apply </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string containing the name of the filter</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Cutted Dataframe </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/Cuts.h" line="43" column="18" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" bodystart="65" bodyend="82" declfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/Cuts.h" declline="43" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="function" id="_cuts_8h_1a515639bbb9e11a7276c3930bbe236486" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ROOT::RDF::RNode</type>
+        <definition>ROOT::RDF::RNode customFilter</definition>
+        <argsstring>(ROOT::RDataFrame df, float &amp;pmr, float &amp;pMr, float &amp;ymr, float &amp;yMr)</argsstring>
+        <name>customFilter</name>
+        <param>
+          <type>ROOT::RDataFrame</type>
+          <declname>df</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>pmr</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>pMr</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>ymr</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>yMr</declname>
+        </param>
+        <briefdescription>
+<para>looks for active otpion parameters and applies custom cuts </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>df</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dataframe to be cutted </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pmr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>minimum pt </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pMr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>maximum pt </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ymr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>minimum rapidity </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>yMr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>maximum rapidity</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Cutted Dataframe </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/Cuts.h" line="59" column="18" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" bodystart="84" bodyend="128" declfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/Cuts.h" declline="59" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="function" id="_cuts_8h_1a46fe84d0ea4a598bb0b22ad6caf8fca4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ROOT::RDataFrame</type>
+        <definition>ROOT::RDataFrame generateDataFrame</definition>
+        <argsstring>(ROOT::RDataFrame df, int &amp;dr)</argsstring>
+        <name>generateDataFrame</name>
+        <param>
+          <type>ROOT::RDataFrame</type>
+          <declname>df</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>dr</declname>
+        </param>
+        <briefdescription>
+<para>tries to read cutted dataframe from file and generates it, if it does not exists </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>df</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dataframe to be cutted </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>depth set</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Cutted Dataframe </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/Cuts.h" line="72" column="18" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" bodystart="131" bodyend="214" declfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/Cuts.h" declline="72" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="function" id="_cuts_8h_1a881a676022acb37d96b60e0227b5893e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ROOT::RDF::RNode</type>
+        <definition>ROOT::RDF::RNode Cuts</definition>
+        <argsstring>(ROOT::RDataFrame df, int &amp;dr, float &amp;pmr, float &amp;pMr, float &amp;ymr, float &amp;yMr)</argsstring>
+        <name>Cuts</name>
+        <param>
+          <type>ROOT::RDataFrame</type>
+          <declname>df</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>dr</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>pmr</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>pMr</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>ymr</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>yMr</declname>
+        </param>
+        <briefdescription>
+<para>Modified a muon DataFrame cutting on nMuon, Muon_charge, Dimuon_mass, Dimuon_pt and Dimuon_y. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>UNa descrizione più dettagliata della funzione <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>df</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data Frame in input </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pmr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>lower extreme for the cut on the dimuon trasverse momentum </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pMr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>upper extreme for the cut on the dimuon trasverse momentum </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ymr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>lower extreme for the cut on the dimuon pseudorapidity </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>yMr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>upper extreme for the cut on the dimuon pseudorapidity </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>df_cut DataFrame with the selection decided by the cuts </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/Cuts.h" line="85" column="18" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" bodystart="217" bodyend="232" declfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/Cuts.h" declline="85" declcolumn="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Selection of the data. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The data are selected to be two muons of opposite charge with an invariant mass round the mass of the Y resonances. Also it is possible to choose other cuts on the trasverse momentum and the pseudorapidity of the dimuon state. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>Cuts_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>Cuts_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ROOT/RDataFrame.hxx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;TMath.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">ROOT::RDF::RNode<sp/><ref refid="_cuts_8h_1a82224e5a346917e96fd9e992f1e2f5ae" kindref="member">DFFilter</ref>(ROOT::RDataFrame<sp/>df,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;dr);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">ROOT::RDF::RNode<sp/><ref refid="_cuts_8h_1ad88e5867f055c448c9ea50fbc484e032" kindref="member">applyFilter</ref>(ROOT::RDF::RNode<sp/>df_custom_cut,<sp/>std::string_view<sp/>filter,<sp/>std::string_view<sp/>name);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal">ROOT::RDF::RNode<sp/><ref refid="_cuts_8h_1a515639bbb9e11a7276c3930bbe236486" kindref="member">customFilter</ref>(ROOT::RDataFrame<sp/>df,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;pmr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;pMr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;ymr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;yMr<sp/>);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal">ROOT::RDataFrame<sp/><ref refid="_cuts_8h_1a46fe84d0ea4a598bb0b22ad6caf8fca4" kindref="member">generateDataFrame</ref>(ROOT::RDataFrame<sp/>df,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;dr);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal">ROOT::RDF::RNode<sp/><ref refid="_cuts_8h_1a881a676022acb37d96b60e0227b5893e" kindref="member">Cuts</ref>(ROOT::RDataFrame<sp/>df,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;dr,</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;pmr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;pMr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;ymr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;yMr<sp/>);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>Cuts_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/Cuts.h"/>
+  </compounddef>
+</doxygen>

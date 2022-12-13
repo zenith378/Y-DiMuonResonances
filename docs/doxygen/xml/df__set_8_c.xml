@@ -1,0 +1,413 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="df__set_8_c" kind="file" language="C++">
+    <compoundname>df_set.C</compoundname>
+    <includes local="yes">ROOT/RDataFrame.hxx</includes>
+    <includes local="yes">ROOT/RVec.hxx</includes>
+    <includes local="yes">Math/Vector4Dfwd.h</includes>
+    <includes local="yes">Math/Vector4D.h</includes>
+    <includes local="yes">TMath.h</includes>
+    <includes local="yes">TFile.h</includes>
+    <includes local="no">TSystem.h</includes>
+    <includes refid="df__set_8h" local="yes">df_set.h</includes>
+    <includes local="no">filesystem</includes>
+    <includes refid="option_parse_8h" local="yes">optionParse.h</includes>
+    <incdepgraph>
+      <node id="9">
+        <label>df_set.h</label>
+        <link refid="df__set_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>optionParse.h</label>
+        <link refid="option_parse_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/df_set.C</label>
+        <link refid="df__set_8_c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Math/Vector4D.h</label>
+      </node>
+      <node id="4">
+        <label>Math/Vector4Dfwd.h</label>
+      </node>
+      <node id="2">
+        <label>ROOT/RDataFrame.hxx</label>
+      </node>
+      <node id="3">
+        <label>ROOT/RVec.hxx</label>
+      </node>
+      <node id="7">
+        <label>TFile.h</label>
+      </node>
+      <node id="6">
+        <label>TMath.h</label>
+      </node>
+      <node id="8">
+        <label>TSystem.h</label>
+      </node>
+      <node id="10">
+        <label>filesystem</label>
+      </node>
+      <node id="13">
+        <label>getopt.h</label>
+      </node>
+      <node id="12">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="df__set_8_c_1af438380d6514d79f1f7e8c9e0abfe4a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ROOT::Math::PtEtaPhiMVector</type>
+        <definition>ROOT::Math::PtEtaPhiMVector computeDiMuonFourVec</definition>
+        <argsstring>(RVec&lt; float &gt; &amp;pt, RVec&lt; float &gt; &amp;eta, RVec&lt; float &gt; &amp;phi, RVec&lt; float &gt; &amp;mass)</argsstring>
+        <name>computeDiMuonFourVec</name>
+        <param>
+          <type>RVec&lt; float &gt; &amp;</type>
+          <declname>pt</declname>
+        </param>
+        <param>
+          <type>RVec&lt; float &gt; &amp;</type>
+          <declname>eta</declname>
+        </param>
+        <param>
+          <type>RVec&lt; float &gt; &amp;</type>
+          <declname>phi</declname>
+        </param>
+        <param>
+          <type>RVec&lt; float &gt; &amp;</type>
+          <declname>mass</declname>
+        </param>
+        <briefdescription>
+<para>it calculates the four vector of a dimuon starting from pt, eta, phi and mass of muon pair </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>transverse momentum </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>eta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>phi</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mass</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>mass</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PtEtaPhiMVector </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/df_set.C" line="21" column="29" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/df_set.C" bodystart="21" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="df__set_8_c_1af34623f885412e03b09394c01f1b36cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float computeDiMuonInvariantMass</definition>
+        <argsstring>(ROOT::Math::PtEtaPhiMVector &amp;fourvec)</argsstring>
+        <name>computeDiMuonInvariantMass</name>
+        <param>
+          <type>ROOT::Math::PtEtaPhiMVector &amp;</type>
+          <declname>fourvec</declname>
+        </param>
+        <briefdescription>
+<para>it calculates the invariant mass of a dimuon Four Vector </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fourvec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>four vector of dimuon pair</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>mass </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/df_set.C" line="29" column="7" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/df_set.C" bodystart="29" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="df__set_8_c_1abc3dcc064a14d81643ca53fb4476cb58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float computeDiMuonPT</definition>
+        <argsstring>(ROOT::Math::PtEtaPhiMVector &amp;fourvec)</argsstring>
+        <name>computeDiMuonPT</name>
+        <param>
+          <type>ROOT::Math::PtEtaPhiMVector &amp;</type>
+          <declname>fourvec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fourvec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>four vector of dimuon pair</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>pt (transverse momentum) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/df_set.C" line="34" column="7" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/df_set.C" bodystart="34" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="df__set_8_c_1aa008d9f6ecf77c07b6af80b1ef7cf9af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float computeDiMuonRapidity</definition>
+        <argsstring>(ROOT::Math::PtEtaPhiMVector &amp;fourvec)</argsstring>
+        <name>computeDiMuonRapidity</name>
+        <param>
+          <type>ROOT::Math::PtEtaPhiMVector &amp;</type>
+          <declname>fourvec</declname>
+        </param>
+        <briefdescription>
+<para>{it calculates the rapidity of a dimuon Four Vector //inserire formula rapidità} </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fourvec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>four vector of dimuon pair</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>rapidity </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/df_set.C" line="40" column="7" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/df_set.C" bodystart="40" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="df__set_8_c_1a57a6e40352ae3e1653a413240f4db8bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float computeDiMuonBeta</definition>
+        <argsstring>(ROOT::Math::PtEtaPhiMVector &amp;fourvec)</argsstring>
+        <name>computeDiMuonBeta</name>
+        <param>
+          <type>ROOT::Math::PtEtaPhiMVector &amp;</type>
+          <declname>fourvec</declname>
+        </param>
+        <briefdescription>
+<para>{it calculates beta (p_t/E) of a dimuon Four Vector} </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fourvec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>four vector of dimuon pair</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>beta </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/df_set.C" line="45" column="7" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/df_set.C" bodystart="45" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="df__set_8_c_1ad8de3c0c9c809d0cdc00ba1bcfe996e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ROOT::RDataFrame</type>
+        <definition>ROOT::RDataFrame df_set</definition>
+        <argsstring>()</argsstring>
+        <name>df_set</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Dataframe </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para>throw exception to handle</para>
+<para>throw exception to handle</para>
+        </inbodydescription>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/df_set.C" line="51" column="18" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/df_set.C" bodystart="51" bodyend="109"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Function for creating and setting up dataframe used in the analysis. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ROOT/RDataFrame.hxx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ROOT/RVec.hxx&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//per<sp/>usare<sp/>ROOT::VecOps::RVec&lt;T&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Math/Vector4Dfwd.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Math/Vector4D.h&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//per<sp/>usare<sp/>PtEtaPhiMVector<sp/>e<sp/>le<sp/>sue<sp/>funzioni</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;TMath.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;TFile.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;TSystem.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="df__set_8h" kindref="compound">df_set.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="option_parse_8h" kindref="compound">optionParse.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">ROOT::VecOps;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">ROOT::Math::PtEtaPhiMVector<sp/><ref refid="df__set_8_c_1af438380d6514d79f1f7e8c9e0abfe4a9" kindref="member">computeDiMuonFourVec</ref>(RVec&lt;float&gt;<sp/>&amp;pt,<sp/>RVec&lt;float&gt;<sp/>&amp;eta,<sp/>RVec&lt;float&gt;<sp/>&amp;phi,<sp/>RVec&lt;float&gt;<sp/>&amp;mass)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/>ROOT::Math::PtEtaPhiMVector<sp/>m1(pt[0],<sp/>eta[0],<sp/>phi[0],<sp/>mass[0]);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>ROOT::Math::PtEtaPhiMVector<sp/>m2(pt[1],<sp/>eta[1],<sp/>phi[1],<sp/>mass[1]);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(m1<sp/>+<sp/>m2);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="df__set_8_c_1af34623f885412e03b09394c01f1b36cf" kindref="member">computeDiMuonInvariantMass</ref>(ROOT::Math::PtEtaPhiMVector<sp/>&amp;fourvec)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fourvec.mass();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="df__set_8_c_1abc3dcc064a14d81643ca53fb4476cb58" kindref="member">computeDiMuonPT</ref>(ROOT::Math::PtEtaPhiMVector<sp/>&amp;fourvec)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fourvec.pt();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="df__set_8_c_1aa008d9f6ecf77c07b6af80b1ef7cf9af" kindref="member">computeDiMuonRapidity</ref>(ROOT::Math::PtEtaPhiMVector<sp/>&amp;fourvec)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fourvec.Rapidity();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="df__set_8_c_1a57a6e40352ae3e1653a413240f4db8bf" kindref="member">computeDiMuonBeta</ref>(ROOT::Math::PtEtaPhiMVector<sp/>&amp;fourvec)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fourvec.Beta();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">ROOT::RDataFrame<sp/><ref refid="df__set_8_c_1ad8de3c0c9c809d0cdc00ba1bcfe996e4" kindref="member">df_set</ref>()</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>multi-threading</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>ROOT::EnableImplicitMT(1);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fs<sp/>=<sp/>std::filesystem;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>std::string<sp/>fname(</highlight><highlight class="stringliteral">&quot;./Data/data.root&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>ROOT::RDataFrame<sp/>*df;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//try<sp/>opening<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>df<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>ROOT::RDataFrame(</highlight><highlight class="stringliteral">&quot;Events&quot;</highlight><highlight class="normal">,<sp/>fname);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fs::is_directory(</highlight><highlight class="stringliteral">&quot;./Data&quot;</highlight><highlight class="normal">)<sp/>||<sp/>!fs::exists(</highlight><highlight class="stringliteral">&quot;./Data&quot;</highlight><highlight class="normal">))<sp/></highlight><highlight class="comment">//if<sp/>data<sp/>directory<sp/>does<sp/>not<sp/>exists</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(</highlight><highlight class="stringliteral">&quot;./Data&quot;</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//throw<sp/>an<sp/>exception<sp/>to<sp/>handle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(gSystem-&gt;AccessPathName(fname.c_str()))<sp/></highlight><highlight class="comment">//if<sp/>filesystem<sp/>cannot<sp/>access<sp/>pathname</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(std::runtime_error(</highlight><highlight class="stringliteral">&quot;Problem<sp/>reading<sp/>data<sp/>file<sp/>(it<sp/>might<sp/>not<sp/>exist<sp/>or<sp/>might<sp/>be<sp/>corrupted)\n&quot;</highlight><highlight class="normal">));<sp/></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*pathToData)<sp/></highlight><highlight class="comment">//handle<sp/>exception<sp/>of<sp/>not<sp/>found<sp/>directory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Directory<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>pathToData<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>does<sp/>not<sp/>exist.\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Creating<sp/>directory...\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>fs::create_directory(pathToData);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Directory<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>pathToData<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>successfully<sp/>created\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(std::runtime_error(</highlight><highlight class="stringliteral">&quot;Problem<sp/>reading<sp/>data<sp/>file<sp/>(it<sp/>might<sp/>not<sp/>exist<sp/>or<sp/>might<sp/>be<sp/>corrupted)\n&quot;</highlight><highlight class="normal">));<sp/></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::exception<sp/>&amp;ex)<sp/></highlight><highlight class="comment">//hadles<sp/>exception<sp/>of<sp/>not<sp/>found<sp/>file<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>ex.what()<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Recovering<sp/>dataset<sp/>from<sp/>web...\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reading<sp/>dataframe<sp/>from<sp/>online<sp/>NanoAOD</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>ROOT::RDataFrame<sp/>df_temp(</highlight><highlight class="stringliteral">&quot;Events&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;root://eospublic.cern.ch//eos/opendata/cms/derived-data/AOD2NanoAODOutreachTool/Run2012BC_DoubleMuParked_Muons.root&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>define<sp/>more<sp/>useful<sp/>variables<sp/>in<sp/>the<sp/>dataframe</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="df__set_8_c_1ad8de3c0c9c809d0cdc00ba1bcfe996e4" kindref="member">df_set</ref><sp/>=<sp/>df_temp.Define(</highlight><highlight class="stringliteral">&quot;Dimuon_FourVec&quot;</highlight><highlight class="normal">,<sp/><ref refid="df__set_8_c_1af438380d6514d79f1f7e8c9e0abfe4a9" kindref="member">computeDiMuonFourVec</ref>,<sp/>{</highlight><highlight class="stringliteral">&quot;Muon_pt&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Muon_eta&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Muon_phi&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Muon_mass&quot;</highlight><highlight class="normal">})</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.Define(</highlight><highlight class="stringliteral">&quot;Dimuon_mass&quot;</highlight><highlight class="normal">,<sp/><ref refid="df__set_8_c_1af34623f885412e03b09394c01f1b36cf" kindref="member">computeDiMuonInvariantMass</ref>,<sp/>{</highlight><highlight class="stringliteral">&quot;Dimuon_FourVec&quot;</highlight><highlight class="normal">})</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.Define(</highlight><highlight class="stringliteral">&quot;Dimuon_pt&quot;</highlight><highlight class="normal">,<sp/><ref refid="df__set_8_c_1abc3dcc064a14d81643ca53fb4476cb58" kindref="member">computeDiMuonPT</ref>,<sp/>{</highlight><highlight class="stringliteral">&quot;Dimuon_FourVec&quot;</highlight><highlight class="normal">})<sp/></highlight><highlight class="comment">//<sp/>Compute<sp/>pt<sp/>and<sp/>rapidity<sp/>(y)<sp/>of<sp/>dimuon</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.Define(</highlight><highlight class="stringliteral">&quot;Dimuon_beta&quot;</highlight><highlight class="normal">,<sp/><ref refid="df__set_8_c_1a57a6e40352ae3e1653a413240f4db8bf" kindref="member">computeDiMuonBeta</ref>,<sp/>{</highlight><highlight class="stringliteral">&quot;Dimuon_FourVec&quot;</highlight><highlight class="normal">})</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.Define(</highlight><highlight class="stringliteral">&quot;Dimuon_y&quot;</highlight><highlight class="normal">,<sp/><ref refid="df__set_8_c_1aa008d9f6ecf77c07b6af80b1ef7cf9af" kindref="member">computeDiMuonRapidity</ref>,<sp/>{</highlight><highlight class="stringliteral">&quot;Dimuon_FourVec&quot;</highlight><highlight class="normal">});</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="df__set_8_c_1ad8de3c0c9c809d0cdc00ba1bcfe996e4" kindref="member">df_set</ref>.Snapshot(</highlight><highlight class="stringliteral">&quot;Events&quot;</highlight><highlight class="normal">,<sp/>fname);<sp/></highlight><highlight class="comment">//save<sp/>dataframe<sp/>in<sp/>a<sp/>root<sp/>file<sp/>to<sp/>avoid<sp/>downloading<sp/>it<sp/>all<sp/>the<sp/>times</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>ROOT::RDataFrame<sp/>df_new(</highlight><highlight class="stringliteral">&quot;Events&quot;</highlight><highlight class="normal">,<sp/>fname);<sp/></highlight><highlight class="comment">//read<sp/>dataframe<sp/>from<sp/>file<sp/>stored</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//this<sp/>last<sp/>step<sp/>is<sp/>necessary<sp/>in<sp/>order<sp/>to<sp/>be<sp/>coherent<sp/>with<sp/>return<sp/>type<sp/>of<sp/>the<sp/>function<sp/>df_set()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>df_new;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/></highlight><highlight class="comment">//if<sp/>it<sp/>happens<sp/>anything<sp/>that<sp/>is<sp/>not<sp/>caught</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="option_parse_8h_1acd083c726f0de0e35447b9d4176abc76" kindref="member">unknownErrorHandling</ref>();<sp/></highlight><highlight class="comment">//function<sp/>defined<sp/>in<sp/>optionParse.C</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*df);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/df_set.C"/>
+  </compounddef>
+</doxygen>

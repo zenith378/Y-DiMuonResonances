@@ -1,0 +1,142 @@
+\hypertarget{option_parse_8h}{}\doxysection{/\+Users/zenith378/\+Documents/\+Uni/\+Computing/\+Y-\/\+Di\+Muon\+Resonances/\+YFit/include/option\+Parse.h File Reference}
+\label{option_parse_8h}\index{/Users/zenith378/Documents/Uni/Computing/Y-\/DiMuonResonances/YFit/include/optionParse.h@{/Users/zenith378/Documents/Uni/Computing/Y-\/DiMuonResonances/YFit/include/optionParse.h}}
+
+
+header file of \mbox{\hyperlink{option_parse_8_c}{option\+Parse.\+C}}  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include \char`\"{}getopt.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{option_parse_8h_ae964ff8411b4fdcaf65cb5529aea4bef}{Print\+Help}} ()
+\begin{DoxyCompactList}\small\item\em Print help stream for understanding what options and flags are available. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{option_parse_8h_a9c0e386a8b56ce160fedfc90034b93af}{out\+Of\+Range\+Error\+Handling}} (std\+::string opt, std\+::string range, const char $\ast$insrtvl)
+\begin{DoxyCompactList}\small\item\em it handles an exception of type \char`\"{}\+Out of Range\char`\"{}; \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{option_parse_8h_aaaac65a9c94bb3634948df7d2d9e1164}{conversion\+Error\+Handling}} (std\+::string opt, std\+::string range, std\+::invalid\+\_\+argument err)
+\begin{DoxyCompactList}\small\item\em it handles an exception of type \char`\"{}conversion Error\char`\"{}; \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{option_parse_8h_acd083c726f0de0e35447b9d4176abc76}{unknown\+Error\+Handling}} ()
+\begin{DoxyCompactList}\small\item\em it handles an exception of type \char`\"{}unknown\char`\"{} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{option_parse_8h_aca42904c9676201145e82289b4b97f47}{Process\+Args}} (int argc, char $\ast$$\ast$argv, int \&dr, int \&fr, float \&pmr, float \&p\+Mr, float \&ymr, float \&y\+Mr, std\+::string \&nfr, int \&vr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+header file of \mbox{\hyperlink{option_parse_8_c}{option\+Parse.\+C}} 
+
+In this file are defined the functions used in order to handle flags and command line options. In particular, it is defined\+:
+
+void \mbox{\hyperlink{option_parse_8h_ae964ff8411b4fdcaf65cb5529aea4bef}{Print\+Help()}}\+: output of the option help. It shows the available options and flags;
+
+void \mbox{\hyperlink{option_parse_8h_a9c0e386a8b56ce160fedfc90034b93af}{out\+Of\+Range\+Error\+Handling(std\+::string opt, std\+::string range, const char $\ast$insrtvl)}}\+: it handles an exception of type \char`\"{}\+Out of Range\char`\"{};
+
+void \mbox{\hyperlink{option_parse_8h_aaaac65a9c94bb3634948df7d2d9e1164}{conversion\+Error\+Handling(std\+::string opt, std\+::string range, std\+::invalid\+\_\+argument err)}}\+: it handles an exception of type Conversion Error (string to float or string to int);
+
+void unknow\+Error\+Handling()\+: it handles an error of uknown type;
+
+voi Process\+Args(...)\+: it handles command line inputs and stores the values of flags or options. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{option_parse_8h_aaaac65a9c94bb3634948df7d2d9e1164}\label{option_parse_8h_aaaac65a9c94bb3634948df7d2d9e1164}} 
+\index{optionParse.h@{optionParse.h}!conversionErrorHandling@{conversionErrorHandling}}
+\index{conversionErrorHandling@{conversionErrorHandling}!optionParse.h@{optionParse.h}}
+\doxysubsubsection{\texorpdfstring{conversionErrorHandling()}{conversionErrorHandling()}}
+{\footnotesize\ttfamily void conversion\+Error\+Handling (\begin{DoxyParamCaption}\item[{std\+::string}]{opt,  }\item[{std\+::string}]{range,  }\item[{std\+::invalid\+\_\+argument}]{err }\end{DoxyParamCaption})}
+
+
+
+it handles an exception of type \char`\"{}conversion Error\char`\"{}; 
+
+\mbox{\hyperlink{option_parse_8h_aaaac65a9c94bb3634948df7d2d9e1164}{conversion\+Error\+Handling()}} 
+\begin{DoxyParams}{Parameters}
+{\em opt} & option in case (e.\+g. depth, fit\+Function, etc...) \\
+\hline
+{\em range} & range accepted of the desired option (e.\+g. 0,1,2 for depth) \\
+\hline
+{\em err} & invalid argument raised by the standard library\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error exit 
+\end{DoxyReturn}
+\mbox{\Hypertarget{option_parse_8h_a9c0e386a8b56ce160fedfc90034b93af}\label{option_parse_8h_a9c0e386a8b56ce160fedfc90034b93af}} 
+\index{optionParse.h@{optionParse.h}!outOfRangeErrorHandling@{outOfRangeErrorHandling}}
+\index{outOfRangeErrorHandling@{outOfRangeErrorHandling}!optionParse.h@{optionParse.h}}
+\doxysubsubsection{\texorpdfstring{outOfRangeErrorHandling()}{outOfRangeErrorHandling()}}
+{\footnotesize\ttfamily void out\+Of\+Range\+Error\+Handling (\begin{DoxyParamCaption}\item[{std\+::string}]{opt,  }\item[{std\+::string}]{range,  }\item[{const char $\ast$}]{insrtvl }\end{DoxyParamCaption})}
+
+
+
+it handles an exception of type \char`\"{}\+Out of Range\char`\"{}; 
+
+out\+Of\+Range\+Error\+Handling 
+\begin{DoxyParams}{Parameters}
+{\em opt} & option in case (e.\+g. depth, fit\+Function, etc...) \\
+\hline
+{\em range} & range accepted of the desired option (e.\+g. 0,1,2 for depth) \\
+\hline
+{\em insrtvl} & invalid value entered by the user in the command line stream\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error exit 
+\end{DoxyReturn}
+\mbox{\Hypertarget{option_parse_8h_ae964ff8411b4fdcaf65cb5529aea4bef}\label{option_parse_8h_ae964ff8411b4fdcaf65cb5529aea4bef}} 
+\index{optionParse.h@{optionParse.h}!PrintHelp@{PrintHelp}}
+\index{PrintHelp@{PrintHelp}!optionParse.h@{optionParse.h}}
+\doxysubsubsection{\texorpdfstring{PrintHelp()}{PrintHelp()}}
+{\footnotesize\ttfamily void Print\+Help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Print help stream for understanding what options and flags are available. 
+
+\mbox{\hyperlink{option_parse_8h_ae964ff8411b4fdcaf65cb5529aea4bef}{Print\+Help()}} 
+
+It prints the following output\+:
+
+--cut\+Depth \mbox{[}-\/d\mbox{]} $<$n$>$\+: Choose Cut Depth between the options\+: 0 (default)\+: select events with two muons of opposite charge and invariant mass around Y-\/\+State 1\+: select dimuon pT between 10 and 100 GeV 2\+: select dimuon pT between 10 and 100 GeV and a rapidity less than 0.\+6 in abs value --fit\+Function \mbox{[}-\/f\mbox{]} $<$\+PDFName$>$\+: Choose PDF to use as Fit Function between three options\+: gaus\+: Gaussian PDF bw\+: Breit -\/ Wigner PDF stud\+: t-\/\+Student PDF --name\+Fig \mbox{[}-\/n\mbox{]} $<$fig\+Name$>$ name of file in which the figure of the fit is going to be saved --ptmin \mbox{[}-\/p\mbox{]} $<$val$>$\+: Set minimum cut on pt (GeV) --pt\+Max \mbox{[}-\/P\mbox{]} $<$val$>$\+: Set maximum cut on pt (GeV) --ymin \mbox{[}-\/y\mbox{]} $<$val$>$\+: Set minimum cut on rapidity --y\+Max \mbox{[}-\/Y\mbox{]} $<$val$>$\+: Set maximum cut on rapidity --help \mbox{[}-\/h\mbox{]}\+: Show help --verbose \mbox{[}-\/v\mbox{]}\+: Verbose Fit, shows minimisation steps. \mbox{\Hypertarget{option_parse_8h_aca42904c9676201145e82289b4b97f47}\label{option_parse_8h_aca42904c9676201145e82289b4b97f47}} 
+\index{optionParse.h@{optionParse.h}!ProcessArgs@{ProcessArgs}}
+\index{ProcessArgs@{ProcessArgs}!optionParse.h@{optionParse.h}}
+\doxysubsubsection{\texorpdfstring{ProcessArgs()}{ProcessArgs()}}
+{\footnotesize\ttfamily void Process\+Args (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv,  }\item[{int \&}]{dr,  }\item[{int \&}]{fr,  }\item[{float \&}]{pmr,  }\item[{float \&}]{p\+Mr,  }\item[{float \&}]{ymr,  }\item[{float \&}]{y\+Mr,  }\item[{std\+::string \&}]{nfr,  }\item[{int \&}]{vr }\end{DoxyParamCaption})}
+
+Implementation of the option arguments with the library $<$getopt$>$ 
+\begin{DoxyParams}{Parameters}
+{\em argc} & command line arguments number \\
+\hline
+{\em argv} & array of command line arguments passed \\
+\hline
+{\em dr} & reference of depth defined in main \\
+\hline
+{\em fr} & reference of fit\+Function defined in main \\
+\hline
+{\em pmr} & recerence of ptm (minimum pt) defined in main \\
+\hline
+{\em p\+Mr} & recerence of ptM (maximum pt) defined in main \\
+\hline
+{\em ymr} & recerence of ym (minimum rapidity) defined in main \\
+\hline
+{\em y\+Mr} & recerence of yM (maximum rapidity) defined in main \\
+\hline
+{\em nfr} & recerence of name\+File defined in main \\
+\hline
+{\em vr} & reference of varaible verbose defined in main \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{option_parse_8h_acd083c726f0de0e35447b9d4176abc76}\label{option_parse_8h_acd083c726f0de0e35447b9d4176abc76}} 
+\index{optionParse.h@{optionParse.h}!unknownErrorHandling@{unknownErrorHandling}}
+\index{unknownErrorHandling@{unknownErrorHandling}!optionParse.h@{optionParse.h}}
+\doxysubsubsection{\texorpdfstring{unknownErrorHandling()}{unknownErrorHandling()}}
+{\footnotesize\ttfamily void unknown\+Error\+Handling (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+it handles an exception of type \char`\"{}unknown\char`\"{} 
+
+\mbox{\hyperlink{option_parse_8h_acd083c726f0de0e35447b9d4176abc76}{unknown\+Error\+Handling()}} 
+
+\begin{DoxyReturn}{Returns}
+error exit 
+\end{DoxyReturn}

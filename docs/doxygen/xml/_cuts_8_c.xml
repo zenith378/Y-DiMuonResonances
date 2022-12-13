@@ -1,0 +1,600 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="_cuts_8_c" kind="file" language="C++">
+    <compoundname>Cuts.C</compoundname>
+    <includes local="yes">ROOT/RDataFrame.hxx</includes>
+    <includes local="yes">TMath.h</includes>
+    <includes refid="_cuts_8h" local="yes">Cuts.h</includes>
+    <includes local="no">filesystem</includes>
+    <includes local="yes">TSystem.h</includes>
+    <includes refid="option_parse_8h" local="yes">optionParse.h</includes>
+    <incdepgraph>
+      <node id="4">
+        <label>Cuts.h</label>
+        <link refid="_cuts_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>optionParse.h</label>
+        <link refid="option_parse_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C</label>
+        <link refid="_cuts_8_c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ROOT/RDataFrame.hxx</label>
+      </node>
+      <node id="3">
+        <label>TMath.h</label>
+      </node>
+      <node id="6">
+        <label>TSystem.h</label>
+      </node>
+      <node id="5">
+        <label>filesystem</label>
+      </node>
+      <node id="9">
+        <label>getopt.h</label>
+      </node>
+      <node id="8">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_cuts_8_c_1a82224e5a346917e96fd9e992f1e2f5ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ROOT::RDF::RNode</type>
+        <definition>ROOT::RDF::RNode DFFilter</definition>
+        <argsstring>(ROOT::RDataFrame df, int &amp;dr)</argsstring>
+        <name>DFFilter</name>
+        <param>
+          <type>ROOT::RDataFrame</type>
+          <declname>df</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>dr</declname>
+        </param>
+        <briefdescription>
+<para>it applies default cuts </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Depth 0: two muons of opposite charge and invariant mass between 8.5 and 11.5 GeV Depth 1: select dimuon pT between 10 and 100 GeV Depth 2: select dimuon pT between 10 and 100 GeV and a rapidity less than 0.6 in abs value</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>df</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dataframe to be cutted </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>depth of the cut to be applied</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Cutted Dataframe </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" line="15" column="18" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" bodystart="15" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="_cuts_8_c_1ad88e5867f055c448c9ea50fbc484e032" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ROOT::RDF::RNode</type>
+        <definition>ROOT::RDF::RNode applyFilter</definition>
+        <argsstring>(ROOT::RDF::RNode df_custom_cut, std::string_view filter, std::string_view name)</argsstring>
+        <name>applyFilter</name>
+        <param>
+          <type>ROOT::RDF::RNode</type>
+          <declname>df_custom_cut</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>it applies custom cuts on a variable given string containing the filter </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>df_custom_cut</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dataframe to be cutted </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>filter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string containing the definition of the filter to apply </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string containing the name of the filter</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Cutted Dataframe </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" line="65" column="18" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" bodystart="65" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="_cuts_8_c_1a515639bbb9e11a7276c3930bbe236486" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ROOT::RDF::RNode</type>
+        <definition>ROOT::RDF::RNode customFilter</definition>
+        <argsstring>(ROOT::RDataFrame df, float &amp;pmr, float &amp;pMr, float &amp;ymr, float &amp;yMr)</argsstring>
+        <name>customFilter</name>
+        <param>
+          <type>ROOT::RDataFrame</type>
+          <declname>df</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>pmr</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>pMr</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>ymr</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>yMr</declname>
+        </param>
+        <briefdescription>
+<para>looks for active otpion parameters and applies custom cuts </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>df</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dataframe to be cutted </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pmr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>minimum pt </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pMr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>maximum pt </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ymr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>minimum rapidity </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>yMr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>maximum rapidity</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Cutted Dataframe </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" line="84" column="18" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" bodystart="84" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="_cuts_8_c_1a46fe84d0ea4a598bb0b22ad6caf8fca4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ROOT::RDataFrame</type>
+        <definition>ROOT::RDataFrame generateDataFrame</definition>
+        <argsstring>(ROOT::RDataFrame df, int &amp;dr)</argsstring>
+        <name>generateDataFrame</name>
+        <param>
+          <type>ROOT::RDataFrame</type>
+          <declname>df</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>dr</declname>
+        </param>
+        <briefdescription>
+<para>tries to read cutted dataframe from file and generates it, if it does not exists </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>df</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dataframe to be cutted </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>depth set</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Cutted Dataframe </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" line="131" column="18" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" bodystart="131" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="_cuts_8_c_1a881a676022acb37d96b60e0227b5893e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ROOT::RDF::RNode</type>
+        <definition>ROOT::RDF::RNode Cuts</definition>
+        <argsstring>(ROOT::RDataFrame df, int &amp;dr, float &amp;pmr, float &amp;pMr, float &amp;ymr, float &amp;yMr)</argsstring>
+        <name>Cuts</name>
+        <param>
+          <type>ROOT::RDataFrame</type>
+          <declname>df</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>dr</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>pmr</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>pMr</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>ymr</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>yMr</declname>
+        </param>
+        <briefdescription>
+<para>Modified a muon DataFrame cutting on nMuon, Muon_charge, Dimuon_mass, Dimuon_pt and Dimuon_y. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>UNa descrizione più dettagliata della funzione <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>df</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data Frame in input </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pmr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>lower extreme for the cut on the dimuon trasverse momentum </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pMr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>upper extreme for the cut on the dimuon trasverse momentum </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ymr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>lower extreme for the cut on the dimuon pseudorapidity </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>yMr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>upper extreme for the cut on the dimuon pseudorapidity </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>df_cut DataFrame with the selection decided by the cuts </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" line="217" column="18" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C" bodystart="217" bodyend="232"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Selection of the data. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The data are selected to be two muon of opposite charge with an invariant mass around the mass of the Y resonances. Also it is possible to choose other cuts on the trasverse momentum and the pseudorapidity of the dimuon state. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ROOT/RDataFrame.hxx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;TMath.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_cuts_8h" kindref="compound">Cuts.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;TSystem.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="option_parse_8h" kindref="compound">optionParse.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">ROOT::RDF::RNode<sp/><ref refid="_cuts_8_c_1a82224e5a346917e96fd9e992f1e2f5ae" kindref="member">DFFilter</ref>(ROOT::RDataFrame<sp/>df,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;dr)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(dr)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>df_cut<sp/>=<sp/>df.Filter([](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x<sp/>==<sp/>2;<sp/>},</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;nMuon&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Events<sp/>with<sp/>exactly<sp/>two<sp/>muons&quot;</highlight><highlight class="normal">})</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.Filter([](</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x<sp/>&gt;<sp/>8.5<sp/>&amp;&amp;<sp/>x<sp/>&lt;<sp/>11.5;<sp/>},</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;Dimuon_mass&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Inviariant<sp/>mass<sp/>between<sp/>8.5<sp/>and<sp/>11.5&quot;</highlight><highlight class="normal">});<sp/></highlight><highlight class="comment">//<sp/>Cut<sp/>around<sp/>the<sp/>Ys</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>df_cut;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>df_cut<sp/>=<sp/>df.Filter([](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x<sp/>==<sp/>2;<sp/>},</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;nMuon&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Events<sp/>with<sp/>exactly<sp/>two<sp/>muons&quot;</highlight><highlight class="normal">})<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Select<sp/>events<sp/>with<sp/>exactly<sp/>two<sp/>muons</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.Filter(</highlight><highlight class="stringliteral">&quot;Muon_charge[0]<sp/>!=<sp/>Muon_charge[1]&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Muons<sp/>with<sp/>opposite<sp/>charge&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="comment">//<sp/>Select<sp/>events<sp/>with<sp/>two<sp/>muons<sp/>of<sp/>opposite<sp/>charge</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.Filter([](</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x<sp/>&gt;<sp/>8.5<sp/>&amp;&amp;<sp/>x<sp/>&lt;<sp/>11.5;<sp/>},</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;Dimuon_mass&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Inviariant<sp/>mass<sp/>between<sp/>8.5<sp/>and<sp/>11.5&quot;</highlight><highlight class="normal">})<sp/></highlight><highlight class="comment">//<sp/>Cut<sp/>around<sp/>the<sp/>Ys</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.Filter([](</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x<sp/>&gt;<sp/>10.<sp/>&amp;&amp;<sp/>x<sp/>&lt;<sp/>100.;<sp/>},</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;Dimuon_pt&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Pt<sp/>between<sp/>10<sp/>and<sp/>100<sp/>GeV&quot;</highlight><highlight class="normal">});<sp/></highlight><highlight class="comment">//<sp/>Select<sp/>events<sp/>with<sp/>10<sp/>GeV<sp/>&lt;<sp/>pT<sp/>&lt;<sp/>100<sp/>GeV</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>df_cut;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>df_cut<sp/>=<sp/>df.Filter([](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x<sp/>==<sp/>2;<sp/>},</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;nMuon&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Events<sp/>with<sp/>exactly<sp/>two<sp/>muons&quot;</highlight><highlight class="normal">})<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Select<sp/>events<sp/>with<sp/>exactly<sp/>two<sp/>muons</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.Filter(</highlight><highlight class="stringliteral">&quot;Muon_charge[0]<sp/>!=<sp/>Muon_charge[1]&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Muons<sp/>with<sp/>opposite<sp/>charge&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="comment">//<sp/>Select<sp/>events<sp/>with<sp/>two<sp/>muons<sp/>of<sp/>opposite<sp/>charge</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.Filter([](</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x<sp/>&gt;<sp/>8.5<sp/>&amp;&amp;<sp/>x<sp/>&lt;<sp/>11.5;<sp/>},</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;Dimuon_mass&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Inviariant<sp/>mass<sp/>between<sp/>8.5<sp/>and<sp/>11.5&quot;</highlight><highlight class="normal">})<sp/></highlight><highlight class="comment">//<sp/>Cut<sp/>around<sp/>the<sp/>Ys</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.Filter([](</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x<sp/>&gt;<sp/>10.<sp/>&amp;&amp;<sp/>x<sp/>&lt;<sp/>100.;<sp/>},</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;Dimuon_pt&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Pt<sp/>between<sp/>10<sp/>and<sp/>100<sp/>GeV&quot;</highlight><highlight class="normal">})<sp/></highlight><highlight class="comment">//<sp/>Select<sp/>events<sp/>with<sp/>10<sp/>GeV<sp/>&lt;<sp/>pT<sp/>&lt;<sp/>100<sp/>GeV</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.Filter([](</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x<sp/>&gt;<sp/>-0.6<sp/>&amp;&amp;<sp/>x<sp/>&lt;<sp/>0.6;<sp/>},</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;Dimuon_y&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Rapidity<sp/>between<sp/>-0.6<sp/>and<sp/>0.6&quot;</highlight><highlight class="normal">});</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>df_cut;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>exit(1);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal">ROOT::RDF::RNode<sp/><ref refid="_cuts_8_c_1ad88e5867f055c448c9ea50fbc484e032" kindref="member">applyFilter</ref>(ROOT::RDF::RNode<sp/>df_custom_cut,<sp/>std::string_view<sp/>filter,<sp/>std::string_view<sp/>name)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>df_custom_cut<sp/>=<sp/>df_custom_cut.Filter(filter,<sp/>name);<sp/></highlight><highlight class="comment">//<sp/>apply<sp/>filter<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>df_custom_cut.Count();<sp/></highlight><highlight class="comment">//count<sp/>remaining<sp/>events</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*count<sp/>&lt;<sp/>800)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(std::runtime_error(</highlight><highlight class="stringliteral">&quot;Too<sp/>few<sp/>events.<sp/>Fit<sp/>might<sp/>not<sp/>converge.<sp/>Please<sp/>relaxe<sp/>cuts.\n&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::exception<sp/>&amp;ex)<sp/></highlight><highlight class="comment">//handles<sp/>exception<sp/>thrown<sp/>at<sp/>74</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>ex.what()<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>df_custom_cut;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal">ROOT::RDF::RNode<sp/><ref refid="_cuts_8_c_1a515639bbb9e11a7276c3930bbe236486" kindref="member">customFilter</ref>(ROOT::RDataFrame<sp/>df,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;pmr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;pMr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;ymr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;yMr)</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>ROOT::RDF::RNode<sp/>df_custom_cut<sp/>=<sp/>df;<sp/></highlight><highlight class="comment">//initialize<sp/>datafrmae</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pmr<sp/>==<sp/>pmr)<sp/></highlight><highlight class="comment">//if<sp/>pmr<sp/>is<sp/>not<sp/>nan</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>fil<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Dimuon_pt<sp/>&gt;&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(pmr);<sp/></highlight><highlight class="comment">//<sp/>format<sp/>string<sp/>to<sp/>pass<sp/>to<sp/>the<sp/>filter<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>df_custom_cut<sp/>=<sp/><ref refid="_cuts_8_c_1ad88e5867f055c448c9ea50fbc484e032" kindref="member">applyFilter</ref>(df_custom_cut,<sp/>fil,<sp/></highlight><highlight class="stringliteral">&quot;Custom<sp/>cut<sp/>on<sp/>minimum<sp/>pt&quot;</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//apply<sp/>filter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pMr<sp/>==<sp/>pMr)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>fil<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Dimuon_pt<sp/>&lt;&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(pMr);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>df_custom_cut<sp/>=<sp/><ref refid="_cuts_8_c_1ad88e5867f055c448c9ea50fbc484e032" kindref="member">applyFilter</ref>(df_custom_cut,<sp/>fil,<sp/></highlight><highlight class="stringliteral">&quot;Custom<sp/>cut<sp/>on<sp/>maximum<sp/>pt&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ymr<sp/>==<sp/>ymr<sp/>&amp;&amp;<sp/>yMr<sp/>==<sp/>yMr)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>df_custom_cut<sp/>=<sp/>df_custom_cut.Filter([ymr,<sp/>yMr](</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((x<sp/>&gt;<sp/>-yMr<sp/>&amp;&amp;<sp/>x<sp/>&lt;<sp/>-ymr)<sp/>||<sp/>(x<sp/>&gt;<sp/>ymr<sp/>&amp;&amp;<sp/>x<sp/>&gt;<sp/>yMr));<sp/>},</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight><highlight class="stringliteral">&quot;Dimuon_y&quot;</highlight><highlight class="normal">},<sp/>{</highlight><highlight class="stringliteral">&quot;Custom<sp/>cut<sp/>on<sp/>rapidity&quot;</highlight><highlight class="normal">});</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>df_custom_cut.Count();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*count<sp/>&lt;<sp/>800)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(std::runtime_error(</highlight><highlight class="stringliteral">&quot;Too<sp/>few<sp/>events.<sp/>Fit<sp/>might<sp/>not<sp/>converge.<sp/>Try<sp/>relaxing<sp/>cuts.\n&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::exception<sp/>&amp;ex)</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>ex.what()<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ymr<sp/>==<sp/>ymr<sp/>&amp;&amp;<sp/>yMr<sp/>!=<sp/>yMr)</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>fil<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Dimuon_y<sp/>&gt;&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(ymr);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>df_custom_cut<sp/>=<sp/><ref refid="_cuts_8_c_1ad88e5867f055c448c9ea50fbc484e032" kindref="member">applyFilter</ref>(df_custom_cut,<sp/>fil,<sp/></highlight><highlight class="stringliteral">&quot;Custom<sp/>cut<sp/>on<sp/>minimum<sp/>rapidity&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(yMr<sp/>==<sp/>yMr<sp/>&amp;&amp;<sp/>ymr<sp/>!=<sp/>ymr)</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>fil<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Dimuon_y<sp/>&lt;&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(yMr);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>df_custom_cut<sp/>=<sp/><ref refid="_cuts_8_c_1ad88e5867f055c448c9ea50fbc484e032" kindref="member">applyFilter</ref>(df_custom_cut,<sp/>fil,<sp/></highlight><highlight class="stringliteral">&quot;Custom<sp/>cut<sp/>on<sp/>maximum<sp/>rapidity&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>df_custom_cut;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal">ROOT::RDataFrame<sp/><ref refid="_cuts_8_c_1a46fe84d0ea4a598bb0b22ad6caf8fca4" kindref="member">generateDataFrame</ref>(ROOT::RDataFrame<sp/>df,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;dr){</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/>ROOT::EnableImplicitMT(1);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>ROOT::RDataFrame<sp/>*df_off;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fs<sp/>=<sp/>std::filesystem;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/>std::string<sp/>*fname;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Events<sp/>selection</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(dr)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>fname<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>std::string(</highlight><highlight class="stringliteral">&quot;./Data/data_cut0.root&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>fname<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>std::string(</highlight><highlight class="stringliteral">&quot;./Data/data_cut1.root&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>2:</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>fname<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>std::string(</highlight><highlight class="stringliteral">&quot;./Data/data_cut2.root&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>df_off<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>ROOT::RDataFrame(</highlight><highlight class="stringliteral">&quot;Cuts&quot;</highlight><highlight class="normal">,<sp/>*fname);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>file<sp/>does<sp/>not<sp/>open</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fs::is_directory(</highlight><highlight class="stringliteral">&quot;./Data&quot;</highlight><highlight class="normal">)<sp/>||<sp/>!fs::exists(</highlight><highlight class="stringliteral">&quot;./Data&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(</highlight><highlight class="stringliteral">&quot;./Data&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(gSystem-&gt;AccessPathName(fname-&gt;c_str()))</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(std::runtime_error(</highlight><highlight class="stringliteral">&quot;Problem<sp/>reading<sp/>cut<sp/>file<sp/>(it<sp/>might<sp/>not<sp/>exist<sp/>or<sp/>it<sp/>might<sp/>be<sp/>corrupted)\n&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*pathToData)</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Directory<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>pathToData<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>does<sp/>not<sp/>exist.\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Creating<sp/>directory...\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>fs::create_directory(pathToData);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Directory<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>pathToData<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>successfully<sp/>created\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(std::runtime_error(</highlight><highlight class="stringliteral">&quot;Problem<sp/>reading<sp/>cut<sp/>file<sp/>(it<sp/>might<sp/>not<sp/>exist<sp/>or<sp/>it<sp/>might<sp/>be<sp/>corrupted)\n&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::exception<sp/>&amp;exp)</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>exp.what()<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Recreating<sp/>cut<sp/>dataframe...\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>df_cut<sp/>=<sp/><ref refid="_cuts_8_c_1a82224e5a346917e96fd9e992f1e2f5ae" kindref="member">DFFilter</ref>(df,<sp/>dr);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Cut<sp/>Dataframe<sp/>recreated.<sp/>Cut<sp/>report<sp/>follows\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Request<sp/>cut-flow<sp/>report</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>report<sp/>=<sp/>df_cut.Report();</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>cut-flow<sp/>report</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>report-&gt;Print();</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\nSaving<sp/>cut<sp/>file<sp/>for<sp/>future<sp/>usage...\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>df_cut.Snapshot(</highlight><highlight class="stringliteral">&quot;Cuts&quot;</highlight><highlight class="normal">,<sp/>*fname);<sp/></highlight><highlight class="comment">//<sp/>qui<sp/>forse<sp/>devo<sp/>mettere<sp/>un&apos;altra<sp/>exception</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Cut<sp/>File<sp/>successfully<sp/>saved\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>ROOT::RDataFrame<sp/>df_upt(</highlight><highlight class="stringliteral">&quot;Cuts&quot;</highlight><highlight class="normal">,<sp/>*fname);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Cut<sp/>File<sp/>successfully<sp/>opened\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>df_upt;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="option_parse_8h_1acd083c726f0de0e35447b9d4176abc76" kindref="member">unknownErrorHandling</ref>();</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(*df_off);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal">ROOT::RDF::RNode<sp/><ref refid="_cuts_8_c_1a881a676022acb37d96b60e0227b5893e" kindref="member">Cuts</ref>(ROOT::RDataFrame<sp/>df,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;dr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;pmr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;pMr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;ymr,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>&amp;yMr)</highlight></codeline>
+<codeline lineno="218"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>multi-threading</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/>ROOT::EnableImplicitMT(1);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/>ROOT::RDataFrame<sp/>df_off=<sp/><ref refid="_cuts_8_c_1a46fe84d0ea4a598bb0b22ad6caf8fca4" kindref="member">generateDataFrame</ref>(df,<sp/>dr);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/>ROOT::RDF::RNode<sp/>df_def<sp/>=<sp/><ref refid="_cuts_8_c_1a515639bbb9e11a7276c3930bbe236486" kindref="member">customFilter</ref>(df_off,<sp/>pmr,<sp/>pMr,<sp/>ymr,<sp/>yMr);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>report<sp/>=<sp/>df_def.Report();</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/>report-&gt;Print();</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>df_def;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/Cuts.C"/>
+  </compounddef>
+</doxygen>

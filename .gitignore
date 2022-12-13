@@ -57,3 +57,30 @@ _deps
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+*~
+.*sw?
+\#*
+.DS_Store
+
+*.rej
+*.orig
+
+*.pro
+/packages/rpm/doxygen.spec
+*.idb
+*.pdb
+
+#doxygen
+/doxygen_docs
+/doxygen.tag
+/build*
+/qtools_docs
+/warnings.log
+
+tags
+
+.idea
+
+/examples/html/*
+/examples/latex/*
