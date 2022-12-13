@@ -56,8 +56,8 @@ std::string formatYString(int &dr, float &ymr, float &yMr);
  * Implementation of the fit function
  * 
  * @param hh histogram to be fitted
- * @param dr reference of depth defined in main
  * @param fr reference of fitFunction defined in main
+ * @param dr reference of depth defined in main
  * @param pmr recerence of ptm (minimum pt) defined in main
  * @param pMr recerence of ptM (maximum pt) defined in main
  * @param ymr recerence of ym (minimum rapidity) defined in main

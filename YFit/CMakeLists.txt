@@ -1,5 +1,5 @@
 
-#   - ROOT built with CMake. Add in CMAKE_PREFIX_PATH the installation prefix for ROOT
+#--- ROOT built with CMake. Add in CMAKE_PREFIX_PATH the installation prefix for ROOT
 list(APPEND CMAKE_PREFIX_PATH $ENV{ROOTSYS})
 
 foreach(path ${CMAKE_PREFIX_PATH})

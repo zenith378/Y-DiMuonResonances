@@ -52,7 +52,7 @@ int test1(){
 
     RooDataSet *data = model.generate(x, 100e3);
     TH1 *hdata = data->createHistogram("x", 300);
-    RooFitResult* fitResult = fitRoo(hdata);
+    RooFitResult* fitResult = fitRoo(hdata, 1, 0, std::nanf("1"), std::nanf("2"), std::nanf("3"), std::nanf("4"), "testFit", 0);
     
     //se non fa il fit il test fallisce
     if (fitResult->status()!=0) j=-1;// fitResult->covQual() < 2
