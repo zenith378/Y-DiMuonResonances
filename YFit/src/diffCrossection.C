@@ -10,6 +10,12 @@
 #include "TSystem.h"
 #include "fitRoo.h"
 
+
+struct dcsVec{
+  double ptm, ptM;
+  double s1, s2, s3; //differential cross section for Y 1s, 2s and 3s
+};
+
 const float L =11.6; //[fb^-1]
 const float e_uu = 0.75;
 const float e_sg = 0.5;
@@ -29,7 +35,7 @@ double dCs(rooAbsPdf model, int i, float wpt){
 
 //per ogni deltaPT estrarre le funzini uscenti dal fit e calcolare la sezine d'urto differenziale in quel bin
 
-Double_t set(float ptm, float ptM) /
+dcsVec set(float ptm, float ptM) /
 {
     // initialize default values for options
     int depth = 0; //Depth value initialized to 0, i.e. no cuts
@@ -55,20 +61,35 @@ Double_t set(float ptm, float ptM) /
     Double_t dcs1 = dCs(sig1, 1, ptM-ptm);
     Double_t dcs2 = dCs(sig2, 2, ptM-ptm);
     Double_t dcs3 = dCs(sig3, 3, ptM-ptm);
-    
-    return dcs1;
+    dcsVec avec{ ptm, ptM,
+        dcs1, dcs2, dcs3};
+    return avec;
 }
 int plotsigma(){
-    ROOT::RDataFrame d(22);
-    ROOT::EnableImplicitMT();
     std::list ptm=[10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,43,46,50,55,60,70];
     std::list ptM=[12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,43,46,50,55,60,70,100];
-    d.Foreach([](float ptm, ptM){ std::cout << ptM-ptm << std::endl;})
-    for(int i=0;i<22;i++){
-        set(ptm[i],ptM[i])
+    
+    vector <dcsVec> dcs;
+    for(int i;i<22;i++){
+        avec = set(pmT[i]-pmt[i]);
+        dcs.push_back(avec)
     }
+    
+    
 }
 
 //ripetere quest'operazione per ogni bin
 //salvare le sezioni d'urto per ogni bin in una lista o un dataset
 //plottare : istogramma con bin diversi o TGraph?
+
+//    std::list ptm=[10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,43,46,50,55,60,70];
+//    std::list ptM=[12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,43,46,50,55,60,70,100];
+
+//auto filename = "pt_cpp.csv";
+//if(gSystem->AccessPathName(filename)){
+//    std::cout << "I can not find the file you are looking for" << std::endl;
+//    exit(1);
+//}
+//auto d = ROOT::RDF::MakeCsvDataFrame(filename,true, ',', -1);
+//auto df1 = d.Define("dpt", "ptM-ptm");
+//auto dt = d.Define("dcs1", set, {"ptm", "ptM"});
