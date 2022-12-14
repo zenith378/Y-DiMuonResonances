@@ -5,28 +5,30 @@
 
 #include "ROOT/RDataFrame.hxx"
 #include "TMath.h"
-#include "Cuts.h"
+#include "../include/Cuts.h"
 #include <filesystem>
 #include "TSystem.h"
-#include "fitRoo.h"
+#include "RooAbsPdf.h"
+#include "../include/fitRoo.h"
 
 
 struct dcsVec{
-  double ptm, ptM;
-  double s1, s2, s3; //differential cross section for Y 1s, 2s and 3s
+    float ptm, ptM;
+    Double_t s1, s2, s3; //differential cross section for Y 1s, 2s and 3s
 };
-
+const int n=22;
 const float L =11.6; //[fb^-1]
 const float e_uu = 0.75;
 const float e_sg = 0.5;
 const float e_vp = 0.99;
-const std::list BF=[2.48/100,1.93/100,2.18/100];   // Branching fraction Y(is) -> mu+ mu- from the PDG
+const float A=1; //accetanza va ridefinita in un altro modo bin per bin
+const std::list<double> BF={2.48/100,1.93/100,2.18/100};   // Branching fraction Y(is) -> mu+ mu- from the PDG
 
 
 /******************
  * \brief calculate the differential cross section given the functin that describe the mass distribution (model), which Y is (i), and the width of the pt bin (wpt)
  ***************************/
-double dCs(rooAbsPdf model, int i, float wpt){
+Double_t dCs(rooAbsPdf model, int i, float wpt){
     RooRealVar x("x", "x", 8., 12.);
     x.setRange("signal", 8.5, 11.5);
     int N = model.createIntegral(x, Range("signal")) ;
@@ -35,7 +37,7 @@ double dCs(rooAbsPdf model, int i, float wpt){
 
 //per ogni deltaPT estrarre le funzini uscenti dal fit e calcolare la sezine d'urto differenziale in quel bin
 
-dcsVec set(float ptm, float ptM) /
+dcsVec set(float ptm, float ptM)
 {
     // initialize default values for options
     int depth = 0; //Depth value initialized to 0, i.e. no cuts
@@ -52,30 +54,33 @@ dcsVec set(float ptm, float ptM) /
     //-------------------------------------------------------------
     //sicuramente sbagliato!i parametri sono da ridefinire??
     //forse è meglio fare questa operazione dentro a roofit
-    RooAbsPdf* sig1 = fitResult.createHessePdf(RooArgSet(fsig1,mean1,sigma1));
-    RooAbsPdf* sig1 = fitResult.createHessePdf(RooArgSet(fsig2,mean2,sigma2));
-    RooAbsPdf* sig1 = fitResult.createHessePdf(RooArgSet(fsig3,mean3,sigma3));
+    RooAbsPdf* sig1 = fitResult->createHessePdf(RooArgSet(fsig1,mean1,sigma1));
+    RooAbsPdf* sig2 = fitResult->createHessePdf(RooArgSet(fsig2,mean2,sigma2));
+    RooAbsPdf* sig3 = fitResult->createHessePdf(RooArgSet(fsig3,mean3,sigma3));
     //-------------------------------------------------------------
 
     //dove salvo questi valori-> dovrei stamparli su un file?riempire un albero?
-    Double_t dcs1 = dCs(sig1, 1, ptM-ptm);
-    Double_t dcs2 = dCs(sig2, 2, ptM-ptm);
-    Double_t dcs3 = dCs(sig3, 3, ptM-ptm);
+    Double_t s1 = dCs(sig1, 1, ptM-ptm);
+    Double_t s2 = dCs(sig2, 2, ptM-ptm);
+    Double_t s3 = dCs(sig3, 3, ptM-ptm);
     dcsVec avec{ ptm, ptM,
-        dcs1, dcs2, dcs3};
+        s1, s2, s3};
     return avec;
 }
-int plotsigma(){
-    std::list ptm=[10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,43,46,50,55,60,70];
-    std::list ptM=[12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,43,46,50,55,60,70,100];
+int diffCrossection(){
+    std::list<double> ptm={10.,12.,14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.};
+    std::list<double> ptM={12.,14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.,100.};
     
     vector <dcsVec> dcs;
-    for(int i;i<22;i++){
-        avec = set(pmT[i]-pmt[i]);
-        dcs.push_back(avec)
+    for(int i;i<n;i++){
+        dcsVec avec = set(ptm[i], ptM[i]);
+        dcs.push_back(avec);
     }
     
-    
+    auto g = new TGraph(n,dcs.ptM-dcs.ptm,dcs.s1);
+       g->SetTitle("Graph title;p_{T} [GeV];#frac{d#sigma}{dp_{T}} [fb/GeV]");
+       g->Draw("AC*");
+    return 0;
 }
 
 //ripetere quest'operazione per ogni bin
@@ -83,7 +88,7 @@ int plotsigma(){
 //plottare : istogramma con bin diversi o TGraph?
 
 //    std::list ptm=[10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,43,46,50,55,60,70];
-//    std::list ptM=[12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,43,46,50,55,60,70,100];
+//    std::list ptM=[12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,43,46,50,55,60,70,100.];
 
 //auto filename = "pt_cpp.csv";
 //if(gSystem->AccessPathName(filename)){
