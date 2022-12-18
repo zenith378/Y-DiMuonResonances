@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="df__set_8h" kind="file" language="C++">
+    <compoundname>df_set.h</compoundname>
+    <includes local="yes">ROOT/RDataFrame.hxx</includes>
+    <includes local="yes">ROOT/RVec.hxx</includes>
+    <includes local="yes">Math/Vector4Dfwd.h</includes>
+    <includes local="yes">Math/Vector4D.h</includes>
+    <includes local="yes">TMath.h</includes>
+    <includes local="yes">TFile.h</includes>
+    <includedby refid="df__set_8_c" local="yes">/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/df_set.C</includedby>
+    <includedby refid="main_8_c" local="yes">/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/main/main.C</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/df_set.h</label>
+        <link refid="df__set_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Math/Vector4D.h</label>
+      </node>
+      <node id="4">
+        <label>Math/Vector4Dfwd.h</label>
+      </node>
+      <node id="2">
+        <label>ROOT/RDataFrame.hxx</label>
+      </node>
+      <node id="3">
+        <label>ROOT/RVec.hxx</label>
+      </node>
+      <node id="7">
+        <label>TFile.h</label>
+      </node>
+      <node id="6">
+        <label>TMath.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/df_set.h</label>
+        <link refid="df__set_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/df_set.C</label>
+        <link refid="df__set_8_c"/>
+      </node>
+      <node id="3">
+        <label>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/main/main.C</label>
+        <link refid="main_8_c"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespace_r_o_o_t_1_1_vec_ops">ROOT::VecOps</innernamespace>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="df__set_8h_1af438380d6514d79f1f7e8c9e0abfe4a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ROOT::Math::PtEtaPhiMVector</type>
+        <definition>ROOT::Math::PtEtaPhiMVector computeDiMuonFourVec</definition>
+        <argsstring>(RVec&lt; float &gt; &amp;pt, RVec&lt; float &gt; &amp;eta, RVec&lt; float &gt; &amp;phi, RVec&lt; float &gt; &amp;mass)</argsstring>
+        <name>computeDiMuonFourVec</name>
+        <param>
+          <type>RVec&lt; float &gt; &amp;</type>
+          <declname>pt</declname>
+        </param>
+        <param>
+          <type>RVec&lt; float &gt; &amp;</type>
+          <declname>eta</declname>
+        </param>
+        <param>
+          <type>RVec&lt; float &gt; &amp;</type>
+          <declname>phi</declname>
+        </param>
+        <param>
+          <type>RVec&lt; float &gt; &amp;</type>
+          <declname>mass</declname>
+        </param>
+        <briefdescription>
+<para>it calculates the four vector of a dimuon starting from pt, eta, phi and mass of muon pair </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>transverse momentum </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>eta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>phi</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mass</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>mass</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PtEtaPhiMVector </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/df_set.h" line="46" column="29" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/df_set.C" bodystart="21" bodyend="26" declfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/df_set.h" declline="46" declcolumn="29"/>
+      </memberdef>
+      <memberdef kind="function" id="df__set_8h_1af34623f885412e03b09394c01f1b36cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float computeDiMuonInvariantMass</definition>
+        <argsstring>(ROOT::Math::PtEtaPhiMVector &amp;fourvec)</argsstring>
+        <name>computeDiMuonInvariantMass</name>
+        <param>
+          <type>ROOT::Math::PtEtaPhiMVector &amp;</type>
+          <declname>fourvec</declname>
+        </param>
+        <briefdescription>
+<para>it calculates the invariant mass of a dimuon Four Vector </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fourvec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>four vector of dimuon pair</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>mass </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/df_set.h" line="56" column="7" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/df_set.C" bodystart="29" bodyend="32" declfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/df_set.h" declline="56" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="df__set_8h_1abc3dcc064a14d81643ca53fb4476cb58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float computeDiMuonPT</definition>
+        <argsstring>(ROOT::Math::PtEtaPhiMVector &amp;fourvec)</argsstring>
+        <name>computeDiMuonPT</name>
+        <param>
+          <type>ROOT::Math::PtEtaPhiMVector &amp;</type>
+          <declname>fourvec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fourvec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>four vector of dimuon pair</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>pt (transverse momentum) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/df_set.h" line="66" column="7" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/df_set.C" bodystart="34" bodyend="37" declfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/df_set.h" declline="66" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="df__set_8h_1aa008d9f6ecf77c07b6af80b1ef7cf9af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float computeDiMuonRapidity</definition>
+        <argsstring>(ROOT::Math::PtEtaPhiMVector &amp;fourvec)</argsstring>
+        <name>computeDiMuonRapidity</name>
+        <param>
+          <type>ROOT::Math::PtEtaPhiMVector &amp;</type>
+          <declname>fourvec</declname>
+        </param>
+        <briefdescription>
+<para>{it calculates the rapidity of a dimuon Four Vector //inserire formula rapidità} </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fourvec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>four vector of dimuon pair</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>rapidity </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/df_set.h" line="76" column="7" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/df_set.C" bodystart="40" bodyend="43" declfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/df_set.h" declline="76" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="df__set_8h_1a57a6e40352ae3e1653a413240f4db8bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float computeDiMuonBeta</definition>
+        <argsstring>(ROOT::Math::PtEtaPhiMVector &amp;fourvec)</argsstring>
+        <name>computeDiMuonBeta</name>
+        <param>
+          <type>ROOT::Math::PtEtaPhiMVector &amp;</type>
+          <declname>fourvec</declname>
+        </param>
+        <briefdescription>
+<para>{it calculates beta (p_t/E) of a dimuon Four Vector} </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fourvec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>four vector of dimuon pair</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>beta </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/df_set.h" line="86" column="7" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/df_set.C" bodystart="45" bodyend="48" declfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/df_set.h" declline="86" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="df__set_8h_1ad8de3c0c9c809d0cdc00ba1bcfe996e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ROOT::RDataFrame</type>
+        <definition>ROOT::RDataFrame df_set</definition>
+        <argsstring>()</argsstring>
+        <name>df_set</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Dataframe </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para>throw exception to handle</para>
+<para>throw exception to handle</para>
+        </inbodydescription>
+        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/df_set.h" line="95" column="18" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/df_set.C" bodystart="51" bodyend="109" declfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/df_set.h" declline="95" declcolumn="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Header file of <ref refid="df__set_8_c" kindref="compound">df_set.C</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>In this file are defined the functions used in order to read the dataframe (or create it if it is not already there) and setting it up with useful variables In particular, it is defined:</para>
+<para>computeFourVector(): computes a four vector of a dimuon starting from pt, eta, phi and mass</para>
+<para>computeFourVecInvariantMass(): computes invariant mass of given four vector</para>
+<para>computeFourVecPT(): computes pt of given FourVector</para>
+<para>computeFourVecRapidity(): computes rapidity of given four vector</para>
+<para>computeFourVecBeta(): computes beta of given four vector</para>
+<para><ref refid="df__set_8h_1ad8de3c0c9c809d0cdc00ba1bcfe996e4" kindref="member">df_set()</ref>: defines the dataframe </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>df_set_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>df_set_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ROOT/RDataFrame.hxx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ROOT/RVec.hxx&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//per<sp/>usare<sp/>ROOT::VecOps::RVec&lt;T&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Math/Vector4Dfwd.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Math/Vector4D.h&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//per<sp/>usare<sp/>PtEtaPhiMVector<sp/>e<sp/>le<sp/>sue<sp/>funzioni</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;TMath.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;TFile.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">ROOT::VecOps;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">ROOT::Math::PtEtaPhiMVector<sp/><ref refid="df__set_8h_1af438380d6514d79f1f7e8c9e0abfe4a9" kindref="member">computeDiMuonFourVec</ref>(RVec&lt;float&gt;&amp;<sp/>pt,<sp/>RVec&lt;float&gt;&amp;<sp/>eta,<sp/>RVec&lt;float&gt;&amp;<sp/>phi,<sp/>RVec&lt;float&gt;&amp;<sp/>mass);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="df__set_8h_1af34623f885412e03b09394c01f1b36cf" kindref="member">computeDiMuonInvariantMass</ref>(ROOT::Math::PtEtaPhiMVector&amp;<sp/>fourvec);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="df__set_8h_1abc3dcc064a14d81643ca53fb4476cb58" kindref="member">computeDiMuonPT</ref>(ROOT::Math::PtEtaPhiMVector&amp;<sp/>fourvec);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="df__set_8h_1aa008d9f6ecf77c07b6af80b1ef7cf9af" kindref="member">computeDiMuonRapidity</ref>(ROOT::Math::PtEtaPhiMVector&amp;<sp/>fourvec);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="df__set_8h_1a57a6e40352ae3e1653a413240f4db8bf" kindref="member">computeDiMuonBeta</ref>(ROOT::Math::PtEtaPhiMVector&amp;<sp/>fourvec);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal">ROOT::RDataFrame<sp/><ref refid="df__set_8h_1ad8de3c0c9c809d0cdc00ba1bcfe996e4" kindref="member">df_set</ref>();</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>Cuts_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/df_set.h"/>
+  </compounddef>
+</doxygen>

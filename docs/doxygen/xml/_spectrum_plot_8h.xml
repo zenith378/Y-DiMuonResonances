@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="_spectrum_plot_8h" kind="file" language="C++">
+    <compoundname>SpectrumPlot.h</compoundname>
+    <includes local="yes">ROOT/RDataFrame.hxx</includes>
+    <includes local="yes">TMath.h</includes>
+    <includes local="yes">TCanvas.h</includes>
+    <includes local="yes">TH1D.h</includes>
+    <includes local="yes">TLatex.h</includes>
+    <includes local="yes">TStyle.h</includes>
+    <includes refid="_cuts_8h" local="yes">Cuts.h</includes>
+    <includedby refid="_spectrum_plot_8_c" local="yes">/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/SpectrumPlot.C</includedby>
+    <includedby refid="diff_crossection_8_c" local="yes">/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C</includedby>
+    <includedby refid="main_8_c" local="yes">/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/main/main.C</includedby>
+    <incdepgraph>
+      <node id="8">
+        <label>Cuts.h</label>
+        <link refid="_cuts_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/SpectrumPlot.h</label>
+        <link refid="_spectrum_plot_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ROOT/RDataFrame.hxx</label>
+      </node>
+      <node id="4">
+        <label>TCanvas.h</label>
+      </node>
+      <node id="5">
+        <label>TH1D.h</label>
+      </node>
+      <node id="6">
+        <label>TLatex.h</label>
+      </node>
+      <node id="3">
+        <label>TMath.h</label>
+      </node>
+      <node id="7">
+        <label>TStyle.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/SpectrumPlot.h</label>
+        <link refid="_spectrum_plot_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/SpectrumPlot.C</label>
+        <link refid="_spectrum_plot_8_c"/>
+      </node>
+      <node id="3">
+        <label>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C</label>
+        <link refid="diff_crossection_8_c"/>
+      </node>
+      <node id="4">
+        <label>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/main/main.C</label>
+        <link refid="main_8_c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_spectrum_plot_8h_1afef3adcc4a5647352f99615cd5bc1f63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>TH1 *</type>
+        <definition>TH1 * SpectrumPlot</definition>
+        <argsstring>(ROOT::RDF::RNode df_cut)</argsstring>
+        <name>SpectrumPlot</name>
+        <param>
+          <type>ROOT::RDF::RNode</type>
+          <declname>df_cut</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Simple Function to plot the spectrum of the dataset which is currently used and create an histogram. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>df_cut</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dataframe containg the data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>histogram of the data </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/SpectrumPlot.h" line="25" column="5" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/SpectrumPlot.C" bodystart="16" bodyend="62" declfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/SpectrumPlot.h" declline="25" declcolumn="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Function to plot the spectrum of the dataset which is currently used and create an histogram. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SpectrumPlot_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SpectrumPlot_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ROOT/RDataFrame.hxx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;TMath.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;TCanvas.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;TH1D.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;TLatex.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;TStyle.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_cuts_8h" kindref="compound">Cuts.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">TH1*<sp/><ref refid="_spectrum_plot_8h_1afef3adcc4a5647352f99615cd5bc1f63" kindref="member">SpectrumPlot</ref>(ROOT::RDF::RNode<sp/>df_cut);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>SpectrumPlot_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/SpectrumPlot.h"/>
+  </compounddef>
+</doxygen>

@@ -1,8 +1,12 @@
 var searchData=
 [
-  ['fitroo_0',['fitRoo',['../fit_roo_8h.html#ae27b1286b8f342d0a639eed87957ac88',1,'fitRoo(TH1 *hh, int &amp;fr, int &amp;dr, float &amp;pmr, float &amp;pMr, float &amp;ymr, float &amp;yMr, std::string &amp;fnr, int &amp;vr):&#160;fitRoo.C'],['../fit_roo_8_c.html#a8a9508331d97be33788890aa55dc1dd7',1,'fitRoo(TH1 *hh, int &amp;fr, int &amp;dr, float &amp;pmr, float &amp;pMr, float &amp;ymr, float &amp;yMr, std::string &amp;nfr, int &amp;vr):&#160;fitRoo.C']]],
-  ['fitroo_2ec_1',['fitRoo.C',['../fit_roo_8_c.html',1,'']]],
-  ['fitroo_2eh_2',['fitRoo.h',['../fit_roo_8h.html',1,'']]],
-  ['formatptstring_3',['formatPtString',['../fit_roo_8h.html#a3486da7fabe684039983850799d99617',1,'formatPtString(int &amp;dr, float &amp;pmr, float &amp;pMr):&#160;fitRoo.C'],['../fit_roo_8_c.html#a3486da7fabe684039983850799d99617',1,'formatPtString(int &amp;dr, float &amp;pmr, float &amp;pMr):&#160;fitRoo.C']]],
-  ['formatystring_4',['formatYString',['../fit_roo_8h.html#a47519f963af9cc34c19ff7d6f465dc6c',1,'formatYString(int &amp;dr, float &amp;ymr, float &amp;yMr):&#160;fitRoo.C'],['../fit_roo_8_c.html#a47519f963af9cc34c19ff7d6f465dc6c',1,'formatYString(int &amp;dr, float &amp;ymr, float &amp;yMr):&#160;fitRoo.C']]]
+  ['dcs_0',['dCs',['../diff_crossection_8h.html#a91a06dfee79b1d3a5cad422df9865dcd',1,'dCs(RooAbsPdf *model, int i, float wpt):&#160;diffCrossection.h'],['../diff_crossection_8_c.html#a8e5b99ad8c59ce31d1ff31ce4b63521f',1,'dCs(double N, int i, float wpt):&#160;diffCrossection.C']]],
+  ['dcsvec_1',['dcsVec',['../structdcs_vec.html',1,'']]],
+  ['df_5fset_2',['df_set',['../df__set_8h.html#ad8de3c0c9c809d0cdc00ba1bcfe996e4',1,'df_set():&#160;df_set.C'],['../df__set_8_c.html#ad8de3c0c9c809d0cdc00ba1bcfe996e4',1,'df_set():&#160;df_set.C']]],
+  ['df_5fset_2ec_3',['df_set.C',['../df__set_8_c.html',1,'']]],
+  ['df_5fset_2eh_4',['df_set.h',['../df__set_8h.html',1,'']]],
+  ['dffilter_5',['DFFilter',['../_cuts_8h.html#a82224e5a346917e96fd9e992f1e2f5ae',1,'DFFilter(ROOT::RDataFrame df, int &amp;dr):&#160;Cuts.C'],['../_cuts_8_c.html#a82224e5a346917e96fd9e992f1e2f5ae',1,'DFFilter(ROOT::RDataFrame df, int &amp;dr):&#160;Cuts.C']]],
+  ['diffcrossection_6',['diffCrossection',['../diff_crossection_8h.html#a4b2012e21ea55c1112b9ab01ca3cd9a4',1,'diffCrossection(ROOT::RDataFrame df):&#160;diffCrossection.h'],['../diff_crossection_8_c.html#a0182da246ab217f4541fa622cdc27514',1,'diffCrossection(ROOT::RDataFrame df, Double_t &amp;int1, Double_t &amp;int2, Double_t &amp;int3):&#160;diffCrossection.C']]],
+  ['diffcrossection_2ec_7',['diffCrossection.C',['../diff_crossection_8_c.html',1,'']]],
+  ['diffcrossection_2eh_8',['diffCrossection.h',['../diff_crossection_8h.html',1,'']]]
 ];

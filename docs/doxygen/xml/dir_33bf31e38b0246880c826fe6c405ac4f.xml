@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="dir_33bf31e38b0246880c826fe6c405ac4f" kind="dir">
+    <compoundname>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include</compoundname>
+    <innerfile refid="_cuts_8h">Cuts.h</innerfile>
+    <innerfile refid="df__set_8h">df_set.h</innerfile>
+    <innerfile refid="diff_crossection_8h">diffCrossection.h</innerfile>
+    <innerfile refid="fit_roo_8h">fitRoo.h</innerfile>
+    <innerfile refid="option_parse_8h">optionParse.h</innerfile>
+    <innerfile refid="_spectrum_plot_8h">SpectrumPlot.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/"/>
+  </compounddef>
+</doxygen>

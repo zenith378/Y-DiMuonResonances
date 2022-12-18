@@ -20,10 +20,10 @@ include(${ROOT_USE_FILE})
 add_definitions(${ROOT_CXX_FLAGS})
 
 
-ROOT_GENERATE_DICTIONARY(G__YFit include/Cuts.h include/df_set.h include/SpectrumPlot.h include/fitRoo.h include/optionParse.h)
+ROOT_GENERATE_DICTIONARY(G__YFit include/Cuts.h include/df_set.h include/SpectrumPlot.h include/fitRoo.h include/optionParse.h include/diffCrossection.h)
 
 # Add a library with the above sources
-add_library(YFit src/Cuts.C src/df_set.C src/fitRoo.C src/optionParse.C src/SpectrumPlot.C)
+add_library(YFit src/Cuts.C src/df_set.C src/fitRoo.C src/optionParse.C src/SpectrumPlot.C src/diffCrossection.C)
 
 target_link_libraries(YFit ${ROOT_LIBRARIES})
 

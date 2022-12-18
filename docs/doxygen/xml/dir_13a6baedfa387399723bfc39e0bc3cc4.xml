@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="dir_13a6baedfa387399723bfc39e0bc3cc4" kind="dir">
+    <compoundname>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit</compoundname>
+    <innerdir refid="dir_33bf31e38b0246880c826fe6c405ac4f">/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include</innerdir>
+    <innerdir refid="dir_4b74e50f3f245eed235ef62576b8bfa5">/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/"/>
+  </compounddef>
+</doxygen>

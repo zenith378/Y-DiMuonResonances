@@ -70,7 +70,11 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
     RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5001, 11.5);
     RooDataHist rh("rh", "rh", x, Import(*hh));
     // create application to display the canvas while root runs
-    TApplication *theApp = new TApplication("app", 0, 0);
+    //TApplication *theApp = new TApplication("app", 0, 0);
+    
+    //numero di eventi dentro all'istogramma
+    Int_t entries = hh->GetEntries();
+    RooRealVar nback("nback", "nback", 0.2*entries, 0.01, entries); //0.32
     
     Int_t nb = hh->GetNbinsX();
     Double_t x1 = hh->GetBinCenter(1);
@@ -88,8 +92,8 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
     // Build polynomial pdf
     RooRealVar a0("a0", "a0", bg, 0, 5000);
     RooRealVar a1("a1", "a1", slp, -500., 500.);
-    //RooRealVar a2("a2", "a2", 0, -30., 30.);
-    RooPolynomial bkg("bkg", "Background", x, RooArgSet(a0, a1));
+    RooRealVar a2("a2", "a2", 0, -30., 30.);
+    RooPolynomial bkg("bkg", "Background", x, RooArgSet(a0, a1, a2));
 
     // Create parameters
     RooRealVar mean1("mean1", "mean of gaussians", 9.45, 9.3, 9.6);
@@ -109,9 +113,9 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
     RooAbsPdf *sig2;
     RooAbsPdf *sig3;
 
-    RooRealVar fsig1("fsig1", "signal1", 0.4, 0.01, 1.);
-    RooRealVar fsig2("fsig2", "signal2", 0.3, 0.01, 1.);
-    RooRealVar fsig3("fsig3", "signal3", 0.2, 0.01, 1.);
+    RooRealVar nsig1("nsig1", "signal1", 0.32*entries, 0.01, entries); //0.32
+    RooRealVar nsig2("nsig2", "signal2", 0.21*entries, 0.01, entries); //0.21
+    RooRealVar nsig3("nsig3", "signal3", 0.22*entries, 0.01, entries); //0.22
 
 
     switch (fr)
@@ -148,7 +152,7 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
     }
     }
 
-    RooAddPdf model("model", "model", RooArgList(*sig1, *sig2, *sig3, bkg), RooArgList(fsig1, fsig2, fsig3), kTRUE);
+    RooAddPdf model("model", "model", RooArgList(*sig1, *sig2, *sig3, bkg), RooArgList(nsig1, nsig2, nsig3, nback));
 
     RooFitResult *fitResult;
     try
@@ -204,9 +208,9 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
     hpull->SetLineWidth(0);
 
     // Draw the frame on the canvas
-    TCanvas c1 = new TCanvas("Fit", "Y Resonances Fit", 950, 800);
-    TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
-    rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
+    TCanvas * c1 = new TCanvas("Fit", "Y Resonances Fit", 950, 800);
+    //TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
+    //rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
 
     TPad *pad1 = new TPad("pad1", "The pad 80 of the height", 0.0, 0.2, 1.0, 1.0);
     TPad *pad2 = new TPad("pad2", "The pad 20 of the height", 0.0, 0.05, 1.0, 0.25);
@@ -279,7 +283,7 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
                   << std::endl;
     }
 
-    theApp->Run();
+    //theApp->Run();
 
     return fitResult;
 }

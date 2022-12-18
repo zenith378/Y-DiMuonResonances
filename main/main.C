@@ -19,13 +19,16 @@
  *
  *******************************************************************************/
 
+#include <iostream>
+#include "ROOT/RDataFrame.hxx"
 #include "df_set.h"
 #include "Cuts.h"
 #include "SpectrumPlot.h"
 #include "fitRoo.h"
 #include "optionParse.h"
-#include "ROOT/RDataFrame.hxx"
-#include <iostream>
+#include "diffCrossection.h"
+
+
 
 int main(int argc, char *argv[])
 {
@@ -42,6 +45,9 @@ int main(int argc, char *argv[])
     ROOT::RDataFrame df = df_set(); //call df set
     ROOT::RDF::RNode df_cut = Cuts(df, depth, ptm, ptM, ym, yM);
     TH1 *h = SpectrumPlot(df_cut);
-    fitRoo(h, fitfunc, depth, ptm, ptM, ym, yM, nameFile, verbose);
+    RooFitResult * fitresult = fitRoo(h, fitfunc, depth, ptm, ptM, ym, yM, nameFile, verbose);
+    
+//    diffCrossection(df);
+
     return 0;
 }

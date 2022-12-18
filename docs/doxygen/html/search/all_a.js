@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['spectrumplot_0',['SpectrumPlot',['../_spectrum_plot_8h.html#afef3adcc4a5647352f99615cd5bc1f63',1,'SpectrumPlot(ROOT::RDF::RNode df_cut):&#160;SpectrumPlot.C'],['../_spectrum_plot_8_c.html#afef3adcc4a5647352f99615cd5bc1f63',1,'SpectrumPlot(ROOT::RDF::RNode df_cut):&#160;SpectrumPlot.C']]],
-  ['spectrumplot_2ec_1',['SpectrumPlot.C',['../_spectrum_plot_8_c.html',1,'']]],
-  ['spectrumplot_2eh_2',['SpectrumPlot.h',['../_spectrum_plot_8h.html',1,'']]]
+  ['optionparse_2ec_0',['optionParse.C',['../option_parse_8_c.html',1,'']]],
+  ['optionparse_2eh_1',['optionParse.h',['../option_parse_8h.html',1,'']]],
+  ['outofrangeerrorhandling_2',['outOfRangeErrorHandling',['../option_parse_8h.html#a9c0e386a8b56ce160fedfc90034b93af',1,'outOfRangeErrorHandling(std::string opt, std::string range, const char *insrtvl):&#160;optionParse.C'],['../option_parse_8_c.html#a9c0e386a8b56ce160fedfc90034b93af',1,'outOfRangeErrorHandling(std::string opt, std::string range, const char *insrtvl):&#160;optionParse.C']]]
 ];

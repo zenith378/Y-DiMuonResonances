@@ -1,0 +1,482 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="diff_crossection_8_c" kind="file" language="C++">
+    <compoundname>diffCrossection.C</compoundname>
+    <includes local="yes">ROOT/RDataFrame.hxx</includes>
+    <includes local="yes">TMath.h</includes>
+    <includes local="yes">RooFitResult.h</includes>
+    <includes local="no">filesystem</includes>
+    <includes local="yes">TSystem.h</includes>
+    <includes local="yes">RooAbsPdf.h</includes>
+    <includes refid="_cuts_8h" local="yes">Cuts.h</includes>
+    <includes refid="_spectrum_plot_8h" local="yes">SpectrumPlot.h</includes>
+    <includes refid="fit_roo_8h" local="yes">fitRoo.h</includes>
+    <includes refid="option_parse_8h" local="yes">optionParse.h</includes>
+    <includes refid="diff_crossection_8h" local="yes">diffCrossection.h</includes>
+    <incdepgraph>
+      <node id="8">
+        <label>Cuts.h</label>
+        <link refid="_cuts_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>SpectrumPlot.h</label>
+        <link refid="_spectrum_plot_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>diffCrossection.h</label>
+        <link refid="diff_crossection_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>fitRoo.h</label>
+        <link refid="fit_roo_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>optionParse.h</label>
+        <link refid="option_parse_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C</label>
+        <link refid="diff_crossection_8_c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ROOT/RDataFrame.hxx</label>
+      </node>
+      <node id="7">
+        <label>RooAbsPdf.h</label>
+      </node>
+      <node id="19">
+        <label>RooAddPdf.h</label>
+      </node>
+      <node id="18">
+        <label>RooChebychev.h</label>
+      </node>
+      <node id="23">
+        <label>RooDataHist.h</label>
+      </node>
+      <node id="16">
+        <label>RooDataSet.h</label>
+      </node>
+      <node id="4">
+        <label>RooFitResult.h</label>
+      </node>
+      <node id="17">
+        <label>RooGaussian.h</label>
+      </node>
+      <node id="21">
+        <label>RooPlot.h</label>
+      </node>
+      <node id="15">
+        <label>RooRealVar.h</label>
+      </node>
+      <node id="20">
+        <label>TAxis.h</label>
+      </node>
+      <node id="10">
+        <label>TCanvas.h</label>
+      </node>
+      <node id="22">
+        <label>TH1.h</label>
+      </node>
+      <node id="11">
+        <label>TH1D.h</label>
+      </node>
+      <node id="12">
+        <label>TLatex.h</label>
+      </node>
+      <node id="3">
+        <label>TMath.h</label>
+      </node>
+      <node id="13">
+        <label>TStyle.h</label>
+      </node>
+      <node id="6">
+        <label>TSystem.h</label>
+      </node>
+      <node id="5">
+        <label>filesystem</label>
+      </node>
+      <node id="26">
+        <label>getopt.h</label>
+      </node>
+      <node id="25">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structdcs_vec" prot="public">dcsVec</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="diff_crossection_8_c_1acfc02ec89670db29251fda6a66602ce2" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int n</definition>
+        <argsstring></argsstring>
+        <name>n</name>
+        <initializer>=22</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" line="24" column="11" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="diff_crossection_8_c_1a2e86dead3976cdbb08b43a0e07df9dad" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float L</definition>
+        <argsstring></argsstring>
+        <name>L</name>
+        <initializer>=11.6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" line="25" column="13" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="diff_crossection_8_c_1aba57bbb8f253f595f395e0eea7a51ca1" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float e_uu</definition>
+        <argsstring></argsstring>
+        <name>e_uu</name>
+        <initializer>= 0.75</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" line="26" column="13" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="diff_crossection_8_c_1a9ce4c7b9dc0465c3d44a88f45671b126" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float e_sg</definition>
+        <argsstring></argsstring>
+        <name>e_sg</name>
+        <initializer>= 0.5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" line="27" column="13" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="diff_crossection_8_c_1a22922b3c0503b3ebf9d1776de7fd8ac0" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float e_vp</definition>
+        <argsstring></argsstring>
+        <name>e_vp</name>
+        <initializer>= 0.99</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" line="28" column="13" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="diff_crossection_8_c_1a66752f213e8b1d9263892577ce97950e" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float A</definition>
+        <argsstring></argsstring>
+        <name>A</name>
+        <initializer>=1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" line="29" column="13" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="diff_crossection_8_c_1a83c5e3840a04569d8c08711dd9c514d8" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double BF[3]</definition>
+        <argsstring>[3]</argsstring>
+        <name>BF</name>
+        <initializer>={2.48/100,1.93/100,2.18/100}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" line="30" column="14" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="diff_crossection_8_c_1a8e5b99ad8c59ce31d1ff31ce4b63521f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Double_t</type>
+        <definition>Double_t dCs</definition>
+        <argsstring>(double N, int i, float wpt)</argsstring>
+        <name>dCs</name>
+        <param>
+          <type>double</type>
+          <declname>N</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>wpt</declname>
+        </param>
+        <briefdescription>
+<para>calculate the differential cross section given the functin that describe the mass distribution (model), which Y is (i), and the width of the pt bin (wpt) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" line="36" column="10" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" bodystart="36" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="diff_crossection_8_c_1abf65b5536486eb452b521d856c8d0332" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structdcs_vec" kindref="compound">dcsVec</ref></type>
+        <definition>dcsVec setset</definition>
+        <argsstring>(float ptm, float ptM, ROOT::RDataFrame df)</argsstring>
+        <name>setset</name>
+        <param>
+          <type>float</type>
+          <declname>ptm</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>ptM</declname>
+        </param>
+        <param>
+          <type>ROOT::RDataFrame</type>
+          <declname>df</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" line="42" column="8" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" bodystart="42" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="diff_crossection_8_c_1a0182da246ab217f4541fa622cdc27514" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int diffCrossection</definition>
+        <argsstring>(ROOT::RDataFrame df, Double_t &amp;int1, Double_t &amp;int2, Double_t &amp;int3)</argsstring>
+        <name>diffCrossection</name>
+        <param>
+          <type>ROOT::RDataFrame</type>
+          <declname>df</declname>
+        </param>
+        <param>
+          <type>Double_t &amp;</type>
+          <declname>int1</declname>
+        </param>
+        <param>
+          <type>Double_t &amp;</type>
+          <declname>int2</declname>
+        </param>
+        <param>
+          <type>Double_t &amp;</type>
+          <declname>int3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" line="97" column="5" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C" bodystart="97" bodyend="112"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ROOT/RDataFrame.hxx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;TMath.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;RooFitResult.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;TSystem.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;RooAbsPdf.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_cuts_8h" kindref="compound">Cuts.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_spectrum_plot_8h" kindref="compound">SpectrumPlot.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fit_roo_8h" kindref="compound">fitRoo.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="option_parse_8h" kindref="compound">optionParse.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="diff_crossection_8h" kindref="compound">diffCrossection.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="structdcs_vec" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structdcs_vec" kindref="compound">dcsVec</ref>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structdcs_vec_1a18b645971a0dcf7209de4e90dd04df6f" kindref="member">ptm</ref>,<sp/><ref refid="structdcs_vec_1accc8e18cd3e4ace59aedc4d56a73c728" kindref="member">ptM</ref>;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>Double_t<sp/><ref refid="structdcs_vec_1aecff857e90342fdf07e7dd24f752f11f" kindref="member">s1</ref>,<sp/><ref refid="structdcs_vec_1a5448e966c7375638ab676d2f00ea61d6" kindref="member">s2</ref>,<sp/><ref refid="structdcs_vec_1ac899e62521684462dfcbf231b98b47f7" kindref="member">s3</ref>;<sp/></highlight><highlight class="comment">//differential<sp/>cross<sp/>section<sp/>for<sp/>Y<sp/>1s,<sp/>2s<sp/>and<sp/>3s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="diff_crossection_8_c_1acfc02ec89670db29251fda6a66602ce2" kindref="member">n</ref>=22;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="diff_crossection_8_c_1a2e86dead3976cdbb08b43a0e07df9dad" kindref="member">L</ref><sp/>=11.6;<sp/></highlight><highlight class="comment">//[fb^-1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="diff_crossection_8_c_1aba57bbb8f253f595f395e0eea7a51ca1" kindref="member">e_uu</ref><sp/>=<sp/>0.75;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="diff_crossection_8_c_1a9ce4c7b9dc0465c3d44a88f45671b126" kindref="member">e_sg</ref><sp/>=<sp/>0.5;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="diff_crossection_8_c_1a22922b3c0503b3ebf9d1776de7fd8ac0" kindref="member">e_vp</ref><sp/>=<sp/>0.99;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="diff_crossection_8_c_1a66752f213e8b1d9263892577ce97950e" kindref="member">A</ref>=1;<sp/></highlight><highlight class="comment">//accetanza<sp/>va<sp/>ridefinita<sp/>in<sp/>un<sp/>altro<sp/>modo<sp/>bin<sp/>per<sp/>bin</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="diff_crossection_8_c_1a83c5e3840a04569d8c08711dd9c514d8" kindref="member">BF</ref>[3]={2.48/100,1.93/100,2.18/100};<sp/><sp/><sp/></highlight><highlight class="comment">//Branching<sp/>fraction<sp/>Y(is)<sp/>-&gt;<sp/>mu+<sp/>mu-<sp/>from<sp/>the<sp/>PDG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">Double_t<sp/><ref refid="diff_crossection_8_c_1a8e5b99ad8c59ce31d1ff31ce4b63521f" kindref="member">dCs</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>N,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>wpt){</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>N/(<ref refid="diff_crossection_8_c_1a83c5e3840a04569d8c08711dd9c514d8" kindref="member">BF</ref>[i]<sp/>*<sp/><ref refid="diff_crossection_8_c_1a2e86dead3976cdbb08b43a0e07df9dad" kindref="member">L</ref><sp/>*<sp/>wpt<sp/>*<sp/><ref refid="diff_crossection_8_c_1aba57bbb8f253f595f395e0eea7a51ca1" kindref="member">e_uu</ref><sp/>*<sp/><ref refid="diff_crossection_8_c_1a9ce4c7b9dc0465c3d44a88f45671b126" kindref="member">e_sg</ref><sp/>*<sp/><ref refid="diff_crossection_8_c_1a22922b3c0503b3ebf9d1776de7fd8ac0" kindref="member">e_vp</ref><sp/>*<sp/><ref refid="diff_crossection_8_c_1a66752f213e8b1d9263892577ce97950e" kindref="member">A</ref>);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//per<sp/>ogni<sp/>deltaPT<sp/>estrarre<sp/>le<sp/>funzini<sp/>uscenti<sp/>dal<sp/>fit<sp/>e<sp/>calcolare<sp/>la<sp/>sezine<sp/>d&apos;urto<sp/>differenziale<sp/>in<sp/>quel<sp/>bin</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><ref refid="structdcs_vec" kindref="compound">dcsVec</ref><sp/><ref refid="diff_crossection_8_c_1abf65b5536486eb452b521d856c8d0332" kindref="member">setset</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>ptm,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>ptM,<sp/>ROOT::RDataFrame<sp/>df)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialize<sp/>default<sp/>values<sp/>for<sp/>options</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>depth<sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//Depth<sp/>value<sp/>initialized<sp/>to<sp/>0,<sp/>i.e.<sp/>no<sp/>cuts</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>fitfunc<sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//Fit<sp/>Function<sp/>initilized<sp/>to<sp/>0,<sp/>i.e.<sp/>Breit-Wigner</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>ym<sp/>=<sp/>std::nanf(</highlight><highlight class="stringliteral">&quot;0&quot;</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//see<sp/>first<sp/>parameter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>yM<sp/>=<sp/>1.2;<sp/></highlight><highlight class="comment">//see<sp/>first<sp/>parameter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>nameFile<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;YResonances&quot;</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//The<sp/>name<sp/>of<sp/>the<sp/>file<sp/>in<sp/>which<sp/>the<sp/>figure<sp/>is<sp/>saved</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>verbose<sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//verbose<sp/>flag<sp/>initialized<sp/>to<sp/>zero,<sp/>i.e.<sp/>no<sp/>output<sp/>stream<sp/>for<sp/>Minuit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>ROOT::RDF::RNode<sp/>df_cut<sp/>=<sp/><ref refid="_cuts_8h_1a881a676022acb37d96b60e0227b5893e" kindref="member">Cuts</ref>(df,<sp/>depth,<sp/>ptm,<sp/>ptM,<sp/>ym,<sp/>yM);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>TH1<sp/>*h<sp/>=<sp/><ref refid="_spectrum_plot_8h_1afef3adcc4a5647352f99615cd5bc1f63" kindref="member">SpectrumPlot</ref>(df_cut);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>RooFitResult<sp/>*<sp/>fitResult<sp/>=<sp/><ref refid="fit_roo_8h_1ae27b1286b8f342d0a639eed87957ac88" kindref="member">fitRoo</ref>(h,<sp/>fitfunc,<sp/>depth,<sp/>ptm,<sp/>ptM,<sp/>ym,<sp/>yM,<sp/>nameFile,<sp/>verbose);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//-------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//sicuramente<sp/>sbagliato!i<sp/>parametri<sp/>si<sp/>riaggiornano<sp/>dopo<sp/>il<sp/>fit<sp/>o<sp/>no??????</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//forse<sp/>è<sp/>meglio<sp/>fare<sp/>questa<sp/>operazione<sp/>dentro<sp/>a<sp/>roofit?<sp/>not<sp/>really</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>RooArgList<sp/>lf<sp/>=<sp/>fitResult-&gt;floatParsFinal();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;lf3=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>lf[3]<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>RooRealVar<sp/>mean1(&quot;mean1&quot;,<sp/>&quot;mean<sp/>of<sp/>gaussians&quot;,<sp/>lf[6],<sp/>9.3,<sp/>9.6);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>RooRealVar<sp/>mean2(&quot;mean2&quot;,<sp/>&quot;mean<sp/>of<sp/>gaussians&quot;,<sp/>lf[7],<sp/>9.8,<sp/>10.2);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>RooRealVar<sp/>mean3(&quot;mean3&quot;,<sp/>&quot;mean<sp/>of<sp/>gaussians&quot;,<sp/>lf[8],<sp/>10.15,<sp/>10.5);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>RooRealVar<sp/>sigma1(&quot;sigma1&quot;,<sp/>&quot;width<sp/>of<sp/>gaussians&quot;,<sp/>lf[9],<sp/>0.01,<sp/>0.5);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>RooRealVar<sp/>sigma2(&quot;sigma2&quot;,<sp/>&quot;width<sp/>of<sp/>gaussians&quot;,<sp/>lf[10],<sp/>0.01,<sp/>0.5);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>RooRealVar<sp/>sigma3(&quot;sigma3&quot;,<sp/>&quot;width<sp/>of<sp/>gaussians&quot;,<sp/>lf[11],<sp/>0.01,<sp/>0.5);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>RooRealVar<sp/>fsig1(&quot;fsig1&quot;,<sp/>&quot;signal1&quot;,<sp/>lf[3],<sp/>0.01,<sp/>1.);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>RooRealVar<sp/>fsig2(&quot;fsig2&quot;,<sp/>&quot;signal2&quot;,<sp/>lf[4],<sp/>0.01,<sp/>1.);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>RooRealVar<sp/>fsig3(&quot;fsig3&quot;,<sp/>&quot;signal3&quot;,<sp/>lf[5],<sp/>0.01,<sp/>1.);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>RooAbsPdf<sp/><sp/>*sig1<sp/>=<sp/>fitResult-&gt;createHessePdf(RooArgSet(fsig1,mean1,sigma1));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>RooAbsPdf<sp/>*sig2<sp/>=<sp/>fitResult-&gt;createHessePdf(RooArgSet(fsig2,mean2,sigma2));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>RooAbsPdf<sp/>*sig3<sp/>=<sp/>fitResult-&gt;createHessePdf(RooArgSet(fsig3,mean3,sigma3));</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>RooArgSet(lf[3],lf[6],lf[9]);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;pass1b&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>RooAbsPdf<sp/><sp/>*sig1<sp/>=<sp/>fitResult-&gt;createHessePdf(RooArgSet(lf[3],lf[6],lf[9]));</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;pass1a&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>RooAbsPdf<sp/>*sig2<sp/>=<sp/>fitResult-&gt;createHessePdf(RooArgSet(lf[4],lf[7],lf[10]));</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;pass1b&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>RooAbsPdf<sp/>*sig3<sp/>=<sp/>fitResult-&gt;createHessePdf(RooArgSet(lf[5],lf[8],lf[11]));</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//-------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>Double_t<sp/>s1<sp/>=<sp/><ref refid="diff_crossection_8_c_1a8e5b99ad8c59ce31d1ff31ce4b63521f" kindref="member">dCs</ref>(sig1,<sp/>1,<sp/>ptM-ptm);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>Double_t<sp/>s2<sp/>=<sp/><ref refid="diff_crossection_8_c_1a8e5b99ad8c59ce31d1ff31ce4b63521f" kindref="member">dCs</ref>(sig2,<sp/>2,<sp/>ptM-ptm);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>Double_t<sp/>s3<sp/>=<sp/><ref refid="diff_crossection_8_c_1a8e5b99ad8c59ce31d1ff31ce4b63521f" kindref="member">dCs</ref>(sig3,<sp/>3,<sp/>ptM-ptm);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structdcs_vec" kindref="compound">dcsVec</ref><sp/>avec{<sp/>ptm,ptM,</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s1,<sp/>s2,<sp/>s3};</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>avec;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="diff_crossection_8_c_1a0182da246ab217f4541fa622cdc27514" kindref="member">diffCrossection</ref>(ROOT::RDataFrame<sp/>df,<sp/>Double_t<sp/>&amp;int1,<sp/>Double_t<sp/>&amp;int2,<sp/>Double_t<sp/>&amp;int3){</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;pass3&quot;</highlight><highlight class="normal">&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ptm[<ref refid="diff_crossection_8_c_1acfc02ec89670db29251fda6a66602ce2" kindref="member">n</ref>]<sp/>=<sp/>{10.,12.,14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.};</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>ptM[<ref refid="diff_crossection_8_c_1acfc02ec89670db29251fda6a66602ce2" kindref="member">n</ref>]<sp/>=<sp/>{12.,14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.,100.};</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector<sp/>&lt;dcsVec&gt;<sp/>dcss;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i;i&lt;<ref refid="diff_crossection_8_c_1acfc02ec89670db29251fda6a66602ce2" kindref="member">n</ref>;i++){</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdcs_vec" kindref="compound">dcsVec</ref><sp/>avec<sp/>=<sp/><ref refid="diff_crossection_8_c_1abf65b5536486eb452b521d856c8d0332" kindref="member">setset</ref>(ptm[i],<sp/>ptM[i],<sp/>df);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dcss.push_back(avec);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Funziona<sp/>(forse<sp/>bene)&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>auto<sp/>g<sp/>=<sp/>new<sp/>TGraph(n,dcss.ptM-dcss.ptm,dcss.s1);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>g-&gt;SetTitle(&quot;Graph<sp/>title;p_{T}<sp/>[GeV];#frac{d#sigma}{dp_{T}}<sp/>[fb/GeV]&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>g-&gt;Draw(&quot;AC*&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C"/>
+  </compounddef>
+</doxygen>
