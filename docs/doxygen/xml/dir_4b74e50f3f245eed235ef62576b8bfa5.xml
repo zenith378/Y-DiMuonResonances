@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
   <compounddef id="dir_4b74e50f3f245eed235ef62576b8bfa5" kind="dir">
-    <compoundname>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src</compoundname>
+    <compoundname>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src</compoundname>
     <innerfile refid="_cuts_8_c">Cuts.C</innerfile>
     <innerfile refid="df__set_8_c">df_set.C</innerfile>
     <innerfile refid="diff_crossection_8_c">diffCrossection.C</innerfile>
@@ -12,6 +12,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/"/>
+    <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/"/>
   </compounddef>
 </doxygen>

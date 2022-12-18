@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>YFit: /Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C File Reference</title>
+<title>YFit: /Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/diffCrossection.C File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -99,13 +99,13 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8e5b99ad8c59ce31d1ff31ce4b63521f"><td class="memItemLeft" align="right" valign="top">Double_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diff_crossection_8_c.html#a8e5b99ad8c59ce31d1ff31ce4b63521f">dCs</a> (double N, int i, float wpt)</td></tr>
-<tr class="memdesc:a8e5b99ad8c59ce31d1ff31ce4b63521f"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculate the differential cross section given the functin that describe the mass distribution (model), which Y is (i), and the width of the pt bin (wpt)  <a href="diff_crossection_8_c.html#a8e5b99ad8c59ce31d1ff31ce4b63521f">More...</a><br /></td></tr>
-<tr class="separator:a8e5b99ad8c59ce31d1ff31ce4b63521f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7d3a7a73336428496a3eeeccf07c92c"><td class="memItemLeft" align="right" valign="top">Double_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diff_crossection_8_c.html#af7d3a7a73336428496a3eeeccf07c92c">diffCrossSec</a> (RooAbsArg N, int i, float wpt)</td></tr>
+<tr class="memdesc:af7d3a7a73336428496a3eeeccf07c92c"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculate the differential cross section given the functin that describe the mass distribution (model), which Y is (i), and the width of the pt bin (wpt)  <a href="diff_crossection_8_c.html#af7d3a7a73336428496a3eeeccf07c92c">More...</a><br /></td></tr>
+<tr class="separator:af7d3a7a73336428496a3eeeccf07c92c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf65b5536486eb452b521d856c8d0332"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structdcs_vec.html">dcsVec</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diff_crossection_8_c.html#abf65b5536486eb452b521d856c8d0332">setset</a> (float ptm, float ptM, ROOT::RDataFrame df)</td></tr>
 <tr class="separator:abf65b5536486eb452b521d856c8d0332"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0182da246ab217f4541fa622cdc27514"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diff_crossection_8_c.html#a0182da246ab217f4541fa622cdc27514">diffCrossection</a> (ROOT::RDataFrame df, Double_t &amp;int1, Double_t &amp;int2, Double_t &amp;int3)</td></tr>
-<tr class="separator:a0182da246ab217f4541fa622cdc27514"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b2012e21ea55c1112b9ab01ca3cd9a4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diff_crossection_8_c.html#a4b2012e21ea55c1112b9ab01ca3cd9a4">diffCrossection</a> (ROOT::RDataFrame df)</td></tr>
+<tr class="separator:a4b2012e21ea55c1112b9ab01ca3cd9a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -125,16 +125,34 @@ Variables</h2></td></tr>
 <tr class="separator:a83c5e3840a04569d8c08711dd9c514d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a8e5b99ad8c59ce31d1ff31ce4b63521f" name="a8e5b99ad8c59ce31d1ff31ce4b63521f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e5b99ad8c59ce31d1ff31ce4b63521f">&#9670;&#160;</a></span>dCs()</h2>
+<a id="a4b2012e21ea55c1112b9ab01ca3cd9a4" name="a4b2012e21ea55c1112b9ab01ca3cd9a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b2012e21ea55c1112b9ab01ca3cd9a4">&#9670;&#160;</a></span>diffCrossection()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Double_t dCs </td>
+          <td class="memname">int diffCrossection </td>
           <td>(</td>
-          <td class="paramtype">double&#160;</td>
+          <td class="paramtype">ROOT::RDataFrame&#160;</td>
+          <td class="paramname"><em>df</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af7d3a7a73336428496a3eeeccf07c92c" name="af7d3a7a73336428496a3eeeccf07c92c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7d3a7a73336428496a3eeeccf07c92c">&#9670;&#160;</a></span>diffCrossSec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Double_t diffCrossSec </td>
+          <td>(</td>
+          <td class="paramtype">RooAbsArg&#160;</td>
           <td class="paramname"><em>N</em>, </td>
         </tr>
         <tr>
@@ -158,46 +176,6 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>calculate the differential cross section given the functin that describe the mass distribution (model), which Y is (i), and the width of the pt bin (wpt) </p>
-
-</div>
-</div>
-<a id="a0182da246ab217f4541fa622cdc27514" name="a0182da246ab217f4541fa622cdc27514"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0182da246ab217f4541fa622cdc27514">&#9670;&#160;</a></span>diffCrossection()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int diffCrossection </td>
-          <td>(</td>
-          <td class="paramtype">ROOT::RDataFrame&#160;</td>
-          <td class="paramname"><em>df</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Double_t &amp;&#160;</td>
-          <td class="paramname"><em>int1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Double_t &amp;&#160;</td>
-          <td class="paramname"><em>int2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Double_t &amp;&#160;</td>
-          <td class="paramname"><em>int3</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>

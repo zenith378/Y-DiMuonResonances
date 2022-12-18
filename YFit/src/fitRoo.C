@@ -67,7 +67,7 @@ std::string formatYString(int &dr, float &ymr, float &yMr)
 RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &nfr, int &vr)
 {
     // Declare observable x
-    RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5001, 11.5);
+    RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5, 11.5);
     RooDataHist rh("rh", "rh", x, Import(*hh));
     // create application to display the canvas while root runs
     //TApplication *theApp = new TApplication("app", 0, 0);
@@ -91,17 +91,17 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
 
     // Build polynomial pdf
     RooRealVar a0("a0", "a0", bg, 0, 5000);
-    RooRealVar a1("a1", "a1", slp, -500., 500.);
-    RooRealVar a2("a2", "a2", 0, -30., 30.);
+    RooRealVar a1("a1", "a1", slp, -5000., 5000.);
+    RooRealVar a2("a2", "a2", 0, -3000., 3000.);
     RooPolynomial bkg("bkg", "Background", x, RooArgSet(a0, a1, a2));
 
     // Create parameters
     RooRealVar mean1("mean1", "mean of gaussians", 9.45, 9.3, 9.6);
     RooRealVar mean2("mean2", "mean of gaussians", 10.01, 9.8, 10.2);
-    RooRealVar mean3("mean3", "mean of gaussians", 10.35, 10.15, 10.5);
-    RooRealVar sigma1("sigma1", "width of gaussians", 0.054, 0.01, 0.5);
-    RooRealVar sigma2("sigma2", "width of gaussians", 0.032, 0.01, 0.5);
-    RooRealVar sigma3("sigma3", "width of gaussians", 0.020, 0.01, 0.5);
+    RooRealVar mean3("mean3", "mean of gaussians", 10.35, 10.15, 10.6);
+    RooRealVar sigma1("sigma1", "width of gaussians", 0.054, 0.001, 0.1);
+    RooRealVar sigma2("sigma2", "width of gaussians", 0.032, 0.001, 0.1);
+    RooRealVar sigma3("sigma3", "width of gaussians", 0.020, 0.001, 0.1);
 
     RooRealVar r1("r1", "r1", 10, 0.00, 100);
     RooRealVar r2("r2", "r2", 1, 0.00, 100);
@@ -155,8 +155,8 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
     RooAddPdf model("model", "model", RooArgList(*sig1, *sig2, *sig3, bkg), RooArgList(nsig1, nsig2, nsig3, nback));
 
     RooFitResult *fitResult;
-    try
-    {
+    //try
+    //{
         if (vr == 0)
             fitResult = model.fitTo(rh, Verbose(false), Warnings(false), Save(),RecoverFromUndefinedRegions(1), PrintEvalErrors(-1), PrintLevel(-1));
 
@@ -167,18 +167,18 @@ RooFitResult *fitRoo(TH1 *hh, int &fr, int &dr, float &pmr, float &pMr, float &y
         // Print structure of composite pdf
         fitResult->Print("v"); // previous was t
 
-        if (fitResult->status()!=0) // fitResult->covQual() < 2
-        {
-            throw(std::runtime_error("Fit did not converge. Try relaxing cut filters or changing PDF."));
-        }
-    }
-    catch (std::exception &msg)
-    {
-        std::cerr << msg.what() << std::endl;
-        if(vr==0)
-        std::cerr <<"Set verbose flag on [-v], in order to print the parameters that have been updated in each minimisation step (MINUIT LOG).\n" << std::endl;
-        exit(1);
-    }
+        //if (fitResult->status()!=0) // fitResult->covQual() < 2
+        //{
+        //    throw(std::runtime_error("Fit did not converge. Try relaxing cut filters or changing PDF."));
+        //}
+    //}
+    //catch (std::exception &msg)
+    //{
+    //    std::cerr << msg.what() << std::endl;
+    //    if(vr==0)
+    //    std::cerr <<"Set verbose flag on [-v], in order to print the parameters that have been updated in each minimisation step (MINUIT LOG).\n" << std::endl;
+    //    exit(1);
+    //}
 
 
     // Draw options

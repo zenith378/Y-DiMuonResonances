@@ -9,9 +9,9 @@
     <includes local="yes">TLatex.h</includes>
     <includes local="yes">TStyle.h</includes>
     <includes refid="_cuts_8h" local="yes">Cuts.h</includes>
-    <includedby refid="_spectrum_plot_8_c" local="yes">/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/SpectrumPlot.C</includedby>
-    <includedby refid="diff_crossection_8_c" local="yes">/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C</includedby>
-    <includedby refid="main_8_c" local="yes">/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/main/main.C</includedby>
+    <includedby refid="_spectrum_plot_8_c" local="yes">/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/SpectrumPlot.C</includedby>
+    <includedby refid="diff_crossection_8_c" local="yes">/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/diffCrossection.C</includedby>
+    <includedby refid="main_8_c" local="yes">/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/main/main.C</includedby>
     <incdepgraph>
       <node id="8">
         <label>Cuts.h</label>
@@ -22,7 +22,7 @@
         </childnode>
       </node>
       <node id="1">
-        <label>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/SpectrumPlot.h</label>
+        <label>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/SpectrumPlot.h</label>
         <link refid="_spectrum_plot_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -60,7 +60,7 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="1">
-        <label>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/SpectrumPlot.h</label>
+        <label>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/SpectrumPlot.h</label>
         <link refid="_spectrum_plot_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -70,15 +70,15 @@
         </childnode>
       </node>
       <node id="2">
-        <label>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/SpectrumPlot.C</label>
+        <label>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/SpectrumPlot.C</label>
         <link refid="_spectrum_plot_8_c"/>
       </node>
       <node id="3">
-        <label>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/diffCrossection.C</label>
+        <label>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/diffCrossection.C</label>
         <link refid="diff_crossection_8_c"/>
       </node>
       <node id="4">
-        <label>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/main/main.C</label>
+        <label>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/main/main.C</label>
         <link refid="main_8_c"/>
       </node>
     </invincdepgraph>
@@ -110,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/SpectrumPlot.h" line="25" column="5" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/SpectrumPlot.C" bodystart="16" bodyend="62" declfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/SpectrumPlot.h" declline="25" declcolumn="5"/>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/SpectrumPlot.h" line="25" column="5" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/SpectrumPlot.C" bodystart="16" bodyend="62" declfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/SpectrumPlot.h" declline="25" declcolumn="5"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -138,6 +138,6 @@
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>SpectrumPlot_h<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include/SpectrumPlot.h"/>
+    <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include/SpectrumPlot.h"/>
   </compounddef>
 </doxygen>

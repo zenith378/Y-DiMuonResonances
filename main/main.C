@@ -27,7 +27,7 @@
 #include "fitRoo.h"
 #include "optionParse.h"
 #include "diffCrossection.h"
-
+#include "RooFitResult.h"
 
 
 int main(int argc, char *argv[])
@@ -46,8 +46,9 @@ int main(int argc, char *argv[])
     ROOT::RDF::RNode df_cut = Cuts(df, depth, ptm, ptM, ym, yM);
     TH1 *h = SpectrumPlot(df_cut);
     RooFitResult * fitresult = fitRoo(h, fitfunc, depth, ptm, ptM, ym, yM, nameFile, verbose);
-    
-//    diffCrossection(df);
+
+    RooArgList lf=fitresult->floatParsFinal();
+    diffCrossection(df);
 
     return 0;
 }

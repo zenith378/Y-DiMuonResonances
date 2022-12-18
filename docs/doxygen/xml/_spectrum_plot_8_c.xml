@@ -37,7 +37,7 @@
         </childnode>
       </node>
       <node id="1">
-        <label>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/SpectrumPlot.C</label>
+        <label>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/SpectrumPlot.C</label>
         <link refid="_spectrum_plot_8_c"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/SpectrumPlot.C" line="16" column="5" bodyfile="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/SpectrumPlot.C" bodystart="16" bodyend="62"/>
+        <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/SpectrumPlot.C" line="16" column="5" bodyfile="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/SpectrumPlot.C" bodystart="16" bodyend="62"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -168,6 +168,6 @@
 <codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>h;</highlight></codeline>
 <codeline lineno="62"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src/SpectrumPlot.C"/>
+    <location file="/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src/SpectrumPlot.C"/>
   </compounddef>
 </doxygen>

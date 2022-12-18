@@ -72,9 +72,9 @@
     <member refid="diff_crossection_8_c_1a22922b3c0503b3ebf9d1776de7fd8ac0" kind="variable"><name>e_vp</name></member>
     <member refid="diff_crossection_8_c_1a66752f213e8b1d9263892577ce97950e" kind="variable"><name>A</name></member>
     <member refid="diff_crossection_8_c_1a83c5e3840a04569d8c08711dd9c514d8" kind="variable"><name>BF</name></member>
-    <member refid="diff_crossection_8_c_1a8e5b99ad8c59ce31d1ff31ce4b63521f" kind="function"><name>dCs</name></member>
+    <member refid="diff_crossection_8_c_1af7d3a7a73336428496a3eeeccf07c92c" kind="function"><name>diffCrossSec</name></member>
     <member refid="diff_crossection_8_c_1abf65b5536486eb452b521d856c8d0332" kind="function"><name>setset</name></member>
-    <member refid="diff_crossection_8_c_1a0182da246ab217f4541fa622cdc27514" kind="function"><name>diffCrossection</name></member>
+    <member refid="diff_crossection_8_c_1a4b2012e21ea55c1112b9ab01ca3cd9a4" kind="function"><name>diffCrossection</name></member>
   </compound>
   <compound refid="fit_roo_8_c" kind="file"><name>fitRoo.C</name>
     <member refid="fit_roo_8_c_1a3486da7fabe684039983850799d99617" kind="function"><name>formatPtString</name></member>
@@ -91,12 +91,12 @@
   <compound refid="_spectrum_plot_8_c" kind="file"><name>SpectrumPlot.C</name>
     <member refid="_spectrum_plot_8_c_1afef3adcc4a5647352f99615cd5bc1f63" kind="function"><name>SpectrumPlot</name></member>
   </compound>
-  <compound refid="dir_33bf31e38b0246880c826fe6c405ac4f" kind="dir"><name>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/include</name>
+  <compound refid="dir_33bf31e38b0246880c826fe6c405ac4f" kind="dir"><name>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/include</name>
   </compound>
-  <compound refid="dir_5c982d53a68cdbcd421152b4020263a9" kind="dir"><name>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/main</name>
+  <compound refid="dir_5c982d53a68cdbcd421152b4020263a9" kind="dir"><name>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/main</name>
   </compound>
-  <compound refid="dir_4b74e50f3f245eed235ef62576b8bfa5" kind="dir"><name>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit/src</name>
+  <compound refid="dir_4b74e50f3f245eed235ef62576b8bfa5" kind="dir"><name>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit/src</name>
   </compound>
-  <compound refid="dir_13a6baedfa387399723bfc39e0bc3cc4" kind="dir"><name>/Users/matilde/Documents/CMEPDA/Y-DiMuonResonances/YFit</name>
+  <compound refid="dir_13a6baedfa387399723bfc39e0bc3cc4" kind="dir"><name>/Users/zenith378/Documents/Uni/Computing/Y-DiMuonResonances/YFit</name>
   </compound>
 </doxygenindex>
