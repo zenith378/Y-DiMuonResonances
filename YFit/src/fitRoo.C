@@ -81,15 +81,17 @@ RooFitResult *fitRoo(TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, f
     Double_t n9 = hh->GetBinContent(i9);
     Double_t slp = (n9-n1)/(x9-x1);
     Double_t bg = n1 - slp*x1; 
-
+    Int_t entries = hh->GetEntries();
+    std::cout << "Entries: " << entries << std::endl;
     // Set up   component   pdfs
     // ---------------------------------------
 
     // Build polynomial pdf
     RooRealVar a0("a0", "a0", bg, 0, 5000);
-    RooRealVar a1("a1", "a1", slp, -500., 500.);
-    //RooRealVar a2("a2", "a2", 0, -30., 30.);
-    RooPolynomial bkg("bkg", "Background", x, RooArgSet(a0, a1));
+    RooRealVar a1("a1", "a1", slp, -1000., 500.);
+    RooRealVar a2("a2", "a2", 0, -30., 50.);
+    RooPolynomial bkg("bkg", "Background", x, RooArgSet(a0, a1,a2));
+    RooRealVar nback("nback", "nback", 0.2*entries, 0.01, entries); //0.32
 
     // Create parameters
     RooRealVar mean1("mean1", "mean of gaussians", 9.45, 9.3, 9.6);
@@ -109,9 +111,9 @@ RooFitResult *fitRoo(TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, f
     RooAbsPdf *sig2;
     RooAbsPdf *sig3;
 
-    RooRealVar fsig1("fsig1", "signal1", 0.4, 0.01, 1.);
-    RooRealVar fsig2("fsig2", "signal2", 0.3, 0.01, 1.);
-    RooRealVar fsig3("fsig3", "signal3", 0.2, 0.01, 1.);
+    RooRealVar nsig1("nsig1", "signal1", 0.32*entries, 0.01, entries); //0.32
+    RooRealVar nsig2("nsig2", "signal2", 0.21*entries, 0.01, entries); //0.21
+    RooRealVar nsig3("nsig3", "signal3", 0.22*entries, 0.01, entries); //0.22
 
 
     switch (fr)
@@ -148,7 +150,7 @@ RooFitResult *fitRoo(TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, f
     }
     }
 
-    RooAddPdf model("model", "model", RooArgList(*sig1, *sig2, *sig3, bkg), RooArgList(fsig1, fsig2, fsig3), kTRUE);
+    RooAddPdf model("model", "model", RooArgList(*sig1, *sig2, *sig3, bkg), RooArgList(nsig1, nsig2, nsig3,nback));
 
     RooFitResult *fitResult;
     try

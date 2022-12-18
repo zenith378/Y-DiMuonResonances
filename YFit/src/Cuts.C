@@ -22,6 +22,7 @@ ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int dr)
     auto df_cut = df.Filter([](unsigned int x)
                             { return x == 2; },
                             {"nMuon"}, {"Events with exactly two muons"})
+                      .Filter("Muon_charge[0] != Muon_charge[1]", "Muons with opposite charge") // Select events with two muons of opposite charge
                       .Filter([](float x)
                               { return x > 8.5 && x < 11.5; },
                               {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}); // Cut around the Ys
@@ -65,16 +66,16 @@ ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int dr)
 ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode df_custom_cut, std::string_view filter, std::string_view name)
 {
 
-  df_custom_cut = df_custom_cut.Filter(filter, name); // apply filter 
+  df_custom_cut = df_custom_cut.Filter(filter, name); // apply filter
   try
   {
-    auto count = df_custom_cut.Count(); //count remaining events
+    auto count = df_custom_cut.Count(); // count remaining events
     if (*count < 800)
     {
       throw(std::runtime_error("Too few events. Fit might not converge. Please relaxe cuts.\n"));
     }
   }
-  catch (std::exception &ex) //handles exception thrown at 74
+  catch (std::exception &ex) // handles exception thrown at 74
   {
     std::cerr << ex.what() << std::endl;
   }
@@ -83,11 +84,11 @@ ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode df_custom_cut, std::string_view fi
 
 ROOT::RDF::RNode customFilter(ROOT::RDataFrame df, float pmr, float pMr, float ymr, float yMr)
 {
-  ROOT::RDF::RNode df_custom_cut = df; //initialize datafrmae
-  if (pmr == pmr) //if pmr is not nan
+  ROOT::RDF::RNode df_custom_cut = df; // initialize datafrmae
+  if (pmr == pmr)                      // if pmr is not nan
   {
-    std::string fil = "Dimuon_pt >" + std::to_string(pmr); // format string to pass to the filter function
-    df_custom_cut = applyFilter(df_custom_cut, fil, "Custom cut on minimum pt"); //apply filter
+    std::string fil = "Dimuon_pt >" + std::to_string(pmr);                       // format string to pass to the filter function
+    df_custom_cut = applyFilter(df_custom_cut, fil, "Custom cut on minimum pt"); // apply filter
   }
   if (pMr == pMr)
   {
@@ -127,9 +128,9 @@ ROOT::RDF::RNode customFilter(ROOT::RDataFrame df, float pmr, float pMr, float y
   return df_custom_cut;
 }
 
+ROOT::RDataFrame generateDataFrame(ROOT::RDataFrame df, int dr)
+{
 
-ROOT::RDataFrame generateDataFrame(ROOT::RDataFrame df, int dr){
-  
   ROOT::EnableImplicitMT(1);
   ROOT::RDataFrame *df_off;
   namespace fs = std::filesystem;
@@ -157,29 +158,31 @@ ROOT::RDataFrame generateDataFrame(ROOT::RDataFrame df, int dr){
   }
   try
   {
-    df_off = new ROOT::RDataFrame("Cuts", *fname);
-    // if file does not open
-    if (!fs::is_directory("./Data") || !fs::exists("./Data"))
+    try
     {
-      throw("./Data");
+      df_off = new ROOT::RDataFrame("Cuts", *fname);
+      // if file does not open
+      if (!fs::is_directory("./Data") || !fs::exists("./Data"))
+      {
+        throw("./Data");
+      }
+      if (gSystem->AccessPathName(fname->c_str()))
+      {
+        throw(std::runtime_error("Problem reading cut file (it might not exist or it might be corrupted)\n"));
+      }
     }
-    if (gSystem->AccessPathName(fname->c_str()))
+    catch (const char *pathToData)
     {
+      std::cerr << "Directory " << pathToData << " does not exist.\n"
+                << std::endl;
+      std::cerr << "Creating directory...\n"
+                << std::endl;
+
+      fs::create_directory(pathToData);
+      std::cout << "Directory " << pathToData << " successfully created\n"
+                << std::endl;
       throw(std::runtime_error("Problem reading cut file (it might not exist or it might be corrupted)\n"));
     }
-  }
-  catch (const char *pathToData)
-  {
-    std::cerr << "Directory " << pathToData << " does not exist.\n"
-              << std::endl;
-    std::cerr << "Creating directory...\n"
-              << std::endl;
-
-    fs::create_directory(pathToData);
-    std::cout << "Directory " << pathToData << " successfully created\n"
-              << std::endl;
-    throw(std::runtime_error("Problem reading cut file (it might not exist or it might be corrupted)\n"));
-
   }
   catch (std::exception &exp)
   {
@@ -213,13 +216,12 @@ ROOT::RDataFrame generateDataFrame(ROOT::RDataFrame df, int dr){
   return (*df_off);
 }
 
-
 ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int dr, float pmr, float pMr, float ymr, float yMr)
 {
   // Enable multi-threading
   ROOT::EnableImplicitMT(1);
 
-  ROOT::RDataFrame df_off= generateDataFrame(df, dr);
+  ROOT::RDataFrame df_off = generateDataFrame(df, dr);
 
   ROOT::RDF::RNode df_def = customFilter(df_off, pmr, pMr, ymr, yMr);
 
