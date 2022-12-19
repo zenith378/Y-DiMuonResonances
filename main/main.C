@@ -49,6 +49,5 @@ int main(int argc, char *argv[])
 
     RooArgList lf=fitresult->floatParsFinal();
     diffCrossection(df);
-
     return 0;
 }
