@@ -60,10 +60,12 @@ int test1(){
     //manca da controllare che i valori uscenti siano quelli inizializzati
     RooArgList lf = fitResult->floatParsFinal();
     RooArgList lv = [a0,a1,a2,fsig1,fsig2,fsig3,mean1,mean2,mean3,sigma1,sigma2,sigma3];
-    const TMatrixDSym &cov = fitResult->covarianceMatrix()
+    const TMatrixDSym cov = fitResult->covarianceMatrix();
     for(int i=0; i<12; i++){
         /* Se la differenza tra il valore vero e quello uscente dal fit è maggiore di una deviazione std allora il test fallisce (return -1)*/
-        if(std::abs(lf[i]-lv[i]) > 1 * std::sqrt(cov(i,i))){
+        Double_t a=static_cast<RooAbsReal&>(lf[i]).getVal();
+        Double_t b=static_cast<RooAbsReal&>(lv[i]).getVal();
+        if(std::abs(a-b) > 1 * std::sqrt(cov(i,i))){
             j=-1;
         }
     }

@@ -17,12 +17,16 @@
 #include "TApplication.h"
 #include "TRootCanvas.h"
 #include "TGraph.h"
+#include "TLatex.h"
+# include "TLegend.h"
+#include "TGraphErrors.h"
 #include "TMultiGraph.h"
 
 
 struct dcsVec{
     float ptm, ptM;
     Double_t s1, s2, s3; //differential cross section for Y 1s, 2s and 3s
+    Double_t ds1, ds2, ds3;
 };
 
 const int n=21;
@@ -38,7 +42,7 @@ const double BF[3]={2.48/100,1.93/100,2.18/100};   //Branching fraction Y(is) ->
  * \brief calculate the differential cross section given the functin that describe the mass distribution (model), which Y is (i), and the width of the pt bin (wpt)
  ***************************/
 Double_t diffCrossSec(double N, int i, float wpt){
-    return N/(BF[i] * L * wpt * e_uu * e_sg * e_vp * A);
+    return N/(L * wpt * e_uu * e_sg * e_vp * A);
 }
 
 //per ogni deltaPT estrarre le funzini uscenti dal fit e calcolare la sezine d'urto differenziale in quel bin
@@ -56,26 +60,36 @@ dcsVec setset(float ptm, float ptM, ROOT::RDataFrame df, std::string nameFile)
     
     
     RooFitResult * fitResult = fitRoo(h, fitfunc, depth, ptm, ptM, ym, yM, nameFile, verbose);
-    //-------------------------------------------------------------
-    //sicuramente sbagliato!i parametri si riaggiornano dopo il fit o no??????
-    //forse è meglio fare questa operazione dentro a roofit? not really
+
     RooArgList lf = fitResult->floatParsFinal();
-    std::cout <<"lf=" << lf << std::endl;
-    std::cout <<"nsig1=" << lf[7] << std::endl;   //nsig1
-    std::cout <<"nsig2=" << lf[8] << std::endl; //nsig2
-    std::cout <<"nsig3=" << lf[9] << std::endl; //nsig3
+    TMatrixDSym cov= fitResult->covarianceMatrix();
+//    std::cout <<"lf=" << lf << std::endl;
+//    std::cout <<"nsig1=" << lf[7] << std::endl;   //nsig1
+//    std::cout <<"nsig2=" << lf[8] << std::endl; //nsig2
+//    std::cout <<"nsig3=" << lf[9] << std::endl; //nsig3
 
     Double_t nsig1=static_cast<RooAbsReal&>(lf[7]).getVal();
     Double_t nsig2=static_cast<RooAbsReal&>(lf[8]).getVal();
     Double_t nsig3=static_cast<RooAbsReal&>(lf[9]).getVal();
-
-    //-------------------------------------------------------------
-
-    Double_t s1 = diffCrossSec(nsig1, 1, ptM-ptm);
-    Double_t s2 = diffCrossSec(nsig2, 2, ptM-ptm);
-    Double_t s3 = diffCrossSec(nsig3, 3, ptM-ptm);
+    
+    Double_t s1 = diffCrossSec(nsig1, 0, ptM-ptm);
+    Double_t s2 = diffCrossSec(nsig2, 1, ptM-ptm);
+    Double_t s3 = diffCrossSec(nsig3, 2, ptM-ptm);
+    
+//------------------------------------------------------------------------------------
+//  trovare gli errori si nsig a partire dalla matrice di covarianza cov
+    Double_t dnsig1=std::sqrt(cov[7][7]); //differenza tra cov(7,7) e cov[7][7]
+    Double_t dnsig2=std::sqrt(cov[8][8]);
+    Double_t dnsig3=std::sqrt(cov[9][9]);
+    Double_t ds1 = diffCrossSec(dnsig1, 0, ptM-ptm);
+    Double_t ds2 = diffCrossSec(dnsig2, 1, ptM-ptm);
+    Double_t ds3 = diffCrossSec(dnsig3, 2, ptM-ptm);
+//------------------------------------------------------------------------------------
+    
     dcsVec avec{ ptm,ptM,
-        s1, s2, s3};
+        s1, s2, s3,
+        ds1, ds2, ds3
+    };
     return avec;
 }
 
@@ -84,36 +98,99 @@ int diffCrossection(ROOT::RDataFrame df){
     //TApplication *theApp = new TApplication("app", 0, 0);
     double ptm[n] = {12.,14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.};
     double ptM[n] = {14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.,100.};
-    double x[n], y1[n], y2[n], y3[n];
-    for(int i;i<n;i++){
+    double x[n], y1[n], y2[n], y3[n], dx[n], dy1[n], dy2[n], dy3[n];
+    
+    for(int i=0;i<n;i++){
         std::string nameFile = "YResonances_"+std::to_string(i); //The name of the file in which the figure is saved
 
         dcsVec avec = setset(ptm[i], ptM[i], df,nameFile);
-        x[i]=ptM[i]-ptm[i];
+        x[i]=(ptm[i]+ptM[i])/2; //il centro del bin
+        dx[i]=(ptM[i]-ptm[i])/2;
         y1[i]=avec.s1;
         y2[i]=avec.s2;
         y3[i]=avec.s3;
+        dy1[i]=avec.ds1;
+        dy2[i]=avec.ds2;
+        dy3[i]=avec.ds3;
+//        std::cout << y1[i] << std::endl; //OK
     }
     
+//    gStyle->SetOptFit();
+//    gStyle->SetOptStat(0);
     TCanvas * c1 = new TCanvas("cross section", "Y Resonances differential Cross Section", 950, 800);
+    gPad->SetLogy();
+    
     //TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
-    //rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");  
-    //disegnare su grafico i punti trovati --> esiste tgraph in roofit????
+    //rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
+
     auto mg = new TMultiGraph();
-    auto g1 = new TGraph(n,x,y1);
-    g1->SetTitle("Y(1S,2S,3S)");
+    mg->SetTitle("Differential Cross Section;p_{T}  [GeV];#frac{d#sigma}{dp_{T}} x Br(#mu^{-}#mu^{+}) [fb/GeV]");
+    
+//    auto g1 = new TGraph(n,x,y1);
+    auto g1 = new TGraphErrors(n,x,y1,dx,dy1);
+//    g1->SetTitle("Y(1s)");
+    g1->SetMarkerColor(46);
+    g1->SetLineColor(46);
+    g1->SetMarkerStyle(7);
     //g1->Draw("AC*");
     mg->Add(g1);
-    auto g2 = new TGraph(n,x,y2);
-    //g2->Draw("AC*same");
+
+//    auto g2 = new TGraph(n,x,y2);
+    auto g2 = new TGraphErrors(n,x,y2,dx,dy2);
+//    g2->SetTitle("Y(2s)");
+    g2->SetMarkerColor(30);
+    g2->SetLineColor(30);
+    g2->SetMarkerStyle(7);
+    //g2->Draw("AP*SAME");
     mg->Add(g2);
-    auto g3 = new TGraph(n,x,y3);
-    //g3->Draw("AC* same");
+
+//    auto g3 = new TGraph(n,x,y3);
+    auto g3 = new TGraphErrors(n,x,y3,dx,dy3);
+//    g3->SetTitle("Y(3s)");
+    g3->SetMarkerColor(38);
+    g3->SetLineColor(38);
+    g3->SetMarkerStyle(7);
+    //g3->Draw("AP*SAME");
     mg->Add(g3);
+    
+
+    
     mg->Draw("ap");
+    mg->GetXaxis()->SetLabelFont(43);
+    mg->GetYaxis()->SetLabelFont(43);
+    mg->GetXaxis()->SetLabelSize(22);
+    mg->GetYaxis()->SetLabelSize(22);
+    mg->GetXaxis()->SetTitleFont(43);
+    mg->GetYaxis()->SetTitleFont(43);
+    mg->GetXaxis()->SetTitleSize(22);
+    mg->GetYaxis()->SetTitleSize(22);
+    
+    //testo e legenda
+    //------------------------------------------------------------------------------------
+    TLatex label;
+    label.SetNDC(true); // cambio di coordinate di riferimento da quelle del grafico a quelle del pad normalizzate
+    label.SetTextSize(0.035);
+    label.SetTextAlign(22); // central vertically and horizontally
+    label.DrawLatex(0.75, 0.78, "#bf{|y| < 1.2}");
+    label.SetTextAlign(11); // left bottom
+    label.DrawLatex(0.1, 0.92, "#bf{CMS Open Data}");
+    label.SetTextAlign(31); // right bottom
+    label.DrawLatex(0.90, 0.92, "11.6 fb^{-1} (8 TeV)"); //#sqrt{s} = 8 TeV, L_{int} = 11.6 fb^{-1}
+    label.Draw();
+    
+    TLegend *leg = new TLegend(0.68, 0.6, 0.85, 0.75);  //xmin, ymin, xmax, ymax
+    leg->SetBorderSize(0);
+    leg->SetFillColor(0);
+    leg->AddEntry(g1, "Y(1S)", "lp");
+    leg->AddEntry(g2, "Y(2S)", "lp");
+    leg->AddEntry(g3, "Y(3S)", "lp");
+    leg->Draw();;
+    //------------------------------------------------------------------------------------
+    
     c1->Update();
-    //theApp->Run();
     c1->SaveAs("./Plots/diffCrossSection.pdf");
+
+    //theApp->Run();
     return 0;
 }
 

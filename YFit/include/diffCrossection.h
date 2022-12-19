@@ -10,11 +10,20 @@
 
 #include "ROOT/RDataFrame.hxx"
 #include "TMath.h"
-#include "../include/Cuts.h"
+#include "RooFitResult.h"
 #include <filesystem>
 #include "TSystem.h"
 #include "RooAbsPdf.h"
-#include "../include/fitRoo.h"
+#include "Cuts.h"
+#include "SpectrumPlot.h"
+#include "fitRoo.h"
+#include "optionParse.h"
+#include "diffCrossection.h"
+#include "TApplication.h"
+#include "TRootCanvas.h"
+#include "TGraphErrors.h"
+#include "TLatex.h"
+#include "TMultiGraph.h"
 
 struct dcsVec;
 
