@@ -92,6 +92,12 @@
         "df_set.C": "cpp",
         "Cuts.C": "cpp",
         "SpectrumPlot.C": "cpp",
-        "main.C": "cpp"
+        "main.C": "cpp",
+        "diffCrossection.C": "cpp",
+        "fitRoo.C": "cpp",
+        "codecvt": "cpp",
+        "stack": "cpp",
+        "optionParse.C": "cpp",
+        "test1.C": "cpp"
     }
 }
