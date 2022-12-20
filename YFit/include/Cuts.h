@@ -1,9 +1,10 @@
 /*********************************
-*\file Cuts.h
-*\brief Selection of the data.
-*
-* The data are selected to be two muons of opposite charge with an invariant mass round the mass of the Y resonances. Also it is possible to choose other cuts on the trasverse momentum and the pseudorapidity of the dimuon state.
-************************************************/
+ * \file Cuts.h
+ * \brief Selection of the data.
+ * 
+ * The data are selected to be two muons of opposite charge with an invariant mass round the mass of the Y resonances.
+ * Also it is possible to choose other cuts on the trasverse momentum and the pseudorapidity of the dimuon state.
+ ************************************************/
 
 #ifndef Cuts_h
 #define Cuts_h

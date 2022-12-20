@@ -23,7 +23,7 @@
 #include "TMultiGraph.h"
 
 
-struct dcsVec{
+struct dcsbin{
     float ptm, ptM;
     Double_t s1, s2, s3; //differential cross section for Y 1s, 2s and 3s
     Double_t ds1, ds2, ds3;
@@ -34,20 +34,17 @@ const float L =11.6; //[fb^-1]
 const float e_uu = 0.75;
 const float e_sg = 0.5;
 const float e_vp = 0.99;
-const float A=1; //accetanza va ridefinita in un altro modo bin per bin
+const float A=1; //accetanza
 const double BF[3]={2.48/100,1.93/100,2.18/100};   //Branching fraction Y(is) -> mu+ mu- from the PDG
 
 
-/******************
- * \brief calculate the differential cross section given the functin that describe the mass distribution (model), which Y is (i), and the width of the pt bin (wpt)
- ***************************/
-Double_t diffCrossSec(double N, int i, float wpt){
+Double_t diffCrossSec(double N, float wpt){
     return N/(L * wpt * e_uu * e_sg * e_vp * A);
 }
 
 //per ogni deltaPT estrarre le funzini uscenti dal fit e calcolare la sezine d'urto differenziale in quel bin
 
-dcsVec setset(float ptm, float ptM, ROOT::RDataFrame df, std::string nameFile)
+dcsbin setset(float ptm, float ptM, ROOT::RDataFrame df, std::string nameFile)
 {
     // initialize default values for options
     int depth = 0; //Depth value initialized to 0, i.e. no cuts
@@ -72,25 +69,25 @@ dcsVec setset(float ptm, float ptM, ROOT::RDataFrame df, std::string nameFile)
     Double_t nsig2=static_cast<RooAbsReal&>(lf[8]).getVal();
     Double_t nsig3=static_cast<RooAbsReal&>(lf[9]).getVal();
     
-    Double_t s1 = diffCrossSec(nsig1, 0, ptM-ptm);
-    Double_t s2 = diffCrossSec(nsig2, 1, ptM-ptm);
-    Double_t s3 = diffCrossSec(nsig3, 2, ptM-ptm);
+    Double_t s1 = diffCrossSec(nsig1, ptM-ptm);
+    Double_t s2 = diffCrossSec(nsig2, ptM-ptm);
+    Double_t s3 = diffCrossSec(nsig3, ptM-ptm);
     
 //------------------------------------------------------------------------------------
 //  trovare gli errori si nsig a partire dalla matrice di covarianza cov
     Double_t dnsig1=std::sqrt(cov[7][7]); //differenza tra cov(7,7) e cov[7][7]
     Double_t dnsig2=std::sqrt(cov[8][8]);
     Double_t dnsig3=std::sqrt(cov[9][9]);
-    Double_t ds1 = diffCrossSec(dnsig1, 0, ptM-ptm);
-    Double_t ds2 = diffCrossSec(dnsig2, 1, ptM-ptm);
-    Double_t ds3 = diffCrossSec(dnsig3, 2, ptM-ptm);
+    Double_t ds1 = diffCrossSec(dnsig1, ptM-ptm);
+    Double_t ds2 = diffCrossSec(dnsig2, ptM-ptm);
+    Double_t ds3 = diffCrossSec(dnsig3, ptM-ptm);
 //------------------------------------------------------------------------------------
     
-    dcsVec avec{ ptm,ptM,
+    dcsbin abin{ ptm,ptM,
         s1, s2, s3,
         ds1, ds2, ds3
     };
-    return avec;
+    return abin;
 }
 
 
@@ -103,20 +100,18 @@ int diffCrossection(ROOT::RDataFrame df){
     for(int i=0;i<n;i++){
         std::string nameFile = "YResonances_"+std::to_string(i); //The name of the file in which the figure is saved
 
-        dcsVec avec = setset(ptm[i], ptM[i], df,nameFile);
+        dcsbin abin = setset(ptm[i], ptM[i], df,nameFile);
         x[i]=(ptm[i]+ptM[i])/2; //il centro del bin
         dx[i]=(ptM[i]-ptm[i])/2;
-        y1[i]=avec.s1;
-        y2[i]=avec.s2;
-        y3[i]=avec.s3;
-        dy1[i]=avec.ds1;
-        dy2[i]=avec.ds2;
-        dy3[i]=avec.ds3;
+        y1[i]=abin.s1;
+        y2[i]=abin.s2;
+        y3[i]=abin.s3;
+        dy1[i]=abin.ds1;
+        dy2[i]=abin.ds2;
+        dy3[i]=abin.ds3;
 //        std::cout << y1[i] << std::endl; //OK
     }
     
-//    gStyle->SetOptFit();
-//    gStyle->SetOptStat(0);
     TCanvas * c1 = new TCanvas("cross section", "Y Resonances differential Cross Section", 950, 800);
     gPad->SetLogy();
     
