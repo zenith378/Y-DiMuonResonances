@@ -25,6 +25,6 @@ jobs:
         # Generated HTML documents output folder
         htmloutput: ./docs/doxygen/html
         # GitHub Pages branch name
-        ghpagesbranch: docs
+        ghpagesbranch: gh-pages
         # GitHub Pages directory path
         ghpagesdir: ./docs/doxygen
