@@ -1,2 +1,1 @@
 My GitHub Page
-<meta http-equiv="refresh" content="0; url=https://zenith378.github.io/Y-DiMuonResonances/html" />
