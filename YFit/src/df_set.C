@@ -11,9 +11,9 @@
 #include "TMath.h"
 #include "TFile.h"
 #include <TSystem.h>
-#include "df_set.h"
+//#include "df_set.h"
 #include <filesystem>
-#include "optionParse.h"
+//#include "optionParse.h"
 
 using namespace ROOT::VecOps;
 
@@ -89,11 +89,21 @@ ROOT::RDataFrame df_set()
     // reading dataframe from online NanoAOD
     ROOT::RDataFrame df_temp("Events", "root://eospublic.cern.ch//eos/opendata/cms/derived-data/AOD2NanoAODOutreachTool/Run2012BC_DoubleMuParked_Muons.root");
     // define more useful variables in the dataframe
-    auto df_set = df_temp.Define("Dimuon_FourVec", computeDiMuonFourVec, {"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass"})
-                      .Define("Dimuon_mass", computeDiMuonInvariantMass, {"Dimuon_FourVec"})
-                      .Define("Dimuon_pt", computeDiMuonPT, {"Dimuon_FourVec"}) // Compute pt and rapidity (y) of dimuon
-                      .Define("Dimuon_beta", computeDiMuonBeta, {"Dimuon_FourVec"})
-                      .Define("Dimuon_y", computeDiMuonRapidity, {"Dimuon_FourVec"});
+      auto df_set = df_temp.Define("goodmu", "Muon_pt > 20 && Muon_eta < 2.0 && Muon_eta>-2.0")
+          .Filter("Sum(goodmu)>=2")
+          .Define("mu0", "Nonzero(goodmu)[0]")
+          .Define("oppositeCharge","goodmu && Muon_charge[mu0]*Muon_charge < 0")
+          .Filter("Sum(oppositeCharge)>0")
+          .Define("mu1","Nonzero(oppositeCharge)[0]");
+//      auto df_set = df_0.Define("Dimuon_FourVec", computeDiMuonFourVec, {
+//          Take("Muon_pt", {"mu0", "mu1"}),
+//          Take("Muon_eta", {"mu0", "mu1"}),
+//          Take("Muon_phi", {"mu0", "mu1"}),
+//          Take("Muon_mass", {"mu0", "mu1"})})
+//          .Define("Dimuon_mass", computeDiMuonInvariantMass, {"Dimuon_FourVec"})
+//          .Define("Dimuon_pt", computeDiMuonPT, {"Dimuon_FourVec"}) // Compute pt and rapidity (y) of dimuon
+//          .Define("Dimuon_beta", computeDiMuonBeta, {"Dimuon_FourVec"})
+//          .Define("Dimuon_y", computeDiMuonRapidity, {"Dimuon_FourVec"});
 
     df_set.Snapshot("Events", fname); //save dataframe in a root file to avoid downloading it all the times
     ROOT::RDataFrame df_new("Events", fname); //read dataframe from file stored
@@ -101,9 +111,9 @@ ROOT::RDataFrame df_set()
 
     return df_new;
   }
-  catch (...) //if it happens anything that is not caught
-  {
-    unknownErrorHandling(); //function defined in optionParse.C
-  }
+//  catch (...) //if it happens anything that is not caught
+//  {
+//    unknownErrorHandling(); //function defined in optionParse.C
+//  }
   return (*df);
-}
+}//end df_set

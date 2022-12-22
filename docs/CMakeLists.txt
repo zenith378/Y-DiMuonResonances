@@ -5,7 +5,7 @@ find_package(Doxygen)
 
 if (DOXYGEN_FOUND)
     # set input and output files
-    set(DOXYGEN_IN ${PROJECT_SOURCE_DIR}/docs/Doxyfile.in)
+    set(DOXYGEN_IN ${PROJECT_SOURCE_DIR}/docs/Doxyfile)
     set(DOXYGEN_OUT ${PROJECT_SOURCE_DIR}/build/docs/Doxyfile.out)
     set(DOXYGEN_OUTPUT_DIR ${PROJECT_SOURCE_DIR}/docs/doxygen)
     #set(DOXIGEN_INPUT_DIR ${PROJECT_SOURCE_DIR}/YFit)

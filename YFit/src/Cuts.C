@@ -20,21 +20,14 @@ ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int &dr)
   default:
   case 0:
   {
-    auto df_cut = df.Filter([](unsigned int x)
-                            { return x == 2; },
-                            {"nMuon"}, {"Events with exactly two muons"})
-                      .Filter([](float x)
+    auto df_cut = df.Filter([](float x)
                               { return x > 8.5 && x < 11.5; },
                               {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}); // Cut around the Ys
     return df_cut;
   }
   case 1:
   {
-    auto df_cut = df.Filter([](unsigned int x)
-                            { return x == 2; },
-                            {"nMuon"}, {"Events with exactly two muons"})                       // Select events with exactly two muons
-                      .Filter("Muon_charge[0] != Muon_charge[1]", "Muons with opposite charge") // Select events with two muons of opposite charge
-                      .Filter([](float x)
+    auto df_cut = df.Filter([](float x)
                               { return x > 8.5 && x < 11.5; },
                               {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}) // Cut around the Ys
                       .Filter([](float x)
@@ -44,11 +37,7 @@ ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int &dr)
   }
   case 2:
   {
-    auto df_cut = df.Filter([](unsigned int x)
-                            { return x == 2; },
-                            {"nMuon"}, {"Events with exactly two muons"})                       // Select events with exactly two muons
-                      .Filter("Muon_charge[0] != Muon_charge[1]", "Muons with opposite charge") // Select events with two muons of opposite charge
-                      .Filter([](float x)
+    auto df_cut = df.Filter([](float x)
                               { return x > 8.5 && x < 11.5; },
                               {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}) // Cut around the Ys
                       .Filter([](float x)
