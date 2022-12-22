@@ -8,6 +8,6 @@
 - <del>implementare scelta tagli</del>
 - <del> Funzione per riconoscere quando i tagli sono troppo stretti e non entrare nella funzione di fit</del>
 - <del>grafici di Pull</del>
-- grafici della sezione d'urto
+- <del>grafici della sezione d'urto</del>
 - implementare installazione
 - implementare funzioni da linea di comando (spettro, fit, etc.)
