@@ -92,7 +92,7 @@ float computeDiMuonBeta(ROOT::Math::PtEtaPhiMVector& fourvec);
  * \return Dataframe
  * 
  ****************************************/
-ROOT::RDataFrame df_set();
+ROOT::RDF::RNode df_set();
 
 
 #endif /* Cuts_h */

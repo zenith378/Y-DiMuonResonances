@@ -1,6 +1,6 @@
 /**************************************************************
  * \file optionParse.h
- * \brief header file of optionParse.C
+ * \brief Handling flags and option parameters
  *
  *
  *

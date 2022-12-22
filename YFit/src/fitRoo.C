@@ -16,48 +16,51 @@
 #include "TRootCanvas.h"
 #include "TApplication.h"
 #include "TLatex.h"
+#include "SpectrumPlot.h"
 #include "TStyle.h"
+#include "TString.h"
 #include <string.h>
 #include <filesystem>
 
 using namespace RooFit;
 
-std::string formatPtString(int dr, float pmr, float pMr)
+TString formatPtString(int dr, float pmr, float pMr)
 {
-    std::string tmp = "";
+    TString tmp;
 
     if (pmr == pmr && pMr == pMr)
-        tmp = std::to_string((int)pmr) + " < p_{T}< " + std::to_string((int)pMr) + " GeV";
+        tmp.Form("%.1f < p_{T} < %.1f GeV",pmr,pMr); //    std::to_string((int)pmr) + " < p_{T}< " + std::to_string((int)pMr) + " GeV";
 
     if (pmr == pmr && pMr != pMr)
-        tmp = tmp + "p_{T} > " + std::to_string((int)pmr) + " GeV";
+        tmp.Form("p_{T} > %.1f GeV",pmr);
+        //tmp = tmp + "p_{T} > " + std::to_string((int)pmr) + " GeV";
 
     if (pmr != pmr && pMr == pMr)
-        tmp = tmp + "p_{T}< " + std::to_string((int)pMr) + " GeV";
+        tmp.Form("p_{T} < %.1f GeV",pMr); //tmp = tmp + "p_{T}< " + std::to_string((int)pMr) + " GeV";
 
     if (pmr != pmr && pMr != pMr)
         if (dr == 1 || dr == 2)
-            tmp = "10 < p_{T}< 100 GeV";
+            tmp.Form("10 < p_{T}< 100 GeV");
 
     return tmp;
 }
 
-std::string formatYString(int dr, float ymr, float yMr)
+TString formatYString(int dr, float ymr, float yMr)
 {
-    std::string tmp = "";
+    TString tmp;
 
     if (ymr == ymr && yMr == yMr)
-        tmp = std::to_string(ymr).substr(0, std::to_string(ymr).find(".") + 2 + 1) + " < |y| < " + std::to_string(yMr).substr(0, std::to_string(yMr).find(".") + 2 + 1);
+        tmp.Form("%.2f < |y| < %.2f",ymr,yMr); //tmp = std::to_string(ymr).substr(0, std::to_string(ymr).find(".") + 2 + 1) + " < |y| < " + std::to_string(yMr).substr(0, std::to_string(yMr).find(".") + 2 + 1);
 
     if (ymr == ymr && yMr != yMr)
-        tmp = tmp + "|y| > " + std::to_string(ymr).substr(0, std::to_string(ymr).find(".") + 2 + 1);
+        tmp.Form("|y| > %.2f",ymr); //tmp = tmp + "|y| > " + std::to_string(ymr).substr(0, std::to_string(ymr).find(".") + 2 + 1);
 
     if (ymr != ymr && yMr == yMr)
-        tmp = tmp + "|y| < " + std::to_string(yMr).substr(0, std::to_string(yMr).find(".") + 2 + 1);
+        tmp.Form("|y| < %.2f",yMr); //tmp = tmp + "|y| < " + std::to_string(yMr).substr(0, std::to_string(yMr).find(".") + 2 + 1);
 
     if (ymr != ymr && yMr != yMr)
         if (dr == 2)
-            tmp = "|y| < 0.6";
+            tmp.Form("|y| < 0.6");
 
     return tmp;
 }
@@ -67,10 +70,11 @@ std::string formatYString(int dr, float ymr, float yMr)
 RooFitResult *fitRoo(TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, float yMr, std::string nfr, int vr)
 {
     // Declare observable x
-    RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5001, 11.5);
+    RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5, 11.5);
     RooDataHist rh("rh", "rh", x, Import(*hh));
     // create application to display the canvas while root runs
-    TApplication *theApp = new TApplication("app", 0, 0);
+    //TApplication *theApp = new TApplication("app", 0, 0);
+    
     
     Int_t nb = hh->GetNbinsX();
     Double_t x1 = hh->GetBinCenter(1);
@@ -81,6 +85,7 @@ RooFitResult *fitRoo(TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, f
     Double_t n9 = hh->GetBinContent(i9);
     Double_t slp = (n9-n1)/(x9-x1);
     Double_t bg = n1 - slp*x1; 
+     //numero di eventi dentro all'istogramma
     Int_t entries = hh->GetEntries();
     std::cout << "Entries: " << entries << std::endl;
     // Set up   component   pdfs
@@ -96,10 +101,10 @@ RooFitResult *fitRoo(TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, f
     // Create parameters
     RooRealVar mean1("mean1", "mean of gaussians", 9.45, 9.3, 9.6);
     RooRealVar mean2("mean2", "mean of gaussians", 10.01, 9.8, 10.2);
-    RooRealVar mean3("mean3", "mean of gaussians", 10.35, 10.15, 10.5);
-    RooRealVar sigma1("sigma1", "width of gaussians", 0.054, 0.01, 0.5);
-    RooRealVar sigma2("sigma2", "width of gaussians", 0.032, 0.01, 0.5);
-    RooRealVar sigma3("sigma3", "width of gaussians", 0.020, 0.01, 0.5);
+    RooRealVar mean3("mean3", "mean of gaussians", 10.35, 10.15, 10.6);
+    RooRealVar sigma1("sigma1", "width of gaussians", 0.054, 0.001, 0.1);
+    RooRealVar sigma2("sigma2", "width of gaussians", 0.032, 0.001, 0.1);
+    RooRealVar sigma3("sigma3", "width of gaussians", 0.020, 0.001, 0.1);
 
     RooRealVar r1("r1", "r1", 10, 0.00, 100);
     RooRealVar r2("r2", "r2", 1, 0.00, 100);
@@ -150,11 +155,11 @@ RooFitResult *fitRoo(TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, f
     }
     }
 
-    RooAddPdf model("model", "model", RooArgList(*sig1, *sig2, *sig3, bkg), RooArgList(nsig1, nsig2, nsig3,nback));
+    RooAddPdf model("model", "model", RooArgList(*sig1, *sig2, *sig3, bkg), RooArgList(nsig1, nsig2, nsig3, nback));
 
     RooFitResult *fitResult;
-    try
-    {
+    //try
+    //{
         if (vr == 0)
             fitResult = model.fitTo(rh, Verbose(false), Warnings(false), Save(),RecoverFromUndefinedRegions(1), PrintEvalErrors(-1), PrintLevel(-1));
 
@@ -165,18 +170,18 @@ RooFitResult *fitRoo(TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, f
         // Print structure of composite pdf
         fitResult->Print("v"); // previous was t
 
-        if (fitResult->status()!=0) // fitResult->covQual() < 2
-        {
-            throw(std::runtime_error("Fit did not converge. Try relaxing cut filters or changing PDF."));
-        }
-    }
-    catch (std::exception &msg)
-    {
-        std::cerr << msg.what() << std::endl;
-        if(vr==0)
-        std::cerr <<"Set verbose flag on [-v], in order to print the parameters that have been updated in each minimisation step (MINUIT LOG).\n" << std::endl;
-        exit(1);
-    }
+        //if (fitResult->status()!=0) // fitResult->covQual() < 2
+        //{
+        //    throw(std::runtime_error("Fit did not converge. Try relaxing cut filters or changing PDF."));
+        //}
+    //}
+    //catch (std::exception &msg)
+    //{
+    //    std::cerr << msg.what() << std::endl;
+    //    if(vr==0)
+    //    std::cerr <<"Set verbose flag on [-v], in order to print the parameters that have been updated in each minimisation step (MINUIT LOG).\n" << std::endl;
+    //    exit(1);
+    //}
 
 
     // Draw options
@@ -206,9 +211,9 @@ RooFitResult *fitRoo(TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, f
     hpull->SetLineWidth(0);
 
     // Draw the frame on the canvas
-    auto c1 = new TCanvas("Fit", "Y Resonances Fit", 950, 800);
-    TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
-    rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
+    TCanvas * c1 = new TCanvas("Fit", "Y Resonances Fit", 950, 800);
+    //TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
+    //rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
 
     TPad *pad1 = new TPad("pad1", "The pad 80 of the height", 0.0, 0.2, 1.0, 1.0);
     TPad *pad2 = new TPad("pad2", "The pad 20 of the height", 0.0, 0.05, 1.0, 0.25);
@@ -222,15 +227,15 @@ RooFitResult *fitRoo(TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, f
     //  xframe->GetXaxis()->SetTitleOffset(999);
     xframe->SetMinimum(0.001);
     xframe->Draw();
-    std::string cut1 = formatPtString(dr, pmr, pMr);
-    std::string cut2 = formatYString(dr, ymr, yMr);
+    TString cut2 = formatYString(dr, ymr, yMr);
+    TString cut1 = formatPtString(dr, pmr, pMr);
 
     TLatex label;
     label.SetNDC(true); // cambio di coordinate di riferimento da quelle del grafico a quelle del pad normalizzate
     label.SetTextSize(0.05);
     label.SetTextAlign(22); // central vertically and horizontally
-    label.DrawLatex(0.75, 0.8, ("#bf{" + cut1 + "}").c_str());
-    label.DrawLatex(0.75, 0.7, ("#bf{" + cut2 + "}").c_str());
+    label.DrawLatex(0.7, 0.8, ("#bf{" + cut1 + "}"));
+    label.DrawLatex(0.7, 0.7, ("#bf{" + cut2 + "}"));
 
     label.SetTextSize(0.04);
     label.SetTextAlign(11); // left bottom
@@ -259,29 +264,9 @@ RooFitResult *fitRoo(TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, f
     hpull->Draw();
     c1->Update();
 
-    namespace fs = std::filesystem;
+    SavePlot(c1,nfr);
 
-    std::string tmp = "./Plots/" + nfr + ".pdf";
-    const char *fname = tmp.c_str();
-    try
-    {
-        c1->SaveAs(fname);
-        if (!fs::is_directory("./Plots") || !fs::exists("./Plots"))
-            throw("./Plots");
-    }
-    catch (const char *pathToData)
-    {
-        std::cerr << "Directory " << pathToData << " does not exist.\n"
-                  << std::endl;
-        std::cerr << "Creating directory...\n"
-                  << std::endl;
-
-        fs::create_directory(pathToData);
-        std::cout << "Directory " << pathToData << " successfully created\n"
-                  << std::endl;
-    }
-
-    theApp->Run();
+    //theApp->Run();
 
     return fitResult;
 }

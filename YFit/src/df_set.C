@@ -44,7 +44,7 @@ float computeDiMuonBeta(ROOT::Math::PtEtaPhiMVector &fourvec)
   return fourvec.Beta();
 }
 
-ROOT::RDataFrame df_set()
+ROOT::RDF::RNode df_set()
 {
   // Enable multi-threading
   ROOT::EnableImplicitMT(1);
@@ -95,10 +95,12 @@ ROOT::RDataFrame df_set()
                       .Define("Dimuon_y", computeDiMuonRapidity, {"Dimuon_FourVec"});
 
     df_set.Snapshot("Events", fname);         // save dataframe in a root file to avoid downloading it all the times
-    ROOT::RDataFrame df_new("Events", fname); // read dataframe from file stored
+
+    return df_set;
+    //ROOT::RDataFrame df_new("Events", fname); // read dataframe from file stored
     // this last step is necessary in order to be coherent with return type of the function df_set()
 
-    return df_new;
+    //return df_new;
   }
   catch (...) // if it happens anything that is not caught
   {

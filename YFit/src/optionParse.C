@@ -25,7 +25,6 @@
 #include <string>
 #include <algorithm>
 
-
 void PrintHelp()
 {
     std::cout << "--cutDepth [-d] <n>:            Choose Cut Depth between the options:\n"
@@ -146,7 +145,7 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
         }
         case 'n':
         {
-            std::string forbiddenChars("\\/:?\"<>|");
+            std::string forbiddenChars("\\/:?\"<>|"); //E SE VOGLIO DARE IL PATH DI UN FILE? MI SERVE "/"
             const char * invalidChars= forbiddenChars.c_str();
             try
             {

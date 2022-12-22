@@ -19,13 +19,16 @@
  *
  *******************************************************************************/
 
+#include <iostream>
+#include "ROOT/RDataFrame.hxx"
 #include "df_set.h"
 #include "Cuts.h"
 #include "SpectrumPlot.h"
 #include "fitRoo.h"
 #include "optionParse.h"
-#include "ROOT/RDataFrame.hxx"
-#include <iostream>
+#include "diffCrossection.h"
+#include "RooFitResult.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -39,9 +42,10 @@ int main(int argc, char *argv[])
     std::string nameFile = "YResonancesFit"; //The name of the file in which the figure is saved
     int verbose = 0; //verbose flag initialized to zero, i.e. no output stream for Minuit
     ProcessArgs(argc, argv, depth, fitfunc, ptm, ptM, ym, yM, nameFile, verbose);
-    ROOT::RDataFrame df = df_set(); //call df set
+    ROOT::RDF::RNode df = df_set(); //call df set
     ROOT::RDF::RNode df_cut = Cuts(df, depth, ptm, ptM, ym, yM);
     TH1 *h = SpectrumPlot(df_cut);
-    fitRoo(h, fitfunc, depth, ptm, ptM, ym, yM, nameFile, verbose);
+    RooFitResult * fitresult = fitRoo(h, fitfunc, depth, ptm, ptM, ym, yM, nameFile, verbose);
+
     return 0;
 }

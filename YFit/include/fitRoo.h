@@ -26,6 +26,7 @@
 #include "TAxis.h"
 #include "RooPlot.h"
 #include "TH1.h"
+#include "TString.h"
 #include "RooDataHist.h"
 
 using namespace RooFit;
@@ -39,7 +40,7 @@ using namespace RooFit;
  * 
  * \return result of the fit
  *************************************************************/
-std::string formatPtString(int dr=0, float pmr= std::nanf("1"), float pMr= std::nanf("1"));
+TString formatPtString(int dr=0, float pmr= std::nanf("1"), float pMr= std::nanf("1"));
 
 /***********************************************************
  * Formatting the string to be displayed on the canvas regarding the cuts made on y
@@ -50,14 +51,14 @@ std::string formatPtString(int dr=0, float pmr= std::nanf("1"), float pMr= std::
  * 
  * \return result of the fit
  *************************************************************/
-std::string formatYString(int dr=0, float ymr= std::nanf("1"), float yMr= std::nanf("1"));
+TString formatYString(int dr=0, float ymr= std::nanf("1"), float yMr= std::nanf("1"));
 
 /***********************************************************
  * Implementation of the fit function
  * 
  * @param hh histogram to be fitted
- * @param dr reference of depth defined in main
  * @param fr reference of fitFunction defined in main
+ * @param dr reference of depth defined in main
  * @param pmr recerence of ptm (minimum pt) defined in main
  * @param pMr recerence of ptM (maximum pt) defined in main
  * @param ymr recerence of ym (minimum rapidity) defined in main

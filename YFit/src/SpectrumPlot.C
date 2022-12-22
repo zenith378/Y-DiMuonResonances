@@ -9,11 +9,36 @@
 #include "TCanvas.h"
 #include "TH1D.h"
 #include "TLatex.h"
+#include <filesystem>
 #include "TStyle.h"
 #include "SpectrumPlot.h"
 
+void SavePlot(TCanvas *c, TString namePlot){
+  namespace fs = std::filesystem;
 
-TH1* SpectrumPlot(ROOT::RDF::RNode df_cut){
+    TString fname = "./Plots/" + namePlot + ".pdf";
+    //const char *fname = tmp.c_str();
+    try
+    {
+        c->SaveAs(fname);
+        if (!fs::is_directory("./Plots") || !fs::exists("./Plots"))
+            throw("./Plots");
+    }
+    catch (const char *pathToData)
+    {
+        std::cerr << "Directory " << pathToData << " does not exist.\n"
+                  << std::endl;
+        std::cerr << "Creating directory...\n"
+                  << std::endl;
+
+        fs::create_directory(pathToData);
+        std::cout << "Directory " << pathToData << " successfully created\n"
+                  << std::endl;
+    }
+  c->SaveAs(fname);
+}
+
+TH1* SpectrumPlot(ROOT::RDF::RNode &df_cut){
   //Enable multi-threading
   ROOT::EnableImplicitMT(1);
   
@@ -53,7 +78,7 @@ TH1* SpectrumPlot(ROOT::RDF::RNode df_cut){
   label.DrawLatex(0.90, 0.92, "11.6 fb^{-1} (8 TeV)");
 
   // Save plot
-  c->SaveAs("./Plots/Preliminary_histo.pdf");
+  SavePlot(c,"Preliminary_Histo");
 
   std::string hs;
   hs="hist";

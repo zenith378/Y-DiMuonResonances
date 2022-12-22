@@ -16,12 +16,15 @@
 #include "TStyle.h"
 #include "Cuts.h"
 
+
+void SavePlot(TCanvas *c, TString namePlot);
+
 /***********************************************************
  * Simple Function to plot the spectrum of the dataset which is currently used and create an histogram. 
  * @param df_cut dataframe containg the data
  * \return histogram of the data
  *************************************************************/
-TH1* SpectrumPlot(ROOT::RDF::RNode df_cut);
+TH1* SpectrumPlot(ROOT::RDF::RNode &df_cut);
 
 
 #endif /* SpectrumPlot_h */
