@@ -27,7 +27,10 @@ var NAVTREE =
   [ "YFit", "index.html", [
     [ "YFit YFit Library Documentation", "index.html", [
       [ "Introduction", "index.html#intro_sec", null ],
-      [ "A simple example usage", "index.html#example_usage", null ],
+      [ "A simple example usage", "index.html#example_usage", [
+        [ "options", "index.html#Default", null ],
+        [ "options", "index.html#Custimize", null ]
+      ] ],
       [ "Description of main (and functionality of libraries)", "index.html#program_des", [
         [ "Choose of the parameters and flags", "index.html#option_param", null ],
         [ "Data Loading", "index.html#data_load", null ],
