@@ -13,7 +13,7 @@
 #include "SpectrumPlot.h"
 #include "fitRoo.h"
 #include "optionParse.h"
-#include "diffCrossection.h"
+#include "diffCrossSection.h"
 #include "TApplication.h"
 #include "TRootCanvas.h"
 #include "TGraph.h"

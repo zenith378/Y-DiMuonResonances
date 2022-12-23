@@ -46,6 +46,6 @@ int main(int argc, char *argv[])
     ROOT::RDF::RNode df_cut = Cuts(df, depth, ptm, ptM, ym, yM);
     TH1 *h = SpectrumPlot(df_cut);
     RooFitResult * fitresult = fitRoo(h, fitfunc, depth, ptm, ptM, ym, yM, nameFile, verbose);
-    diffCrossection(df);
+    diffCrossSection(df);
     return 0;
 }

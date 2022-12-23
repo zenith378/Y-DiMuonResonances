@@ -29,8 +29,6 @@
  *  * p_{T} > 3.5 GeV and |y| < 2.0 (for the single muon)
  *  * at least 2 muons of opposite charge in each event
  *
- *
- *
  * \image html YResonancesFit.pdf "YResonancesFit.pdf"
  *
  * \subsubsection custOpt Custimize options
