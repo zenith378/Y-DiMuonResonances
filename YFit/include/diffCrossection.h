@@ -57,7 +57,7 @@ Double_t diffCrossSec(double N, float wpt);
  *
  * @return Structure where are saved the value usuful for the bin
  *******************************************************************************************************************************************************************************/
-dcsbin setset(float ptm, float ptM, ROOT::RDataFrame df, std::string nameFile);
+dcsbin setset(float ptm, float ptM, ROOT::RDF::RNode &df, std::string nameFile);
 
 
 /********************************************************************************************************************
@@ -66,6 +66,6 @@ dcsbin setset(float ptm, float ptM, ROOT::RDataFrame df, std::string nameFile);
  * The edge of the bin are defined in two array, these are used for calculate the differential cross section in each bin. These are then plotted on the same canva.
  * @param df data frame where the unselected data are stored
  ************************************************************************************************************************************************************************/
-int diffCrossection(ROOT::RDataFrame df);
+int diffCrossection(ROOT::RDF::RNode &df);
 
 #endif /* difffCrossection_h */

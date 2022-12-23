@@ -21,6 +21,7 @@
 # include "TLegend.h"
 #include "TGraphErrors.h"
 #include "TMultiGraph.h"
+#include "SpectrumPlot.h"
 
 
 struct dcsbin{
@@ -44,7 +45,7 @@ Double_t diffCrossSec(double N, float wpt){
 
 //per ogni deltaPT estrarre le funzini uscenti dal fit e calcolare la sezine d'urto differenziale in quel bin
 
-dcsbin setset(float ptm, float ptM, ROOT::RDataFrame df, std::string nameFile)
+dcsbin setset(float ptm, float ptM, ROOT::RDF::RNode &df, std::string nameFile)
 {
     // initialize default values for options
     int depth = 0; //Depth value initialized to 0, i.e. no cuts
@@ -91,7 +92,7 @@ dcsbin setset(float ptm, float ptM, ROOT::RDataFrame df, std::string nameFile)
 }
 
 
-int diffCrossection(ROOT::RDataFrame df){
+int diffCrossection(ROOT::RDF::RNode &df){
     //TApplication *theApp = new TApplication("app", 0, 0);
     double ptm[n] = {12.,14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.};
     double ptM[n] = {14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.,100.};
@@ -183,8 +184,7 @@ int diffCrossection(ROOT::RDataFrame df){
     //------------------------------------------------------------------------------------
     
     c1->Update();
-    c1->SaveAs("./Plots/diffCrossSection.pdf");
-
+    SavePlot(c1,"diffCrossSection");
     //theApp->Run();
     return 0;
 }

@@ -1,10 +1,10 @@
 /*********************************
  * \file Cuts.h
  * \brief Selection of the data.
- * 
+*
  * The data are selected to be two muons of opposite charge with an invariant mass round the mass of the Y resonances.
  * Also it is possible to choose other cuts on the trasverse momentum and the pseudorapidity of the dimuon state.
- ************************************************/
+************************************************/
 
 #ifndef Cuts_h
 #define Cuts_h
@@ -27,7 +27,7 @@
  * \return Cutted Dataframe
  * 
  ****************************************/
-ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int &dr);
+ROOT::RDF::RNode DFFilter(ROOT::RDF::RNode &df, int dr=0);
 
 /***************************************
  * 
@@ -41,7 +41,7 @@ ROOT::RDF::RNode DFFilter(ROOT::RDataFrame df, int &dr);
  * \return Cutted Dataframe
  * 
  ****************************************/
-ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode df_custom_cut, std::string_view filter, std::string_view name);
+ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode &df_custom_cut, std::string_view filter, std::string_view name);
 
 /***************************************
  * 
@@ -57,7 +57,7 @@ ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode df_custom_cut, std::string_view fi
  * \return Cutted Dataframe
  * 
  ****************************************/
-ROOT::RDF::RNode customFilter(ROOT::RDataFrame df, float &pmr, float &pMr, float &ymr, float &yMr );
+ROOT::RDF::RNode customFilter(ROOT::RDF::RNode &df, float pmr= std::nanf("1"), float pMr= std::nanf("1"), float ymr= std::nanf("1"), float yMr= std::nanf("1") );
 
 /***************************************
  * 
@@ -70,7 +70,7 @@ ROOT::RDF::RNode customFilter(ROOT::RDataFrame df, float &pmr, float &pMr, float
  * \return Cutted Dataframe
  * 
  ****************************************/
-ROOT::RDataFrame generateDataFrame(ROOT::RDataFrame df, int &dr);
+ROOT::RDF::RNode generateDataFrame(ROOT::RDF::RNode &df, int dr=0);
 
 /*********************************
  \brief Modified a muon DataFrame cutting on nMuon, Muon_charge, Dimuon_mass, Dimuon_pt and Dimuon_y
@@ -83,6 +83,6 @@ ROOT::RDataFrame generateDataFrame(ROOT::RDataFrame df, int &dr);
  @param yMr upper extreme for the cut on the dimuon pseudorapidity
  \return df_cut DataFrame with the selection decided by the cuts
 ************************************************/
-ROOT::RDF::RNode Cuts(ROOT::RDataFrame df, int &dr,float &pmr, float &pMr, float &ymr, float &yMr );
+ROOT::RDF::RNode Cuts(ROOT::RDF::RNode &df, int dr=0,float pmr= std::nanf("1"), float pMr= std::nanf("1"), float ymr= std::nanf("1"), float yMr= std::nanf("1") );
 
 #endif /* Cuts_h */

@@ -22,9 +22,9 @@ jobs:
       with:
         # Doxygen configuration file path
         doxygenconf: ./docs/Doxyfile
-        # Generated HTML documents output folder
-        htmloutput: ./docs/html
+        # Generated HTML documents output folder forse ci devo aggiungere ./html
+        htmloutput: ./html/
         # GitHub Pages branch name
         ghpagesbranch: gh-pages
         # GitHub Pages directory path
-        ghpagesdir: ./docs
+        ghpagesdir: ./html/
