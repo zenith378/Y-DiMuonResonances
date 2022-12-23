@@ -14,7 +14,7 @@
  * make -C build
  * con questo si compila propriamente e si crea la libreria
  *
- * ./build/ComputingMethodsCorCar
+ * ./build/main/YLaunch
  * questo è un normale comando che dice di far partire l'eseguibile
  *
  *******************************************************************************/
