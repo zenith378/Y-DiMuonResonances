@@ -11,6 +11,7 @@
  *
  * \section example_usage A simple example usage
  * * Default option
+ * 
  * If we run the main of the library without givin anything as flag or option, as it follows:
  * \code
  * $ cmake -S . -B ./build
