@@ -4,14 +4,16 @@
  * This C++ Library was created by Giulio Cordova and Matilde Carminati for the Computing Methods for Experimental Physics and Data Analysis exam.
  *
  * \section intro_sec Introduction
- * YFit Library is a simple library used to fit the first three Y resonances from the open cms dimuon dataset and to calculate the differentian cross section of the same process as a function of the trasverse momentum.
+ * YFit Library is a simple library used to fit the first three Y resonances from the open
+ * cms dimuon dataset and to calculate the differentian cross section of the same process
+ * as a function of the trasverse momentum.
  * It comes together with its own main in order to use it.
  *
  * Brief descrption of the program workflow (main) and the main function.
  *
  * \section example_usage A simple example usage
- * * Default option
- * 
+ * * Default options
+ *
  * If we run the main of the library without givin anything as flag or option, as it follows:
  * \code
  * $ cmake -S . -B ./build
@@ -19,11 +21,24 @@
  * $ ./build/main/YLaunch
  * \endcode
  * the programm will create un histogramm of the invariant mass of two muons selected as follow:
- * * p_{T} > 3.5 GeV and |\eta| < 2.0
- * * at least 2 muons of opposite charge in each event
- * *
+ *  * p_{T} > 3.5 GeV and |y| < 2.0 (for the single muon)
+ *  * at least 2 muons of opposite charge in each event
+ *  * ( < p_T < ) GeV and |y| < 1.2 (for the dimuon)
+ *
  * \image latex YResonancesFit.png
+ * \image html YResonancesFit.png
  * \image html YResonancesFit.pdf
+ *
+ * * Custimize options
+ *
+ * We can customize some cuts using the flags described in the
+ * documentation of the file OptionParse.h.
+ * In this example, 20. < p_T < 30. GeV and |y|< 0.5
+ * \code
+ * $ cmake -S . -B ./build
+ * $ make -C build
+ * $ ./build/main/YLaunch -n "CustomizeCuts" -p 20. -P 30. -y -0.5 -Y 0.5
+ * \endcode
  *
  * \section program_des Description of main (and functionality of libraries)
  * 
