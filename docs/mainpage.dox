@@ -12,12 +12,16 @@
  * Brief descrption of the program workflow (main) and the main function.
  *
  * \section example_usage A simple example usage
+ * For compiling we need to type
+ * \code
+ * $ cmake -S . -B ./build
+ * $ make -C build
+ * \endcode
+ *
  * \subsection Default options
  *
  * If we run the main of the library without givin anything as flag or option, as it follows:
  * \code
- * $ cmake -S . -B ./build
- * $ make -C build
  * $ ./build/main/YLaunch
  * \endcode
  * the programm will create un histogramm of the invariant mass of two muons selected as follow:
@@ -26,7 +30,7 @@
  *  * ( < p_T < ) GeV and |y| < 1.2 (for the dimuon)
  *
  *
- * \image html YResonancesFit.pdf "Caption: YResonancesFit.pdf"
+ * \image html YResonancesFit.pdf "YResonancesFit.pdf"
  *
  * \subsection Custimize options
  *
@@ -35,11 +39,12 @@
  *
  * In this example, 20. < p_T < 30. GeV and |y|< 0.5
  * \code
- * $ cmake -S . -B ./build
- * $ make -C build
- * $ ./build/main/YLaunch -n "CustomizeCuts" -p 20. -P 30. -y -0.5 -Y 0.5
+ * $ ./build/main/YLaunch -n "CustomizeCuts" -p 20. -P 30. -Y 0.5
  * \endcode
- * \image html YResonancesFit.pdf "Caption: CustomizeCuts.pdf"
+ * \image html CustomizeCuts.pdf "CustomizeCuts.pdf"
+ *
+ * \subsection Different Cross Section option (?)
+ * \image diffCrossSection.pdf "diffCrossSection.pdf"
  *
  * \section program_des Description of main (and functionality of libraries)
  * 
