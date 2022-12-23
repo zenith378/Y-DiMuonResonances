@@ -1,8 +1,6 @@
 cmake_minimum_required (VERSION 3.5)
 
-project(CMEPDACorCar VERSION 0.1)
-
-find_package(ROOT REQUIRED COMPONENTS RIO Net RooFit)
+project(CMEPDACorCar VERSION 0.9)
 
 
 # Add sub directories
