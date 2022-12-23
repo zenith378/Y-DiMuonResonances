@@ -116,30 +116,29 @@ Custimize options</h2>
 <img src="CustomizeCuts.pdf" alt=""/>
 <div class="caption">
 CustomizeCuts.pdf</div></div>
-<h2><a class="anchor" id="diffCS"></a>
-Different Cross Section option (?)</h2>
+<p >In both cases the plot of the differential cross section is created and saved inside the same folder (/Y-DiMuonResonance/Plots)</p>
+<h1><a class="anchor" id="program_des"></a>
+Description of main (and functionality of libraries)</h1>
+<h3><a class="anchor" id="option_param"></a>
+Choose of the parameters and flags</h3>
+<h3><a class="anchor" id="data_load"></a>
+Data Loading</h3>
+<p >The data are loaded and manipulated (to have useful variables) using the functions defined inside <code><a class="el" href="df__set_8h.html" title="Header file of df_set.C.">df_set.h</a></code> </p>
+<h3><a class="anchor" id="apply_cut"></a>
+Apply some cuts!</h3>
+<p >The data are selected to be two muons of opposite charge with an invariant mass round the mass of the Y resonances. Also it is possible to choose other cuts on the trasverse momentum and the rapidity of the dimuon state.</p>
+<h3><a class="anchor" id="spectrum_draw"></a>
+Draw a preliminary Spectrum Plot</h3>
+<p >The selected data are preliminary drawn on a canvas as an histohgramm of the invariant mass of the dimuon. The canvas is saved as <em>Preliminary_histo.pdf</em>. The function used for that are better descibed in the documentation of th ìe file <code>SpettrumPlot.h</code> </p>
+<h3><a class="anchor" id="fit_roo"></a>
+Fit the Function and save it in a canvas</h3>
+<p >The plotted histogramm is fitted to a function ,a BW by default, but it's possible to choose a gaussian or a t-student. The histogramm and the fitted function are drawn on a canvas which is saved.</p>
+<h3><a class="anchor" id="diffCS"></a>
+Calculate and plot the differential cross section</h3>
 <div class="image">
 <img src="diffCrossSection.pdf" alt=""/>
 <div class="caption">
 diffCrossSection.pdf</div></div>
-<h1><a class="anchor" id="program_des"></a>
-Description of main (and functionality of libraries)</h1>
-<h2><a class="anchor" id="option_param"></a>
-Choose of the parameters and flags</h2>
-<h2><a class="anchor" id="data_load"></a>
-Data Loading</h2>
-<p >The data are loaded and manipulated (to have useful variables) using the functions defined inside <code><a class="el" href="df__set_8h.html" title="Header file of df_set.C.">df_set.h</a></code> </p>
-<h2><a class="anchor" id="apply_cut"></a>
-Apply some cuts!</h2>
-<p >The data are selected to be two muons of opposite charge with an invariant mass round the mass of the Y resonances. Also it is possible to choose other cuts on the trasverse momentum and the rapidity of the dimuon state.</p>
-<h2><a class="anchor" id="spectrum_draw"></a>
-Draw a preliminary Spectrum Plot</h2>
-<p >The selected data are preliminary drawn on a canvas as an histohgramm of the invariant mass of the dimuon. The Canvas is saved as <em>Preliminary_histo.pdf</em>. The function used for that are better descibed in the documentation of th ìe file <code>SpettrumPlot.h</code> </p>
-<h2><a class="anchor" id="fit_roo"></a>
-Fit the Function and save it in a Canvas</h2>
-<p >The plotted histogramm is fitted to a function ,a BW by default, but it's possible to choose a gaussian or a t-student. The histogramm and the fitted function are drawn on a canvas which is saved.</p>
-<h2><a class="anchor" id="diffCS"></a>
-Different Cross Section option (?)</h2>
 <h1><a class="anchor" id="test_doc"></a>
 Testing</h1>
 <p >brief description of the testing</p>
