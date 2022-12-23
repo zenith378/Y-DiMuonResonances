@@ -45,7 +45,7 @@
  * \image html CustomizeCuts.pdf "CustomizeCuts.pdf"
  *
  * \subsection diffCS Different Cross Section option (?)
- * \image diffCrossSection.pdf "diffCrossSection.pdf"
+ * \image html diffCrossSection.pdf "diffCrossSection.pdf"
  *
  * \section program_des Description of main (and functionality of libraries)
  * 
