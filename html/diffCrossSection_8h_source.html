@@ -93,44 +93,44 @@ $(document).ready(function(){initNavTree('diffCrossSection_8h_source.html',''); 
 </div><!--header-->
 <div class="contents">
 <a href="diffCrossSection_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef difffCrossection_h</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define difffCrossection_h</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;ROOT/RDataFrame.hxx&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;TMath.h&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;RooFitResult.h&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;filesystem&gt;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;TSystem.h&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;RooAbsPdf.h&quot;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="Cuts_8h.html">Cuts.h</a>&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="SpectrumPlot_8h.html">SpectrumPlot.h</a>&quot;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="fitRoo_8h.html">fitRoo.h</a>&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="optionParse_8h.html">optionParse.h</a>&quot;</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="diffCrossSection_8h.html">diffCrossSection.h</a>&quot;</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;TApplication.h&quot;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;TRootCanvas.h&quot;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;TGraphErrors.h&quot;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;TLatex.h&quot;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;TMultiGraph.h&quot;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">struct </span><a class="code hl_struct" href="structdcsbin.html">dcsbin</a>;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#ifndef difffCrossection_h</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#define difffCrossection_h</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;ROOT/RDataFrame.hxx&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;TMath.h&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;RooFitResult.h&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;filesystem&gt;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;TSystem.h&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &quot;RooAbsPdf.h&quot;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;<a class="code" href="Cuts_8h.html">Cuts.h</a>&quot;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &quot;<a class="code" href="SpectrumPlot_8h.html">SpectrumPlot.h</a>&quot;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &quot;<a class="code" href="fitRoo_8h.html">fitRoo.h</a>&quot;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;<a class="code" href="optionParse_8h.html">optionParse.h</a>&quot;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;<a class="code" href="diffCrossSection_8h.html">diffCrossSection.h</a>&quot;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &quot;TApplication.h&quot;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &quot;TRootCanvas.h&quot;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;TGraphErrors.h&quot;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &quot;TLatex.h&quot;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &quot;TMultiGraph.h&quot;</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>Double_t <a class="code hl_function" href="diffCrossSection_8h.html#abda999553dd2c035a28bfd3f21fee8c5">diffCrossSec</a>(<span class="keywordtype">double</span> N, <span class="keywordtype">float</span> wpt);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><a class="code hl_struct" href="structdcsbin.html">dcsbin</a> <a class="code hl_function" href="diffCrossSection_8h.html#a96f9674409716a52f53e6fe5ea939704">setset</a>(<span class="keywordtype">float</span> <a class="code hl_variable" href="structdcsbin.html#a101236bac3cf7733a93e1caddb7343b9">ptm</a>, <span class="keywordtype">float</span> <a class="code hl_variable" href="structdcsbin.html#a4fb8a2bc0cd03571fef4fe0c77a18322">ptM</a>, ROOT::RDF::RNode &amp;df, std::string nameFile);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">struct </span><a class="code hl_struct" href="structdcsbin.html">dcsbin</a>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>Double_t <a class="code hl_function" href="diffCrossSection_8h.html#abda999553dd2c035a28bfd3f21fee8c5">diffCrossSec</a>(<span class="keywordtype">double</span> N, <span class="keywordtype">float</span> wpt);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keywordtype">int</span> <a class="code hl_function" href="diffCrossSection_8h.html#a9414754617027ba74cb7bc918c05c6c8">diffCrossSection</a>(ROOT::RDF::RNode &amp;df);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif </span><span class="comment">/* difffCrossection_h */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><a class="code hl_struct" href="structdcsbin.html">dcsbin</a> <a class="code hl_function" href="diffCrossSection_8h.html#a96f9674409716a52f53e6fe5ea939704">setset</a>(<span class="keywordtype">float</span> <a class="code hl_variable" href="structdcsbin.html#a101236bac3cf7733a93e1caddb7343b9">ptm</a>, <span class="keywordtype">float</span> <a class="code hl_variable" href="structdcsbin.html#a4fb8a2bc0cd03571fef4fe0c77a18322">ptM</a>, ROOT::RDF::RNode &amp;df, std::string nameFile);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keywordtype">int</span> <a class="code hl_function" href="diffCrossSection_8h.html#a944fe9913afd4834890abd49af7ba937">PlotDiffCrossSection</a>(ROOT::RDF::RNode &amp;df);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#endif </span><span class="comment">/* difffCrossection_h */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aCuts_8h_html"><div class="ttname"><a href="Cuts_8h.html">Cuts.h</a></div><div class="ttdoc">Selection of the data.</div></div>
 <div class="ttc" id="aSpectrumPlot_8h_html"><div class="ttname"><a href="SpectrumPlot_8h.html">SpectrumPlot.h</a></div><div class="ttdoc">Function to plot the spectrum of the dataset which is currently used and create an histogram.</div></div>
 <div class="ttc" id="adiffCrossSection_8h_html"><div class="ttname"><a href="diffCrossSection_8h.html">diffCrossSection.h</a></div></div>
-<div class="ttc" id="adiffCrossSection_8h_html_a9414754617027ba74cb7bc918c05c6c8"><div class="ttname"><a href="diffCrossSection_8h.html#a9414754617027ba74cb7bc918c05c6c8">diffCrossSection</a></div><div class="ttdeci">int diffCrossSection(ROOT::RDF::RNode &amp;df)</div><div class="ttdoc">Plot the differential cross section calculate for each bin for the Y1S, 2S and 3S as a function of th...</div><div class="ttdef"><b>Definition:</b> diffCrossSection.C:95</div></div>
+<div class="ttc" id="adiffCrossSection_8h_html_a944fe9913afd4834890abd49af7ba937"><div class="ttname"><a href="diffCrossSection_8h.html#a944fe9913afd4834890abd49af7ba937">PlotDiffCrossSection</a></div><div class="ttdeci">int PlotDiffCrossSection(ROOT::RDF::RNode &amp;df)</div><div class="ttdoc">Plot the differential cross section calculate for each bin for the Y1S, 2S and 3S as a function of th...</div><div class="ttdef"><b>Definition:</b> diffCrossSection.C:95</div></div>
 <div class="ttc" id="adiffCrossSection_8h_html_a96f9674409716a52f53e6fe5ea939704"><div class="ttname"><a href="diffCrossSection_8h.html#a96f9674409716a52f53e6fe5ea939704">setset</a></div><div class="ttdeci">dcsbin setset(float ptm, float ptM, ROOT::RDF::RNode &amp;df, std::string nameFile)</div><div class="ttdoc">Calculate the differential cross section (multiply by the relative branching ratio) for one bin in tr...</div><div class="ttdef"><b>Definition:</b> diffCrossSection.C:48</div></div>
 <div class="ttc" id="adiffCrossSection_8h_html_abda999553dd2c035a28bfd3f21fee8c5"><div class="ttname"><a href="diffCrossSection_8h.html#abda999553dd2c035a28bfd3f21fee8c5">diffCrossSec</a></div><div class="ttdeci">Double_t diffCrossSec(double N, float wpt)</div><div class="ttdoc">calculate the differential cross section given the functin that describe the mass distribution (model...</div><div class="ttdef"><b>Definition:</b> diffCrossSection.C:42</div></div>
 <div class="ttc" id="afitRoo_8h_html"><div class="ttname"><a href="fitRoo_8h.html">fitRoo.h</a></div><div class="ttdoc">Function for fitting the data and displying the canvas.</div></div>
