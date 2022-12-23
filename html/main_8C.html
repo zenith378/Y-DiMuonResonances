@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>YFit: YFit YFit Library Documentation</title>
+<title>YFit: main/main.C File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('main_8C.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -81,46 +81,72 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </iframe>
 </div>
 
-<div><div class="header">
-  <div class="headertitle"><div class="title">YFit YFit Library Documentation </div></div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">main.C File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >This C++ Library was created by Giulio Cordova and Matilde Carminati for the Computing Methods exam.</p>
-<h1><a class="anchor" id="intro_sec"></a>
-Introduction</h1>
-<p >YFit Library is a simple library used to fit the first three Y resonances from the open cms dimuon dataset It comes together with its own main in order to use it.</p>
-<p >Brief descrption of the program workflow (main) and the main function.</p>
-<h1><a class="anchor" id="example_usage"></a>
-A simple example usage</h1>
-<ul>
-<li></li>
-</ul>
-<h1><a class="anchor" id="program_des"></a>
-Description of main (and functionality of libraries)</h1>
-<h2><a class="anchor" id="option_param"></a>
-Choose of the parameters and flags</h2>
-<h2><a class="anchor" id="data_load"></a>
-Data Loading</h2>
-<h2><a class="anchor" id="apply_cut"></a>
-Apply some cuts!</h2>
-<h2><a class="anchor" id="spectrum_draw"></a>
-Draw a preliminary Spectrum Plot</h2>
-<h2><a class="anchor" id="fit_roo"></a>
-Fit the Function and save it in a Canvas</h2>
-<h1><a class="anchor" id="test_doc"></a>
-Testing</h1>
-<p >brief description of the testing</p>
-<h2><a class="anchor" id="test1"></a>
-Test 1</h2>
-<p >...</p>
-<h1><a class="anchor" id="Documentation"></a>
-Documentation</h1>
-</div></div><!-- PageDoc -->
+
+<p>Main source code of the program.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &quot;ROOT/RDataFrame.hxx&quot;</code><br />
+<code>#include &quot;<a class="el" href="df__set_8h_source.html">df_set.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Cuts_8h_source.html">Cuts.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="SpectrumPlot_8h_source.html">SpectrumPlot.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="fitRoo_8h_source.html">fitRoo.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="optionParse_8h_source.html">optionParse.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="diffCrossection_8h_source.html">diffCrossection.h</a>&quot;</code><br />
+<code>#include &quot;RooFitResult.h&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Main source code of the program. </p>
+<p >Here the default options are defined and the functions are called in order to execute the programs</p>
+<p >dalla cartella Y-Dimuon</p>
+<p >cmake -S . -B ./build questo dice dove buildare il codice da quale sorgente (e crea il makefile)</p>
+<p >make -C build con questo si compila propriamente e si crea la libreria</p>
+<p >./build/ComputingMethodsCorCar questo è un normale comando che dice di far partire l'eseguibile </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&nbsp;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="dir_5c982d53a68cdbcd421152b4020263a9.html">main</a></li><li class="navelem"><a class="el" href="main_8C.html">main.C</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>

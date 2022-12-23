@@ -24,12 +24,44 @@
 */
 var NAVTREE =
 [
-  [ "YFit", "index.html", ]
+  [ "YFit", "index.html", [
+    [ "YFit YFit Library Documentation", "index.html", [
+      [ "Introduction", "index.html#intro_sec", null ],
+      [ "A simple example usage", "index.html#example_usage", null ],
+      [ "Description of main (and functionality of libraries)", "index.html#program_des", [
+        [ "Choose of the parameters and flags", "index.html#option_param", null ],
+        [ "Data Loading", "index.html#data_load", null ],
+        [ "Apply some cuts!", "index.html#apply_cut", null ],
+        [ "Draw a preliminary Spectrum Plot", "index.html#spectrum_draw", null ],
+        [ "Fit the Function and save it in a Canvas", "index.html#fit_roo", null ]
+      ] ],
+      [ "Testing", "index.html#test_doc", [
+        [ "Test 1", "index.html#test1", null ]
+      ] ],
+      [ "Documentation", "index.html#Documentation", null ]
+    ] ],
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", null ],
+        [ "Variables", "functions_vars.html", null ]
+      ] ]
+    ] ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ]
+      ] ]
+    ] ]
+  ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"Cuts_8C.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
