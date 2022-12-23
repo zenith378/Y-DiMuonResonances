@@ -38,7 +38,7 @@ void SavePlot(TCanvas *c, TString namePlot){
   c->SaveAs(fname);
 }
 
-TH1* SpectrumPlot(ROOT::RDF::RNode &df_cut){
+TH1* SpectrumPlot(ROOT::RDF::RNode &df_cut,std::string nameFile){
   //Enable multi-threading
   ROOT::EnableImplicitMT(1);
   
@@ -78,10 +78,9 @@ TH1* SpectrumPlot(ROOT::RDF::RNode &df_cut){
   label.DrawLatex(0.90, 0.92, "11.6 fb^{-1} (8 TeV)");
 
   // Save plot
-  SavePlot(c,"Preliminary_Histo");
+  SavePlot(c,nameFile+"_preliminary");
+  //TH1*h = hist.GetPtr();
 
-  std::string hs;
-  hs="hist";
-  TH1 *h = (TH1*)gDirectory->Get(hs.c_str()); //da riguardare, forse c'è un modo migliore per farlo
+  TH1 *h = (TH1*)gDirectory->Get("hist"); //da riguardare, forse c'è un modo migliore per farlo
   return h;
 }

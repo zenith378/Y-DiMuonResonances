@@ -34,10 +34,11 @@ using namespace ROOT::VecOps;
 
 /***************************************
  * 
- * \brief it calculates the four vector of a dimuon starting from pt, eta, phi and mass of muon pair
+ * \brief Calculate the four vector of a dimuon starting from pt, eta, phi and mass of muon pair
+ * 
  * @param pt transverse momentum
- * @param eta 
- * @param phi 
+ * @param eta pseudorapidity
+ * @param phi azimuthal angle
  * @param mass mass
  * 
  * \return PtEtaPhiMVector
@@ -47,17 +48,17 @@ ROOT::Math::PtEtaPhiMVector computeDiMuonFourVec(RVec<float>& pt, RVec<float>& e
 
 /***************************************
  * 
- * \brief it calculates the invariant mass of a dimuon Four Vector
+ * \brief Calculate the invariant mass of a dimuon Four Vector
  * @param fourvec four vector of dimuon pair
  * 
- * \return mass
+ * \return invariant mass of fourvector
  * 
  ****************************************/
 float computeDiMuonInvariantMass(ROOT::Math::PtEtaPhiMVector& fourvec);
 
 /***************************************
  * 
- * \brief{it calculates the transverse momentum of a dimuon Four Vector}
+ * \brief Calculate the transverse momentum of a dimuon Four Vector
  * @param fourvec four vector of dimuon pair
  * 
  * \return pt (transverse momentum)
@@ -67,27 +68,27 @@ float computeDiMuonPT(ROOT::Math::PtEtaPhiMVector& fourvec);
 
 /***************************************
  * 
- * \brief{it calculates the rapidity of a dimuon Four Vector //inserire formula rapidità}
+ * \brief Calculate the rapidity of a dimuon Four Vector //inserire formula rapidità
  * @param fourvec four vector of dimuon pair
  * 
- * \return rapidity
+ * \return rapidity of fourvector
  * 
  ****************************************/
 float computeDiMuonRapidity(ROOT::Math::PtEtaPhiMVector& fourvec);
 
 /***************************************
  * 
- * \brief{it calculates beta (p_t/E) of a dimuon Four Vector}
+ * \brief Calculate beta (p_t/E) of a dimuon Four Vector
  * @param fourvec four vector of dimuon pair
  * 
- * \return beta
+ * \return beta of fourvector
  * 
  ****************************************/
 float computeDiMuonBeta(ROOT::Math::PtEtaPhiMVector& fourvec);
 
 /***************************************
  * 
- * \brief{it defines the dataframe used in the analysis or it creates it if it is not found}
+ * \brief Define the dataframe used in the analysis or it creates it if it is not found
  * 
  * \return Dataframe
  * 

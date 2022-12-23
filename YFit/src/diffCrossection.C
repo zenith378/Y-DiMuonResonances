@@ -18,7 +18,7 @@
 #include "TRootCanvas.h"
 #include "TGraph.h"
 #include "TLatex.h"
-# include "TLegend.h"
+#include "TLegend.h"
 #include "TGraphErrors.h"
 #include "TMultiGraph.h"
 #include "SpectrumPlot.h"
@@ -30,7 +30,7 @@ struct dcsbin{
     Double_t ds1, ds2, ds3;
 };
 
-const int n=21;
+const int n=22;
 const float L =11.6; //[fb^-1]
 const float e_uu = 0.75;
 const float e_sg = 0.5;
@@ -40,7 +40,7 @@ const double BF[3]={2.48/100,1.93/100,2.18/100};   //Branching fraction Y(is) ->
 
 
 Double_t diffCrossSec(double N, float wpt){
-    return N/(L * wpt * e_uu * e_sg * e_vp * A);
+    return 0.01*N/(L * wpt * e_uu * e_sg * e_vp * A);
 }
 
 //per ogni deltaPT estrarre le funzini uscenti dal fit e calcolare la sezine d'urto differenziale in quel bin
@@ -49,22 +49,18 @@ dcsbin setset(float ptm, float ptM, ROOT::RDF::RNode &df, std::string nameFile)
 {
     // initialize default values for options
     int depth = 0; //Depth value initialized to 0, i.e. no cuts
-    int fitfunc = 1; //Fit Function initilized to 0, i.e. Breit-Wigner
+    int fitfunc = 0; //Fit Function initilized to 0, i.e. Breit-Wigner
     float ym = std::nanf("0"); //see first parameter
     float yM = 1.2; //see first parameter
     int verbose = 0; //verbose flag initialized to zero, i.e. no output stream for Minuit
     ROOT::RDF::RNode df_cut = Cuts(df, depth, ptm, ptM, ym, yM);
-    TH1 *h = SpectrumPlot(df_cut);
+    TH1 *h = SpectrumPlot(df_cut,nameFile);
     
     
-    RooFitResult * fitResult = fitRoo(h, fitfunc, depth, ptm, ptM, ym, yM, nameFile, verbose);
+    RooFitResult * fitResult = fitRoo(h,1, fitfunc, depth, ptm, ptM, ym, yM, nameFile, verbose);
 
     RooArgList lf = fitResult->floatParsFinal();
     TMatrixDSym cov= fitResult->covarianceMatrix();
-//    std::cout <<"lf=" << lf << std::endl;
-//    std::cout <<"nsig1=" << lf[7] << std::endl;   //nsig1
-//    std::cout <<"nsig2=" << lf[8] << std::endl; //nsig2
-//    std::cout <<"nsig3=" << lf[9] << std::endl; //nsig3
 
     Double_t nsig1=static_cast<RooAbsReal&>(lf[7]).getVal();
     Double_t nsig2=static_cast<RooAbsReal&>(lf[8]).getVal();
@@ -92,10 +88,10 @@ dcsbin setset(float ptm, float ptM, ROOT::RDF::RNode &df, std::string nameFile)
 }
 
 
-int diffCrossection(ROOT::RDF::RNode &df){
+void diffCrossection(ROOT::RDF::RNode &df){
     //TApplication *theApp = new TApplication("app", 0, 0);
-    double ptm[n] = {12.,14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.};
-    double ptM[n] = {14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.,100.};
+    double ptm[n] = {10.,12.,14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.};
+    double ptM[n] = {12.,14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.,100.};
     double x[n], y1[n], y2[n], y3[n], dx[n], dy1[n], dy2[n], dy3[n];
     
     for(int i=0;i<n;i++){
@@ -112,8 +108,10 @@ int diffCrossection(ROOT::RDF::RNode &df){
         dy3[i]=abin.ds3;
 //        std::cout << y1[i] << std::endl; //OK
     }
-    
+    TApplication *theApp = new TApplication("app", 0, 0);
     TCanvas * c1 = new TCanvas("cross section", "Y Resonances differential Cross Section", 950, 800);
+    TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
+
     gPad->SetLogy();
     
     //TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
@@ -185,6 +183,10 @@ int diffCrossection(ROOT::RDF::RNode &df){
     
     c1->Update();
     SavePlot(c1,"diffCrossSection");
-    //theApp->Run();
-    return 0;
+    
+    rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
+    
+    theApp->Run();
+
+    return;
 }

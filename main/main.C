@@ -41,11 +41,16 @@ int main(int argc, char *argv[])
     float yM = std::nanf("4"); //see first parameter
     std::string nameFile = "YResonancesFit"; //The name of the file in which the figure is saved
     int verbose = 0; //verbose flag initialized to zero, i.e. no output stream for Minuit
-    ProcessArgs(argc, argv, depth, fitfunc, ptm, ptM, ym, yM, nameFile, verbose);
+    int mode=1;
+    ProcessArgs(argc, argv, depth, fitfunc, ptm, ptM, ym, yM, nameFile, verbose, mode);
     ROOT::RDF::RNode df = df_set(); //call df set
+    if(mode==0){
     ROOT::RDF::RNode df_cut = Cuts(df, depth, ptm, ptM, ym, yM);
-    TH1 *h = SpectrumPlot(df_cut);
-    RooFitResult * fitresult = fitRoo(h, fitfunc, depth, ptm, ptM, ym, yM, nameFile, verbose);
+    TH1 *h = SpectrumPlot(df_cut,nameFile);
+    RooFitResult * fitresult = fitRoo(h,mode, fitfunc, depth, ptm, ptM, ym, yM, nameFile, verbose);
+    }
+    if(mode==1)
+    diffCrossection(df,mode);
 
     return 0;
 }
