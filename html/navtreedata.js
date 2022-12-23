@@ -28,9 +28,9 @@ var NAVTREE =
     [ "YFit YFit Library Documentation", "index.html", [
       [ "Introduction", "index.html#intro_sec", null ],
       [ "A simple example usage", "index.html#example_usage", [
-        [ "options", "index.html#Default", null ],
-        [ "options", "index.html#Custimize", null ],
-        [ "Cross Section option (?)", "index.html#Different", null ]
+        [ "Default options", "index.html#defOpt", null ],
+        [ "Custimize options", "index.html#custOpt", null ],
+        [ "Different Cross Section option (?)", "index.html#diffCS", null ]
       ] ],
       [ "Description of main (and functionality of libraries)", "index.html#program_des", [
         [ "Choose of the parameters and flags", "index.html#option_param", null ],

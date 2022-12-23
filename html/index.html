@@ -89,13 +89,13 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
 <p >YFit Library is a simple library used to fit the first three Y resonances from the open cms dimuon dataset and to calculate the differentian cross section of the same process as a function of the trasverse momentum. It comes together with its own main in order to use it.</p>
-<p >Brief descrption of the program workflow (main) and the main function.</p>
+<p >In the main the data from the open source CMS data are stored in a RDataFrame and selected by some cuts. The data are plotted in a histogram</p>
 <h1><a class="anchor" id="example_usage"></a>
 A simple example usage</h1>
 <p >For compiling we need to type </p><div class="fragment"><div class="line">$ cmake -S . -B ./build</div>
 <div class="line">$ make -C build</div>
-</div><!-- fragment --><h2><a class="anchor" id="Default"></a>
-options</h2>
+</div><!-- fragment --><h2><a class="anchor" id="defOpt"></a>
+Default options</h2>
 <p >If we run the main of the library without givin anything as flag or option, as it follows: </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch</div>
 <div class="ttc" id="amain_8C_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> main.C:33</div></div>
 </div><!-- fragment --><p> the programm will create un histogramm of the invariant mass of two muons selected as follow:</p><ul>
@@ -107,8 +107,8 @@ options</h2>
 <img src="YResonancesFit.pdf" alt=""/>
 <div class="caption">
 YResonancesFit.pdf</div></div>
-<h2><a class="anchor" id="Custimize"></a>
-options</h2>
+<h2><a class="anchor" id="custOpt"></a>
+Custimize options</h2>
 <p >We can customize some cuts using the flags described in the documentation of the file OptionParse.h.</p>
 <p >In this example, 20. &lt; p_T &lt; 30. GeV and |y|&lt; 0.5 </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch -<a class="code hl_variable" href="diffCrossection_8C.html#acfc02ec89670db29251fda6a66602ce2">n</a> <span class="stringliteral">&quot;CustomizeCuts&quot;</span> -p 20. -P 30. -Y 0.5</div>
 <div class="ttc" id="adiffCrossection_8C_html_acfc02ec89670db29251fda6a66602ce2"><div class="ttname"><a href="diffCrossection_8C.html#acfc02ec89670db29251fda6a66602ce2">n</a></div><div class="ttdeci">const int n</div><div class="ttdef"><b>Definition:</b> diffCrossection.C:33</div></div>
@@ -116,8 +116,8 @@ options</h2>
 <img src="CustomizeCuts.pdf" alt=""/>
 <div class="caption">
 CustomizeCuts.pdf</div></div>
-<h2><a class="anchor" id="Different"></a>
-Cross Section option (?)</h2>
+<h2><a class="anchor" id="diffCS"></a>
+Different Cross Section option (?)</h2>
 <p >"diffCrossSection.pdf"</p>
 <h1><a class="anchor" id="program_des"></a>
 Description of main (and functionality of libraries)</h1>
