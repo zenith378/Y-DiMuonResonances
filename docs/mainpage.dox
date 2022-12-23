@@ -12,7 +12,7 @@
  * Brief descrption of the program workflow (main) and the main function.
  *
  * \section example_usage A simple example usage
- * * Default options
+ * \subsection Default options
  *
  * If we run the main of the library without givin anything as flag or option, as it follows:
  * \code
@@ -25,28 +25,21 @@
  *  * at least 2 muons of opposite charge in each event
  *  * ( < p_T < ) GeV and |y| < 1.2 (for the dimuon)
  *
- * imm 1
  *
- * \image latex YResonancesFit.png
+ * \image html YResonancesFit.pdf "Caption: YResonancesFit.pdf"
  *
- * imm 2
- *
- * \image html YResonancesFit.png
- *
- * imm 3
- *
- * \image html YResonancesFit.pdf
- *
- * * Custimize options
+ * \subsection Custimize options
  *
  * We can customize some cuts using the flags described in the
  * documentation of the file OptionParse.h.
+ *
  * In this example, 20. < p_T < 30. GeV and |y|< 0.5
  * \code
  * $ cmake -S . -B ./build
  * $ make -C build
  * $ ./build/main/YLaunch -n "CustomizeCuts" -p 20. -P 30. -y -0.5 -Y 0.5
  * \endcode
+ * \image html YResonancesFit.pdf "Caption: CustomizeCuts.pdf"
  *
  * \section program_des Description of main (and functionality of libraries)
  * 
