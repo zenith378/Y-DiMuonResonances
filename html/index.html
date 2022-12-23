@@ -16,6 +16,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -109,7 +116,7 @@ YResonancesFit.pdf</div></div>
 <h3><a class="anchor" id="custOpt"></a>
 Custimize options</h3>
 <p >We can customize some cuts on the dimuon state using the flags described in the documentation of the file <code>OptionParse.h</code>.</p>
-<p >In this example, 20. &lt; p_T &lt; 30. GeV and |y|&lt; 0.5 for the dimuon state </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch -<a class="code hl_variable" href="diffCrossSection_8C.html#acfc02ec89670db29251fda6a66602ce2">n</a> <span class="stringliteral">&quot;CustomizeCuts&quot;</span> -p 20. -P 30. -Y 0.5</div>
+<p >In this example, 20.0 &lt; p_T &lt; 30.0 GeV and |y| &lt; 0.5 for the dimuon state </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch -<a class="code hl_variable" href="diffCrossSection_8C.html#acfc02ec89670db29251fda6a66602ce2">n</a> <span class="stringliteral">&quot;CustomizeCuts&quot;</span> -p 20. -P 30. -Y 0.5</div>
 <div class="ttc" id="adiffCrossSection_8C_html_acfc02ec89670db29251fda6a66602ce2"><div class="ttname"><a href="diffCrossSection_8C.html#acfc02ec89670db29251fda6a66602ce2">n</a></div><div class="ttdeci">const int n</div><div class="ttdef"><b>Definition:</b> diffCrossSection.C:33</div></div>
 </div><!-- fragment --> <div class="image">
 <img src="CustomizeCuts.pdf" alt=""/>
@@ -120,7 +127,7 @@ CustomizeCuts.pdf</div></div>
 Description of main (and functionality of libraries)</h1>
 <h3><a class="anchor" id="option_param"></a>
 Choose of the parameters and flags</h3>
-<p >The default parameters for the cuts are defined in the <code><a class="el" href="main_8C.html" title="Main source code of the program.">main.C</a></code> file. If the user use the flags for customixìze them, the default value are replaced when the function <code>optionParse()</code> is called. </p>
+<p >The default parameters for the cuts are defined in the <code><a class="el" href="main_8C.html" title="Main source code of the program.">main.C</a></code> file. If the user use the flags for customixìze them, the default value are replaced when the function <code><a class="el" href="optionParse_8h.html#aca42904c9676201145e82289b4b97f47">ProcessArgs()</a></code> is called. </p>
 <h3><a class="anchor" id="data_load"></a>
 Data Loading</h3>
 <p >The data are loaded and manipulated (to have useful variables) using the functions defined inside <code><a class="el" href="df__set_8h.html" title="Header file of df_set.C.">df_set.h</a></code> </p>
@@ -129,15 +136,15 @@ Apply some cuts!</h3>
 <p >The data are selected to be two muons of opposite charge with an invariant mass round the mass of the Y resonances. Also it is possible to choose other cuts on the trasverse momentum and the rapidity of the dimuon state.</p>
 <h3><a class="anchor" id="spectrum_draw"></a>
 Draw a preliminary Spectrum Plot</h3>
-<p >The selected data are preliminary drawn on a canvas as an histohgramm of the invariant mass of the dimuon. The canvas is saved as <em>Preliminary_histo.pdf</em>. The function used for that are better descibed in the documentation of th ìe file <code>SpettrumPlot.h</code> </p>
+<p >The selected data are preliminary drawn on a canvas as an histohgramm of the invariant mass of the dimuon. The canvas is saved as <em>Preliminary_histo.pdf</em>. The function used for that are better descibed in the documentation of the file <code><a class="el" href="SpectrumPlot_8h.html" title="Function to plot the spectrum of the dataset which is currently used and create an histogram.">SpectrumPlot.h</a></code> </p>
 <h3><a class="anchor" id="fit_roo"></a>
 Fit the Function and save it in a canvas</h3>
 <p >The plotted histogramm is fitted to a function ,a BW by default, but it's possible to choose a gaussian or a t-student. The histogramm and the fitted function are drawn on a canvas which is saved.</p>
 <h3><a class="anchor" id="diffCS"></a>
 Calculate and plot the differential cross section</h3>
 <p >Using the customizable function <code><a class="el" href="fitRoo_8h.html#a84fb8d2142c443d16fb022c61687a943">fitRoo()</a></code>, it is possible calculate the differential cross section of the process Y-&gt;\mu+\mu-</p>
-<p >$$ {d\sigma \over dp_t} = {N \over L * \Delta p_t * e_uu * e_sg * e_vp * A} $$</p>
-<p >where $N$ is a fit parameter that says how many events are under the signal function and \Delta p_t is the width of the bin in p_T (i.e. the width of cut on p_T). A more deteil description of the functions used it can be found in <code>diffCrossection.h</code>. </p><div class="image">
+<p >\( {d\sigma \over dp_t} = {N \over L * \Delta p_t * e_uu * e_sg * e_vp * A} \)</p>
+<p >where $N$ is a fit parameter that says how many events are under the signal function and \Delta p_t is the width of the bin in p_T (i.e. the width of cut on p_T). A more deteil description of the functions used it can be found in <code><a class="el" href="diffCrossSection_8h.html">diffCrossSection.h</a></code>. </p><div class="image">
 <img src="diffCrossSection.pdf" alt=""/>
 <div class="caption">
 diffCrossSection.pdf</div></div>
