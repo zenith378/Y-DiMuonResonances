@@ -18,7 +18,9 @@
  * $ ./build/main/YLaunch
  * \endcode
  * the programm will create un histogramm of the invariant mass of two muons selected as follow:
- * * p_T
+ * * p_{T} > 3.5 GeV and |\eta| < 2.0
+ * * at least 2 muons of opposite charge in each event
+ * * 
  * \image latex YResonancesFit.png
  *
  * \section program_des Description of main (and functionality of libraries)
