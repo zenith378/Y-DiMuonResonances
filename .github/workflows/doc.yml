@@ -23,7 +23,7 @@ jobs:
         # Doxygen configuration file path
         doxygenconf: ./docs/Doxyfile
         # Generated HTML documents output folder forse ci devo aggiungere ./html
-        htmloutput: ./
+        htmloutput: ./html/
         # GitHub Pages branch name
         ghpagesbranch: gh-pages
         # GitHub Pages directory path
