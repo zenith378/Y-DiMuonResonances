@@ -114,8 +114,8 @@ Functions</h2></td></tr>
 <tr class="memitem:acd083c726f0de0e35447b9d4176abc76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="optionParse_8C.html#acd083c726f0de0e35447b9d4176abc76">unknownErrorHandling</a> ()</td></tr>
 <tr class="memdesc:acd083c726f0de0e35447b9d4176abc76"><td class="mdescLeft">&#160;</td><td class="mdescRight">it handles an exception of type "unknown"  <a href="optionParse_8C.html#acd083c726f0de0e35447b9d4176abc76">More...</a><br /></td></tr>
 <tr class="separator:acd083c726f0de0e35447b9d4176abc76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca42904c9676201145e82289b4b97f47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="optionParse_8C.html#aca42904c9676201145e82289b4b97f47">ProcessArgs</a> (int argc, char **argv, int &amp;dr, int &amp;fr, float &amp;pmr, float &amp;pMr, float &amp;ymr, float &amp;yMr, std::string &amp;nfr, int &amp;vr)</td></tr>
-<tr class="separator:aca42904c9676201145e82289b4b97f47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a160578dd115ed301ca034d092a9e97e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="optionParse_8C.html#a160578dd115ed301ca034d092a9e97e7">ProcessArgs</a> (int argc, char **argv, int &amp;dr, int &amp;fr, float &amp;pmr, float &amp;pMr, float &amp;ymr, float &amp;yMr, std::string &amp;nfr, int &amp;vr, int &amp;mr)</td></tr>
+<tr class="separator:a160578dd115ed301ca034d092a9e97e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Handling flags and option parameters. </p>
@@ -211,12 +211,12 @@ Functions</h2></td></tr>
 
 <p>Print help stream for understanding what options and flags are available. </p>
 <p >It prints the following output:</p>
-<p >&ndash;cutDepth [-d] &lt;n&gt;: Choose Cut Depth between the options: 0 (default): select events with two muons of opposite charge and invariant mass around Y-State 1: select dimuon pT between 10 and 100 GeV 2: select dimuon pT between 10 and 100 GeV and a rapidity less than 0.6 in abs value &ndash;fitFunction [-f] &lt;PDFName&gt;: Choose PDF to use as Fit Function between three options: gaus: Gaussian PDF bw: Breit - Wigner PDF stud: t-Student PDF &ndash;nameFig [-n] &lt;figName&gt; name of file in which the figure of the fit is going to be saved &ndash;ptmin [-p] &lt;val&gt;: Set minimum cut on pt (GeV) &ndash;ptMax [-P] &lt;val&gt;: Set maximum cut on pt (GeV) &ndash;ymin [-y] &lt;val&gt;: Set minimum cut on rapidity &ndash;yMax [-Y] &lt;val&gt;: Set maximum cut on rapidity &ndash;help [-h]: Show help &ndash;verbose [-v]: Verbose Fit, shows minimisation steps. </p>
+<p >&ndash;cutDepth [-d] &lt;n&gt;: Choose Cut Depth between the options: 0 (default): select events with two muons of opposite charge and invariant mass around Y-State 1: select dimuon pT between 10 and 100 GeV 2: select dimuon pT between 10 and 100 GeV and a rapidity less than 0.6 in abs value &ndash;mode [-m] &lt;mode&gt;: Choose functionality of the program between: fit: execute fit with given parameters cross (default): calculate differential cross section in pt. &ndash;fitFunction [-f] &lt;PDFName&gt;: Choose PDF to use as Fit Function between three options: gaus: Gaussian PDF bw (default): Breit - Wigner PDF stud: t-Student PDF &ndash;nameFig [-n] &lt;figName&gt; name of file in which the figure of the fit is going to be saved &ndash;ptmin [-p] &lt;val&gt;: Set minimum cut on pt (GeV) &ndash;ptMax [-P] &lt;val&gt;: Set maximum cut on pt (GeV) &ndash;ymin [-y] &lt;val&gt;: Set minimum cut on rapidity &ndash;yMax [-Y] &lt;val&gt;: Set maximum cut on rapidity &ndash;help [-h]: Show help &ndash;verbose [-v]: Verbose Fit, shows minimisation steps. </p>
 
 </div>
 </div>
-<a id="aca42904c9676201145e82289b4b97f47" name="aca42904c9676201145e82289b4b97f47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca42904c9676201145e82289b4b97f47">&#9670;&nbsp;</a></span>ProcessArgs()</h2>
+<a id="a160578dd115ed301ca034d092a9e97e7" name="a160578dd115ed301ca034d092a9e97e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a160578dd115ed301ca034d092a9e97e7">&#9670;&nbsp;</a></span>ProcessArgs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -279,7 +279,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>vr</em>&#160;</td>
+          <td class="paramname"><em>vr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>mr</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -300,6 +306,7 @@ Functions</h2></td></tr>
     <tr><td class="paramname">yMr</td><td>recerence of yM (maximum rapidity) defined in main </td></tr>
     <tr><td class="paramname">nfr</td><td>recerence of nameFile defined in main </td></tr>
     <tr><td class="paramname">vr</td><td>reference of varaible verbose defined in main </td></tr>
+    <tr><td class="paramname">mr</td><td>reference of mode </td></tr>
   </table>
   </dd>
 </dl>

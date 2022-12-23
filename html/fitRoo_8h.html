@@ -114,11 +114,14 @@ $(document).ready(function(){initNavTree('fitRoo_8h.html',''); initResizable(); 
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a1071b14a4470a35ab0feac8aff36eab5"><td class="memItemLeft" align="right" valign="top">TString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fitRoo_8h.html#a1071b14a4470a35ab0feac8aff36eab5">formatPtString</a> (int dr=0, float pmr=std::nanf(&quot;1&quot;), float pMr=std::nanf(&quot;1&quot;))</td></tr>
+<tr class="memdesc:a1071b14a4470a35ab0feac8aff36eab5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formatting the string to be displayed on the canvas regarding the cuts made on pt.  <a href="fitRoo_8h.html#a1071b14a4470a35ab0feac8aff36eab5">More...</a><br /></td></tr>
 <tr class="separator:a1071b14a4470a35ab0feac8aff36eab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cbf9d1b384ae8f608f2696f3b097ce5"><td class="memItemLeft" align="right" valign="top">TString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fitRoo_8h.html#a2cbf9d1b384ae8f608f2696f3b097ce5">formatYString</a> (int dr=0, float ymr=std::nanf(&quot;1&quot;), float yMr=std::nanf(&quot;1&quot;))</td></tr>
+<tr class="memdesc:a2cbf9d1b384ae8f608f2696f3b097ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formatting the string to be displayed on the canvas regarding the cuts made on y.  <a href="fitRoo_8h.html#a2cbf9d1b384ae8f608f2696f3b097ce5">More...</a><br /></td></tr>
 <tr class="separator:a2cbf9d1b384ae8f608f2696f3b097ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84fb8d2142c443d16fb022c61687a943"><td class="memItemLeft" align="right" valign="top">RooFitResult *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fitRoo_8h.html#a84fb8d2142c443d16fb022c61687a943">fitRoo</a> (TH1 *hh, int fr=0, int dr=0, float pmr=std::nanf(&quot;1&quot;), float pMr=std::nanf(&quot;1&quot;), float ymr=std::nanf(&quot;1&quot;), float yMr=std::nanf(&quot;1&quot;), std::string fnr=&quot;YResonancesFit&quot;, int vr=0)</td></tr>
-<tr class="separator:a84fb8d2142c443d16fb022c61687a943"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d34d827ff23492f36fe47c3e81cbf8c"><td class="memItemLeft" align="right" valign="top">RooFitResult *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fitRoo_8h.html#a8d34d827ff23492f36fe47c3e81cbf8c">fitRoo</a> (TH1 *hh, int mr, int fr=0, int dr=0, float pmr=std::nanf(&quot;1&quot;), float pMr=std::nanf(&quot;1&quot;), float ymr=std::nanf(&quot;1&quot;), float yMr=std::nanf(&quot;1&quot;), std::string fnr=&quot;YResonancesFit&quot;, int vr=0)</td></tr>
+<tr class="memdesc:a8d34d827ff23492f36fe47c3e81cbf8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of the fit function.  <a href="fitRoo_8h.html#a8d34d827ff23492f36fe47c3e81cbf8c">More...</a><br /></td></tr>
+<tr class="separator:a8d34d827ff23492f36fe47c3e81cbf8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Function for fitting the data and displying the canvas. </p>
@@ -127,8 +130,8 @@ Functions</h2></td></tr>
 <p >formatYString: it format the string regarding the cut on Y to be displayed on the canvas</p>
 <p >fitRoo: function that fit the data, print the result and the canvas </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a84fb8d2142c443d16fb022c61687a943" name="a84fb8d2142c443d16fb022c61687a943"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84fb8d2142c443d16fb022c61687a943">&#9670;&nbsp;</a></span>fitRoo()</h2>
+<a id="a8d34d827ff23492f36fe47c3e81cbf8c" name="a8d34d827ff23492f36fe47c3e81cbf8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d34d827ff23492f36fe47c3e81cbf8c">&#9670;&nbsp;</a></span>fitRoo()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -138,6 +141,12 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">TH1 *&#160;</td>
           <td class="paramname"><em>hh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -194,7 +203,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Implementation of the fit function</p>
+
+<p>Implementation of the fit function. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">hh</td><td>histogram to be fitted </td></tr>
@@ -244,7 +254,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Formatting the string to be displayed on the canvas regarding the cuts made on pt</p>
+
+<p>Formatting the string to be displayed on the canvas regarding the cuts made on pt. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dr</td><td>reference of depth defined in main </td></tr>
@@ -253,7 +264,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>result of the fit </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>string formatted to print on the canvas </dd></dl>
 
 </div>
 </div>
@@ -288,7 +299,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Formatting the string to be displayed on the canvas regarding the cuts made on y</p>
+
+<p>Formatting the string to be displayed on the canvas regarding the cuts made on y. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dr</td><td>reference of depth defined in main </td></tr>
@@ -297,7 +309,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>result of the fit </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>string formatted to print on the canvas </dd></dl>
 
 </div>
 </div>

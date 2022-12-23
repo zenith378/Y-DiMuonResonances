@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['generatedataframe_0',['generateDataFrame',['../Cuts_8h.html#a151e2ba7522d92fd1da3ecf4ee05b4ca',1,'generateDataFrame(ROOT::RDF::RNode &amp;df, int dr=0):&#160;Cuts.C'],['../Cuts_8C.html#a967c1445c167258ad89038e138548614',1,'generateDataFrame(ROOT::RDF::RNode &amp;df, int dr):&#160;Cuts.C']]]
+  ['optionparse_2ec_0',['optionParse.C',['../optionParse_8C.html',1,'']]],
+  ['optionparse_2eh_1',['optionParse.h',['../optionParse_8h.html',1,'']]],
+  ['outofrangeerrorhandling_2',['outOfRangeErrorHandling',['../optionParse_8h.html#a9c0e386a8b56ce160fedfc90034b93af',1,'outOfRangeErrorHandling(std::string opt, std::string range, const char *insrtvl):&#160;optionParse.C'],['../optionParse_8C.html#a9c0e386a8b56ce160fedfc90034b93af',1,'outOfRangeErrorHandling(std::string opt, std::string range, const char *insrtvl):&#160;optionParse.C']]]
 ];

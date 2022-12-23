@@ -121,15 +121,18 @@ $(document).ready(function(){initNavTree('fitRoo_8C.html',''); initResizable(); 
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a80db12723105fa85965519f2bd3c5c8b"><td class="memItemLeft" align="right" valign="top">TString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fitRoo_8C.html#a80db12723105fa85965519f2bd3c5c8b">formatPtString</a> (int dr, float pmr, float pMr)</td></tr>
+<tr class="memdesc:a80db12723105fa85965519f2bd3c5c8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formatting the string to be displayed on the canvas regarding the cuts made on pt.  <a href="fitRoo_8C.html#a80db12723105fa85965519f2bd3c5c8b">More...</a><br /></td></tr>
 <tr class="separator:a80db12723105fa85965519f2bd3c5c8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56db74afcbab64dae7c7e4976e323c28"><td class="memItemLeft" align="right" valign="top">TString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fitRoo_8C.html#a56db74afcbab64dae7c7e4976e323c28">formatYString</a> (int dr, float ymr, float yMr)</td></tr>
+<tr class="memdesc:a56db74afcbab64dae7c7e4976e323c28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formatting the string to be displayed on the canvas regarding the cuts made on y.  <a href="fitRoo_8C.html#a56db74afcbab64dae7c7e4976e323c28">More...</a><br /></td></tr>
 <tr class="separator:a56db74afcbab64dae7c7e4976e323c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67d8224e3ad8659124dc75a3171ac39f"><td class="memItemLeft" align="right" valign="top">RooFitResult *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fitRoo_8C.html#a67d8224e3ad8659124dc75a3171ac39f">fitRoo</a> (TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, float yMr, std::string nfr, int vr)</td></tr>
-<tr class="separator:a67d8224e3ad8659124dc75a3171ac39f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0548bfff5026de2e2e716f014ac87a22"><td class="memItemLeft" align="right" valign="top">RooFitResult *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fitRoo_8C.html#a0548bfff5026de2e2e716f014ac87a22">fitRoo</a> (TH1 *hh, int mr, int fr, int dr, float pmr, float pMr, float ymr, float yMr, std::string nfr, int vr)</td></tr>
+<tr class="memdesc:a0548bfff5026de2e2e716f014ac87a22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of the fit function.  <a href="fitRoo_8C.html#a0548bfff5026de2e2e716f014ac87a22">More...</a><br /></td></tr>
+<tr class="separator:a0548bfff5026de2e2e716f014ac87a22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a67d8224e3ad8659124dc75a3171ac39f" name="a67d8224e3ad8659124dc75a3171ac39f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67d8224e3ad8659124dc75a3171ac39f">&#9670;&nbsp;</a></span>fitRoo()</h2>
+<a id="a0548bfff5026de2e2e716f014ac87a22" name="a0548bfff5026de2e2e716f014ac87a22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0548bfff5026de2e2e716f014ac87a22">&#9670;&nbsp;</a></span>fitRoo()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -139,6 +142,12 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">TH1 *&#160;</td>
           <td class="paramname"><em>hh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -195,7 +204,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Implementation of the fit function</p>
+
+<p>Implementation of the fit function. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">hh</td><td>histogram to be fitted </td></tr>
@@ -245,7 +255,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Formatting the string to be displayed on the canvas regarding the cuts made on pt</p>
+
+<p>Formatting the string to be displayed on the canvas regarding the cuts made on pt. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dr</td><td>reference of depth defined in main </td></tr>
@@ -254,7 +265,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>result of the fit </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>string formatted to print on the canvas </dd></dl>
 
 </div>
 </div>
@@ -289,7 +300,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Formatting the string to be displayed on the canvas regarding the cuts made on y</p>
+
+<p>Formatting the string to be displayed on the canvas regarding the cuts made on y. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dr</td><td>reference of depth defined in main </td></tr>
@@ -298,7 +310,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>result of the fit </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>string formatted to print on the canvas </dd></dl>
 
 </div>
 </div>

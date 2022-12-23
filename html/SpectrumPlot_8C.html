@@ -110,8 +110,8 @@ $(document).ready(function(){initNavTree('SpectrumPlot_8C.html',''); initResizab
 Functions</h2></td></tr>
 <tr class="memitem:a34714da9ccb76f8078d83e0226c98bb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SpectrumPlot_8C.html#a34714da9ccb76f8078d83e0226c98bb3">SavePlot</a> (TCanvas *c, TString namePlot)</td></tr>
 <tr class="separator:a34714da9ccb76f8078d83e0226c98bb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92d8747d7ca73fb98c157efda126f434"><td class="memItemLeft" align="right" valign="top">TH1 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SpectrumPlot_8C.html#a92d8747d7ca73fb98c157efda126f434">SpectrumPlot</a> (ROOT::RDF::RNode &amp;df_cut)</td></tr>
-<tr class="separator:a92d8747d7ca73fb98c157efda126f434"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a073489160eb1c3db831d0ad3c28c2e3d"><td class="memItemLeft" align="right" valign="top">TH1 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SpectrumPlot_8C.html#a073489160eb1c3db831d0ad3c28c2e3d">SpectrumPlot</a> (ROOT::RDF::RNode &amp;df_cut, std::string nameFile)</td></tr>
+<tr class="separator:a073489160eb1c3db831d0ad3c28c2e3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Function to plot the spectrum of the dataset which is currently used and create an histogram. </p>
@@ -141,11 +141,19 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Function to save the plot created in the folder Plots. If the folder does not exits, it creates it. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c1</td><td>canvas containing the plot </td></tr>
+    <tr><td class="paramname">nameFile</td><td>name to give to the pdf </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>histogram of the data </dd></dl>
 
 </div>
 </div>
-<a id="a92d8747d7ca73fb98c157efda126f434" name="a92d8747d7ca73fb98c157efda126f434"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92d8747d7ca73fb98c157efda126f434">&#9670;&nbsp;</a></span>SpectrumPlot()</h2>
+<a id="a073489160eb1c3db831d0ad3c28c2e3d" name="a073489160eb1c3db831d0ad3c28c2e3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a073489160eb1c3db831d0ad3c28c2e3d">&#9670;&nbsp;</a></span>SpectrumPlot()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -154,14 +162,25 @@ Functions</h2></td></tr>
           <td class="memname">TH1 * SpectrumPlot </td>
           <td>(</td>
           <td class="paramtype">ROOT::RDF::RNode &amp;&#160;</td>
-          <td class="paramname"><em>df_cut</em></td><td>)</td>
+          <td class="paramname"><em>df_cut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>nameFile</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Simple Function to plot the spectrum of the dataset which is currently used and create an histogram. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Function to plot the spectrum of the dataset which is currently used and create an histogram. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">df_cut</td><td>dataframe containg the data </td></tr>
+    <tr><td class="paramname">df_cut</td><td>Dataframe containg the data </td></tr>
+    <tr><td class="paramname">nameFile</td><td>name to give to the pdf (a string "preliminary" is going to be added to the filename) </td></tr>
   </table>
   </dd>
 </dl>

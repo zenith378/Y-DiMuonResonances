@@ -116,8 +116,7 @@ YResonancesFit.pdf</div></div>
 <h3><a class="anchor" id="custOpt"></a>
 Custimize options</h3>
 <p >We can customize some cuts on the dimuon state using the flags described in the documentation of the file <code>OptionParse.h</code>.</p>
-<p >In this example, $20.0 &lt; p_T &lt; 30.0$ GeV and $|y| &lt; 0.5$ for the dimuon state </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch -<a class="code hl_variable" href="diffCrossSection_8C.html#acfc02ec89670db29251fda6a66602ce2">n</a> <span class="stringliteral">&quot;CustomizeCuts&quot;</span> -p 20. -P 30. -Y 0.5</div>
-<div class="ttc" id="adiffCrossSection_8C_html_acfc02ec89670db29251fda6a66602ce2"><div class="ttname"><a href="diffCrossSection_8C.html#acfc02ec89670db29251fda6a66602ce2">n</a></div><div class="ttdeci">const int n</div><div class="ttdef"><b>Definition:</b> diffCrossSection.C:33</div></div>
+<p >In this example, $20.0 &lt; p_T &lt; 30.0$ GeV and $|y| &lt; 0.5$ for the dimuon state </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch -n <span class="stringliteral">&quot;CustomizeCuts&quot;</span> -p 20. -P 30. -Y 0.5</div>
 </div><!-- fragment --> <div class="image">
 <img src="CustomizeCuts.pdf" alt=""/>
 <div class="caption">
@@ -127,7 +126,7 @@ CustomizeCuts.pdf</div></div>
 Description of main (and functionality of libraries)</h1>
 <h3><a class="anchor" id="option_param"></a>
 Choose of the parameters and flags</h3>
-<p >The default parameters for the cuts are defined in the <code><a class="el" href="main_8C.html" title="Main source code of the program.">main.C</a></code> file. If the user use the flags for customixìze them, the default value are replaced when the function <code><a class="el" href="optionParse_8h.html#aca42904c9676201145e82289b4b97f47">ProcessArgs()</a></code> is called. </p>
+<p >The default parameters for the cuts are defined in the <code><a class="el" href="main_8C.html" title="Main source code of the program.">main.C</a></code> file. If the user use the flags for customixìze them, the default value are replaced when the function <code><a class="el" href="optionParse_8h.html#a160578dd115ed301ca034d092a9e97e7">ProcessArgs()</a></code> is called. </p>
 <h3><a class="anchor" id="data_load"></a>
 Data Loading</h3>
 <p >The data are loaded and manipulated (to have useful variables) using the functions defined inside <code><a class="el" href="df__set_8h.html" title="Header file of df_set.C.">df_set.h</a></code> </p>
@@ -142,7 +141,7 @@ Fit the Function and save it in a canvas</h3>
 <p >The plotted histogramm is fitted to a function ,a BW by default, but it's possible to choose a gaussian or a t-student. The histogramm and the fitted function are drawn on a canvas which is saved.</p>
 <h3><a class="anchor" id="diffCS"></a>
 Calculate and plot the differential cross section</h3>
-<p >Using the customizable function <code><a class="el" href="fitRoo_8h.html#a84fb8d2142c443d16fb022c61687a943">fitRoo()</a></code>, it is possible calculate the differential cross section of the process Y-&gt;\mu+\mu-</p>
+<p >Using the customizable function <code><a class="el" href="fitRoo_8h.html#a8d34d827ff23492f36fe47c3e81cbf8c" title="Implementation of the fit function.">fitRoo()</a></code>, it is possible calculate the differential cross section of the process Y-&gt;\mu+\mu-</p>
 <p class="formulaDsp">
 \[ \frac{d\sigma}{dp_t} = \frac{N}{L \Delta p_t e_{uu} e_{sg} e_{vp} A} \]
 </p>

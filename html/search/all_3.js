@@ -1,14 +1,8 @@
 var searchData=
 [
-  ['dcsbin_0',['dcsbin',['../structdcsbin.html',1,'']]],
-  ['df_5fset_1',['df_set',['../df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b',1,'df_set():&#160;df_set.C'],['../df__set_8C.html#a00ced25cbce30fd8a68fcb54cb47f21b',1,'df_set():&#160;df_set.C']]],
-  ['df_5fset_2ec_2',['df_set.C',['../df__set_8C.html',1,'']]],
-  ['df_5fset_2eh_3',['df_set.h',['../df__set_8h.html',1,'']]],
-  ['dffilter_4',['DFFilter',['../Cuts_8h.html#a9f8dcd0297e7308b5ecae09e8f502de1',1,'DFFilter(ROOT::RDF::RNode &amp;df, int dr=0):&#160;Cuts.C'],['../Cuts_8C.html#afb75d42350f2304aca87e16ea6db2fd5',1,'DFFilter(ROOT::RDF::RNode &amp;df, int dr):&#160;Cuts.C']]],
-  ['diffcrosssec_5',['diffCrossSec',['../diffCrossSection_8h.html#abda999553dd2c035a28bfd3f21fee8c5',1,'diffCrossSec(double N, float wpt):&#160;diffCrossSection.C'],['../diffCrossSection_8C.html#abda999553dd2c035a28bfd3f21fee8c5',1,'diffCrossSec(double N, float wpt):&#160;diffCrossSection.C']]],
-  ['diffcrosssection_2ec_6',['diffCrossSection.C',['../diffCrossSection_8C.html',1,'']]],
-  ['diffcrosssection_2eh_7',['diffCrossSection.h',['../diffCrossSection_8h.html',1,'']]],
-  ['ds1_8',['ds1',['../structdcsbin.html#ac9efed44a72ad2e4e006cc7f71b0dd57',1,'dcsbin']]],
-  ['ds2_9',['ds2',['../structdcsbin.html#afafc6df34be1e174baf3afdab25ee2e1',1,'dcsbin']]],
-  ['ds3_10',['ds3',['../structdcsbin.html#a5c9d961d5765173db726781aea4a2bad',1,'dcsbin']]]
+  ['fitroo_0',['fitRoo',['../fitRoo_8h.html#a8d34d827ff23492f36fe47c3e81cbf8c',1,'fitRoo(TH1 *hh, int mr, int fr=0, int dr=0, float pmr=std::nanf(&quot;1&quot;), float pMr=std::nanf(&quot;1&quot;), float ymr=std::nanf(&quot;1&quot;), float yMr=std::nanf(&quot;1&quot;), std::string fnr=&quot;YResonancesFit&quot;, int vr=0):&#160;fitRoo.C'],['../fitRoo_8C.html#a0548bfff5026de2e2e716f014ac87a22',1,'fitRoo(TH1 *hh, int mr, int fr, int dr, float pmr, float pMr, float ymr, float yMr, std::string nfr, int vr):&#160;fitRoo.C']]],
+  ['fitroo_2ec_1',['fitRoo.C',['../fitRoo_8C.html',1,'']]],
+  ['fitroo_2eh_2',['fitRoo.h',['../fitRoo_8h.html',1,'']]],
+  ['formatptstring_3',['formatPtString',['../fitRoo_8h.html#a1071b14a4470a35ab0feac8aff36eab5',1,'formatPtString(int dr=0, float pmr=std::nanf(&quot;1&quot;), float pMr=std::nanf(&quot;1&quot;)):&#160;fitRoo.C'],['../fitRoo_8C.html#a80db12723105fa85965519f2bd3c5c8b',1,'formatPtString(int dr, float pmr, float pMr):&#160;fitRoo.C']]],
+  ['formatystring_4',['formatYString',['../fitRoo_8h.html#a2cbf9d1b384ae8f608f2696f3b097ce5',1,'formatYString(int dr=0, float ymr=std::nanf(&quot;1&quot;), float yMr=std::nanf(&quot;1&quot;)):&#160;fitRoo.C'],['../fitRoo_8C.html#a56db74afcbab64dae7c7e4976e323c28',1,'formatYString(int dr, float ymr, float yMr):&#160;fitRoo.C']]]
 ];

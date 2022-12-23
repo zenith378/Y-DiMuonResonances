@@ -116,10 +116,10 @@ $(document).ready(function(){initNavTree('diffCrossSection_8h.html',''); initRes
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:abda999553dd2c035a28bfd3f21fee8c5"><td class="memItemLeft" align="right" valign="top">Double_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossSection_8h.html#abda999553dd2c035a28bfd3f21fee8c5">diffCrossSec</a> (double N, float wpt)</td></tr>
-<tr class="memdesc:abda999553dd2c035a28bfd3f21fee8c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculate the differential cross section given the functin that describe the mass distribution (model), which Y is (i), and the width of the pt bin (wpt)  <a href="diffCrossSection_8h.html#abda999553dd2c035a28bfd3f21fee8c5">More...</a><br /></td></tr>
+<tr class="memdesc:abda999553dd2c035a28bfd3f21fee8c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the differential cross section given the functin that describe the mass distribution (model), which Y is (i), and the width of the pt bin (wpt)  <a href="diffCrossSection_8h.html#abda999553dd2c035a28bfd3f21fee8c5">More...</a><br /></td></tr>
 <tr class="separator:abda999553dd2c035a28bfd3f21fee8c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96f9674409716a52f53e6fe5ea939704"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structdcsbin.html">dcsbin</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossSection_8h.html#a96f9674409716a52f53e6fe5ea939704">setset</a> (float ptm, float ptM, ROOT::RDF::RNode &amp;df, std::string nameFile)</td></tr>
-<tr class="memdesc:a96f9674409716a52f53e6fe5ea939704"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the differential cross section (multiply by the relative branching ratio) for one bin in trasverso momentum.  <a href="diffCrossSection_8h.html#a96f9674409716a52f53e6fe5ea939704">More...</a><br /></td></tr>
+<tr class="memdesc:a96f9674409716a52f53e6fe5ea939704"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the differential cross section (multiplied by the relative branching ratio) for one bin in trasverso momentum.  <a href="diffCrossSection_8h.html#a96f9674409716a52f53e6fe5ea939704">More...</a><br /></td></tr>
 <tr class="separator:a96f9674409716a52f53e6fe5ea939704"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a944fe9913afd4834890abd49af7ba937"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossSection_8h.html#a944fe9913afd4834890abd49af7ba937">PlotDiffCrossSection</a> (ROOT::RDF::RNode &amp;df)</td></tr>
 <tr class="memdesc:a944fe9913afd4834890abd49af7ba937"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plot the differential cross section calculate for each bin for the Y1S, 2S and 3S as a function of the trasverse momentum.  <a href="diffCrossSection_8h.html#a944fe9913afd4834890abd49af7ba937">More...</a><br /></td></tr>
@@ -152,7 +152,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>calculate the differential cross section given the functin that describe the mass distribution (model), which Y is (i), and the width of the pt bin (wpt) </p>
+<p>Calculate the differential cross section given the functin that describe the mass distribution (model), which Y is (i), and the width of the pt bin (wpt) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">N</td><td>number of event under the peak of the resonance </td></tr>
@@ -160,7 +160,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>differential cross section (multiply by the relative branching ratio) </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>differential cross section (multiplied by the relative branching ratio) </dd></dl>
 
 </div>
 </div>
@@ -183,7 +183,7 @@ Functions</h2></td></tr>
 <p>Plot the differential cross section calculate for each bin for the Y1S, 2S and 3S as a function of the trasverse momentum. </p>
 <p >The edge of the bin are defined in two array, these are used for calculate the differential cross section in each bin. These are then plotted on the same canva. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">df</td><td>data frame where the unselected data are stored </td></tr>
+    <tr><td class="paramname">df</td><td>Dataframe where the unselected data are stored </td></tr>
   </table>
   </dd>
 </dl>
@@ -228,12 +228,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Calculate the differential cross section (multiply by the relative branching ratio) for one bin in trasverso momentum. </p>
+<p>Calculate the differential cross section (multiplied by the relative branching ratio) for one bin in trasverso momentum. </p>
 <p >This function select the data from the data frame df using the function <a class="el" href="Cuts_8h.html#ac0ca9394f49d849c125800240600fb25" title="Modified a muon DataFrame cutting on nMuon, Muon_charge, Dimuon_mass, Dimuon_pt and Dimuon_y.">Cuts()</a> defined in <a class="el" href="Cuts_8h.html" title="Selection of the data.">Cuts.h</a>. The cut on the trasverse momentum is given by the bin edges and the one on the rapidity is between -1.2 and 1.2. The data are plotted and fitted using the function fitRoo defined in <a class="el" href="fitRoo_8h.html" title="Function for fitting the data and displying the canvas.">fitRoo.h</a>. From the fit we can get the number of events under the peak of each Y resonance and using the function diffCrossSec, defined in diffCrossection.h, calculate the differential cross section for the bin. All the value usuful for the plotting are save inside the structur returned. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ptm</td><td>lower edge of the bin </td></tr>
     <tr><td class="paramname">ptM</td><td>is the upper edge of the bin </td></tr>
-    <tr><td class="paramname">df</td><td>data frame with all the data </td></tr>
+    <tr><td class="paramname">df</td><td>Dataframe with all the data </td></tr>
     <tr><td class="paramname">namefile</td><td>name of the plot saved</td></tr>
   </table>
   </dd>

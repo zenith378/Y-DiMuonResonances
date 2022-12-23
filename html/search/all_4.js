@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['e_5fsg_0',['e_sg',['../diffCrossSection_8C.html#a9ce4c7b9dc0465c3d44a88f45671b126',1,'diffCrossSection.C']]],
-  ['e_5fuu_1',['e_uu',['../diffCrossSection_8C.html#aba57bbb8f253f595f395e0eea7a51ca1',1,'diffCrossSection.C']]],
-  ['e_5fvp_2',['e_vp',['../diffCrossSection_8C.html#a22922b3c0503b3ebf9d1776de7fd8ac0',1,'diffCrossSection.C']]]
+  ['generatedataframe_0',['generateDataFrame',['../Cuts_8h.html#a151e2ba7522d92fd1da3ecf4ee05b4ca',1,'generateDataFrame(ROOT::RDF::RNode &amp;df, int dr=0):&#160;Cuts.C'],['../Cuts_8C.html#a967c1445c167258ad89038e138548614',1,'generateDataFrame(ROOT::RDF::RNode &amp;df, int dr):&#160;Cuts.C']]]
 ];
