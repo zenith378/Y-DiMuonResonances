@@ -17,7 +17,6 @@ void SavePlot(TCanvas *c, TString namePlot){
   namespace fs = std::filesystem;
 
     TString fname = "./Plots/" + namePlot + ".pdf";
-    //const char *fname = tmp.c_str();
     try
     {
         c->SaveAs(fname);
@@ -79,8 +78,7 @@ TH1* SpectrumPlot(ROOT::RDF::RNode &df_cut,std::string nameFile){
 
   // Save plot
   SavePlot(c,nameFile+"_preliminary");
-  //TH1*h = hist.GetPtr();
 
-  TH1 *h = (TH1*)gDirectory->Get("hist"); //da riguardare, forse c'è un modo migliore per farlo
+  TH1 *h = (TH1*)gDirectory->Get("hist"); 
   return h;
 }

@@ -27,7 +27,10 @@ using namespace RooFit;
 TString formatPtString(int dr, float pmr, float pMr)
 {
     TString tmp;
-
+    if (pmr != pmr && pMr != pMr){
+        if (dr == 1 || dr == 2)
+            tmp.Form("10 < p_{T} < 100 GeV");
+    }
     if (pmr == pmr && pMr == pMr)
         tmp.Form("%.1f < p_{T} < %.1f GeV",pmr,pMr); //    std::to_string((int)pmr) + " < p_{T}< " + std::to_string((int)pMr) + " GeV";
 
@@ -38,9 +41,6 @@ TString formatPtString(int dr, float pmr, float pMr)
     if (pmr != pmr && pMr == pMr)
         tmp.Form("p_{T} < %.1f GeV",pMr); //tmp = tmp + "p_{T}< " + std::to_string((int)pMr) + " GeV";
 
-    if (pmr != pmr && pMr != pMr)
-        if (dr == 1 || dr == 2)
-            tmp.Form("10 < p_{T}< 100 GeV");
 
     return tmp;
 }
@@ -48,7 +48,10 @@ TString formatPtString(int dr, float pmr, float pMr)
 TString formatYString(int dr, float ymr, float yMr)
 {
     TString tmp;
-
+    if (ymr != ymr && yMr != yMr){
+        if (dr == 2)
+            tmp.Form("|y| < 0.6");
+    }
     if (ymr == ymr && yMr == yMr)
         tmp.Form("%.2f < |y| < %.2f",ymr,yMr); //tmp = std::to_string(ymr).substr(0, std::to_string(ymr).find(".") + 2 + 1) + " < |y| < " + std::to_string(yMr).substr(0, std::to_string(yMr).find(".") + 2 + 1);
 
@@ -58,9 +61,7 @@ TString formatYString(int dr, float ymr, float yMr)
     if (ymr != ymr && yMr == yMr)
         tmp.Form("|y| < %.2f",yMr); //tmp = tmp + "|y| < " + std::to_string(yMr).substr(0, std::to_string(yMr).find(".") + 2 + 1);
 
-    if (ymr != ymr && yMr != yMr)
-        if (dr == 2)
-            tmp.Form("|y| < 0.6");
+
 
     return tmp;
 }

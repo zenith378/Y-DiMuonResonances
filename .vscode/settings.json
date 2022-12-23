@@ -14,6 +14,9 @@
         "test_failing.C": "cpp",
         "test_firRoo.C": "cpp",
         "test_fitRoo.C": "cpp",
-        "test_arg.C": "cpp"
+        "test_arg.C": "cpp",
+        "test_spectrum.C": "cpp",
+        "test_string.C": "cpp",
+        "test_plot.C": "cpp"
     }
 }

@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     RooFitResult * fitresult = fitRoo(h,mode, fitfunc, depth, ptm, ptM, ym, yM, nameFile, verbose);
     }
     if(mode==1)
-    diffCrossection(df,mode);
+    diffCrossection(df);
 
     return 0;
 }

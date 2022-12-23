@@ -18,13 +18,13 @@ int main(int argc, char *argv[]){
     ProcessArgs(argc, argv, depth, fitfunc, ptm, ptM, ym, yM, nameFile, verbose,mode);
     if(depth!=0&&fitfunc!=0&&ptm==ptm&&ptM==ptM&&ym==ym&&yM==yM&&nameFile!="YResonancesFit"&&verbose!=0&&mode!=0)
     exit(1);
-    depth = 1; //Depth value initialized to 0, i.e. no cuts
-    fitfunc = 1; //Fit Function initilized to 0, i.e. Breit-Wigner
-    ptm = 25; //The default parameters for the cuts are initialized to NaN, so that they are used only if they become a number
-    ptM = std::nanf("2"); //see first parameter
-    ym = 0.1; //see first parameter
-    yM = 0.8; //see first parameter
-    verbose = 1; //verbose flag initialized to zero, i.e. no output stream for Minuit
+    depth = 1; 
+    fitfunc = 1; 
+    ptm = 25;
+    ptM = std::nanf("2"); 
+    ym = 0.1;
+    yM = 0.8; 
+    verbose = 1; 
     mode=1;
     if(depth!=1&&fitfunc!=1&&ptm!=25&&ptM==ptM&&ym!=0.1&&yM!=0.8&&nameFile!="YResonancesFit"&&verbose!=1&&mode!=1)
     exit(1);

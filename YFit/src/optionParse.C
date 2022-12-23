@@ -74,7 +74,7 @@ void unknownErrorHandling()
 
 void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &nfr, int &vr,int &mr)
 {
-    const char *const short_opts = "d:f:n:p:P:y:Y:hv"; //Define short options and whether an argument is expected
+    const char *const short_opts = "d:f:m:n:p:P:y:Y:hv"; //Define short options and whether an argument is expected
     const option long_opts[] = { //define long options
         {"cutDepth", required_argument, 0, 'd'},
         {"fitFunction", required_argument, 0, 'f'},
