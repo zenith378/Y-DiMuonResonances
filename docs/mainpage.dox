@@ -10,14 +10,16 @@
  * Brief descrption of the program workflow (main) and the main function.
  *
  * \section example_usage A simple example usage
- * * default option
+ * * Default option
+ * If we run the main of the library without givin anything as flag or option, as it follows:
  * \code
  * $ cmake -S . -B ./build
  * $ make -C build
  * $ ./build/main/YLaunch
  * \endcode
- *
- * \image YResonancesFit.pdf
+ * the programm will create un histogramm of the invariant mass of two muons selected as follow:
+ * * p_T
+ * \image latex YResonancesFit.pdf
  *
  * \section program_des Description of main (and functionality of libraries)
  * 
