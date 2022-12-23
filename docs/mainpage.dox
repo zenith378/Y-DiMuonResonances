@@ -1,16 +1,21 @@
 /*!
  * \mainpage YFit YFit Library Documentation
  *
- * This C++ Library was created by Giulio Cordova and Matilde Carminati for the Computing Methods exam.
+ * This C++ Library was created by Giulio Cordova and Matilde Carminati for the Computing Methods for Experimental Physics and Data Analysis exam.
  *
  * \section intro_sec Introduction
- * YFit Library is a simple library used to fit the first three Y resonances from the open cms dimuon dataset
+ * YFit Library is a simple library used to fit the first three Y resonances from the open cms dimuon dataset and to calculate the differentian cross section of the same process as a function of the trasverse momentum.
  * It comes together with its own main in order to use it.
  *
  * Brief descrption of the program workflow (main) and the main function.
  *
  * \section example_usage A simple example usage
- * *
+ * *default option
+ * \code
+ * $cmake -S . -B ./build
+ * $make -C build
+ * $./build/main/YLaunch
+ * \endcode
  * \section program_des Description of main (and functionality of libraries)
  * 
  * \subsection option_param Choose of the parameters and flags
