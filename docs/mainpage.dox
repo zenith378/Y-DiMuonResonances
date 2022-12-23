@@ -9,7 +9,8 @@
  * as a function of the trasverse momentum.
  * It comes together with its own main in order to use it.
  *
- * Brief descrption of the program workflow (main) and the main function.
+ * In the main the data from the open source CMS data are stored in a RDataFrame and selected by some cuts.
+ * The data are plotted in a histogram
  *
  * \section example_usage A simple example usage
  * For compiling we need to type
@@ -18,7 +19,7 @@
  * $ make -C build
  * \endcode
  *
- * \subsection Default options
+ * \subsection defOpt Default options
  *
  * If we run the main of the library without givin anything as flag or option, as it follows:
  * \code
@@ -32,7 +33,7 @@
  *
  * \image html YResonancesFit.pdf "YResonancesFit.pdf"
  *
- * \subsection Custimize options
+ * \subsection custOpt Custimize options
  *
  * We can customize some cuts using the flags described in the
  * documentation of the file OptionParse.h.
@@ -43,7 +44,7 @@
  * \endcode
  * \image html CustomizeCuts.pdf "CustomizeCuts.pdf"
  *
- * \subsection Different Cross Section option (?)
+ * \subsection diffCS Different Cross Section option (?)
  * \image diffCrossSection.pdf "diffCrossSection.pdf"
  *
  * \section program_des Description of main (and functionality of libraries)
