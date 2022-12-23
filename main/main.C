@@ -26,7 +26,7 @@
 #include "SpectrumPlot.h"
 #include "fitRoo.h"
 #include "optionParse.h"
-#include "diffCrossection.h"
+#include "diffCrossSection.h"
 #include "RooFitResult.h"
 
 

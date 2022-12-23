@@ -13,13 +13,13 @@
  * The data are plotted in a histogram
  *
  * \section example_usage A simple example usage
- * For compiling we need to type
+ * The following lines are used for compiling the code and do the testing.
  * \code
  * $ cmake -S . -B ./build
  * $ make -C build
  * \endcode
  *
- * \subsection defOpt Default options
+ * \subsubsection defOpt Default options
  *
  * If we run the main of the library without givin anything as flag or option, as it follows:
  * \code
@@ -28,17 +28,17 @@
  * the programm will create un histogramm of the invariant mass of two muons selected as follow:
  *  * p_{T} > 3.5 GeV and |y| < 2.0 (for the single muon)
  *  * at least 2 muons of opposite charge in each event
- *  * ( < p_T < ) GeV and |y| < 1.2 (for the dimuon)
+ *
  *
  *
  * \image html YResonancesFit.pdf "YResonancesFit.pdf"
  *
- * \subsection custOpt Custimize options
+ * \subsubsection custOpt Custimize options
  *
- * We can customize some cuts using the flags described in the
+ * We can customize some cuts on the dimuon state using the flags described in the
  * documentation of the file \c OptionParse.h.
  *
- * In this example, 20. < p_T < 30. GeV and |y|< 0.5
+ * In this example, 20. < p_T < 30. GeV and |y|< 0.5 for the dimuon state
  * \code
  * $ ./build/main/YLaunch -n "CustomizeCuts" -p 20. -P 30. -Y 0.5
  * \endcode
@@ -50,7 +50,8 @@
  * \section program_des Description of main (and functionality of libraries)
  * 
  * \subsubsection option_param Choose of the parameters and flags
- * 
+ * The default parameters for the cuts are defined in the \c main.C file.
+ * If the user use the flags for customixìze them, the default value are replaced when the function \c optionParse() is called.
  * \subsubsection data_load Data Loading
  * The data are loaded and manipulated (to have useful variables) using the functions defined inside \c df_set.h
  *
@@ -68,6 +69,12 @@
  * The histogramm and the fitted function are drawn on a canvas which is saved.
  *
  * \subsubsection diffCS Calculate and plot the differential cross section
+ * Using the customizable function \c fitRoo(), it is possible calculate the differential cross section of the process Y->\mu+\mu-
+ *
+ * $$ {d\sigma \over dp_t} = {N \over L * \Delta p_t * e_uu * e_sg * e_vp * A} $$
+ 
+ * where $N$ is a fit parameter that says how many events are under the signal function and \Delta p_t is the width of the bin in p_T (i.e. the width of cut on p_T).
+ * A more deteil description of the functions used it can be found in \c diffCrossection.h.
  * \image html diffCrossSection.pdf "diffCrossSection.pdf"
  * 
  * \section test_doc Testing
