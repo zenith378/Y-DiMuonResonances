@@ -106,7 +106,7 @@ Default options</h3>
 <p >If we run the main of the library without givin anything as flag or option, as it follows: </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch</div>
 <div class="ttc" id="amain_8C_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> main.C:33</div></div>
 </div><!-- fragment --><p> the programm will create un histogramm of the invariant mass of two muons selected as follow:</p><ul>
-<li>p_{T} &gt; 3.5 GeV and |y| &lt; 2.0 (for the single muon)</li>
+<li>$p_{T} &gt; 3.5 GeV$ and $|y| &lt; 2.0$ (for the single muon)</li>
 <li>at least 2 muons of opposite charge in each event</li>
 </ul>
 <div class="image">
@@ -116,7 +116,7 @@ YResonancesFit.pdf</div></div>
 <h3><a class="anchor" id="custOpt"></a>
 Custimize options</h3>
 <p >We can customize some cuts on the dimuon state using the flags described in the documentation of the file <code>OptionParse.h</code>.</p>
-<p >In this example, 20.0 &lt; p_T &lt; 30.0 GeV and |y| &lt; 0.5 for the dimuon state </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch -<a class="code hl_variable" href="diffCrossSection_8C.html#acfc02ec89670db29251fda6a66602ce2">n</a> <span class="stringliteral">&quot;CustomizeCuts&quot;</span> -p 20. -P 30. -Y 0.5</div>
+<p >In this example, $20.0 &lt; p_T &lt; 30.0$ GeV and $|y| &lt; 0.5$ for the dimuon state </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch -<a class="code hl_variable" href="diffCrossSection_8C.html#acfc02ec89670db29251fda6a66602ce2">n</a> <span class="stringliteral">&quot;CustomizeCuts&quot;</span> -p 20. -P 30. -Y 0.5</div>
 <div class="ttc" id="adiffCrossSection_8C_html_acfc02ec89670db29251fda6a66602ce2"><div class="ttname"><a href="diffCrossSection_8C.html#acfc02ec89670db29251fda6a66602ce2">n</a></div><div class="ttdeci">const int n</div><div class="ttdef"><b>Definition:</b> diffCrossSection.C:33</div></div>
 </div><!-- fragment --> <div class="image">
 <img src="CustomizeCuts.pdf" alt=""/>
@@ -143,8 +143,10 @@ Fit the Function and save it in a canvas</h3>
 <h3><a class="anchor" id="diffCS"></a>
 Calculate and plot the differential cross section</h3>
 <p >Using the customizable function <code><a class="el" href="fitRoo_8h.html#a84fb8d2142c443d16fb022c61687a943">fitRoo()</a></code>, it is possible calculate the differential cross section of the process Y-&gt;\mu+\mu-</p>
-<p >\( {d\sigma \over dp_t} = {N \over L * \Delta p_t * e_uu * e_sg * e_vp * A} \)</p>
-<p >where $N$ is a fit parameter that says how many events are under the signal function and \Delta p_t is the width of the bin in p_T (i.e. the width of cut on p_T). A more deteil description of the functions used it can be found in <code><a class="el" href="diffCrossSection_8h.html">diffCrossSection.h</a></code>. </p><div class="image">
+<p class="formulaDsp">
+\[ {d\sigma \over dp_t} = {N \over L * \Delta p_t * e_uu * e_sg * e_vp * A} \]
+</p>
+<p >where $N$ is a fit parameter that says how many events are under the signal function and $\Delta p_t$ is the width of the bin in $p_T$ (i.e. the width of cut on the trasverse momentum). A more deteil description of the functions used it can be found in <code><a class="el" href="diffCrossSection_8h.html">diffCrossSection.h</a></code>. </p><div class="image">
 <img src="diffCrossSection.pdf" alt=""/>
 <div class="caption">
 diffCrossSection.pdf</div></div>
