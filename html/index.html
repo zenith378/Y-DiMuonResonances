@@ -92,11 +92,11 @@ Introduction</h1>
 <p >Brief descrption of the program workflow (main) and the main function.</p>
 <h1><a class="anchor" id="example_usage"></a>
 A simple example usage</h1>
-<h2><a class="anchor" id="Default"></a>
-options</h2>
-<p >If we run the main of the library without givin anything as flag or option, as it follows: </p><div class="fragment"><div class="line">$ cmake -S . -B ./build</div>
+<p >For compiling we need to type </p><div class="fragment"><div class="line">$ cmake -S . -B ./build</div>
 <div class="line">$ make -C build</div>
-<div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch</div>
+</div><!-- fragment --><h2><a class="anchor" id="Default"></a>
+options</h2>
+<p >If we run the main of the library without givin anything as flag or option, as it follows: </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch</div>
 <div class="ttc" id="amain_8C_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> main.C:33</div></div>
 </div><!-- fragment --><p> the programm will create un histogramm of the invariant mass of two muons selected as follow:</p><ul>
 <li>p_{T} &gt; 3.5 GeV and |y| &lt; 2.0 (for the single muon)</li>
@@ -106,18 +106,19 @@ options</h2>
 <div class="image">
 <img src="YResonancesFit.pdf" alt=""/>
 <div class="caption">
-Caption: YResonancesFit.pdf</div></div>
+YResonancesFit.pdf</div></div>
 <h2><a class="anchor" id="Custimize"></a>
 options</h2>
 <p >We can customize some cuts using the flags described in the documentation of the file OptionParse.h.</p>
-<p >In this example, 20. &lt; p_T &lt; 30. GeV and |y|&lt; 0.5 </p><div class="fragment"><div class="line">$ cmake -S . -B ./build</div>
-<div class="line">$ make -C build</div>
-<div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch -<a class="code hl_variable" href="diffCrossection_8C.html#acfc02ec89670db29251fda6a66602ce2">n</a> <span class="stringliteral">&quot;CustomizeCuts&quot;</span> -p 20. -P 30. -y -0.5 -Y 0.5</div>
+<p >In this example, 20. &lt; p_T &lt; 30. GeV and |y|&lt; 0.5 </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch -<a class="code hl_variable" href="diffCrossection_8C.html#acfc02ec89670db29251fda6a66602ce2">n</a> <span class="stringliteral">&quot;CustomizeCuts&quot;</span> -p 20. -P 30. -Y 0.5</div>
 <div class="ttc" id="adiffCrossection_8C_html_acfc02ec89670db29251fda6a66602ce2"><div class="ttname"><a href="diffCrossection_8C.html#acfc02ec89670db29251fda6a66602ce2">n</a></div><div class="ttdeci">const int n</div><div class="ttdef"><b>Definition:</b> diffCrossection.C:33</div></div>
 </div><!-- fragment --> <div class="image">
-<img src="YResonancesFit.pdf" alt=""/>
+<img src="CustomizeCuts.pdf" alt=""/>
 <div class="caption">
-Caption: CustomizeCuts.pdf</div></div>
+CustomizeCuts.pdf</div></div>
+<h2><a class="anchor" id="Different"></a>
+Cross Section option (?)</h2>
+<p >"diffCrossSection.pdf"</p>
 <h1><a class="anchor" id="program_des"></a>
 Description of main (and functionality of libraries)</h1>
 <h2><a class="anchor" id="option_param"></a>

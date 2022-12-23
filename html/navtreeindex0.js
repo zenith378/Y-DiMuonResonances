@@ -77,6 +77,7 @@ var NAVTREEINDEX0 =
 "index.html":[0],
 "index.html#Custimize":[0,1,1],
 "index.html#Default":[0,1,0],
+"index.html#Different":[0,1,2],
 "index.html#Documentation":[0,4],
 "index.html#apply_cut":[0,2,2],
 "index.html#data_load":[0,2,1],
