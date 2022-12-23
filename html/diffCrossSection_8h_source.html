@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>YFit: YFit/include/diffCrossection.h Source File</title>
+<title>YFit: YFit/include/diffCrossSection.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('diffCrossection_8h_source.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('diffCrossSection_8h_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -82,10 +82,10 @@ $(document).ready(function(){initNavTree('diffCrossection_8h_source.html',''); i
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">diffCrossection.h</div></div>
+  <div class="headertitle"><div class="title">diffCrossSection.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="diffCrossection_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<a href="diffCrossSection_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef difffCrossection_h</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define difffCrossection_h</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('diffCrossection_8h_source.html',''); i
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="SpectrumPlot_8h.html">SpectrumPlot.h</a>&quot;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="fitRoo_8h.html">fitRoo.h</a>&quot;</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="optionParse_8h.html">optionParse.h</a>&quot;</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="diffCrossection_8h.html">diffCrossection.h</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;diffCrossection.h&quot;</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;TApplication.h&quot;</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;TRootCanvas.h&quot;</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;TGraphErrors.h&quot;</span></div>
@@ -110,33 +110,32 @@ $(document).ready(function(){initNavTree('diffCrossection_8h_source.html',''); i
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">struct </span><a class="code hl_struct" href="structdcsbin.html">dcsbin</a>;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>Double_t <a class="code hl_function" href="diffCrossection_8h.html#abda999553dd2c035a28bfd3f21fee8c5">diffCrossSec</a>(<span class="keywordtype">double</span> N, <span class="keywordtype">float</span> wpt);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>Double_t <a class="code hl_function" href="diffCrossSection_8h.html#abda999553dd2c035a28bfd3f21fee8c5">diffCrossSec</a>(<span class="keywordtype">double</span> N, <span class="keywordtype">float</span> wpt);</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><a class="code hl_struct" href="structdcsbin.html">dcsbin</a> <a class="code hl_function" href="diffCrossection_8h.html#a96f9674409716a52f53e6fe5ea939704">setset</a>(<span class="keywordtype">float</span> <a class="code hl_variable" href="structdcsbin.html#a101236bac3cf7733a93e1caddb7343b9">ptm</a>, <span class="keywordtype">float</span> <a class="code hl_variable" href="structdcsbin.html#a4fb8a2bc0cd03571fef4fe0c77a18322">ptM</a>, ROOT::RDF::RNode &amp;df, std::string nameFile);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><a class="code hl_struct" href="structdcsbin.html">dcsbin</a> <a class="code hl_function" href="diffCrossSection_8h.html#a96f9674409716a52f53e6fe5ea939704">setset</a>(<span class="keywordtype">float</span> <a class="code hl_variable" href="structdcsbin.html#a101236bac3cf7733a93e1caddb7343b9">ptm</a>, <span class="keywordtype">float</span> <a class="code hl_variable" href="structdcsbin.html#a4fb8a2bc0cd03571fef4fe0c77a18322">ptM</a>, ROOT::RDF::RNode &amp;df, std::string nameFile);</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keywordtype">int</span> <a class="code hl_function" href="diffCrossection_8h.html#a2721807d9f0fe3e93902915a93a4deb8">diffCrossection</a>(ROOT::RDF::RNode &amp;df);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keywordtype">int</span> <a class="code hl_function" href="diffCrossSection_8h.html#a9414754617027ba74cb7bc918c05c6c8">diffCrossSection</a>(ROOT::RDF::RNode &amp;df);</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif </span><span class="comment">/* difffCrossection_h */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aCuts_8h_html"><div class="ttname"><a href="Cuts_8h.html">Cuts.h</a></div><div class="ttdoc">Selection of the data.</div></div>
 <div class="ttc" id="aSpectrumPlot_8h_html"><div class="ttname"><a href="SpectrumPlot_8h.html">SpectrumPlot.h</a></div><div class="ttdoc">Function to plot the spectrum of the dataset which is currently used and create an histogram.</div></div>
-<div class="ttc" id="adiffCrossection_8h_html"><div class="ttname"><a href="diffCrossection_8h.html">diffCrossection.h</a></div><div class="ttdoc">Function to plot the differential cross section for the Y1S, 2S and 3S in trasverse momentum.</div></div>
-<div class="ttc" id="adiffCrossection_8h_html_a2721807d9f0fe3e93902915a93a4deb8"><div class="ttname"><a href="diffCrossection_8h.html#a2721807d9f0fe3e93902915a93a4deb8">diffCrossection</a></div><div class="ttdeci">int diffCrossection(ROOT::RDF::RNode &amp;df)</div><div class="ttdoc">Plot the differential cross section calculate for each bin for the Y1S, 2S and 3S as a function of th...</div><div class="ttdef"><b>Definition:</b> diffCrossection.C:95</div></div>
-<div class="ttc" id="adiffCrossection_8h_html_a96f9674409716a52f53e6fe5ea939704"><div class="ttname"><a href="diffCrossection_8h.html#a96f9674409716a52f53e6fe5ea939704">setset</a></div><div class="ttdeci">dcsbin setset(float ptm, float ptM, ROOT::RDF::RNode &amp;df, std::string nameFile)</div><div class="ttdoc">Calculate the differential cross section (multiply by the relative branching ratio) for one bin in tr...</div><div class="ttdef"><b>Definition:</b> diffCrossection.C:48</div></div>
-<div class="ttc" id="adiffCrossection_8h_html_abda999553dd2c035a28bfd3f21fee8c5"><div class="ttname"><a href="diffCrossection_8h.html#abda999553dd2c035a28bfd3f21fee8c5">diffCrossSec</a></div><div class="ttdeci">Double_t diffCrossSec(double N, float wpt)</div><div class="ttdoc">calculate the differential cross section given the functin that describe the mass distribution (model...</div><div class="ttdef"><b>Definition:</b> diffCrossection.C:42</div></div>
+<div class="ttc" id="adiffCrossSection_8h_html_a9414754617027ba74cb7bc918c05c6c8"><div class="ttname"><a href="diffCrossSection_8h.html#a9414754617027ba74cb7bc918c05c6c8">diffCrossSection</a></div><div class="ttdeci">int diffCrossSection(ROOT::RDF::RNode &amp;df)</div><div class="ttdoc">Plot the differential cross section calculate for each bin for the Y1S, 2S and 3S as a function of th...</div><div class="ttdef"><b>Definition:</b> diffCrossSection.C:95</div></div>
+<div class="ttc" id="adiffCrossSection_8h_html_a96f9674409716a52f53e6fe5ea939704"><div class="ttname"><a href="diffCrossSection_8h.html#a96f9674409716a52f53e6fe5ea939704">setset</a></div><div class="ttdeci">dcsbin setset(float ptm, float ptM, ROOT::RDF::RNode &amp;df, std::string nameFile)</div><div class="ttdoc">Calculate the differential cross section (multiply by the relative branching ratio) for one bin in tr...</div><div class="ttdef"><b>Definition:</b> diffCrossSection.C:48</div></div>
+<div class="ttc" id="adiffCrossSection_8h_html_abda999553dd2c035a28bfd3f21fee8c5"><div class="ttname"><a href="diffCrossSection_8h.html#abda999553dd2c035a28bfd3f21fee8c5">diffCrossSec</a></div><div class="ttdeci">Double_t diffCrossSec(double N, float wpt)</div><div class="ttdoc">calculate the differential cross section given the functin that describe the mass distribution (model...</div><div class="ttdef"><b>Definition:</b> diffCrossSection.C:42</div></div>
 <div class="ttc" id="afitRoo_8h_html"><div class="ttname"><a href="fitRoo_8h.html">fitRoo.h</a></div><div class="ttdoc">Function for fitting the data and displying the canvas.</div></div>
 <div class="ttc" id="aoptionParse_8h_html"><div class="ttname"><a href="optionParse_8h.html">optionParse.h</a></div><div class="ttdoc">Handling flags and option parameters.</div></div>
-<div class="ttc" id="astructdcsbin_html"><div class="ttname"><a href="structdcsbin.html">dcsbin</a></div><div class="ttdef"><b>Definition:</b> diffCrossection.C:27</div></div>
-<div class="ttc" id="astructdcsbin_html_a101236bac3cf7733a93e1caddb7343b9"><div class="ttname"><a href="structdcsbin.html#a101236bac3cf7733a93e1caddb7343b9">dcsbin::ptm</a></div><div class="ttdeci">float ptm</div><div class="ttdef"><b>Definition:</b> diffCrossection.C:28</div></div>
-<div class="ttc" id="astructdcsbin_html_a4fb8a2bc0cd03571fef4fe0c77a18322"><div class="ttname"><a href="structdcsbin.html#a4fb8a2bc0cd03571fef4fe0c77a18322">dcsbin::ptM</a></div><div class="ttdeci">float ptM</div><div class="ttdef"><b>Definition:</b> diffCrossection.C:28</div></div>
+<div class="ttc" id="astructdcsbin_html"><div class="ttname"><a href="structdcsbin.html">dcsbin</a></div><div class="ttdef"><b>Definition:</b> diffCrossSection.C:27</div></div>
+<div class="ttc" id="astructdcsbin_html_a101236bac3cf7733a93e1caddb7343b9"><div class="ttname"><a href="structdcsbin.html#a101236bac3cf7733a93e1caddb7343b9">dcsbin::ptm</a></div><div class="ttdeci">float ptm</div><div class="ttdef"><b>Definition:</b> diffCrossSection.C:28</div></div>
+<div class="ttc" id="astructdcsbin_html_a4fb8a2bc0cd03571fef4fe0c77a18322"><div class="ttname"><a href="structdcsbin.html#a4fb8a2bc0cd03571fef4fe0c77a18322">dcsbin::ptM</a></div><div class="ttdeci">float ptM</div><div class="ttdef"><b>Definition:</b> diffCrossSection.C:28</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_13a6baedfa387399723bfc39e0bc3cc4.html">YFit</a></li><li class="navelem"><a class="el" href="dir_33bf31e38b0246880c826fe6c405ac4f.html">include</a></li><li class="navelem"><a class="el" href="diffCrossection_8h.html">diffCrossection.h</a></li>
+    <li class="navelem"><a class="el" href="dir_13a6baedfa387399723bfc39e0bc3cc4.html">YFit</a></li><li class="navelem"><a class="el" href="dir_33bf31e38b0246880c826fe6c405ac4f.html">include</a></li><li class="navelem"><a class="el" href="diffCrossSection_8h.html">diffCrossSection.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>

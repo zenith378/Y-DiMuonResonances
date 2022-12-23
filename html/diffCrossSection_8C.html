@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>YFit: YFit/src/diffCrossection.C File Reference</title>
+<title>YFit: YFit/src/diffCrossSection.C File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('diffCrossection_8C.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('diffCrossSection_8C.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -86,7 +86,7 @@ $(document).ready(function(){initNavTree('diffCrossection_8C.html',''); initResi
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
-  <div class="headertitle"><div class="title">diffCrossection.C File Reference</div></div>
+  <div class="headertitle"><div class="title">diffCrossSection.C File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;ROOT/RDataFrame.hxx&quot;</code><br />
@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('diffCrossection_8C.html',''); initResi
 <code>#include &quot;<a class="el" href="SpectrumPlot_8h_source.html">SpectrumPlot.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="fitRoo_8h_source.html">fitRoo.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="optionParse_8h_source.html">optionParse.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="diffCrossection_8h_source.html">diffCrossection.h</a>&quot;</code><br />
+<code>#include &quot;diffCrossection.h&quot;</code><br />
 <code>#include &quot;TApplication.h&quot;</code><br />
 <code>#include &quot;TRootCanvas.h&quot;</code><br />
 <code>#include &quot;TGraph.h&quot;</code><br />
@@ -115,60 +115,34 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:abda999553dd2c035a28bfd3f21fee8c5"><td class="memItemLeft" align="right" valign="top">Double_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossection_8C.html#abda999553dd2c035a28bfd3f21fee8c5">diffCrossSec</a> (double N, float wpt)</td></tr>
-<tr class="memdesc:abda999553dd2c035a28bfd3f21fee8c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculate the differential cross section given the functin that describe the mass distribution (model), which Y is (i), and the width of the pt bin (wpt)  <a href="diffCrossection_8C.html#abda999553dd2c035a28bfd3f21fee8c5">More...</a><br /></td></tr>
+<tr class="memitem:abda999553dd2c035a28bfd3f21fee8c5"><td class="memItemLeft" align="right" valign="top">Double_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossSection_8C.html#abda999553dd2c035a28bfd3f21fee8c5">diffCrossSec</a> (double N, float wpt)</td></tr>
+<tr class="memdesc:abda999553dd2c035a28bfd3f21fee8c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculate the differential cross section given the functin that describe the mass distribution (model), which Y is (i), and the width of the pt bin (wpt)  <a href="diffCrossSection_8C.html#abda999553dd2c035a28bfd3f21fee8c5">More...</a><br /></td></tr>
 <tr class="separator:abda999553dd2c035a28bfd3f21fee8c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96f9674409716a52f53e6fe5ea939704"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structdcsbin.html">dcsbin</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossection_8C.html#a96f9674409716a52f53e6fe5ea939704">setset</a> (float ptm, float ptM, ROOT::RDF::RNode &amp;df, std::string nameFile)</td></tr>
-<tr class="memdesc:a96f9674409716a52f53e6fe5ea939704"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the differential cross section (multiply by the relative branching ratio) for one bin in trasverso momentum.  <a href="diffCrossection_8C.html#a96f9674409716a52f53e6fe5ea939704">More...</a><br /></td></tr>
+<tr class="memitem:a96f9674409716a52f53e6fe5ea939704"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structdcsbin.html">dcsbin</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossSection_8C.html#a96f9674409716a52f53e6fe5ea939704">setset</a> (float ptm, float ptM, ROOT::RDF::RNode &amp;df, std::string nameFile)</td></tr>
+<tr class="memdesc:a96f9674409716a52f53e6fe5ea939704"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the differential cross section (multiply by the relative branching ratio) for one bin in trasverso momentum.  <a href="diffCrossSection_8C.html#a96f9674409716a52f53e6fe5ea939704">More...</a><br /></td></tr>
 <tr class="separator:a96f9674409716a52f53e6fe5ea939704"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2721807d9f0fe3e93902915a93a4deb8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossection_8C.html#a2721807d9f0fe3e93902915a93a4deb8">diffCrossection</a> (ROOT::RDF::RNode &amp;df)</td></tr>
-<tr class="memdesc:a2721807d9f0fe3e93902915a93a4deb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plot the differential cross section calculate for each bin for the Y1S, 2S and 3S as a function of the trasverse momentum.  <a href="diffCrossection_8C.html#a2721807d9f0fe3e93902915a93a4deb8">More...</a><br /></td></tr>
-<tr class="separator:a2721807d9f0fe3e93902915a93a4deb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9414754617027ba74cb7bc918c05c6c8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossSection_8C.html#a9414754617027ba74cb7bc918c05c6c8">diffCrossSection</a> (ROOT::RDF::RNode &amp;df)</td></tr>
+<tr class="memdesc:a9414754617027ba74cb7bc918c05c6c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plot the differential cross section calculate for each bin for the Y1S, 2S and 3S as a function of the trasverse momentum.  <a href="diffCrossSection_8C.html#a9414754617027ba74cb7bc918c05c6c8">More...</a><br /></td></tr>
+<tr class="separator:a9414754617027ba74cb7bc918c05c6c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:acfc02ec89670db29251fda6a66602ce2"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossection_8C.html#acfc02ec89670db29251fda6a66602ce2">n</a> =21</td></tr>
+<tr class="memitem:acfc02ec89670db29251fda6a66602ce2"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossSection_8C.html#acfc02ec89670db29251fda6a66602ce2">n</a> =21</td></tr>
 <tr class="separator:acfc02ec89670db29251fda6a66602ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e86dead3976cdbb08b43a0e07df9dad"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossection_8C.html#a2e86dead3976cdbb08b43a0e07df9dad">L</a> =11.6</td></tr>
+<tr class="memitem:a2e86dead3976cdbb08b43a0e07df9dad"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossSection_8C.html#a2e86dead3976cdbb08b43a0e07df9dad">L</a> =11.6</td></tr>
 <tr class="separator:a2e86dead3976cdbb08b43a0e07df9dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba57bbb8f253f595f395e0eea7a51ca1"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossection_8C.html#aba57bbb8f253f595f395e0eea7a51ca1">e_uu</a> = 0.75</td></tr>
+<tr class="memitem:aba57bbb8f253f595f395e0eea7a51ca1"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossSection_8C.html#aba57bbb8f253f595f395e0eea7a51ca1">e_uu</a> = 0.75</td></tr>
 <tr class="separator:aba57bbb8f253f595f395e0eea7a51ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ce4c7b9dc0465c3d44a88f45671b126"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossection_8C.html#a9ce4c7b9dc0465c3d44a88f45671b126">e_sg</a> = 0.5</td></tr>
+<tr class="memitem:a9ce4c7b9dc0465c3d44a88f45671b126"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossSection_8C.html#a9ce4c7b9dc0465c3d44a88f45671b126">e_sg</a> = 0.5</td></tr>
 <tr class="separator:a9ce4c7b9dc0465c3d44a88f45671b126"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22922b3c0503b3ebf9d1776de7fd8ac0"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossection_8C.html#a22922b3c0503b3ebf9d1776de7fd8ac0">e_vp</a> = 0.99</td></tr>
+<tr class="memitem:a22922b3c0503b3ebf9d1776de7fd8ac0"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossSection_8C.html#a22922b3c0503b3ebf9d1776de7fd8ac0">e_vp</a> = 0.99</td></tr>
 <tr class="separator:a22922b3c0503b3ebf9d1776de7fd8ac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66752f213e8b1d9263892577ce97950e"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossection_8C.html#a66752f213e8b1d9263892577ce97950e">A</a> =1</td></tr>
+<tr class="memitem:a66752f213e8b1d9263892577ce97950e"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossSection_8C.html#a66752f213e8b1d9263892577ce97950e">A</a> =1</td></tr>
 <tr class="separator:a66752f213e8b1d9263892577ce97950e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83c5e3840a04569d8c08711dd9c514d8"><td class="memItemLeft" align="right" valign="top">const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossection_8C.html#a83c5e3840a04569d8c08711dd9c514d8">BF</a> [3] ={2.48/100,1.93/100,2.18/100}</td></tr>
+<tr class="memitem:a83c5e3840a04569d8c08711dd9c514d8"><td class="memItemLeft" align="right" valign="top">const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossSection_8C.html#a83c5e3840a04569d8c08711dd9c514d8">BF</a> [3] ={2.48/100,1.93/100,2.18/100}</td></tr>
 <tr class="separator:a83c5e3840a04569d8c08711dd9c514d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a2721807d9f0fe3e93902915a93a4deb8" name="a2721807d9f0fe3e93902915a93a4deb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2721807d9f0fe3e93902915a93a4deb8">&#9670;&nbsp;</a></span>diffCrossection()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int diffCrossection </td>
-          <td>(</td>
-          <td class="paramtype">ROOT::RDF::RNode &amp;&#160;</td>
-          <td class="paramname"><em>df</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Plot the differential cross section calculate for each bin for the Y1S, 2S and 3S as a function of the trasverse momentum. </p>
-<p >The edge of the bin are defined in two array, these are used for calculate the differential cross section in each bin. These are then plotted on the same canva. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">df</td><td>data frame where the unselected data are stored </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="abda999553dd2c035a28bfd3f21fee8c5" name="abda999553dd2c035a28bfd3f21fee8c5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abda999553dd2c035a28bfd3f21fee8c5">&#9670;&nbsp;</a></span>diffCrossSec()</h2>
 
@@ -204,6 +178,32 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>differential cross section (multiply by the relative branching ratio) </dd></dl>
+
+</div>
+</div>
+<a id="a9414754617027ba74cb7bc918c05c6c8" name="a9414754617027ba74cb7bc918c05c6c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9414754617027ba74cb7bc918c05c6c8">&#9670;&nbsp;</a></span>diffCrossSection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int diffCrossSection </td>
+          <td>(</td>
+          <td class="paramtype">ROOT::RDF::RNode &amp;&#160;</td>
+          <td class="paramname"><em>df</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Plot the differential cross section calculate for each bin for the Y1S, 2S and 3S as a function of the trasverse momentum. </p>
+<p >The edge of the bin are defined in two array, these are used for calculate the differential cross section in each bin. These are then plotted on the same canva. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">df</td><td>data frame where the unselected data are stored </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -246,7 +246,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Calculate the differential cross section (multiply by the relative branching ratio) for one bin in trasverso momentum. </p>
-<p >This function select the data from the data frame df using the function <a class="el" href="Cuts_8h.html#ac0ca9394f49d849c125800240600fb25" title="Modified a muon DataFrame cutting on nMuon, Muon_charge, Dimuon_mass, Dimuon_pt and Dimuon_y.">Cuts()</a> defined in <a class="el" href="Cuts_8h.html" title="Selection of the data.">Cuts.h</a>. The cut on the trasverse momentum is given by the bin edges and the one on the rapidity is between -1.2 and 1.2. The data are plotted and fitted using the function fitRoo defined in <a class="el" href="fitRoo_8h.html" title="Function for fitting the data and displying the canvas.">fitRoo.h</a>. From the fit we can get the number of events under the peak of each Y resonance and using the function diffCrossSec, defined in <a class="el" href="diffCrossection_8h.html" title="Function to plot the differential cross section for the Y1S, 2S and 3S in trasverse momentum.">diffCrossection.h</a>, calculate the differential cross section for the bin. All the value usuful for the plotting are save inside the structur returned. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >This function select the data from the data frame df using the function <a class="el" href="Cuts_8h.html#ac0ca9394f49d849c125800240600fb25" title="Modified a muon DataFrame cutting on nMuon, Muon_charge, Dimuon_mass, Dimuon_pt and Dimuon_y.">Cuts()</a> defined in <a class="el" href="Cuts_8h.html" title="Selection of the data.">Cuts.h</a>. The cut on the trasverse momentum is given by the bin edges and the one on the rapidity is between -1.2 and 1.2. The data are plotted and fitted using the function fitRoo defined in <a class="el" href="fitRoo_8h.html" title="Function for fitting the data and displying the canvas.">fitRoo.h</a>. From the fit we can get the number of events under the peak of each Y resonance and using the function diffCrossSec, defined in diffCrossection.h, calculate the differential cross section for the bin. All the value usuful for the plotting are save inside the structur returned. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ptm</td><td>lower edge of the bin </td></tr>
     <tr><td class="paramname">ptM</td><td>is the upper edge of the bin </td></tr>
@@ -363,7 +363,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_13a6baedfa387399723bfc39e0bc3cc4.html">YFit</a></li><li class="navelem"><a class="el" href="dir_4b74e50f3f245eed235ef62576b8bfa5.html">src</a></li><li class="navelem"><a class="el" href="diffCrossection_8C.html">diffCrossection.C</a></li>
+    <li class="navelem"><a class="el" href="dir_13a6baedfa387399723bfc39e0bc3cc4.html">YFit</a></li><li class="navelem"><a class="el" href="dir_4b74e50f3f245eed235ef62576b8bfa5.html">src</a></li><li class="navelem"><a class="el" href="diffCrossSection_8C.html">diffCrossSection.C</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
