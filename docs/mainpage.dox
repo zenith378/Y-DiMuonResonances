@@ -26,7 +26,7 @@
  * $ ./build/main/YLaunch
  * \endcode
  * the programm will create un histogramm of the invariant mass of two muons selected as follow:
- *  * p_{T} > 3.5 GeV and |y| < 2.0 (for the single muon)
+ *  * $p_{T} > 3.5 GeV$ and $|y| < 2.0$ (for the single muon)
  *  * at least 2 muons of opposite charge in each event
  *
  * \image html YResonancesFit.pdf "YResonancesFit.pdf"
@@ -36,7 +36,7 @@
  * We can customize some cuts on the dimuon state using the flags described in the
  * documentation of the file \c OptionParse.h.
  *
- * In this example, 20.0 < p_T < 30.0 GeV and |y| < 0.5 for the dimuon state
+ * In this example, $20.0 < p_T < 30.0$ GeV and $|y| < 0.5$ for the dimuon state
  * \code
  * $ ./build/main/YLaunch -n "CustomizeCuts" -p 20. -P 30. -Y 0.5
  * \endcode
@@ -69,9 +69,12 @@
  * \subsubsection diffCS Calculate and plot the differential cross section
  * Using the customizable function \c fitRoo(), it is possible calculate the differential cross section of the process Y->\mu+\mu-
  *
- * \f$ {d\sigma \over dp_t} = {N \over L * \Delta p_t * e_uu * e_sg * e_vp * A} \f$
- 
- * where $N$ is a fit parameter that says how many events are under the signal function and \Delta p_t is the width of the bin in p_T (i.e. the width of cut on p_T).
+ * \f[
+ * {d\sigma \over dp_t} = {N \over L * \Delta p_t * e_uu * e_sg * e_vp * A}
+ * \f]
+ *
+ * where $N$ is a fit parameter that says how many events are under the signal function and $\Delta p_t$ is the width of the bin in $p_T$ (i.e. the width of cut
+ * on the trasverse momentum).
  * A more deteil description of the functions used it can be found in \c diffCrossSection.h.
  * \image html diffCrossSection.pdf "diffCrossSection.pdf"
  * 
