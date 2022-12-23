@@ -26,7 +26,7 @@
 #include "SpectrumPlot.h"
 #include "fitRoo.h"
 #include "optionParse.h"
-#include "diffCrossection.h"
+#include "diffCrossSection.h"
 #include "RooFitResult.h"
 
 
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     RooFitResult * fitresult = fitRoo(h,mode, fitfunc, depth, ptm, ptM, ym, yM, nameFile, verbose);
     }
     if(mode==1)
-    diffCrossection(df);
+    PlotDiffCrossSection(df);
 
     return 0;
 }

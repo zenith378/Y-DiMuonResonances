@@ -1,27 +1,81 @@
 /*!
  * \mainpage YFit YFit Library Documentation
  *
- * This C++ Library was created by Giulio Cordova and Matilde Carminati for the Computing Methods exam.
+ * This C++ Library was created by Giulio Cordova and Matilde Carminati for the Computing Methods for Experimental Physics and Data Analysis exam.
  *
  * \section intro_sec Introduction
- * YFit Library is a simple library used to fit the first three Y resonances from the open cms dimuon dataset
+ * YFit Library is a simple library used to fit the first three Y resonances from the open
+ * cms dimuon dataset and to calculate the differentian cross section of the same process
+ * as a function of the trasverse momentum.
  * It comes together with its own main in order to use it.
  *
- * Brief descrption of the program workflow (main) and the main function.
+ * Brief description main file.
  *
  * \section example_usage A simple example usage
- * *
+ * The following lines are used for compiling the code and do the testing.
+ * \code
+ * $ cmake -S . -B ./build
+ * $ make -C build
+ * \endcode
+ *
+ * \subsubsection defOpt Default options
+ *
+ * If we run the main of the library without givin anything as flag or option, as it follows:
+ * \code
+ * $ ./build/main/YLaunch
+ * \endcode
+ * the programm will create un histogramm of the invariant mass of two muons selected as follow:
+ *  * $p_{T} > 3.5 GeV$ and $|y| < 2.0$ (for the single muon)
+ *  * at least 2 muons of opposite charge in each event
+ *
+ * \image html YResonancesFit.pdf "YResonancesFit.pdf"
+ *
+ * \subsubsection custOpt Custimize options
+ *
+ * We can customize some cuts on the dimuon state using the flags described in the
+ * documentation of the file \c OptionParse.h.
+ *
+ * In this example, $20.0 < p_T < 30.0$ GeV and $|y| < 0.5$ for the dimuon state
+ * \code
+ * $ ./build/main/YLaunch -n "CustomizeCuts" -p 20. -P 30. -Y 0.5
+ * \endcode
+ * \image html CustomizeCuts.pdf "CustomizeCuts.pdf"
+ *
+ *
+ * In both cases the plot of the differential cross section is created and saved inside the same folder (/Y-DiMuonResonance/Plots)
+ *
  * \section program_des Description of main (and functionality of libraries)
  * 
- * \subsection option_param Choose of the parameters and flags
- * 
- * \subsection data_load Data Loading
+ * \subsubsection option_param Choose of the parameters and flags
+ * The default parameters for the cuts are defined in the \c main.C file.
+ * If the user use the flags for customixìze them, the default value are replaced when the function \c ProcessArgs() is called.
+ * \subsubsection data_load Data Loading
+ * The data are loaded and manipulated (to have useful variables) using the functions defined inside \c df_set.h
  *
- * \subsection apply_cut Apply some cuts!
+ * \subsubsection apply_cut Apply some cuts!
+ * The data are selected to be two muons of opposite charge with an invariant mass round the mass of the Y resonances.
+ * Also it is possible to choose other cuts on the trasverse momentum and the rapidity of the dimuon state.
  *
- * \subsection spectrum_draw Draw a preliminary Spectrum Plot
+ * \subsubsection spectrum_draw Draw a preliminary Spectrum Plot
+ * The selected data are preliminary drawn on a canvas as an histohgramm of the invariant mass of the dimuon.
+ * The canvas is saved as *Preliminary_histo.pdf*.
+ * The function used for that are better descibed in the documentation of the file \c SpectrumPlot.h
  *
- * \subsection fit_roo Fit the Function and save it in a Canvas
+ * \subsubsection fit_roo Fit the Function and save it in a canvas
+ * The plotted histogramm is fitted to a function ,a BW by default, but it's possible to choose a gaussian or a t-student.
+ * The histogramm and the fitted function are drawn on a canvas which is saved.
+ *
+ * \subsubsection diffCS Calculate and plot the differential cross section
+ * Using the customizable function \c fitRoo(), it is possible calculate the differential cross section of the process Y->\mu+\mu-
+ *
+ * \f[
+ * \frac{d\sigma}{dp_t} = \frac{N}{L \Delta p_t e_{uu} e_{sg} e_{vp} A}
+ * \f]
+ *
+ * where $N$ is a fit parameter that says how many events are under the signal function and $\Delta p_T$ is the width of the bin in $p_T$ (i.e. the width of cut
+ * on the trasverse momentum).
+ * A more deteil description of the functions used it can be found in \c diffCrossSection.h.
+ * \image html diffCrossSection.pdf "diffCrossSection.pdf"
  * 
  * \section test_doc Testing
  * 

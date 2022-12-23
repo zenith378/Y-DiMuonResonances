@@ -13,7 +13,7 @@
 #include "SpectrumPlot.h"
 #include "fitRoo.h"
 #include "optionParse.h"
-#include "diffCrossection.h"
+#include "diffCrossSection.h"
 #include "TApplication.h"
 #include "TRootCanvas.h"
 #include "TGraph.h"
@@ -82,7 +82,7 @@ dcsbin setset(float ptm, float ptM, ROOT::RDF::RNode &df, std::string nameFile)
 }
 
 
-void diffCrossection(ROOT::RDF::RNode &df){
+int PlotDiffCrossSection(ROOT::RDF::RNode &df){
     const int n=22;
     //Define array for binning the differential cross section
     double ptm[n] = {10.,12.,14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.};

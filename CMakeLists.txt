@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 3.5)
 
-project(CMEPDACorCar VERSION 0.1)
+project(CMEPDACorCar VERSION 0.9)
 
 
 # Add sub directories
