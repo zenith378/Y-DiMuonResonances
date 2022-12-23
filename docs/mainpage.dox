@@ -36,7 +36,7 @@
  * \subsection custOpt Custimize options
  *
  * We can customize some cuts using the flags described in the
- * documentation of the file OptionParse.h.
+ * documentation of the file \c OptionParse.h.
  *
  * In this example, 20. < p_T < 30. GeV and |y|< 0.5
  * \code
@@ -52,12 +52,22 @@
  * \subsection option_param Choose of the parameters and flags
  * 
  * \subsection data_load Data Loading
+ * The data are loaded and manipulated (to have useful variables) using the functions defined inside \c df_set.h
  *
  * \subsection apply_cut Apply some cuts!
+ * The data are selected to be two muons of opposite charge with an invariant mass round the mass of the Y resonances.
+ * Also it is possible to choose other cuts on the trasverse momentum and the rapidity of the dimuon state.
  *
  * \subsection spectrum_draw Draw a preliminary Spectrum Plot
+ * The selected data are preliminary drawn on a canvas as an histohgramm of the invariant mass of the dimuon.
+ * The Canvas is saved as *Preliminary_histo.pdf*.
+ * The function used for that are better descibed in the documentation of th ìe file \c SpettrumPlot.h
  *
  * \subsection fit_roo Fit the Function and save it in a Canvas
+ * The plotted histogramm is fitted to a function ,a BW by default, but it's possible to choose a gaussian or a t-student.
+ * The histogramm and the fitted function are drawn on a canvas which is saved.
+ *
+ * \subsection diffCS Calculate and plot the differential cross section
  * 
  * \section test_doc Testing
  * 
