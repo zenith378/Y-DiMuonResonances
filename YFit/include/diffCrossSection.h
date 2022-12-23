@@ -3,6 +3,18 @@
  * \brief Function to plot the differential cross section for the Y1S, 2S and 3S in trasverse momentum
  *
  *
+ * In this file are defined the functions and objects used in order compute the differential cross section
+ * as a function of the trasverse momentum
+ * In particular, it is defined:
+ *
+ * struct dcsbin:
+ *
+ * Double_t diffCrossSec:
+ *
+ * dcsbin setset:
+ *
+ * int PlotDiffCrossSection:
+ *
  *******************************************************************************/
 
 #ifndef difffCrossection_h
@@ -66,6 +78,6 @@ dcsbin setset(float ptm, float ptM, ROOT::RDF::RNode &df, std::string nameFile);
  * The edge of the bin are defined in two array, these are used for calculate the differential cross section in each bin. These are then plotted on the same canva.
  * @param df data frame where the unselected data are stored
  ************************************************************************************************************************************************************************/
-int diffCrossSection(ROOT::RDF::RNode &df);
+int PlotDiffCrossSection(ROOT::RDF::RNode &df);
 
 #endif /* difffCrossection_h */

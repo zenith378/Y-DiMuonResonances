@@ -92,7 +92,7 @@ dcsbin setset(float ptm, float ptM, ROOT::RDF::RNode &df, std::string nameFile)
 }
 
 
-int diffCrossSection(ROOT::RDF::RNode &df){
+int PlotDiffCrossSection(ROOT::RDF::RNode &df){
     //TApplication *theApp = new TApplication("app", 0, 0);
     double ptm[n] = {12.,14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.};
     double ptM[n] = {14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.,100.};

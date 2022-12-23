@@ -9,8 +9,7 @@
  * as a function of the trasverse momentum.
  * It comes together with its own main in order to use it.
  *
- * In the main the data from the open source CMS data are stored in a RDataFrame and selected by some cuts.
- * The data are plotted in a histogram
+ * Brief description main file.
  *
  * \section example_usage A simple example usage
  * The following lines are used for compiling the code and do the testing.
@@ -70,10 +69,10 @@
  * Using the customizable function \c fitRoo(), it is possible calculate the differential cross section of the process Y->\mu+\mu-
  *
  * \f[
- * {d\sigma \over dp_t} = {N \over L * \Delta p_t * e_uu * e_sg * e_vp * A}
+ * \frac{d\sigma}{dp_t} = \frac{N}{L \Delta p_t e_{uu} e_{sg} e_{vp} A}
  * \f]
  *
- * where $N$ is a fit parameter that says how many events are under the signal function and $\Delta p_t$ is the width of the bin in $p_T$ (i.e. the width of cut
+ * where $N$ is a fit parameter that says how many events are under the signal function and $\Delta p_T$ is the width of the bin in $p_T$ (i.e. the width of cut
  * on the trasverse momentum).
  * A more deteil description of the functions used it can be found in \c diffCrossSection.h.
  * \image html diffCrossSection.pdf "diffCrossSection.pdf"
