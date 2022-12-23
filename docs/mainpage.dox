@@ -22,6 +22,7 @@
  * * at least 2 muons of opposite charge in each event
  * *
  * \image latex YResonancesFit.png
+ * \image html YResonancesFit.pdf
  *
  * \section program_des Description of main (and functionality of libraries)
  * 
