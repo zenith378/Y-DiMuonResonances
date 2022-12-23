@@ -19,7 +19,7 @@
  * \endcode
  * the programm will create un histogramm of the invariant mass of two muons selected as follow:
  * * p_T
- * \image latex YResonancesFit.pdf
+ * \image latex YResonancesFit.png
  *
  * \section program_des Description of main (and functionality of libraries)
  * 
