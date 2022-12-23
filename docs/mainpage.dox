@@ -1,4 +1,4 @@
-/*************************************
+/*!
  * \mainpage YFit YFit Library Documentation
  *
  * This C++ Library was created by Giulio Cordova and Matilde Carminati for the Computing Methods exam.
@@ -33,4 +33,4 @@
  * 
  * \section Documentation
  * 
- *******************************/
+ */
