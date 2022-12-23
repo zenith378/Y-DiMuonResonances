@@ -27,7 +27,10 @@ using namespace RooFit;
 TString formatPtString(int dr, float pmr, float pMr)
 {
     TString tmp;
-
+    if (pmr != pmr && pMr != pMr){
+        if (dr == 1 || dr == 2)
+            tmp.Form("10 < p_{T} < 100 GeV");
+    }
     if (pmr == pmr && pMr == pMr)
         tmp.Form("%.1f < p_{T} < %.1f GeV",pmr,pMr); //    std::to_string((int)pmr) + " < p_{T}< " + std::to_string((int)pMr) + " GeV";
 
@@ -38,9 +41,6 @@ TString formatPtString(int dr, float pmr, float pMr)
     if (pmr != pmr && pMr == pMr)
         tmp.Form("p_{T} < %.1f GeV",pMr); //tmp = tmp + "p_{T}< " + std::to_string((int)pMr) + " GeV";
 
-    if (pmr != pmr && pMr != pMr)
-        if (dr == 1 || dr == 2)
-            tmp.Form("10 < p_{T}< 100 GeV");
 
     return tmp;
 }
@@ -48,7 +48,10 @@ TString formatPtString(int dr, float pmr, float pMr)
 TString formatYString(int dr, float ymr, float yMr)
 {
     TString tmp;
-
+    if (ymr != ymr && yMr != yMr){
+        if (dr == 2)
+            tmp.Form("|y| < 0.6");
+    }
     if (ymr == ymr && yMr == yMr)
         tmp.Form("%.2f < |y| < %.2f",ymr,yMr); //tmp = std::to_string(ymr).substr(0, std::to_string(ymr).find(".") + 2 + 1) + " < |y| < " + std::to_string(yMr).substr(0, std::to_string(yMr).find(".") + 2 + 1);
 
@@ -58,22 +61,19 @@ TString formatYString(int dr, float ymr, float yMr)
     if (ymr != ymr && yMr == yMr)
         tmp.Form("|y| < %.2f",yMr); //tmp = tmp + "|y| < " + std::to_string(yMr).substr(0, std::to_string(yMr).find(".") + 2 + 1);
 
-    if (ymr != ymr && yMr != yMr)
-        if (dr == 2)
-            tmp.Form("|y| < 0.6");
+
 
     return tmp;
 }
 
 
 
-RooFitResult *fitRoo(TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, float yMr, std::string nfr, int vr)
+RooFitResult *fitRoo(TH1 *hh, int mr,int fr, int dr, float pmr, float pMr, float ymr, float yMr, std::string nfr, int vr)
 {
     // Declare observable x
     RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5, 11.5);
     RooDataHist rh("rh", "rh", x, Import(*hh));
     // create application to display the canvas while root runs
-    //TApplication *theApp = new TApplication("app", 0, 0);
     
     
     Int_t nb = hh->GetNbinsX();
@@ -102,13 +102,13 @@ RooFitResult *fitRoo(TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, f
     RooRealVar mean1("mean1", "mean of gaussians", 9.45, 9.3, 9.6);
     RooRealVar mean2("mean2", "mean of gaussians", 10.01, 9.8, 10.2);
     RooRealVar mean3("mean3", "mean of gaussians", 10.35, 10.15, 10.6);
-    RooRealVar sigma1("sigma1", "width of gaussians", 0.054, 0.001, 0.5);
-    RooRealVar sigma2("sigma2", "width of gaussians", 0.032, 0.001, 0.5);
+    RooRealVar sigma1("sigma1", "width of gaussians", 0.054, 0.001, 0.3);
+    RooRealVar sigma2("sigma2", "width of gaussians", 0.032, 0.001, 0.3);
     RooRealVar sigma3("sigma3", "width of gaussians", 0.020, 0.001, 0.5);
 
-    RooRealVar r1("r1", "r1", 10, 0.00, 100);
-    RooRealVar r2("r2", "r2", 1, 0.00, 100);
-    RooRealVar r3("r3", "r3", 1, 0.00, 100);
+    RooRealVar r1("r1", "r1", 10, 0.00, 1000);
+    RooRealVar r2("r2", "r2", 1, 0.00, 1000);
+    RooRealVar r3("r3", "r3", 1, 0.00, 1000);
 
     // Define signal
 
@@ -158,8 +158,8 @@ RooFitResult *fitRoo(TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, f
     RooAddPdf model("model", "model", RooArgList(*sig1, *sig2, *sig3, bkg), RooArgList(nsig1, nsig2, nsig3, nback));
 
     RooFitResult *fitResult;
-    //try
-    //{
+    try
+    {
         if (vr == 0)
             fitResult = model.fitTo(rh, Verbose(false), Warnings(false), Save(),RecoverFromUndefinedRegions(1), PrintEvalErrors(-1), PrintLevel(-1));
 
@@ -170,18 +170,20 @@ RooFitResult *fitRoo(TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, f
         // Print structure of composite pdf
         fitResult->Print("v"); // previous was t
 
-        //if (fitResult->status()!=0) // fitResult->covQual() < 2
-        //{
-        //    throw(std::runtime_error("Fit did not converge. Try relaxing cut filters or changing PDF."));
-        //}
-    //}
-    //catch (std::exception &msg)
-    //{
-    //    std::cerr << msg.what() << std::endl;
-    //    if(vr==0)
-    //    std::cerr <<"Set verbose flag on [-v], in order to print the parameters that have been updated in each minimisation step (MINUIT LOG).\n" << std::endl;
-    //    exit(1);
-    //}
+        if (fitResult->status()>4) // fitResult->covQual() < 2
+        {
+            throw(std::runtime_error("Fit did not converge."));
+        }
+    }
+    catch (std::exception &msg)
+    {
+        std::cerr << msg.what() << std::endl;
+        std::cerr <<"Exit with fit status: " << fitResult->status() << std::endl;
+        std::cerr << "Try relaxing cut filters or changing PDF." << std::endl;
+        if(vr==0)
+        std::cerr <<"Set verbose flag on [-v], in order to print the parameters that have been updated in each minimisation step (MINUIT LOG).\n" << std::endl;
+        exit(1);
+    }
 
 
     // Draw options
@@ -209,11 +211,10 @@ RooFitResult *fitRoo(TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, f
     // hpull->SetMarkerSize(1);
     hpull->SetMarkerStyle(6);
     hpull->SetLineWidth(0);
+    TApplication *theApp2 = new TApplication("app2", 0, 0);
 
     // Draw the frame on the canvas
-    TCanvas * c1 = new TCanvas("Fit", "Y Resonances Fit", 950, 800);
-    //TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
-    //rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
+    TCanvas * c2 = new TCanvas("Fit", "Y Resonances Fit", 950, 800);
 
     TPad *pad1 = new TPad("pad1", "The pad 80 of the height", 0.0, 0.2, 1.0, 1.0);
     TPad *pad2 = new TPad("pad2", "The pad 20 of the height", 0.0, 0.05, 1.0, 0.25);
@@ -262,11 +263,14 @@ RooFitResult *fitRoo(TH1 *hh, int fr, int dr, float pmr, float pMr, float ymr, f
     hpull->GetYaxis()->SetTitleFont(43);
     hpull->SetTitle("");
     hpull->Draw();
-    c1->Update();
+    c2->Update();
 
-    SavePlot(c1,nfr);
-
-    //theApp->Run();
+    SavePlot(c2,nfr);
+    if(mr==0){
+    TRootCanvas *rc2 = (TRootCanvas *)c2->GetCanvasImp();
+    rc2->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
+    theApp2->Run();
+    }
 
     return fitResult;
 }
