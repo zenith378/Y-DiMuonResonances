@@ -10,12 +10,15 @@
  * Brief descrption of the program workflow (main) and the main function.
  *
  * \section example_usage A simple example usage
- * *default option
+ * * default option
  * \code
- * $cmake -S . -B ./build
- * $make -C build
- * $./build/main/YLaunch
+ * $ cmake -S . -B ./build
+ * $ make -C build
+ * $ ./build/main/YLaunch
  * \endcode
+ *
+ * \image YResonancesFit.pdf
+ *
  * \section program_des Description of main (and functionality of libraries)
  * 
  * \subsection option_param Choose of the parameters and flags
