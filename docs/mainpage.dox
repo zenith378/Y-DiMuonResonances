@@ -25,8 +25,16 @@
  *  * at least 2 muons of opposite charge in each event
  *  * ( < p_T < ) GeV and |y| < 1.2 (for the dimuon)
  *
+ * imm 1
+ *
  * \image latex YResonancesFit.png
+ *
+ * imm 2
+ *
  * \image html YResonancesFit.png
+ *
+ * imm 3
+ *
  * \image html YResonancesFit.pdf
  *
  * * Custimize options
