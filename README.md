@@ -1,5 +1,5 @@
 # YCrossFit
-In this project we built a shared library named YCrossFit, for the CMEPDA exam. ![docs](https://github.com/zenith378/Y-DiMuonResonances/actions/workflows/doc.yml/badge.svg)
+In this project we built a shared library named YCrossFit, for the CMEPDA exam. ![docs](https://github.com/zenith378/Y-DiMuonResonances/actions/workflows/doc.yml/badge.svg) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 Using the Y(1S,2S,3S) resonances in two muons from the CMS open data, the main goals of this library are essentially two:
 - fitting them with customizable parameters;
