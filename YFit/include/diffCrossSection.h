@@ -79,6 +79,6 @@ dcsbin setset(float ptm, float ptM, ROOT::RDF::RNode &df, std::string nameFile);
  * @param df Dataframe where the unselected data are stored
  * 
  ************************************************************************************************************************************************************************/
-int PlotDiffCrossSection(ROOT::RDF::RNode &df);
+void PlotDiffCrossSection(ROOT::RDF::RNode &df);
 
 #endif /* difffCrossection_h */
