@@ -1,6 +1,7 @@
 # YCrossFit
-![docs](https://github.com/zenith378/Y-DiMuonResonances/actions/workflows/doc.yml/badge.svg)
-In this project we built a shared library named YCrossFit, for the CMEPDA exam. Using the Y(1S,2S,3S) resonances in two muons from the CMS open data, the main goals of this library are essentially two:
+In this project we built a shared library named YCrossFit, for the CMEPDA exam. ![docs](https://github.com/zenith378/Y-DiMuonResonances/actions/workflows/doc.yml/badge.svg)
+
+Using the Y(1S,2S,3S) resonances in two muons from the CMS open data, the main goals of this library are essentially two:
 - fitting them with customizable parameters;
 -  plotting the differential cross section in $p_T$.
 
@@ -24,7 +25,7 @@ the program will create the plot of the differential cross section in pt of the 
 -   at least 2 muons of opposite charge in each event
 -  an absolute value of rapidity less than 1.2
 
-![Final Result of the library](https://zenith378.github.io/Y-DiMuonResonances/html/diffCrossSection.pdf)
+![Final Result](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/diffCrossSection/diffCrossSection-1.png)
 
   
 ## Fit mode
@@ -33,15 +34,14 @@ This programs also offers a Fit functionality where the differential cross secti
 $ ./build/main/YLaunch --mode fit
 ```
 The following graph is produced, while the results of the fit are printed in the terminal. 
-![](https://zenith378.github.io/Y-DiMuonResonances/html/YResonancesFit.pdf)
+![Fit Mode](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/YResonancesFit-1.png)
 
-YResonancesFit.pdf
 
 ### Custimize options
 
 In Fit mode we can customize some cuts on the dimuon state using the flags described in the documentation of the file  `OptionParse.h`.
 
-Say for example, that we want to apply the cuts $20.0 < p_T < 30.0$ GeV and $|y| < 0.5$ for the dimuon state and save the plot in a file named CustomizeCuts.pdf.
+Say for example, that we want to apply the cuts $ 20.0 < p_T < 30.0 $ GeV and $|y| < 0.5$ for the dimuon state and save the plot in a file named CustomizeCuts.pdf.
 We can type in the terminal
 
 ```
@@ -49,9 +49,8 @@ $ ./build/main/YLaunch -m fit -n “CustomizeCuts” -p 20. -P 30. -Y 0.5
 ```
 and the following figure is produced and saved in the file CustomizeCut.pdf inside the Plots folder.
 
-![](https://zenith378.github.io/Y-DiMuonResonances/html/CustomizeCuts.pdf)
+![CustomizeCuts](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/CustomizeCuts/CustomizeCuts-1.png)
 
-CustomizeCuts.pdf
 
 # Description of main (and functionality of libraries)
 
@@ -127,9 +126,6 @@ $$
 $$
 where $N$ is a fit parameter that says how many events are under the signal function and $\Delta p_t$ is the width of the bin in $p_T$ (i.e. the width of cut on the trasverse momentum). A more detailed description of the functions used it can be found in  `[diffCrossSection.h]`.
 
-![](https://zenith378.github.io/Y-DiMuonResonances/html/diffCrossSection.pdf)
-
-diffCrossSection.pdf
 
 # Testing
 
