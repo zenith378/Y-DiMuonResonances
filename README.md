@@ -34,7 +34,7 @@ This programs also offers a Fit functionality where the differential cross secti
 $ ./build/main/YLaunch --mode fit
 ```
 The following graph is produced, while the results of the fit are printed in the terminal. 
-![Fit Mode](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/YResonancesFit-1.png)
+![Fit Mode](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/YResonancesFit-1.png)
 
 
 ### Custimize options
