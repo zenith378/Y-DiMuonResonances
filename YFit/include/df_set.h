@@ -44,7 +44,7 @@ using namespace ROOT::VecOps;
  * \return PtEtaPhiMVector
  * 
  ****************************************/
-ROOT::Math::PtEtaPhiMVector computeDiMuonFourVec(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass);
+ROOT::Math::PtEtaPhiMVector computeDiMuonFourVec(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass, RVec<float> &im0, RVec<float> &im1);
 
 /***************************************
  * 

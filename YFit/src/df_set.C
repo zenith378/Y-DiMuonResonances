@@ -17,10 +17,11 @@
 
 using namespace ROOT::VecOps;
 
-ROOT::Math::PtEtaPhiMVector computeDiMuonFourVec(RVec<float> &pt, RVec<float> &eta, RVec<float> &phi, RVec<float> &mass)
+
+ROOT::Math::PtEtaPhiMVector computeDiMuonFourVec(RVec<float> &pt, RVec<float> &eta, RVec<float> &phi, RVec<float> &mass, RVec<float> &im0, RVec<float> &im1)
 {
-  ROOT::Math::PtEtaPhiMVector m1(pt[0], eta[0], phi[0], mass[0]);
-  ROOT::Math::PtEtaPhiMVector m2(pt[1], eta[1], phi[1], mass[1]);
+  ROOT::Math::PtEtaPhiMVector m1(pt[im0[0]], eta[im0[0]], phi[im0[0]], mass[im0[0]]);
+  ROOT::Math::PtEtaPhiMVector m2(pt[im1[0]], eta[im1[0]], phi[im1[0]], mass[im1[0]]);
   return (m1 + m2);
 }
 
@@ -88,11 +89,18 @@ ROOT::RDF::RNode df_set()
     // reading dataframe from online NanoAOD
     ROOT::RDataFrame df_temp("Events", "root://eospublic.cern.ch//eos/opendata/cms/derived-data/AOD2NanoAODOutreachTool/Run2012BC_DoubleMuParked_Muons.root");
     // define more useful variables in the dataframe
-    auto df_set = df_temp.Define("Dimuon_FourVec", computeDiMuonFourVec, {"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass"})
-                      .Define("Dimuon_mass", computeDiMuonInvariantMass, {"Dimuon_FourVec"})
-                      .Define("Dimuon_pt", computeDiMuonPT, {"Dimuon_FourVec"}) // Compute pt and rapidity (y) of dimuon
-                      .Define("Dimuon_beta", computeDiMuonBeta, {"Dimuon_FourVec"})
-                      .Define("Dimuon_y", computeDiMuonRapidity, {"Dimuon_FourVec"});
+      auto df_0 = df_temp.Define("goodmu", "Muon_pt > 4.5 && Muon_eta < 2.0 && Muon_eta>-2.0");
+      auto df_1 = df_0.Filter("Sum(goodmu)>=2")
+          .Define("mu0", "Nonzero(goodmu)[0]")
+          .Define("oppositeCharge","goodmu && Muon_charge[mu0]*Muon_charge < 0")
+          .Filter("Sum(oppositeCharge)>0")
+          .Define("mu1","Nonzero(oppositeCharge)[0]");
+      auto df_set = df_1.Define("Dimuon_FourVec", computeDiMuonFourVec, 
+          {"Muon_pt", "Muon_eta","Muon_phi","Muon_mass", "mu0", "mu1"})
+          .Define("Dimuon_mass", computeDiMuonInvariantMass, {"Dimuon_FourVec"})
+          .Define("Dimuon_pt", computeDiMuonPT, {"Dimuon_FourVec"}) // Compute pt and rapidity (y) of dimuon
+          .Define("Dimuon_beta", computeDiMuonBeta, {"Dimuon_FourVec"})
+          .Define("Dimuon_y", computeDiMuonRapidity, {"Dimuon_FourVec"});
 
     df_set.Snapshot("Events", fname);         // save dataframe in a root file to avoid downloading it all the times
 
@@ -107,4 +115,4 @@ ROOT::RDF::RNode df_set()
     unknownErrorHandling(); // function defined in optionParse.C
   }
   return (*df);
-}
+}//end df_set
