@@ -90,8 +90,8 @@ In the function`df_set()` is also handled the creation of the folder Data if not
 In the file `Cuts.C` one can decide the cuts to be applied in the dataframe.
 The authors implemented three "default" ones:
 - Depth 0: only two muons with opposite charge and with an invariant mass between 8.5 and 11.5 GeV are selected
-- Depth 1: same as depth 0 but with an additional cut on the transverse momentum, requesting  $10<p_T<100$ GeV
-- Depth 2: same as depth 1 but with an addition cut on rapidity, requesting $|y|<1.2$.
+- Depth 1: same as depth 0 but with an additional cut on the transverse momentum, requesting $10\lt p_T \lt 100$ GeV
+- Depth 2: same as depth 1 but with an addition cut on rapidity, requesting $|y|\lt 1.2$.
 In order to be faster in the future calls, these three dataframe are saved in data_cut0.root, data_cut1.root, data_cut2.root.
 
 It is also possible to choose other cuts on the trasverse momentum and the rapidity of the dimuon state, by adding an option while calling the program from the terminal.
@@ -99,7 +99,7 @@ For example, the line
 ```
 $ ./build/main/YLaunch -m fit -p 12 -P 50 -y 0.2 -Y 1.4
 ```
-requests the cuts to be $12<p_T<50$ GeV and $0.2<|y|<1.4$.
+requests the cuts to be $12\lt p_T \lt 50$ GeV and $0.2<|y|<1.4$.
 Once the dataframe is cute, the report on the cuts is printed on stream.
 
 ### Draw a preliminary Spectrum Plot
