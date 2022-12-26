@@ -38,9 +38,12 @@
  *                                  1: select dimuon pT between 10 and 100 GeV
  *                                  2: select dimuon pT between 10 and 100 GeV
  *                                  and a rapidity less than 0.6 in abs value
+ * --mode [-m] <mode>:              Choose functionality of the program between:
+ *                                  fit: execute fit with given parameters
+ *                                  cross (default): calculate differential cross section in pt.
  * --fitFunction [-f] <PDFName>:    Choose PDF to use as Fit Function between three options:
  *                                  gaus: Gaussian PDF
- *                                  bw: Breit - Wigner PDF
+ *                                  bw (default): Breit - Wigner PDF
  *                                  stud: t-Student PDF
  * --nameFig [-n] <figName>         name of file in which the figure of the fit is going to be saved
  * --ptmin [-p] <val>:              Set minimum cut on pt (GeV)
@@ -98,7 +101,8 @@ void unknownErrorHandling();
  * @param yMr recerence of yM (maximum rapidity) defined in main
  * @param nfr recerence of nameFile defined in main
  * @param vr reference of varaible verbose defined in main
+ * @param mr reference of mode
  *************************************************************/
-void ProcessArgs(int argc, char **argv,int &dr,int &fr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &nfr, int &vr);
+void ProcessArgs(int argc, char **argv,int &dr,int &fr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &nfr, int &vr,int &mr);
 
 #endif

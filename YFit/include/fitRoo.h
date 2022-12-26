@@ -32,29 +32,29 @@
 using namespace RooFit;
  
 /***********************************************************
- * Formatting the string to be displayed on the canvas regarding the cuts made on pt
+ * \brief Formatting the string to be displayed on the canvas regarding the cuts made on pt
  * 
  * @param dr reference of depth defined in main
  * @param pmr recerence of ptm (minimum pt) defined in main
  * @param pMr recerence of ptM (maximum pt) defined in main
  * 
- * \return result of the fit
+ * \return string formatted to print on the canvas
  *************************************************************/
 TString formatPtString(int dr=0, float pmr= std::nanf("1"), float pMr= std::nanf("1"));
 
 /***********************************************************
- * Formatting the string to be displayed on the canvas regarding the cuts made on y
+ * \brief Formatting the string to be displayed on the canvas regarding the cuts made on y
  * 
  * @param dr reference of depth defined in main
  * @param ymr recerence of ym (minimum rapidity) defined in main
  * @param yMr recerence of yM (maximum rapidity) defined in main
  * 
- * \return result of the fit
+ * \return string formatted to print on the canvas
  *************************************************************/
 TString formatYString(int dr=0, float ymr= std::nanf("1"), float yMr= std::nanf("1"));
 
 /***********************************************************
- * Implementation of the fit function
+ * \brief Implementation of the fit function
  * 
  * @param hh histogram to be fitted
  * @param fr reference of fitFunction defined in main
@@ -68,6 +68,6 @@ TString formatYString(int dr=0, float ymr= std::nanf("1"), float yMr= std::nanf(
  * 
  * \return result of the fit
  *************************************************************/
-RooFitResult* fitRoo(TH1* hh, int fr=0, int dr=0, float pmr= std::nanf("1"), float pMr= std::nanf("1"), float ymr= std::nanf("1"), float yMr= std::nanf("1"), std::string fnr="YResonancesFit", int vr=0);
+RooFitResult* fitRoo(TH1* hh,int mr, int fr=0, int dr=0, float pmr= std::nanf("1"), float pMr= std::nanf("1"), float ymr= std::nanf("1"), float yMr= std::nanf("1"), std::string fnr="YResonancesFit", int vr=0);
 
 #endif

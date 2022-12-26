@@ -32,9 +32,12 @@ void PrintHelp()
                  "                                1: select dimuon pT between 10 and 100 GeV\n"
                  "                                2: select dimuon pT between 10 and 100 GeV\n"
                  "                                and a rapidity less than 0.6 in abs value\n"
+                 "--mode [-m] <mode>              Choose functionality of the program between:\n"
+                 "                                fit: execute fit with given parameters\n"
+                 "                                cross (default): calculate differential cross section in pt.\n"
                  "--fitFunction [-f] <PDFName>:   Choose PDF to use as Fit Function between three options:\n"
                  "                                gaus: Gaussian PDF\n"
-                 "                                bw: Breit - Wigner PDF \n"
+                 "                                bw (default): Breit - Wigner PDF \n"
                  "                                stud: t-Student PDF\n"
                  "--nameFig [-n] <figName>        name of file in which the figure of the fit is going to be saved\n"
                  "--ptmin [-p] <val>:             Set minimum cut on pt (GeV)\n"
@@ -69,12 +72,13 @@ void unknownErrorHandling()
     exit(1);
 }
 
-void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &nfr, int &vr)
+void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &nfr, int &vr,int &mr)
 {
-    const char *const short_opts = "d:f:n:p:P:y:Y:hv"; //Define short options and whether an argument is expected
+    const char *const short_opts = "d:f:m:n:p:P:y:Y:hv"; //Define short options and whether an argument is expected
     const option long_opts[] = { //define long options
         {"cutDepth", required_argument, 0, 'd'},
         {"fitFunction", required_argument, 0, 'f'},
+        {"mode",required_argument,0,'m'},
         {"nameFig", required_argument, 0, 'n'},
         {"ptmin", required_argument, 0, 'p'},
         {"ptMax", required_argument, 0, 'P'},
@@ -141,6 +145,27 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
                 unknownErrorHandling();
             }
             std::cout << "Fit Function set to: " << optarg << "\n" << std::endl;
+            break;
+        }
+        case 'm':
+        {
+            try{
+                if (strcmp(optarg, "fit") == 0)
+                    mr = 0;
+                else if (strcmp(optarg, "cross") == 0)
+                    mr = 1;
+                else
+                    throw(optarg);
+            }
+            catch (const char *value)
+            {
+                outOfRangeErrorHandling("mode", "fit or cross", value);
+            }
+            catch (...)
+            {
+                unknownErrorHandling();
+            }
+            std::cout << "mode set to: " << optarg << "\n" << std::endl;
             break;
         }
         case 'n':
