@@ -152,15 +152,22 @@ Calculate and plot the differential cross section</h3>
 diffCrossSection.pdf</div></div>
 <h1><a class="anchor" id="test_doc"></a>
 Testing</h1>
-<p >Some tests are done for this library, one for each of the following files or function: <code><a class="el" href="optionParse_8h.html" title="Handling flags and option parameters.">optionParse.h</a></code>, <code><a class="el" href="df__set_8h.html" title="Header file of df_set.C.">df_set.h</a></code> and <code><a class="el" href="fitRoo_8h.html" title="Function for fitting the data and displying the canvas.">fitRoo.h</a></code>.</p>
+<p >Since the program is built with CMake, the testing was performed using CTest. Below are presented the tests that the authors implemented.</p>
+<h2><a class="anchor" id="test"></a>
+0 Test 0</h2>
+<p >Testing if the reading of the command arguments and flags is properly done. In this test one define some variables, call the <code>processArgs()</code> and sees if the definition stands.</p>
 <h2><a class="anchor" id="test1"></a>
 Test 1</h2>
-<p >In the first test</p>
+<p >Here is tested the online reading of the data and the behavior in case the Data folder or the Data file is missing. In the test, the folder Data is deleted and the function <code><a class="el" href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b" title="Define the dataframe used in the analysis or it creates it if it is not found.">df_set()</a></code> is called. This function should handle the creation of the folder Data and the downloading and saving of the data. Once finished this first step, we check if the Data folder exists and if it contains the file data.root Next, we keep the folder Data and we eliminate the file data.root. The function <code><a class="el" href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b" title="Define the dataframe used in the analysis or it creates it if it is not found.">df_set()</a></code> is called again and after it finished, one check if the data is successfully recreated.</p>
 <h2><a class="anchor" id="test2"></a>
 Test 2</h2>
+<p >In this test the fit results are controlled. First off, one defines a model with a similar shape to the one expected and calls the function <code><a class="el" href="fitRoo_8h.html#a8d34d827ff23492f36fe47c3e81cbf8c" title="Implementation of the fit function.">fitRoo()</a></code> passing this model as an argument instead of the real data. The test checks if the fit converged by looking at the fitStatus and also check if the returned parameters are inside 5 sigma of the initial value.</p>
 <h2><a class="anchor" id="test3"></a>
 Test 3</h2>
-<p >...</p>
+<p >This one tests the function <code><a class="el" href="SpectrumPlot_8h.html#a34714da9ccb76f8078d83e0226c98bb3">SavePlot()</a></code> which handles the saving of a canvas with a specific filename. If the folder Plots does not exist, it creates it. </p>
+<h2><a class="anchor" id="test4"></a>
+Test 4</h2>
+<p >This test is useful to check if the printing of the custom cuts on the canvas work. It compares the strings returned by the function <code><a class="el" href="fitRoo_8h.html#a2cbf9d1b384ae8f608f2696f3b097ce5" title="Formatting the string to be displayed on the canvas regarding the cuts made on y.">formatYString()</a></code> or <code><a class="el" href="fitRoo_8h.html#a1071b14a4470a35ab0feac8aff36eab5" title="Formatting the string to be displayed on the canvas regarding the cuts made on pt.">formatPtString()</a></code> with the expected ones.</p>
 <h1><a class="anchor" id="Documentation"></a>
 Documentation</h1>
 </div></div><!-- PageDoc -->
