@@ -10,7 +10,6 @@
  * as a function of the trasverse momentum.
  * It comes together with its own main in order to use it.
  *
- * Brief description main file.
  *
  * \section example_usage A simple example usage
  * The following lines are used for compiling the code and do the testing.
@@ -89,7 +88,7 @@
  *
  * \subsection test 0 Test 0
  * Testing if the reading of the command arguments and flags is properly done.
- * In this test one define some variables, call the `processArgs()` and sees if the definition stands.
+ * In this test one define some variables, call the \c ProcessArgs() and sees if the definition stands.
  *
  * \subsection test1 Test 1
  * Here is tested the online reading of the data and the behavior in case the Data folder or the Data file is missing.
@@ -111,7 +110,5 @@
  * \subsection test4 Test 4
  * This test is useful to check if the printing of the custom cuts on the canvas work.
  * It compares the strings returned by the function `formatYString()` or `formatPtString()` with the expected ones.
-
- * \section Documentation
  * 
  */
