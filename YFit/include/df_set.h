@@ -44,8 +44,7 @@ using namespace ROOT::VecOps;
  * \return PtEtaPhiMVector
  * 
  ****************************************/
-ROOT::Math::PtEtaPhiMVector computeDiMuonFourVec(RVec<float>& pt, RVec<float>& eta, RVec<float>& phi, RVec<float>& mass);
-
+ROOT::Math::PtEtaPhiMVector computeDiMuonFourVec(RVec<float> &pt, RVec<float> &eta, RVec<float> &phi, RVec<float> &mass, unsigned long &im0, unsigned long &im1);
 /***************************************
  * 
  * \brief Calculate the invariant mass of a dimuon Four Vector

@@ -22,7 +22,6 @@ ROOT::RDF::RNode DFFilter(ROOT::RDF::RNode &df, int dr)
     auto df_cut = df.Filter([](unsigned int x)
                             { return x == 2; },
                             {"nMuon"}, {"Events with exactly two muons"})
-                      .Filter("Muon_charge[0] != Muon_charge[1]", "Muons with opposite charge") // Select events with two muons of opposite charge
                       .Filter([](float x)
                               { return x > 8.5 && x < 11.5; },
                               {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}); // Cut around the Ys
@@ -32,8 +31,7 @@ ROOT::RDF::RNode DFFilter(ROOT::RDF::RNode &df, int dr)
   {
     auto df_cut = df.Filter([](unsigned int x)
                             { return x == 2; },
-                            {"nMuon"}, {"Events with exactly two muons"})                       // Select events with exactly two muons
-                      .Filter("Muon_charge[0] != Muon_charge[1]", "Muons with opposite charge") // Select events with two muons of opposite charge
+                            {"nMuon"}, {"Events with exactly two muons"}) // Select events with exactly two muons
                       .Filter([](float x)
                               { return x > 8.5 && x < 11.5; },
                               {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}) // Cut around the Ys
@@ -46,8 +44,7 @@ ROOT::RDF::RNode DFFilter(ROOT::RDF::RNode &df, int dr)
   {
     auto df_cut = df.Filter([](unsigned int x)
                             { return x == 2; },
-                            {"nMuon"}, {"Events with exactly two muons"})                       // Select events with exactly two muons
-                      .Filter("Muon_charge[0] != Muon_charge[1]", "Muons with opposite charge") // Select events with two muons of opposite charge
+                            {"nMuon"}, {"Events with exactly two muons"}) // Select events with exactly two muons
                       .Filter([](float x)
                               { return x > 8.5 && x < 11.5; },
                               {"Dimuon_mass"}, {"Inviariant mass between 8.5 and 11.5"}) // Cut around the Ys
@@ -128,11 +125,11 @@ ROOT::RDF::RNode customFilter(ROOT::RDF::RNode &df, float pmr, float pMr, float 
   return df_custom_cut;
 }
 
+ROOT::RDF::RNode generateDataFrame(ROOT::RDF::RNode &df, int dr)
+{
 
-ROOT::RDF::RNode generateDataFrame(ROOT::RDF::RNode &df, int dr){
-  
   ROOT::EnableImplicitMT(1);
-  ROOT::RDataFrame* df_off;
+  ROOT::RDataFrame *df_off;
   namespace fs = std::filesystem;
   std::string *fname;
 
@@ -203,9 +200,6 @@ ROOT::RDF::RNode generateDataFrame(ROOT::RDF::RNode &df, int dr){
     df_cut.Snapshot("Cuts", *fname); // qui forse devo mettere un'altra exception
     std::cout << "Cut File successfully saved\n"
               << std::endl;
-    //ROOT::RDataFrame df_upt("Cuts", *fname);
-    //std::cout << " Cut File successfully opened\n"
-    //          << std::endl;
 
     return df_cut;
   }
@@ -222,14 +216,14 @@ ROOT::RDF::RNode Cuts(ROOT::RDF::RNode &df, int dr, float pmr, float pMr, float 
   ROOT::EnableImplicitMT(1);
 
   ROOT::RDF::RNode df_off = generateDataFrame(df, dr);
-  if (ymr == ymr || yMr == yMr || ymr==ymr || yMr==yMr){
-  df_off = customFilter(df_off, pmr, pMr, ymr, yMr);
-
-  auto report = df_off.Report();
-  report->Print();
-  std::cout << "\n"
-            << std::endl;
-  return df_off;
+  if (ymr == ymr || yMr == yMr || ymr == ymr || yMr == yMr)
+  {
+    df_off = customFilter(df_off, pmr, pMr, ymr, yMr);
+    auto report = df_off.Report();
+    report->Print();
+    std::cout << "\n"
+              << std::endl;
+    return df_off;
   }
 
   return df_off;

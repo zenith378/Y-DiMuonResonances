@@ -37,7 +37,7 @@ const float e_uu = 0.75;
 const float e_sg = 0.5;
 const float e_vp = 0.99;
 const float A=1; //accetanza
-    return 0.01*N/(L * wpt * e_uu * e_sg * e_vp * A);
+    return N/(L * wpt * e_uu * e_sg * e_vp * A);
 }
 
 
@@ -45,7 +45,7 @@ dcsbin setset(float ptm, float ptM, ROOT::RDF::RNode &df, std::string nameFile)
 {
     // initialize default values for options
     int depth = 0; //Depth value initialized to 0, i.e. no cuts
-    int fitfunc = 0; //Fit Function initilized to 0, i.e. Breit-Wigner
+    int fitfunc = 1; //Fit Function initilized to 0, i.e. Breit-Wigner
     float ym = std::nanf("0"); //no lower cut on rapidity
     float yM = 1.2; //cut on absolute value of raidity
     int verbose = 0; //verbose flag initialized to zero, i.e. no output stream for Minuit
@@ -83,10 +83,10 @@ dcsbin setset(float ptm, float ptM, ROOT::RDF::RNode &df, std::string nameFile)
 
 
 void PlotDiffCrossSection(ROOT::RDF::RNode &df){
-    const int n=22;
+    const int n=21;
     //Define array for binning the differential cross section
-    double ptm[n] = {10.,12.,14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.};
-    double ptM[n] = {12.,14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.,100.};
+    double ptm[n] = {12.,14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.};
+    double ptM[n] = {14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.,100.};
     //define arrays for constructing the Graph of the differential cross section
     double x[n], y1[n], y2[n], y3[n], dx[n], dy1[n], dy2[n], dy3[n];
     
