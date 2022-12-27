@@ -2,19 +2,6 @@
  * \file diffCrossection.h
  * \brief Function to plot the differential cross section for the Y1S, 2S and 3S in trasverse momentum
  *
- *
- * In this file are defined the functions and objects used in order compute the differential cross section
- * as a function of the trasverse momentum
- * In particular, it is defined:
- *
- * struct dcsbin:
- *
- * Double_t diffCrossSec:
- *
- * dcsbin setset:
- *
- * int PlotDiffCrossSection:
- *
  *******************************************************************************/
 
 #ifndef difffCrossection_h

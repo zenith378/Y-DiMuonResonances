@@ -73,15 +73,23 @@
  * \f]
  *
  * where $N$ is a fit parameter that says how many events are under the signal function and $\Delta p_T$ is the width of the bin in $p_T$ (i.e. the width of cut
- * on the trasverse momentum).
- * A more deteil description of the functions used it can be found in \c diffCrossSection.h.
+ * on the trasverse momentum). The value of the acceptance A is fixed to 1, and the other values are some costants taken from the article
+ * "Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at $\sqrt(s) = 7 TeV".
+ *
+ * A more detail description of the functions used it can be found in \c diffCrossSection.h.
  * \image html diffCrossSection.pdf "diffCrossSection.pdf"
  * 
  * \section test_doc Testing
  * 
- * brief description of the testing
+ * Some tests are done for this library, one for each of the following files or function: \c optionParse.h, \c df_set.h and \c fitRoo.h.
  * 
  * \subsection test1 Test 1
+ * In the first test 
+ *
+ * \subsection test2 Test 2
+ *
+ * \subsection test3 Test 3
+ *
  * 
  * ...
  * 
