@@ -67,7 +67,6 @@ var NAVTREEINDEX0 =
 "globals_func.html":[2,1,1],
 "index.html":[],
 "index.html":[0],
-"index.html#Documentation":[0,4],
 "index.html#example_usage":[0,1],
 "index.html#intro_sec":[0,0],
 "index.html#program_des":[0,2],

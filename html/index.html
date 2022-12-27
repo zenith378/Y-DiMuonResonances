@@ -96,7 +96,6 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
 <p >YFit Library is a simple library used to fit the first three Y resonances from the open cms dimuon dataset and to calculate the differentian cross section of the same process as a function of the trasverse momentum. It comes together with its own main in order to use it.</p>
-<p >Brief description main file.</p>
 <h1><a class="anchor" id="example_usage"></a>
 A simple example usage</h1>
 <p >The following lines are used for compiling the code and do the testing. </p><div class="fragment"><div class="line">$ cmake -S . -B ./build</div>
@@ -155,7 +154,7 @@ Testing</h1>
 <p >Since the program is built with CMake, the testing was performed using CTest. Below are presented the tests that the authors implemented.</p>
 <h2><a class="anchor" id="test"></a>
 0 Test 0</h2>
-<p >Testing if the reading of the command arguments and flags is properly done. In this test one define some variables, call the <code>processArgs()</code> and sees if the definition stands.</p>
+<p >Testing if the reading of the command arguments and flags is properly done. In this test one define some variables, call the <code><a class="el" href="optionParse_8h.html#a160578dd115ed301ca034d092a9e97e7">ProcessArgs()</a></code> and sees if the definition stands.</p>
 <h2><a class="anchor" id="test1"></a>
 Test 1</h2>
 <p >Here is tested the online reading of the data and the behavior in case the Data folder or the Data file is missing. In the test, the folder Data is deleted and the function <code><a class="el" href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b" title="Define the dataframe used in the analysis or it creates it if it is not found.">df_set()</a></code> is called. This function should handle the creation of the folder Data and the downloading and saving of the data. Once finished this first step, we check if the Data folder exists and if it contains the file data.root Next, we keep the folder Data and we eliminate the file data.root. The function <code><a class="el" href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b" title="Define the dataframe used in the analysis or it creates it if it is not found.">df_set()</a></code> is called again and after it finished, one check if the data is successfully recreated.</p>
@@ -167,9 +166,7 @@ Test 3</h2>
 <p >This one tests the function <code><a class="el" href="SpectrumPlot_8h.html#a34714da9ccb76f8078d83e0226c98bb3">SavePlot()</a></code> which handles the saving of a canvas with a specific filename. If the folder Plots does not exist, it creates it. </p>
 <h2><a class="anchor" id="test4"></a>
 Test 4</h2>
-<p >This test is useful to check if the printing of the custom cuts on the canvas work. It compares the strings returned by the function <code><a class="el" href="fitRoo_8h.html#a2cbf9d1b384ae8f608f2696f3b097ce5" title="Formatting the string to be displayed on the canvas regarding the cuts made on y.">formatYString()</a></code> or <code><a class="el" href="fitRoo_8h.html#a1071b14a4470a35ab0feac8aff36eab5" title="Formatting the string to be displayed on the canvas regarding the cuts made on pt.">formatPtString()</a></code> with the expected ones.</p>
-<h1><a class="anchor" id="Documentation"></a>
-Documentation</h1>
+<p >This test is useful to check if the printing of the custom cuts on the canvas work. It compares the strings returned by the function <code><a class="el" href="fitRoo_8h.html#a2cbf9d1b384ae8f608f2696f3b097ce5" title="Formatting the string to be displayed on the canvas regarding the cuts made on y.">formatYString()</a></code> or <code><a class="el" href="fitRoo_8h.html#a1071b14a4470a35ab0feac8aff36eab5" title="Formatting the string to be displayed on the canvas regarding the cuts made on pt.">formatPtString()</a></code> with the expected ones. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
