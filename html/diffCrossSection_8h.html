@@ -207,6 +207,7 @@ $(document).ready(function(){initNavTree('diffCrossSection_8h.html',''); initRes
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">diffCrossSection.h File Reference</div></div>
 </div><!--header-->
@@ -230,6 +231,12 @@ $(document).ready(function(){initNavTree('diffCrossSection_8h.html',''); initRes
 </div>
 <p><a href="diffCrossSection_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdcsbin.html">dcsbin</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure where are saved the value usuful for each bin.  <a href="structdcsbin.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:abda999553dd2c035a28bfd3f21fee8c5"><td class="memItemLeft" align="right" valign="top">Double_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="diffCrossSection_8h.html#abda999553dd2c035a28bfd3f21fee8c5">diffCrossSec</a> (double N, float wpt)</td></tr>
@@ -270,6 +277,10 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Calculate the differential cross section given the functin that describe the mass distribution (model), which Y is (i), and the width of the pt bin (wpt) </p>
+<p >The equation used for calculating the different cross section </p><p class="formulaDsp">
+\[ \frac{d\sigma}{dp_t} = \frac{N}{L \Delta p_t e_{uu} e_{sg} e_{vp} A} \]
+</p>
+<p >where $N$ is a fit parameter that says how many events are under the signal function and $\Delta p_T$ is the width of the bin in $p_T$ (i.e. the width of cut on the trasverse momentum). The value of the acceptance A is fixed to 1, and the other values are some costants taken from the article <a href="https://arxiv.org/pdf/1501.07750.pdf">"Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at $\sqrt(s) = 7 TeV"</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">N</td><td>number of event under the peak of the resonance </td></tr>
@@ -323,6 +334,9 @@ Functions</h2></td></tr>
 <p >The edge of the bin are defined in two array, these are used for calculate the differential cross section in each bin. These are then plotted on the same canva. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">df</td><td>Dataframe where the unselected data are stored </td></tr>
+    <tr><td class="paramname">ym</td><td>lower edge on absolute value of rapidity </td></tr>
+    <tr><td class="paramname">yM</td><td>upper edge on absolute value of rapidity </td></tr>
+    <tr><td class="paramname">dr</td><td>depth </td></tr>
   </table>
   </dd>
 </dl>
@@ -380,10 +394,10 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Calculate the differential cross section (multiplied by the relative branching ratio) for one bin in trasverso momentum. </p>
-<p >This function select the data from the data frame df using the function <a class="el" href="Cuts_8h.html#ac0ca9394f49d849c125800240600fb25" title="Modified a muon DataFrame cutting on nMuon, Muon_charge, Dimuon_mass, Dimuon_pt and Dimuon_y.">Cuts()</a> defined in <a class="el" href="Cuts_8h.html" title="Selection of the data.">Cuts.h</a>. The cut on the trasverse momentum is given by the bin edges and the one on the rapidity is between -1.2 and 1.2. The data are plotted and fitted using the function fitRoo defined in <a class="el" href="fitRoo_8h.html" title="Function for fitting the data and displying the canvas.">fitRoo.h</a>. From the fit we can get the number of events under the peak of each Y resonance and using the function diffCrossSec, defined in diffCrossection.h, calculate the differential cross section for the bin. All the value usuful for the plotting are save inside the structur returned. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >This function select the data from the data frame df using the function <a class="el" href="Cuts_8h.html#ac0ca9394f49d849c125800240600fb25" title="Apply default cuts set by depth. If there are any custom cuts, apply them, print a cut report and ret...">Cuts()</a> defined in <a class="el" href="Cuts_8h.html" title="Selection of the data. The data are selected to be two muons of opposite charge with an invariant mas...">Cuts.h</a>. The cut on the trasverse momentum is given by the bin edges and the one on the rapidity is between -1.2 and 1.2. The data are plotted and fitted using the function fitRoo defined in <a class="el" href="fitRoo_8h.html" title="Function for fitting the data and displying the canvas.">fitRoo.h</a>. From the fit we can get the number of events under the peak of each Y resonance and using the function diffCrossSec, defined in diffCrossection.h, calculate the differential cross section for the bin. All the value usuful for the plotting are save inside the structur returned. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ptm</td><td>lower edge of the bin </td></tr>
-    <tr><td class="paramname">ptM</td><td>is the upper edge of the bin </td></tr>
+    <tr><td class="paramname">ptM</td><td>upper edge of the bin </td></tr>
     <tr><td class="paramname">df</td><td>Dataframe with all the data </td></tr>
     <tr><td class="paramname">namefile</td><td>name of the plot saved</td></tr>
   </table>

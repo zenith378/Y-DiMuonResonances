@@ -212,7 +212,7 @@ $(document).ready(function(){initNavTree('main_8C.html',''); initResizable(); })
 </div><!--header-->
 <div class="contents">
 
-<p>Main source code of the program.  
+<p>Main source code of the program: define default options for parameters and call the functions in order to execute the program.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &quot;ROOT/RDataFrame.hxx&quot;</code><br />
@@ -230,12 +230,17 @@ Functions</h2></td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Main source code of the program. </p>
-<p >Here the default options are defined and the functions are called in order to execute the programs</p>
-<p >dalla cartella Y-Dimuon</p>
-<p >cmake -S . -B ./build questo dice dove buildare il codice da quale sorgente (e crea il makefile)</p>
-<p >make -C build con questo si compila propriamente e si crea la libreria</p>
-<p >./build/main/YLaunch questo è un normale comando che dice di far partire l'eseguibile </p>
+<div class="textblock"><p >Main source code of the program: define default options for parameters and call the functions in order to execute the program. </p>
+<p >Here the default options of the command line arguments are defined and the functions are called in order to execute the programs.</p>
+<p >The default options are:</p>
+<ul>
+<li>Depth=0</li>
+<li>Fit function=0 (Breit-Wigner)</li>
+<li>ptm=ptM=ym=yM=NaN</li>
+<li>nameFile="YResonancesFit"</li>
+<li>verbose=0, i.e. non verbose</li>
+<li>mode=1, i.e. calculate differential cross section </li>
+</ul>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&nbsp;</a></span>main()</h2>

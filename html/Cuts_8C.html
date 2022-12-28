@@ -211,9 +211,6 @@ $(document).ready(function(){initNavTree('Cuts_8C.html',''); initResizable(); })
   <div class="headertitle"><div class="title">Cuts.C File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Selection of the data.  
-<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;ROOT/RDataFrame.hxx&quot;</code><br />
 <code>#include &quot;TMath.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="Cuts_8h_source.html">Cuts.h</a>&quot;</code><br />
@@ -224,25 +221,22 @@ $(document).ready(function(){initNavTree('Cuts_8C.html',''); initResizable(); })
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:afb75d42350f2304aca87e16ea6db2fd5"><td class="memItemLeft" align="right" valign="top">ROOT::RDF::RNode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Cuts_8C.html#afb75d42350f2304aca87e16ea6db2fd5">DFFilter</a> (ROOT::RDF::RNode &amp;df, int dr)</td></tr>
-<tr class="memdesc:afb75d42350f2304aca87e16ea6db2fd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">it applies default cuts  <a href="Cuts_8C.html#afb75d42350f2304aca87e16ea6db2fd5">More...</a><br /></td></tr>
+<tr class="memdesc:afb75d42350f2304aca87e16ea6db2fd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply default cuts.  <a href="Cuts_8C.html#afb75d42350f2304aca87e16ea6db2fd5">More...</a><br /></td></tr>
 <tr class="separator:afb75d42350f2304aca87e16ea6db2fd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3887e21d2e02383073be6442614a0704"><td class="memItemLeft" align="right" valign="top">ROOT::RDF::RNode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Cuts_8C.html#a3887e21d2e02383073be6442614a0704">applyFilter</a> (ROOT::RDF::RNode &amp;df_custom_cut, std::string_view filter, std::string_view name)</td></tr>
-<tr class="memdesc:a3887e21d2e02383073be6442614a0704"><td class="mdescLeft">&#160;</td><td class="mdescRight">it applies custom cuts on a variable given string containing the filter  <a href="Cuts_8C.html#a3887e21d2e02383073be6442614a0704">More...</a><br /></td></tr>
+<tr class="memdesc:a3887e21d2e02383073be6442614a0704"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply custom cuts on a variable given string containing the filter. Print a warning if there are less than 800 events in the cutted dataframe.  <a href="Cuts_8C.html#a3887e21d2e02383073be6442614a0704">More...</a><br /></td></tr>
 <tr class="separator:a3887e21d2e02383073be6442614a0704"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc4aa81871a37627afd616b582474424"><td class="memItemLeft" align="right" valign="top">ROOT::RDF::RNode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Cuts_8C.html#acc4aa81871a37627afd616b582474424">customFilter</a> (ROOT::RDF::RNode &amp;df, float pmr, float pMr, float ymr, float yMr)</td></tr>
-<tr class="memdesc:acc4aa81871a37627afd616b582474424"><td class="mdescLeft">&#160;</td><td class="mdescRight">looks for active otpion parameters and applies custom cuts  <a href="Cuts_8C.html#acc4aa81871a37627afd616b582474424">More...</a><br /></td></tr>
+<tr class="memdesc:acc4aa81871a37627afd616b582474424"><td class="mdescLeft">&#160;</td><td class="mdescRight">looks for active otpion parameters and applies custom cuts with the function <code><a class="el" href="Cuts_8h.html#a3887e21d2e02383073be6442614a0704" title="Apply custom cuts on a variable given string containing the filter. Print a warning if there are less...">applyFilter()</a></code>  <a href="Cuts_8C.html#acc4aa81871a37627afd616b582474424">More...</a><br /></td></tr>
 <tr class="separator:acc4aa81871a37627afd616b582474424"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a967c1445c167258ad89038e138548614"><td class="memItemLeft" align="right" valign="top">ROOT::RDF::RNode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Cuts_8C.html#a967c1445c167258ad89038e138548614">generateDataFrame</a> (ROOT::RDF::RNode &amp;df, int dr)</td></tr>
-<tr class="memdesc:a967c1445c167258ad89038e138548614"><td class="mdescLeft">&#160;</td><td class="mdescRight">tries to read cutted dataframe from file and generates it, if it does not exists  <a href="Cuts_8C.html#a967c1445c167258ad89038e138548614">More...</a><br /></td></tr>
+<tr class="memdesc:a967c1445c167258ad89038e138548614"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to read cutted dataframe from file. If it does not exists, generate it.  <a href="Cuts_8C.html#a967c1445c167258ad89038e138548614">More...</a><br /></td></tr>
 <tr class="separator:a967c1445c167258ad89038e138548614"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30908e78e7bdb930b495f2f5d2ab1a5d"><td class="memItemLeft" align="right" valign="top">ROOT::RDF::RNode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Cuts_8C.html#a30908e78e7bdb930b495f2f5d2ab1a5d">Cuts</a> (ROOT::RDF::RNode &amp;df, int dr, float pmr, float pMr, float ymr, float yMr)</td></tr>
-<tr class="memdesc:a30908e78e7bdb930b495f2f5d2ab1a5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modified a muon DataFrame cutting on nMuon, Muon_charge, Dimuon_mass, Dimuon_pt and Dimuon_y.  <a href="Cuts_8C.html#a30908e78e7bdb930b495f2f5d2ab1a5d">More...</a><br /></td></tr>
+<tr class="memdesc:a30908e78e7bdb930b495f2f5d2ab1a5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply default cuts set by depth. If there are any custom cuts, apply them, print a cut report and return df.  <a href="Cuts_8C.html#a30908e78e7bdb930b495f2f5d2ab1a5d">More...</a><br /></td></tr>
 <tr class="separator:a30908e78e7bdb930b495f2f5d2ab1a5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Selection of the data. </p>
-<p >The data are selected to be two muon of opposite charge with an invariant mass around the mass of the Y resonances. Also it is possible to choose other cuts on the trasverse momentum and the pseudorapidity of the dimuon state. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="a3887e21d2e02383073be6442614a0704" name="a3887e21d2e02383073be6442614a0704"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3887e21d2e02383073be6442614a0704">&#9670;&nbsp;</a></span>applyFilter()</h2>
 
@@ -275,7 +269,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>it applies custom cuts on a variable given string containing the filter </p>
+<p>Apply custom cuts on a variable given string containing the filter. Print a warning if there are less than 800 events in the cutted dataframe. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">df_custom_cut</td><td>dataframe to be cutted </td></tr>
@@ -332,7 +326,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>looks for active otpion parameters and applies custom cuts </p>
+<p>looks for active otpion parameters and applies custom cuts with the function <code><a class="el" href="Cuts_8h.html#a3887e21d2e02383073be6442614a0704" title="Apply custom cuts on a variable given string containing the filter. Print a warning if there are less...">applyFilter()</a></code> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">df</td><td>dataframe to be cutted </td></tr>
@@ -397,18 +391,19 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Modified a muon DataFrame cutting on nMuon, Muon_charge, Dimuon_mass, Dimuon_pt and Dimuon_y. </p>
-<p >UNa descrizione più dettagliata della funzione </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Apply default cuts set by depth. If there are any custom cuts, apply them, print a cut report and return df. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">df</td><td>Data Frame in input </td></tr>
+    <tr><td class="paramname">df</td><td>input dataframe </td></tr>
+    <tr><td class="paramname">dr</td><td>depth set </td></tr>
     <tr><td class="paramname">pmr</td><td>lower extreme for the cut on the dimuon trasverse momentum </td></tr>
     <tr><td class="paramname">pMr</td><td>upper extreme for the cut on the dimuon trasverse momentum </td></tr>
-    <tr><td class="paramname">ymr</td><td>lower extreme for the cut on the dimuon pseudorapidity </td></tr>
-    <tr><td class="paramname">yMr</td><td>upper extreme for the cut on the dimuon pseudorapidity </td></tr>
+    <tr><td class="paramname">ymr</td><td>lower extreme for the cut on the dimuon rapidity (in abs values) </td></tr>
+    <tr><td class="paramname">yMr</td><td>upper extreme for the cut on the dimuon rapidity (in abs values) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>df_cut DataFrame with the selection decided by the cuts </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>DataFrame with the selection decided by the cuts </dd></dl>
 
 </div>
 </div>
@@ -438,8 +433,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>it applies default cuts </p>
-<p >Depth 0: two muons of opposite charge and invariant mass between 8.5 and 11.5 GeV Depth 1: select dimuon pT between 10 and 100 GeV Depth 2: select dimuon pT between 10 and 100 GeV and a rapidity less than 0.6 in abs value</p>
+<p>Apply default cuts. </p>
+<p >The function cut the inserted dataframe with the default cuts:</p>
+<ul>
+<li>Depth 0: two muons of opposite charge and invariant mass between 8.5 and 11.5 GeV</li>
+<li>Depth 1: select dimuon pT between 10 and 100 GeV</li>
+<li>Depth 2: select dimuon pT between 10 and 100 GeV and a rapidity less than 0.6 in abs value</li>
+</ul>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">df</td><td>dataframe to be cutted </td></tr>
@@ -477,7 +477,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>tries to read cutted dataframe from file and generates it, if it does not exists </p>
+<p>Try to read cutted dataframe from file. If it does not exists, generate it. </p>
+<p >The function tries to open the cutted dataframe stored in file. If the file does not exists or the directory Data does not exists, it creates them.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">df</td><td>dataframe to be cutted </td></tr>

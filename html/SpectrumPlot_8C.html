@@ -211,9 +211,6 @@ $(document).ready(function(){initNavTree('SpectrumPlot_8C.html',''); initResizab
   <div class="headertitle"><div class="title">SpectrumPlot.C File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Function to plot the spectrum of the dataset which is currently used and create an histogram.  
-<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;ROOT/RDataFrame.hxx&quot;</code><br />
 <code>#include &quot;TMath.h&quot;</code><br />
 <code>#include &quot;TCanvas.h&quot;</code><br />
@@ -222,17 +219,18 @@ $(document).ready(function(){initNavTree('SpectrumPlot_8C.html',''); initResizab
 <code>#include &lt;filesystem&gt;</code><br />
 <code>#include &quot;TStyle.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="SpectrumPlot_8h_source.html">SpectrumPlot.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="optionParse_8h_source.html">optionParse.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a34714da9ccb76f8078d83e0226c98bb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SpectrumPlot_8C.html#a34714da9ccb76f8078d83e0226c98bb3">SavePlot</a> (TCanvas *c, TString namePlot)</td></tr>
+<tr class="memdesc:a34714da9ccb76f8078d83e0226c98bb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save the plot created in the folder Plots. If the folder does not exits, it creates it.  <a href="SpectrumPlot_8C.html#a34714da9ccb76f8078d83e0226c98bb3">More...</a><br /></td></tr>
 <tr class="separator:a34714da9ccb76f8078d83e0226c98bb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a073489160eb1c3db831d0ad3c28c2e3d"><td class="memItemLeft" align="right" valign="top">TH1 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SpectrumPlot_8C.html#a073489160eb1c3db831d0ad3c28c2e3d">SpectrumPlot</a> (ROOT::RDF::RNode &amp;df_cut, std::string nameFile)</td></tr>
+<tr class="memdesc:a073489160eb1c3db831d0ad3c28c2e3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create histogram of currently used df, and plot the spectrum.  <a href="SpectrumPlot_8C.html#a073489160eb1c3db831d0ad3c28c2e3d">More...</a><br /></td></tr>
 <tr class="separator:a073489160eb1c3db831d0ad3c28c2e3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Function to plot the spectrum of the dataset which is currently used and create an histogram. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="a34714da9ccb76f8078d83e0226c98bb3" name="a34714da9ccb76f8078d83e0226c98bb3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a34714da9ccb76f8078d83e0226c98bb3">&#9670;&nbsp;</a></span>SavePlot()</h2>
 
@@ -258,7 +256,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Function to save the plot created in the folder Plots. If the folder does not exits, it creates it. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Save the plot created in the folder Plots. If the folder does not exits, it creates it. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">c1</td><td>canvas containing the plot </td></tr>
     <tr><td class="paramname">nameFile</td><td>name to give to the pdf </td></tr>
@@ -293,7 +293,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Function to plot the spectrum of the dataset which is currently used and create an histogram. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Create histogram of currently used df, and plot the spectrum. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">df_cut</td><td>Dataframe containg the data </td></tr>
     <tr><td class="paramname">nameFile</td><td>name to give to the pdf (a string "preliminary" is going to be added to the filename) </td></tr>

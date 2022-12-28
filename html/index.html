@@ -221,7 +221,7 @@ A simple example usage</h1>
 </div><!-- fragment --><h3><a class="anchor" id="defOpt"></a>
 Default options</h3>
 <p >If we run the main of the library without givin anything as flag or option, as it follows: </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch</div>
-<div class="ttc" id="amain_8C_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> main.C:33</div></div>
+<div class="ttc" id="amain_8C_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> main.C:32</div></div>
 </div><!-- fragment --><p> the programm will create un histogramm of the invariant mass of two muons selected as follow:</p><ul>
 <li>$p_{T} &gt; 3.5 GeV$ and $|y| &lt; 2.0$ (for the single muon)</li>
 <li>at least 2 muons of opposite charge in each event</li>
@@ -243,10 +243,10 @@ CustomizeCuts.pdf</div></div>
 Description of main (and functionality of libraries)</h1>
 <h3><a class="anchor" id="option_param"></a>
 Choose of the parameters and flags</h3>
-<p >The default parameters for the cuts are defined in the <code><a class="el" href="main_8C.html" title="Main source code of the program.">main.C</a></code> file. If the user use the flags for customixìze them, the default value are replaced when the function <code><a class="el" href="optionParse_8h.html#a160578dd115ed301ca034d092a9e97e7">ProcessArgs()</a></code> is called. </p>
+<p >The default parameters for the cuts are defined in the <code><a class="el" href="main_8C.html" title="Main source code of the program: define default options for parameters and call the functions in orde...">main.C</a></code> file. If the user use the flags for customixìze them, the default value are replaced when the function <code><a class="el" href="optionParse_8h.html#a160578dd115ed301ca034d092a9e97e7" title="Implementation of the option arguments with the library &lt;getopt&gt;">ProcessArgs()</a></code> is called. </p>
 <h3><a class="anchor" id="data_load"></a>
 Data Loading</h3>
-<p >The data are loaded and manipulated (to have useful variables) using the functions defined inside <code><a class="el" href="df__set_8h.html" title="Header file of df_set.C.">df_set.h</a></code> </p>
+<p >The data are loaded and manipulated (to have useful variables) using the functions defined inside <code><a class="el" href="df__set_8h.html" title="Function for creating and setting up dataframe used in the analysis.">df_set.h</a></code> </p>
 <h3><a class="anchor" id="apply_cut"></a>
 Apply some cuts!</h3>
 <p >The data are selected to be two muons of opposite charge with an invariant mass round the mass of the Y resonances. Also it is possible to choose other cuts on the trasverse momentum and the rapidity of the dimuon state.</p>
@@ -272,7 +272,7 @@ Testing</h1>
 <p >Since the program is built with CMake, the testing was performed using CTest. Below are presented the tests that the authors implemented.</p>
 <h2><a class="anchor" id="test"></a>
 0 Test 0</h2>
-<p >Testing if the reading of the command arguments and flags is properly done. In this test one define some variables, call the <code><a class="el" href="optionParse_8h.html#a160578dd115ed301ca034d092a9e97e7">ProcessArgs()</a></code> and sees if the definition stands.</p>
+<p >Testing if the reading of the command arguments and flags is properly done. In this test one define some variables, call the <code><a class="el" href="optionParse_8h.html#a160578dd115ed301ca034d092a9e97e7" title="Implementation of the option arguments with the library &lt;getopt&gt;">ProcessArgs()</a></code> and sees if the definition stands.</p>
 <h2><a class="anchor" id="test1"></a>
 Test 1</h2>
 <p >Here is tested the online reading of the data and the behavior in case the Data folder or the Data file is missing. In the test, the folder Data is deleted and the function <code><a class="el" href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b" title="Define the dataframe used in the analysis or it creates it if it is not found.">df_set()</a></code> is called. This function should handle the creation of the folder Data and the downloading and saving of the data. Once finished this first step, we check if the Data folder exists and if it contains the file data.root Next, we keep the folder Data and we eliminate the file data.root. The function <code><a class="el" href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b" title="Define the dataframe used in the analysis or it creates it if it is not found.">df_set()</a></code> is called again and after it finished, one check if the data is successfully recreated.</p>
@@ -281,7 +281,7 @@ Test 2</h2>
 <p >In this test the fit results are controlled. First off, one defines a model with a similar shape to the one expected and calls the function <code><a class="el" href="fitRoo_8h.html#a8d34d827ff23492f36fe47c3e81cbf8c" title="Implementation of the fit function.">fitRoo()</a></code> passing this model as an argument instead of the real data. The test checks if the fit converged by looking at the fitStatus and also check if the returned parameters are inside 5 sigma of the initial value.</p>
 <h2><a class="anchor" id="test3"></a>
 Test 3</h2>
-<p >This one tests the function <code><a class="el" href="SpectrumPlot_8h.html#a34714da9ccb76f8078d83e0226c98bb3">SavePlot()</a></code> which handles the saving of a canvas with a specific filename. If the folder Plots does not exist, it creates it. </p>
+<p >This one tests the function <code><a class="el" href="SpectrumPlot_8h.html#a34714da9ccb76f8078d83e0226c98bb3" title="Save the plot created in the folder Plots. If the folder does not exits, it creates it.">SavePlot()</a></code> which handles the saving of a canvas with a specific filename. If the folder Plots does not exist, it creates it. </p>
 <h2><a class="anchor" id="test4"></a>
 Test 4</h2>
 <p >This test is useful to check if the printing of the custom cuts on the canvas work. It compares the strings returned by the function <code><a class="el" href="fitRoo_8h.html#a2cbf9d1b384ae8f608f2696f3b097ce5" title="Formatting the string to be displayed on the canvas regarding the cuts made on y.">formatYString()</a></code> or <code><a class="el" href="fitRoo_8h.html#a1071b14a4470a35ab0feac8aff36eab5" title="Formatting the string to be displayed on the canvas regarding the cuts made on pt.">formatPtString()</a></code> with the expected ones. </p>

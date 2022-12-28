@@ -215,16 +215,27 @@ $(document).ready(function(){initNavTree('fitRoo_8h.html',''); initResizable(); 
 <p>Function for fitting the data and displying the canvas.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;RooRealVar.h&quot;</code><br />
-<code>#include &quot;RooDataSet.h&quot;</code><br />
 <code>#include &quot;RooGaussian.h&quot;</code><br />
-<code>#include &quot;RooChebychev.h&quot;</code><br />
+<code>#include &quot;RooPolynomial.h&quot;</code><br />
+<code>#include &quot;RooBreitWigner.h&quot;</code><br />
 <code>#include &quot;RooAddPdf.h&quot;</code><br />
+<code>#include &quot;RooAbsPdf.h&quot;</code><br />
 <code>#include &quot;TCanvas.h&quot;</code><br />
 <code>#include &quot;TAxis.h&quot;</code><br />
 <code>#include &quot;RooPlot.h&quot;</code><br />
 <code>#include &quot;TH1.h&quot;</code><br />
-<code>#include &quot;TString.h&quot;</code><br />
+<code>#include &quot;RooGenericPdf.h&quot;</code><br />
+<code>#include &quot;RooFitResult.h&quot;</code><br />
 <code>#include &quot;RooDataHist.h&quot;</code><br />
+<code>#include &quot;RooHist.h&quot;</code><br />
+<code>#include &quot;TRootCanvas.h&quot;</code><br />
+<code>#include &quot;TApplication.h&quot;</code><br />
+<code>#include &quot;TLatex.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="SpectrumPlot_8h_source.html">SpectrumPlot.h</a>&quot;</code><br />
+<code>#include &quot;TStyle.h&quot;</code><br />
+<code>#include &quot;TString.h&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;filesystem&gt;</code><br />
 </div>
 <p><a href="fitRoo_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -242,10 +253,6 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Function for fitting the data and displying the canvas. </p>
-<p >In this file are defined the function used to fit the data and to fit the canvas In particular, it is defined:</p>
-<p >formatPtString: it formats the string regarding the cut on pt to be displayed on the canvas</p>
-<p >formatYString: it format the string regarding the cut on Y to be displayed on the canvas</p>
-<p >fitRoo: function that fit the data, print the result and the canvas </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a8d34d827ff23492f36fe47c3e81cbf8c" name="a8d34d827ff23492f36fe47c3e81cbf8c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8d34d827ff23492f36fe47c3e81cbf8c">&#9670;&nbsp;</a></span>fitRoo()</h2>
@@ -322,6 +329,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implementation of the fit function. </p>
+<p >Define a model function as sum of a quadratic background and three peak signals that can be chosen between breit wigner, gaussian, or t-student. Fit the histogram in input with the model function and print the result on the terminal. The data, the fitted model and its components are drawn on the canvas. On the canvas are also printed the cuts on tranverse momentum and rapidity, and the luminosity and CM energy as well. The result is saved in a pdf file with the name defined by parameter nfr. If the mode is set to "fit" an application with the canvas is displayed.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">hh</td><td>histogram to be fitted </td></tr>
@@ -373,6 +381,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Formatting the string to be displayed on the canvas regarding the cuts made on pt. </p>
+<p >If there are no custom cut, the default ones are printed</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dr</td><td>reference of depth defined in main </td></tr>
@@ -418,6 +427,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Formatting the string to be displayed on the canvas regarding the cuts made on y. </p>
+<p >If there are no custom cut, the default ones are printed</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dr</td><td>reference of depth defined in main </td></tr>

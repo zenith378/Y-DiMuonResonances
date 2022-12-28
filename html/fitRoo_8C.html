@@ -212,17 +212,16 @@ $(document).ready(function(){initNavTree('fitRoo_8C.html',''); initResizable(); 
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;RooRealVar.h&quot;</code><br />
-<code>#include &quot;RooDataSet.h&quot;</code><br />
 <code>#include &quot;RooGaussian.h&quot;</code><br />
 <code>#include &quot;RooPolynomial.h&quot;</code><br />
 <code>#include &quot;RooBreitWigner.h&quot;</code><br />
 <code>#include &quot;RooAddPdf.h&quot;</code><br />
 <code>#include &quot;RooAbsPdf.h&quot;</code><br />
-<code>#include &quot;RooGenericPdf.h&quot;</code><br />
 <code>#include &quot;TCanvas.h&quot;</code><br />
 <code>#include &quot;TAxis.h&quot;</code><br />
 <code>#include &quot;RooPlot.h&quot;</code><br />
 <code>#include &quot;TH1.h&quot;</code><br />
+<code>#include &quot;RooGenericPdf.h&quot;</code><br />
 <code>#include &quot;RooFitResult.h&quot;</code><br />
 <code>#include &quot;RooDataHist.h&quot;</code><br />
 <code>#include &quot;RooHist.h&quot;</code><br />
@@ -323,6 +322,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implementation of the fit function. </p>
+<p >Define a model function as sum of a quadratic background and three peak signals that can be chosen between breit wigner, gaussian, or t-student. Fit the histogram in input with the model function and print the result on the terminal. The data, the fitted model and its components are drawn on the canvas. On the canvas are also printed the cuts on tranverse momentum and rapidity, and the luminosity and CM energy as well. The result is saved in a pdf file with the name defined by parameter nfr. If the mode is set to "fit" an application with the canvas is displayed.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">hh</td><td>histogram to be fitted </td></tr>
@@ -374,6 +374,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Formatting the string to be displayed on the canvas regarding the cuts made on pt. </p>
+<p >If there are no custom cut, the default ones are printed</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dr</td><td>reference of depth defined in main </td></tr>
@@ -419,6 +420,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Formatting the string to be displayed on the canvas regarding the cuts made on y. </p>
+<p >If there are no custom cut, the default ones are printed</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dr</td><td>reference of depth defined in main </td></tr>
