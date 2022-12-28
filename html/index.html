@@ -22,7 +22,7 @@ MathJax.Hub.Config({
   jax: ["input/TeX","output/HTML-CSS"],
 });
 </script>
-<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<script type="text/javascript" async="async" src="/Applications/MathJax-2.7.7/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -92,7 +92,8 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
   <div class="headertitle"><div class="title">YFit YFit Library Documentation </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >This C++ Library was created by Giulio Cordova and Matilde Carminati for the Computing Methods for Experimental Physics and Data Analysis exam.</p>
+<div class="textblock"><p >\(\LaTeX\)</p>
+<p >This C++ Library was created by Giulio Cordova and Matilde Carminati for the Computing Methods for Experimental Physics and Data Analysis exam.</p>
 <h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
 <p >YFit Library is a simple library used to fit the first three Y resonances from the open cms dimuon dataset and to calculate the differentian cross section of the same process as a function of the trasverse momentum. It comes together with its own main in order to use it.</p>
@@ -144,7 +145,7 @@ Calculate and plot the differential cross section</h3>
 <p class="formulaDsp">
 \[ \frac{d\sigma}{dp_t} = \frac{N}{L \Delta p_t e_{uu} e_{sg} e_{vp} A} \]
 </p>
-<p >where $N$ is a fit parameter that says how many events are under the signal function and $\Delta p_T$ is the width of the bin in $p_T$ (i.e. the width of cut on the trasverse momentum). The value of the acceptance A is fixed to 1, and the other values are some costants taken from the article "Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at $\sqrt(s) = 7 TeV".</p>
+<p >where $N$ is a fit parameter that says how many events are under the signal function and $\Delta p_T$ is the width of the bin in $p_T$ (i.e. the width of cut on the trasverse momentum). The value of the acceptance A is fixed to 1, and the other values are some costants taken from the article <a href="https://arxiv.org/pdf/1501.07750.pdf">"Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at $\sqrt(s) = 7 TeV"</a>.</p>
 <p >A more detail description of the functions used it can be found in <code><a class="el" href="diffCrossSection_8h.html">diffCrossSection.h</a></code>. </p><div class="image">
 <img src="diffCrossSection.pdf" alt=""/>
 <div class="caption">
