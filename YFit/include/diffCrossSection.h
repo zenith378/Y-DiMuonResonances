@@ -56,7 +56,7 @@ Double_t diffCrossSec(double N, float wpt);
  *
  * @return Structure where are saved the value usuful for the bin
  *******************************************************************************************************************************************************************************/
-dcsbin setset(float ptm, float ptM, ROOT::RDF::RNode &df, std::string nameFile);
+dcsbin setset(float ptm, float ptM, float ym, float yM, ROOT::RDF::RNode &df, std::string nameFile);
 
 
 /********************************************************************************************************************
@@ -66,6 +66,6 @@ dcsbin setset(float ptm, float ptM, ROOT::RDF::RNode &df, std::string nameFile);
  * @param df Dataframe where the unselected data are stored
  * 
  ************************************************************************************************************************************************************************/
-void PlotDiffCrossSection(ROOT::RDF::RNode &df);
+void PlotDiffCrossSection(ROOT::RDF::RNode &df,float ym, float yM,int dr=0);
 
 #endif /* difffCrossection_h */

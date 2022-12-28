@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     RooFitResult * fitresult = fitRoo(h,mode, fitfunc, depth, ptm, ptM, ym, yM, nameFile, verbose);
     }
     if(mode==1)
-    PlotDiffCrossSection(df);
+    PlotDiffCrossSection(df,ym,yM);
 
     return 0;
 }

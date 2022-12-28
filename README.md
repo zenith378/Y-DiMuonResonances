@@ -1,7 +1,7 @@
 # YCrossFit
 In this project we built a shared library named YCrossFit, for the CMEPDA exam. 
 
-![docs](https://github.com/zenith378/Y-DiMuonResonances/actions/workflows/doc.yml/badge.svg) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![docs](https://github.com/zenith378/Y-DiMuonResonances/actions/workflows/doc.yml/badge.svg)](https://zenith378.github.io/Y-DiMuonResonances/html/index.html) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 Using the Y(1S,2S,3S) resonances in two muons from the CMS open data, the main goals of this library are essentially two:
 - fitting them with customizable parameters;
@@ -27,7 +27,7 @@ the program will create the plot of the differential cross section in pt of the 
 -   at least 2 muons of opposite charge in each event
 -  an absolute value of rapidity less than 1.2
 
-![Final Result](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/diffCrossSection/diffCrossSection-1.png)
+![Final Result](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/diffCrossSection-1.png)
 
   
 ## Fit mode
@@ -36,7 +36,7 @@ This programs also offers a Fit functionality where the differential cross secti
 $ ./build/main/YLaunch --mode fit
 ```
 The following graph is produced, while the results of the fit are printed in the terminal. 
-![Fit Mode](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/YResonancesFit-1.png)
+![Fit Mode](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/YResonancesFit-1.png)
 
 
 ### Custimize options
@@ -51,7 +51,7 @@ $ ./build/main/YLaunch -m fit -n “CustomizeCuts” -p 20. -P 30. -Y 0.5
 ```
 and the following figure is produced and saved in the file CustomizeCut.pdf inside the Plots folder.
 
-![CustomizeCuts](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/CustomizeCuts/CustomizeCuts-1.png)
+![CustomizeCuts](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/CustomizeCuts-1.png)
 
 
 # Description of main (and functionality of libraries)
@@ -106,7 +106,11 @@ Once the dataframe is cute, the report on the cuts is printed on stream.
 
 ### Draw a preliminary Spectrum Plot
 
-The selected data are preliminary drawn on a canvas as an histohgramm of the invariant mass of the dimuon. The canvas is saved as  `nameFile`__Preliminary.pdf_, where nameFile is the name passed through command line with the flag -n or --nameFile.
+The selected data are preliminary drawn on a canvas as an histohgramm of the invariant mass of the dimuon.
+
+![PreliminaryHisto](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/Preliminary_histo-1.png)
+
+The canvas is saved as  `nameFile`__Preliminary.pdf_, where nameFile is the name passed through command line with the flag -n or --nameFile.
 >If no argument is provided, the default value for nameFile is "YResonacesFit".
 
 In the file `Cuts.C` is also defined a function in order to handle the saving of figures in the folder Plots. If it does not exist, it is recreated.

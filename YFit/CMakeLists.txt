@@ -20,17 +20,17 @@ include(${ROOT_USE_FILE})
 add_definitions(${ROOT_CXX_FLAGS})
 
 
-ROOT_GENERATE_DICTIONARY(G__YFit include/Cuts.h include/df_set.h include/SpectrumPlot.h include/fitRoo.h include/optionParse.h include/diffCrossSection.h)
+ROOT_GENERATE_DICTIONARY(G__YCrossFit include/Cuts.h include/df_set.h include/SpectrumPlot.h include/fitRoo.h include/optionParse.h include/diffCrossSection.h)
 
 # Add a library with the above sources
-add_library(YFit src/Cuts.C src/df_set.C src/fitRoo.C src/optionParse.C src/SpectrumPlot.C src/diffCrossSection.C)
+add_library(YCrossFit src/Cuts.C src/df_set.C src/fitRoo.C src/optionParse.C src/SpectrumPlot.C src/diffCrossSection.C)
 
-target_link_libraries(YFit ${ROOT_LIBRARIES})
+target_link_libraries(YCrossFit ${ROOT_LIBRARIES})
 
-add_library(sub::lib1 ALIAS YFit)
+add_library(sub::lib1 ALIAS YCrossFit)
 
-target_include_directories( YFit
+target_include_directories( YCrossFit
     PUBLIC ${PROJECT_SOURCE_DIR}/YFit/include
     ${CMAKE_SOURCE_DIR} ${ROOT_INCLUDE_DIRS}
 )
-set_property(TARGET YFit PROPERTY CXX_STANDARD 17)
+set_property(TARGET YCrossFit PROPERTY CXX_STANDARD 17)

@@ -41,13 +41,11 @@ const float A=1; //accetanza
 }
 
 
-dcsbin setset(float ptm, float ptM, ROOT::RDF::RNode &df, std::string nameFile)
+dcsbin setset(float ptm, float ptM, float ym, float yM, ROOT::RDF::RNode &df, std::string nameFile)
 {
     // initialize default values for options
     int depth = 0; //Depth value initialized to 0, i.e. no cuts
     int fitfunc = 1; //Fit Function initilized to 0, i.e. Breit-Wigner
-    float ym = std::nanf("0"); //no lower cut on rapidity
-    float yM = 1.2; //cut on absolute value of raidity
     int verbose = 0; //verbose flag initialized to zero, i.e. no output stream for Minuit
     ROOT::RDF::RNode df_cut = Cuts(df, depth, ptm, ptM, ym, yM);
     TH1 *h = SpectrumPlot(df_cut,nameFile);
@@ -82,19 +80,19 @@ dcsbin setset(float ptm, float ptM, ROOT::RDF::RNode &df, std::string nameFile)
 }
 
 
-void PlotDiffCrossSection(ROOT::RDF::RNode &df){
+void PlotDiffCrossSection(ROOT::RDF::RNode &df,float ym, float yM,int dr){
     const int n=21;
     //Define array for binning the differential cross section
     double ptm[n] = {12.,14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.};
     double ptM[n] = {14.,16.,18.,20.,22.,24.,26.,28.,30.,32.,34.,36.,38.,40.,43.,46.,50.,55.,60.,70.,100.};
     //define arrays for constructing the Graph of the differential cross section
     double x[n], y1[n], y2[n], y3[n], dx[n], dy1[n], dy2[n], dy3[n];
-    
+    if(yM!=yM) yM = 1.2; //cut on absolute value of raidity
     for(int i=0;i<n;i++){
         //The name of the file in which the figure is saved for every iteration of fitRoo
         std::string nameFile = "YResonances_"+std::to_string(i); 
         //in the structure abin the values of the three cross section are saved
-        dcsbin abin = setset(ptm[i], ptM[i], df,nameFile);
+        dcsbin abin = setset(ptm[i], ptM[i], ym, yM, df,nameFile);
         x[i]=(ptm[i]+ptM[i])/2; //center of the bin
         dx[i]=(ptM[i]-ptm[i])/2; //coverage of binning
         y1[i]=abin.s1; //cross section of Y(1S)
@@ -154,7 +152,12 @@ void PlotDiffCrossSection(ROOT::RDF::RNode &df){
     label.SetNDC(true); // normalized pad coordinates
     label.SetTextSize(0.035);
     label.SetTextAlign(22); // central vertically and horizontally
-    label.DrawLatex(0.75, 0.78, "#bf{|y| < 1.2}");
+    if(ym!=ym&&yM!=yM)
+        label.DrawLatex(0.75, 0.78, "#bf{|y| < 1.2}");
+    else{
+        TString cut = formatYString(dr, ym, yM);
+        label.DrawLatex(0.75, 0.78, ("#bf{" + cut + "}"));
+    }
     label.SetTextAlign(11); // left bottom
     label.DrawLatex(0.1, 0.92, "#bf{CMS Open Data}");
     label.SetTextAlign(31); // right bottom

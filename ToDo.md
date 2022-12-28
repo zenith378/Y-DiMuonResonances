@@ -1,13 +1,13 @@
 - <del>tagli per una stessa variabile in un unico comando</del>
 - <del>capire come fare la documentazione </del>
-- fare la documentazione
+- <del>fare la documentazione</del>
 - <del>compilare con cmake</del>
 - <del>shared library</del>
-- unit test
+- <del>unit test</del>
 - <del>finire di implementare l'opzione di scelta tra fit gaussiano, loretziano o tstudentiano </del>>
 - <del>implementare scelta tagli</del>
 - <del> Funzione per riconoscere quando i tagli sono troppo stretti e non entrare nella funzione di fit</del>
 - <del>grafici di Pull</del>
 - <del>grafici della sezione d'urto</del>
 - implementare installazione
-- implementare funzioni da linea di comando (spettro, fit, etc.)
+- implementare path da variabili di ambiente

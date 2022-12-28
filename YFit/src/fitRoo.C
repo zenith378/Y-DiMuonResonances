@@ -96,7 +96,7 @@ RooFitResult *fitRoo(TH1 *hh, int mr,int fr, int dr, float pmr, float pMr, float
     RooRealVar a1("a1", "a1", slp, -10000., 1000.);
     RooRealVar a2("a2", "a2", 0, -1000., 1000.);
     RooPolynomial bkg("bkg", "Background", x, RooArgSet(a0, a1,a2));
-    RooRealVar nback("nback", "nback", 0.32*entries, 0.01, entries); //0.32
+    RooRealVar nback("nback", "nback", 0.32*entries, 0.01*entries, entries); //0.32
 
     // Create parameters
     RooRealVar mean1("mean1", "mean of gaussians", 9.45, 9.3, 9.6);
@@ -106,9 +106,9 @@ RooFitResult *fitRoo(TH1 *hh, int mr,int fr, int dr, float pmr, float pMr, float
     RooRealVar sigma2("sigma2", "width of gaussians", 0.032, 0.001, 0.3);
     RooRealVar sigma3("sigma3", "width of gaussians", 0.020, 0.001, 0.3);
 
-    RooRealVar r1("r1", "r1", 10, 0.00, 1000);
-    RooRealVar r2("r2", "r2", 1, 0.00, 1000);
-    RooRealVar r3("r3", "r3", 1, 0.00, 1000);
+    RooRealVar r1("r1", "r1", 10, 0.001, 10000);
+    RooRealVar r2("r2", "r2", 1, 0.001, 10000);
+    RooRealVar r3("r3", "r3", 1, 0.001, 10000);
 
     // Define signal
 
@@ -116,9 +116,9 @@ RooFitResult *fitRoo(TH1 *hh, int mr,int fr, int dr, float pmr, float pMr, float
     RooAbsPdf *sig2;
     RooAbsPdf *sig3;
 
-    RooRealVar nsig1("nsig1", "signal1", 0.42*entries, 0.01, entries); //0.32
-    RooRealVar nsig2("nsig2", "signal2", 0.31*entries, 0.01, entries); //0.21
-    RooRealVar nsig3("nsig3", "signal3", 0.22*entries, 0.01, entries); //0.22
+    RooRealVar nsig1("nsig1", "signal1", 0.42*entries, 0.01*entries, entries); //0.32
+    RooRealVar nsig2("nsig2", "signal2", 0.31*entries, 0.01*entries, entries); //0.21
+    RooRealVar nsig3("nsig3", "signal3", 0.22*entries, 0.01*entries, entries); //0.22
 
 
     switch (fr)
@@ -170,7 +170,7 @@ RooFitResult *fitRoo(TH1 *hh, int mr,int fr, int dr, float pmr, float pMr, float
         // Print structure of composite pdf
         fitResult->Print("v"); // previous was t
 
-        if (fitResult->status()>4) // fitResult->covQual() < 2
+        if (fitResult->edm()>1e4||(fitResult->status()>4)||(fitResult->status()>3&&fitResult->edm()>1e3)) // fitResult->covQual() < 2
         {
             throw(std::runtime_error("Fit did not converge."));
         }

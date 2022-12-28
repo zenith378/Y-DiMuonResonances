@@ -20,7 +20,7 @@
  * Function to save the plot created in the folder Plots. If the folder does not exits, it creates it. 
  * @param c1 canvas containing the plot
  * @param nameFile name to give to the pdf
- * \return histogram of the data
+ * 
  *************************************************************/
 void SavePlot(TCanvas *c, TString namePlot);
 
