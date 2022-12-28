@@ -1,25 +1,3 @@
-/**************************************************************
- * \file optionParse.C
- * \brief Handling flags and option parameters
- *
- *
- *
- * In this file are defined the functions used in order to handle flags and command line options.
- * In particular, it is defined:
- * 
- * void PrintHelp(): output of the option help. It shows the available options and flags;
- * 
- * void outOfRangeErrorHandling(std::string opt, std::string range, const char *insrtvl): 
- * it handles an exception of type "Out of Range";
- * 
- * void conversionErrorHandling(std::string opt, std::string range, std::invalid_argument err):
- * it handles an exception of type Conversion Error (string to float or string to int);
- * 
- * void unknowErrorHandling(): it handles an error of uknown type;
- * 
- * voi ProcessArgs(...): it handles command line inputs and stores the values of flags or options.
- *
- *******************************************************************************/
 #include <iostream>
 #include "getopt.h"
 #include <string>
@@ -87,7 +65,7 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
         {"help", no_argument, 0, 'h'},
         {"verbose", no_argument, 0, 'v'},
         {0, 0, 0, 0}};
-    int option_index = 0; //initialize index to 0
+    int option_index = 0; //initialize index to 0 for the while condition
     while (true) //
     {
         const auto opt = getopt_long(argc, argv, short_opts, long_opts, &option_index);

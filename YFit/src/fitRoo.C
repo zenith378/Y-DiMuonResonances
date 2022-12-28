@@ -53,16 +53,14 @@ TString formatYString(int dr, float ymr, float yMr)
             tmp.Form("|y| < 0.6");
     }
     if (ymr == ymr && yMr == yMr)
-        tmp.Form("%.2f < |y| < %.2f",ymr,yMr); //tmp = std::to_string(ymr).substr(0, std::to_string(ymr).find(".") + 2 + 1) + " < |y| < " + std::to_string(yMr).substr(0, std::to_string(yMr).find(".") + 2 + 1);
+        tmp.Form("%.2f < |y| < %.2f",ymr,yMr);
 
     if (ymr == ymr && yMr != yMr)
-        tmp.Form("|y| > %.2f",ymr); //tmp = tmp + "|y| > " + std::to_string(ymr).substr(0, std::to_string(ymr).find(".") + 2 + 1);
+        tmp.Form("|y| > %.2f",ymr);
 
     if (ymr != ymr && yMr == yMr)
-        tmp.Form("|y| < %.2f",yMr); //tmp = tmp + "|y| < " + std::to_string(yMr).substr(0, std::to_string(yMr).find(".") + 2 + 1);
-
-
-
+        tmp.Form("|y| < %.2f",yMr);
+    
     return tmp;
 }
 
@@ -73,8 +71,6 @@ RooFitResult *fitRoo(TH1 *hh, int mr,int fr, int dr, float pmr, float pMr, float
     // Declare observable x
     RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5, 11.5);
     RooDataHist rh("rh", "rh", x, Import(*hh));
-    // create application to display the canvas while root runs
-    
     
     Int_t nb = hh->GetNbinsX();
     Double_t x1 = hh->GetBinCenter(1);

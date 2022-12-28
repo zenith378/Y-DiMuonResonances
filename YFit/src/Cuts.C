@@ -1,10 +1,3 @@
-/*********************************
- \file Cuts.C
- \brief Selection of the data.
-
- The data are selected to be two muon of opposite charge with an invariant mass around the mass of the Y resonances. Also it is possible to choose other cuts on the trasverse momentum and the pseudorapidity of the dimuon state.
-************************************************/
-
 #include "ROOT/RDataFrame.hxx"
 #include "TMath.h"
 #include "Cuts.h"

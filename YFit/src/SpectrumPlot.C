@@ -1,9 +1,3 @@
-/**************************************************************
- * \file SpectrumPlot.C
- * \brief Function to plot the spectrum of the dataset which is currently used and create an histogram. 
- *
- 
- *******************************************************************************/
 #include "ROOT/RDataFrame.hxx"
 #include "TMath.h"
 #include "TCanvas.h"

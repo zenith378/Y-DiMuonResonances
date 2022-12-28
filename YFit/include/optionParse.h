@@ -27,10 +27,9 @@
 #include "getopt.h"
 
 /***************************************
- * \fn PrintHelp
  * \brief Print help stream for understanding what options and flags are available
  * 
- *It prints the following output:
+ * It prints the following output:
  * 
  * --cutDepth [-d] <n>:             Choose Cut Depth between the options:
  *                                  0 (default): select events with two muons of opposite charge
@@ -56,8 +55,8 @@
 void PrintHelp();
 
 /***************************************
- * \fn outOfRangeErrorHandling
- * \brief it handles an exception of type "Out of Range";
+ * \brief handle an exception of type "Out of Range".
+ *
  * @param opt option in case (e.g. depth, fitFunction, etc...)
  * @param range range accepted of the desired option (e.g. 0,1,2 for depth)
  * @param insrtvl invalid value entered by the user in the command line stream
@@ -70,6 +69,7 @@ void outOfRangeErrorHandling(std::string opt, std::string range, const char *ins
 /***************************************
  * \fn conversionErrorHandling
  * \brief it handles an exception of type "conversion Error";
+ *
  * @param opt option in case (e.g. depth, fitFunction, etc...)
  * @param range range accepted of the desired option (e.g. 0,1,2 for depth)
  * @param err invalid argument raised by the standard library
@@ -80,7 +80,6 @@ void outOfRangeErrorHandling(std::string opt, std::string range, const char *ins
 void conversionErrorHandling(std::string opt, std::string range, std::invalid_argument err);
 
 /***************************************
- * \fn unknownErrorHandling
  * \brief it handles an exception of type "unknown"
  * 
  * \return error exit

@@ -20,9 +20,12 @@
 #include "diffCrossSection.h"
 #include "TApplication.h"
 #include "TRootCanvas.h"
-#include "TGraphErrors.h"
+#include "TGraph.h"
 #include "TLatex.h"
+#include "TLegend.h"
+#include "TGraphErrors.h"
 #include "TMultiGraph.h"
+#include "SpectrumPlot.h"
 
 /***********************************************************
  * \brief Structure where are saved the value usuful for each bin.
