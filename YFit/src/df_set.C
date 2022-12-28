@@ -1,13 +1,8 @@
-/**************************************************************
- * \file df_set.C
- * \brief Function for creating and setting up dataframe used in the analysis
- *
- *
- *******************************************************************************/
+
 #include "ROOT/RDataFrame.hxx"
-#include "ROOT/RVec.hxx" //per usare ROOT::VecOps::RVec<T>
+#include "ROOT/RVec.hxx" 
 #include "Math/Vector4Dfwd.h"
-#include "Math/Vector4D.h" //per usare PtEtaPhiMVector e le sue funzioni
+#include "Math/Vector4D.h" 
 #include "TMath.h"
 #include "TFile.h"
 #include <TSystem.h>
@@ -18,9 +13,10 @@
 using namespace ROOT::VecOps;
 
 ROOT::Math::PtEtaPhiMVector computeDiMuonFourVec(RVec<float> &pt, RVec<float> &eta, RVec<float> &phi, RVec<float> &mass, unsigned long &im0, unsigned long &im1)
-{
+{// create two four vector of type PtEtaPhiM for the two muons in the event with index im0 and im1.
   ROOT::Math::PtEtaPhiMVector m1(pt[im0], eta[im0], phi[im0], mass[im0]);
   ROOT::Math::PtEtaPhiMVector m2(pt[im1], eta[im1], phi[im1], mass[im1]);
+  // create a four vector of the same type for the dimuon state
   return (m1 + m2);
 }
 
@@ -48,15 +44,16 @@ ROOT::RDF::RNode df_set()
 {
   // Enable multi-threading
   ROOT::EnableImplicitMT(1);
+
   namespace fs = std::filesystem;
 
-  std::string fname("./Data/data.root");
-  ROOT::RDataFrame *df;
+  std::string fname("./Data/data.root"); // path to data file
+  ROOT::RDataFrame *df; 
   try
   {
     try // try opening file
     {
-      df = new ROOT::RDataFrame("Events", fname);
+      df = new ROOT::RDataFrame("Events", fname); 
 
       if (!fs::is_directory("./Data") || !fs::exists("./Data")) // if data directory does not exists
       {
@@ -74,7 +71,7 @@ ROOT::RDF::RNode df_set()
       std::cerr << "Creating directory...\n"
                 << std::endl;
 
-      fs::create_directory(pathToData);
+      fs::create_directory(pathToData); // create directory
       std::cout << "Directory " << pathToData << " successfully created\n"
                 << std::endl;
       throw(std::runtime_error("Problem reading data file (it might not exist or might be corrupted)\n")); /// throw exception to handle
@@ -87,7 +84,7 @@ ROOT::RDF::RNode df_set()
               << std::endl;
     // reading dataframe from online NanoAOD
     ROOT::RDataFrame df_temp("Events", "root://eospublic.cern.ch//eos/opendata/cms/derived-data/AOD2NanoAODOutreachTool/Run2012BC_DoubleMuParked_Muons.root");
-    // define more useful variables in the dataframe
+    // filter good muons as defined in the article and define useful variables in the dataframe
     auto df_set = df_temp.Define("goodmu", "(Muon_pt > 4.5 && abs(Muon_eta) < 1.2) || (Muon_pt > 3.5 && abs(Muon_eta) <1.4 && abs(Muon_eta)>1.2) || (Muon_pt > 3. && abs(Muon_eta) <1.6 && abs(Muon_eta)>1.4)")
           .Filter("Sum(goodmu)>=2","At least two muons:")
           .Define("mu0", "Nonzero(goodmu)[0]")
@@ -96,7 +93,7 @@ ROOT::RDF::RNode df_set()
           .Define("mu1","Nonzero(oppositeCharge)[0]")
           .Define("Dimuon_FourVec", computeDiMuonFourVec, {"Muon_pt", "Muon_eta","Muon_phi","Muon_mass", "mu0", "mu1"})
           .Define("Dimuon_mass", computeDiMuonInvariantMass, {"Dimuon_FourVec"})
-          .Define("Dimuon_pt", computeDiMuonPT, {"Dimuon_FourVec"}) // Compute pt and rapidity (y) of dimuon
+          .Define("Dimuon_pt", computeDiMuonPT, {"Dimuon_FourVec"}) 
           .Define("Dimuon_beta", computeDiMuonBeta, {"Dimuon_FourVec"})
           .Define("Dimuon_y", computeDiMuonRapidity, {"Dimuon_FourVec"});
     
@@ -104,13 +101,9 @@ ROOT::RDF::RNode df_set()
     // Print cut-flow report
     report->Print();
 
-    df_set.Snapshot("Events", fname);         // save dataframe in a root file to avoid downloading it all the times
+    df_set.Snapshot("Events", fname); // save dataframe in a root file in order to avoid downloading it all the times
 
     return df_set;
-    //ROOT::RDataFrame df_new("Events", fname); // read dataframe from file stored
-    // this last step is necessary in order to be coherent with return type of the function df_set()
-
-    //return df_new;
   }
   catch (...) // if it happens anything that is not caught
   {

@@ -1,31 +1,9 @@
-/**************************************************************
- * \file optionParse.C
- * \brief Handling flags and option parameters
- *
- *
- *
- * In this file are defined the functions used in order to handle flags and command line options.
- * In particular, it is defined:
- * 
- * void PrintHelp(): output of the option help. It shows the available options and flags;
- * 
- * void outOfRangeErrorHandling(std::string opt, std::string range, const char *insrtvl): 
- * it handles an exception of type "Out of Range";
- * 
- * void conversionErrorHandling(std::string opt, std::string range, std::invalid_argument err):
- * it handles an exception of type Conversion Error (string to float or string to int);
- * 
- * void unknowErrorHandling(): it handles an error of uknown type;
- * 
- * voi ProcessArgs(...): it handles command line inputs and stores the values of flags or options.
- *
- *******************************************************************************/
 #include <iostream>
 #include "getopt.h"
 #include <string>
 #include <algorithm>
 
-void PrintHelp()
+void PrintHelp() //it prints the available options and flags, then exit
 {
     std::cout << "--cutDepth [-d] <n>:            Choose Cut Depth between the options:\n"
                  "                                0 (default): select events with two muons of opposite charge\n"
@@ -74,7 +52,7 @@ void unknownErrorHandling()
 
 void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &nfr, int &vr,int &mr)
 {
-    const char *const short_opts = "d:f:m:n:p:P:y:Y:hv"; //Define short options and whether an argument is expected
+    const char *const short_opts = "d:f:m:n:p:P:y:Y:hv"; // Define short options and whether an argument is expected
     const option long_opts[] = { //define long options
         {"cutDepth", required_argument, 0, 'd'},
         {"fitFunction", required_argument, 0, 'f'},
@@ -88,66 +66,66 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
         {"verbose", no_argument, 0, 'v'},
         {0, 0, 0, 0}};
     int option_index = 0; //initialize index to 0
-    while (true) //
+    while (true) 
     {
         const auto opt = getopt_long(argc, argv, short_opts, long_opts, &option_index);
 
-        if (-1 == opt)
+        if (-1 == opt) //if there are no other arguments to read, exit the while
             break;
 
-        switch (opt)
+        switch (opt) // switch over the flags
         {
-        case 'd':
+        case 'd': // depth flag
         {
             try
             {
-                dr = std::stoi(optarg);
-                if (dr != 0 && dr != 1 && dr != 2)
+                dr = std::stoi(optarg); // convert from string to integer, if the convertion is aborted, std::stdoi() throws a std::invalid_argument
+                if (dr != 0 && dr != 1 && dr != 2) // if the argument is not in range
                 {
-                    throw(optarg);
+                    throw(optarg); // throw exception to handle in out of range
                 }
             }
-            catch (const char *errore)
+            catch (const char *errore) // errore is the value inserted by the user
             {
-                outOfRangeErrorHandling("depth", "0, 1, or 2", errore);
+                outOfRangeErrorHandling("depth", "0, 1, or 2", errore); // handle exception of type out of range
             }
-            catch (const std::invalid_argument &eD)
+            catch (const std::invalid_argument &eD) // catch exception from standard library
             {
-                conversionErrorHandling("depth", "an integer number (namely 0, 1 or 2)", eD);
+                conversionErrorHandling("depth", "an integer number (namely 0, 1 or 2)", eD); // handle the exception
             }
-            catch (...)
+            catch (...) // if exception is an unknown type
             {
-                unknownErrorHandling();
+                unknownErrorHandling(); // handle the exception
             }
-            std::cout << "Cut Depth set to: " << dr << "\n" << std::endl;
+            std::cout << "Cut Depth set to: " << dr << "\n" << std::endl; // if successful, print the customized value
 
             break;
         }
-        case 'f':
+        case 'f': // fit function flag
         {
             try
             {
-                if (strcmp(optarg, "gaus") == 0)
-                    fr = 1;
-                else if (strcmp(optarg, "bw") == 0)
+                if (strcmp(optarg, "gaus") == 0) // compare string from user with string gaus
+                    fr = 1; // if comparison successful, assign 1 to fr
+                else if (strcmp(optarg, "bw") == 0) // similar as above 
                     fr = 0;
-                else if (strcmp(optarg, "stud") == 0)
+                else if (strcmp(optarg, "stud") == 0) // similar as above
                     fr = 2;
                 else
-                    throw(optarg);
+                    throw(optarg); // if argument is not gaus, bw or stud throw exception
             }
             catch (const char *value)
             {
-                outOfRangeErrorHandling("fitFunction", "gaus, bw or stud", value);
+                outOfRangeErrorHandling("fitFunction", "gaus, bw or stud", value); // handle out of range option
             }
             catch (...)
             {
-                unknownErrorHandling();
+                unknownErrorHandling(); // handle unknown error
             }
             std::cout << "Fit Function set to: " << optarg << "\n" << std::endl;
             break;
         }
-        case 'm':
+        case 'm': // mode of program (fit or cross). The query is analogue to the fit flag.
         {
             try{
                 if (strcmp(optarg, "fit") == 0)
@@ -168,39 +146,39 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
             std::cout << "mode set to: " << optarg << "\n" << std::endl;
             break;
         }
-        case 'n':
+        case 'n': // name file
         {
-            std::string forbiddenChars("\\/:?\"<>|"); //E SE VOGLIO DARE IL PATH DI UN FILE? MI SERVE "/"
-            const char * invalidChars= forbiddenChars.c_str();
+            std::string forbiddenChars("\\/:?\"<>|"); // define list of forbidden chars for a file name
+            const char * invalidChars= forbiddenChars.c_str(); // convert it to const char
             try
             {
                 nfr = optarg;
-                if (strpbrk(nfr.c_str(), invalidChars) != NULL)
-                    throw(nfr);
+                if (strpbrk(nfr.c_str(), invalidChars) != NULL)  // if inserted string contains an invalid char
+                    throw(nfr); // throw exception to handle
             }
             catch (std::string nf)
             {
                 std::cerr << "You have inserted illegal characters" << std::endl;
                 std::cerr << "Illegal characters will be replaced with an underscore" << std::endl;
-                auto it = nfr.begin();
-                for (it = nfr.begin(); it < nfr.end(); ++it)
+                
+                for (auto it = nfr.begin(); it < nfr.end(); ++it) // loop over the chars of inserted string
                 {
-                    bool found = forbiddenChars.find(*it) != std::string::npos;
-                    if (found)
+                    bool found = forbiddenChars.find(*it) != std::string::npos; // find invalid characters
+                    if (found) // if found
                     {
-                        *it = '_';
+                        *it = '_'; // substitute invalid char with underscore
                     }
                 }
             }
             catch (...)
             {
-                unknownErrorHandling();
+                unknownErrorHandling(); //handle unknown exception
             }   
             std::cout << "Filename set to: " << nfr << "\n" << std::endl;
             break;
 
         }
-        case 'p':
+        case 'p': // option minimum transverse momentum. Query is similar to fit function
         {
             try
             {
@@ -217,7 +195,7 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
             std::cout << "Minimum pt set to: " << pmr << "\n" << std::endl;
             break;
         }
-        case 'P':
+        case 'P':// option maximum transverse momentum. Query is similar to fit function
         {
             try
             {
@@ -234,7 +212,7 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
             std::cout << "Maximum pt set to: " << pMr << "\n" << std::endl;
             break;
         }
-        case 'y':
+        case 'y':// option minimum rapidity. Query is similar to fit function
         {
             try
             {
@@ -251,7 +229,7 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
             std::cout << "Minimum rapidity set to: " << ymr << "\n" << std::endl;
             break;
         }
-        case 'Y':
+        case 'Y': // option maximum rapidity. Query is similar to fit function
         {
             try
             {
@@ -268,7 +246,7 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
             std::cout << "Maximum rapidity set to: " << yMr <<  "\n" << std::endl;
             break;
         }
-        case 'v': 
+        case 'v': // verbose flag
         {
             std::cout << "Verbose flag set on\n" << std::endl;
             vr=1;

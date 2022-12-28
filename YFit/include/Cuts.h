@@ -1,9 +1,8 @@
 /*********************************
  * \file Cuts.h
  * \brief Selection of the data.
-*
  * The data are selected to be two muons of opposite charge with an invariant mass round the mass of the Y resonances.
- * Also it is possible to choose other cuts on the trasverse momentum and the pseudorapidity of the dimuon state.
+ * Also it is possible to choose other cuts on the trasverse momentum and the rapidity of the dimuon state.
 ************************************************/
 
 #ifndef Cuts_h
@@ -11,14 +10,20 @@
 
 #include "ROOT/RDataFrame.hxx"
 #include "TMath.h"
+#include "Cuts.h"
+#include <filesystem>
+#include "TSystem.h"
+#include "optionParse.h"
 
 /***************************************
  * 
- * \brief it applies default cuts 
+ * \brief Apply default cuts 
  * 
- * Depth 0: two muons of opposite charge and invariant mass between 8.5 and 11.5 GeV
- * Depth 1: select dimuon pT between 10 and 100 GeV
- * Depth 2: select dimuon pT between 10 and 100 GeV
+ * The function cut the inserted dataframe with the default cuts:
+ * 
+ * * Depth 0: two muons of opposite charge and invariant mass between 8.5 and 11.5 GeV
+ * * Depth 1: select dimuon pT between 10 and 100 GeV
+ * * Depth 2: select dimuon pT between 10 and 100 GeV
  *          and a rapidity less than 0.6 in abs value
  * 
  * @param df dataframe to be cutted
@@ -31,7 +36,7 @@ ROOT::RDF::RNode DFFilter(ROOT::RDF::RNode &df, int dr=0);
 
 /***************************************
  * 
- * \brief it applies custom cuts on a variable given string containing the filter 
+ * \brief Apply custom cuts on a variable given string containing the filter. Print a warning if there are less than 800 events in the cutted dataframe
  * 
  *
  * @param df_custom_cut dataframe to be cutted
@@ -45,7 +50,7 @@ ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode &df_custom_cut, std::string_view f
 
 /***************************************
  * 
- * \brief looks for active otpion parameters and applies custom cuts
+ * \brief looks for active otpion parameters and applies custom cuts with the function \c applyFilter()
  * 
  *
  * @param df dataframe to be cutted
@@ -61,7 +66,10 @@ ROOT::RDF::RNode customFilter(ROOT::RDF::RNode &df, float pmr= std::nanf("1"), f
 
 /***************************************
  * 
- * \brief tries to read cutted dataframe from file and generates it, if it does not exists
+ * \brief Try to read cutted dataframe from file. If it does not exists, generate it.
+ * 
+ * The function tries to open the cutted dataframe stored in file. If the file does not exists or the directory Data does not exists, 
+ * it creates them.
  * 
  *
  * @param df dataframe to be cutted
@@ -73,15 +81,15 @@ ROOT::RDF::RNode customFilter(ROOT::RDF::RNode &df, float pmr= std::nanf("1"), f
 ROOT::RDF::RNode generateDataFrame(ROOT::RDF::RNode &df, int dr=0);
 
 /*********************************
- \brief Modified a muon DataFrame cutting on nMuon, Muon_charge, Dimuon_mass, Dimuon_pt and Dimuon_y
+ \brief Apply default cuts set by depth. If there are any custom cuts, apply them, print a cut report and return df.
 
- UNa descrizione più dettagliata della funzione
- @param df Data Frame in input
+ @param df input dataframe
+ @param dr depth set
  @param pmr lower extreme for the cut on the dimuon trasverse momentum
  @param pMr upper extreme for the cut on the dimuon trasverse momentum
- @param ymr lower extreme for the cut on the dimuon pseudorapidity
- @param yMr upper extreme for the cut on the dimuon pseudorapidity
- \return df_cut DataFrame with the selection decided by the cuts
+ @param ymr lower extreme for the cut on the dimuon rapidity (in abs values)
+ @param yMr upper extreme for the cut on the dimuon rapidity (in abs values)
+ \return DataFrame with the selection decided by the cuts
 ************************************************/
 ROOT::RDF::RNode Cuts(ROOT::RDF::RNode &df, int dr=0,float pmr= std::nanf("1"), float pMr= std::nanf("1"), float ymr= std::nanf("1"), float yMr= std::nanf("1") );
 
