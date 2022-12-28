@@ -1,6 +1,8 @@
 /*!
  * \mainpage YFit YFit Library Documentation
  *
+ * \f(\LaTeX \f)
+ *
  * This C++ Library was created by Giulio Cordova and Matilde Carminati for the Computing Methods
  * for Experimental Physics and Data Analysis exam.
  *
@@ -76,7 +78,8 @@
  * $\Delta p_T$ is the width of the bin in $p_T$ (i.e. the width of cut
  * on the trasverse momentum). The value of the acceptance A is fixed to 1,
  * and the other values are some costants taken from the article
- * "Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at $\sqrt(s) = 7 TeV".
+ * ["Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at $\sqrt(s) = 7 TeV"]
+ * (https://arxiv.org/pdf/1501.07750.pdf).
  *
  * A more detail description of the functions used it can be found in \c diffCrossSection.h.
  * \image html diffCrossSection.pdf "diffCrossSection.pdf"
