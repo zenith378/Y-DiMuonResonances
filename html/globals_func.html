@@ -18,9 +18,126 @@
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
-  extensions: ["tex2jax.js"],
+  extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+/*!
+ * \mainpage YFit YFit Library Documentation
+ *
+ * \f(\LaTeX \f)
+ *
+ * This C++ Library was created by Giulio Cordova and Matilde Carminati for the Computing Methods
+ * for Experimental Physics and Data Analysis exam.
+ *
+ * \section intro_sec Introduction
+ * YFit Library is a simple library used to fit the first three Y resonances from the open
+ * cms dimuon dataset and to calculate the differentian cross section of the same process
+ * as a function of the trasverse momentum.
+ * It comes together with its own main in order to use it.
+ *
+ *
+ * \section example_usage A simple example usage
+ * The following lines are used for compiling the code and do the testing.
+ * \code
+ * $ cmake -S . -B ./build
+ * $ make -C build
+ * \endcode
+ *
+ * \subsubsection defOpt Default options
+ *
+ * If we run the main of the library without givin anything as flag or option, as it follows:
+ * \code
+ * $ ./build/main/YLaunch
+ * \endcode
+ * the programm will create un histogramm of the invariant mass of two muons selected as follow:
+ *  * $p_{T} > 3.5 GeV$ and $|y| < 2.0$ (for the single muon)
+ *  * at least 2 muons of opposite charge in each event
+ *
+ * \image html YResonancesFit.pdf "YResonancesFit.pdf"
+ *
+ * \subsubsection custOpt Custimize options
+ *
+ * We can customize some cuts on the dimuon state using the flags described in the
+ * documentation of the file \c OptionParse.h.
+ *
+ * In this example, $20.0 < p_T < 30.0$ GeV and $|y| < 0.5$ for the dimuon state
+ * \code
+ * $ ./build/main/YLaunch -n "CustomizeCuts" -p 20. -P 30. -Y 0.5
+ * \endcode
+ * \image html CustomizeCuts.pdf "CustomizeCuts.pdf"
+ *
+ *
+ * In both cases the plot of the differential cross section is created and saved inside the same folder (/Y-DiMuonResonance/Plots)
+ *
+ * \section program_des Description of main (and functionality of libraries)
+ * 
+ * \subsubsection option_param Choose of the parameters and flags
+ * The default parameters for the cuts are defined in the \c main.C file.
+ * If the user use the flags for customixìze them, the default value are replaced when the function \c ProcessArgs() is called.
+ * \subsubsection data_load Data Loading
+ * The data are loaded and manipulated (to have useful variables) using the functions defined inside \c df_set.h
+ *
+ * \subsubsection apply_cut Apply some cuts!
+ * The data are selected to be two muons of opposite charge with an invariant mass round the mass of the Y resonances.
+ * Also it is possible to choose other cuts on the trasverse momentum and the rapidity of the dimuon state.
+ *
+ * \subsubsection spectrum_draw Draw a preliminary Spectrum Plot
+ * The selected data are preliminary drawn on a canvas as an histohgramm of the invariant mass of the dimuon.
+ * The canvas is saved as *Preliminary_histo.pdf*.
+ * The function used for that are better descibed in the documentation of the file \c SpectrumPlot.h
+ *
+ * \subsubsection fit_roo Fit the Function and save it in a canvas
+ * The plotted histogramm is fitted to a function ,a BW by default, but it's possible to choose a gaussian or a t-student.
+ * The histogramm and the fitted function are drawn on a canvas which is saved.
+ *
+ * \subsubsection diffCS Calculate and plot the differential cross section
+ * Using the customizable function \c fitRoo(), it is possible calculate the differential cross section of the process Y->\mu+\mu-
+ *
+ * \f[
+ * \frac{d\sigma}{dp_t} = \frac{N}{L \Delta p_t e_{uu} e_{sg} e_{vp} A}
+ * \f]
+ *
+ * where $N$ is a fit parameter that says how many events are under the signal function and
+ * $\Delta p_T$ is the width of the bin in $p_T$ (i.e. the width of cut
+ * on the trasverse momentum). The value of the acceptance A is fixed to 1,
+ * and the other values are some costants taken from the article
+ * ["Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at $\sqrt(s) = 7 TeV"]
+ * (https://arxiv.org/pdf/1501.07750.pdf).
+ *
+ * A more detail description of the functions used it can be found in \c diffCrossSection.h.
+ * \image html diffCrossSection.pdf "diffCrossSection.pdf"
+ * 
+ * \section test_doc Testing
+ *
+ * Since the program is built with CMake, the testing was performed using CTest.
+ * Below are presented the tests that the authors implemented.
+ *
+ * \subsection test 0 Test 0
+ * Testing if the reading of the command arguments and flags is properly done.
+ * In this test one define some variables, call the \c ProcessArgs() and sees if the definition stands.
+ *
+ * \subsection test1 Test 1
+ * Here is tested the online reading of the data and the behavior in case the Data folder or the Data file is missing.
+ * In the test, the folder Data is deleted and the function `df_set()` is called.
+ * This function should handle the creation of the folder Data and the downloading and saving of the data.
+ * Once finished this first step, we check if the Data folder exists and if it contains the file data.root
+ * Next, we keep the folder Data and we eliminate the file data.root.
+ * The function `df_set()` is called again and after it finished, one check if the data is successfully recreated.
+ *
+ * \subsection test2 Test 2
+ * In this test the fit results are controlled. First off, one defines a model with a similar shape
+ * to the one expected and calls the function `fitRoo()` passing this model as an argument instead of the real data.
+ * The test checks if the fit converged by looking at the fitStatus and also check if the returned parameters
+ * are inside 5 sigma of the initial value.
+ *
+ * \subsection test3 Test 3
+ * This one tests the function `SavePlot()` which handles the saving of a canvas with a specific filename.
+ * If the folder Plots does not exist, it creates it.
+ * \subsection test4 Test 4
+ * This test is useful to check if the printing of the custom cuts on the canvas work.
+ * It compares the strings returned by the function `formatYString()` or `formatPtString()` with the expected ones.
+ * 
+ */
 </script>
 <script type="text/javascript" async="async" src="/Applications/MathJax-2.7.7/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -138,7 +255,7 @@ $(document).ready(function(){initNavTree('globals_func.html',''); initResizable(
 
 
 <h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
-<li>PlotDiffCrossSection()&#160;:&#160;<a class="el" href="diffCrossSection_8h.html#a83522724df715c57a7216d92bcc90fab">diffCrossSection.h</a>, <a class="el" href="diffCrossSection_8C.html#a83522724df715c57a7216d92bcc90fab">diffCrossSection.C</a></li>
+<li>PlotDiffCrossSection()&#160;:&#160;<a class="el" href="diffCrossSection_8h.html#ae3f30bab628d5cec2e3d7933b45fd370">diffCrossSection.h</a>, <a class="el" href="diffCrossSection_8C.html#a011f854f11f24d62314e9786d9f246a8">diffCrossSection.C</a></li>
 <li>PrintHelp()&#160;:&#160;<a class="el" href="optionParse_8h.html#a59a0451629f08aaf9c102537bdc5f6f8">optionParse.h</a>, <a class="el" href="optionParse_8C.html#ae964ff8411b4fdcaf65cb5529aea4bef">optionParse.C</a></li>
 <li>ProcessArgs()&#160;:&#160;<a class="el" href="optionParse_8h.html#a160578dd115ed301ca034d092a9e97e7">optionParse.h</a>, <a class="el" href="optionParse_8C.html#a160578dd115ed301ca034d092a9e97e7">optionParse.C</a></li>
 </ul>
@@ -146,7 +263,7 @@ $(document).ready(function(){initNavTree('globals_func.html',''); initResizable(
 
 <h3><a id="index_s" name="index_s"></a>- s -</h3><ul>
 <li>SavePlot()&#160;:&#160;<a class="el" href="SpectrumPlot_8h.html#a34714da9ccb76f8078d83e0226c98bb3">SpectrumPlot.h</a>, <a class="el" href="SpectrumPlot_8C.html#a34714da9ccb76f8078d83e0226c98bb3">SpectrumPlot.C</a></li>
-<li>setset()&#160;:&#160;<a class="el" href="diffCrossSection_8h.html#a96f9674409716a52f53e6fe5ea939704">diffCrossSection.h</a>, <a class="el" href="diffCrossSection_8C.html#a96f9674409716a52f53e6fe5ea939704">diffCrossSection.C</a></li>
+<li>setset()&#160;:&#160;<a class="el" href="diffCrossSection_8h.html#a5cdd68b288c0c4594c64f5bbdac293fe">diffCrossSection.h</a>, <a class="el" href="diffCrossSection_8C.html#a5cdd68b288c0c4594c64f5bbdac293fe">diffCrossSection.C</a></li>
 <li>SpectrumPlot()&#160;:&#160;<a class="el" href="SpectrumPlot_8h.html#a073489160eb1c3db831d0ad3c28c2e3d">SpectrumPlot.h</a>, <a class="el" href="SpectrumPlot_8C.html#a073489160eb1c3db831d0ad3c28c2e3d">SpectrumPlot.C</a></li>
 </ul>
 
