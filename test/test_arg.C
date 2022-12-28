@@ -26,8 +26,9 @@ int main(int argc, char *argv[]){
     yM = 0.8; 
     verbose = 1; 
     mode=1;
+    nameFile="Y?Resonances\\/:?\"<>|Fit";
     ProcessArgs(argc, argv, depth, fitfunc, ptm, ptM, ym, yM, nameFile, verbose,mode);
-    if(depth!=1&&fitfunc!=1&&ptm!=25&&ptM==ptM&&ym!=0.1&&yM!=0.8&&nameFile!="YResonancesFit"&&verbose!=1&&mode!=1)
+    if(depth!=1&&fitfunc!=1&&ptm!=25&&ptM==ptM&&ym!=0.1&&yM!=0.8&&nameFile!="Y_Resonances________Fit"&&verbose!=1&&mode!=1)
     exit(1);
 
     return 0;

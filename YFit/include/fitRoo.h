@@ -1,38 +1,43 @@
 /**************************************************************
+ * 
  * \file fitRoo.h
  * \brief Function for fitting the data and displying the canvas
- *
- *
- *
- * In this file are defined the function used to fit the data and to fit the canvas
- * In particular, it is defined:
  * 
- * formatPtString: it formats the string regarding the cut on pt to be displayed on the canvas
- * 
- * formatYString: it format the string regarding the cut on Y to be displayed on the canvas
- * 
- * fitRoo: function that fit the data, print the result and the canvas
  *******************************************************************************/
 
 #ifndef fitRoo_h
 #define fitRoo_h
 
 #include "RooRealVar.h"
-#include "RooDataSet.h"
 #include "RooGaussian.h"
-#include "RooChebychev.h"
+#include "RooPolynomial.h"
+#include "RooBreitWigner.h"
 #include "RooAddPdf.h"
+#include "RooAbsPdf.h"
 #include "TCanvas.h"
 #include "TAxis.h"
 #include "RooPlot.h"
 #include "TH1.h"
-#include "TString.h"
+#include "RooGenericPdf.h"
+#include "RooFitResult.h"
 #include "RooDataHist.h"
+#include "RooHist.h"
+#include "TRootCanvas.h"
+#include "TApplication.h"
+#include "TLatex.h"
+#include "SpectrumPlot.h"
+#include "TStyle.h"
+#include "TString.h"
+#include <string.h>
+#include <filesystem>
+
 
 using namespace RooFit;
  
 /***********************************************************
- * \brief Formatting the string to be displayed on the canvas regarding the cuts made on pt
+ * \brief Formatting the string to be displayed on the canvas regarding the cuts made on pt.
+ * 
+ * If there are no custom cut, the default ones are printed
  * 
  * @param dr reference of depth defined in main
  * @param pmr recerence of ptm (minimum pt) defined in main
@@ -45,6 +50,8 @@ TString formatPtString(int dr=0, float pmr= std::nanf("1"), float pMr= std::nanf
 /***********************************************************
  * \brief Formatting the string to be displayed on the canvas regarding the cuts made on y
  * 
+ * If there are no custom cut, the default ones are printed
+ *
  * @param dr reference of depth defined in main
  * @param ymr recerence of ym (minimum rapidity) defined in main
  * @param yMr recerence of yM (maximum rapidity) defined in main
@@ -55,6 +62,15 @@ TString formatYString(int dr=0, float ymr= std::nanf("1"), float yMr= std::nanf(
 
 /***********************************************************
  * \brief Implementation of the fit function
+ * 
+ * Define a model function as sum of a quadratic background and three peak signals 
+ * that can be chosen between breit wigner, gaussian, or t-student. 
+ * Fit the histogram in input with the model function and print the result on the terminal. 
+ * The data, the fitted model and its components are drawn on the canvas. 
+ * On the canvas are also printed the cuts on tranverse momentum and rapidity, and the luminosity 
+ * and CM energy as well.
+ * The result is saved in a pdf file with the name defined by parameter nfr. If the mode is set 
+ * to "fit" an application with the canvas is displayed.
  * 
  * @param hh histogram to be fitted
  * @param fr reference of fitFunction defined in main

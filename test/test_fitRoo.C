@@ -6,6 +6,7 @@
 #include "RooGaussian.h"
 #include "RooAddPdf.h"
 #include "RooPolynomial.h"
+#include "RooDataSet.h"
 #include "RooDataHist.h"
 #include "RooFitResult.h"
 #include "fitRoo.h"
