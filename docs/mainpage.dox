@@ -1,7 +1,10 @@
 /*!
  * \mainpage YFit YFit Library Documentation
  *
- * This C++ Library was created by Giulio Cordova and Matilde Carminati for the Computing Methods for Experimental Physics and Data Analysis exam.
+ * \f(\LaTeX \f)
+ *
+ * This C++ Library was created by Giulio Cordova and Matilde Carminati for the Computing Methods
+ * for Experimental Physics and Data Analysis exam.
  *
  * \section intro_sec Introduction
  * YFit Library is a simple library used to fit the first three Y resonances from the open
@@ -9,7 +12,6 @@
  * as a function of the trasverse momentum.
  * It comes together with its own main in order to use it.
  *
- * Brief description main file.
  *
  * \section example_usage A simple example usage
  * The following lines are used for compiling the code and do the testing.
@@ -72,27 +74,44 @@
  * \frac{d\sigma}{dp_t} = \frac{N}{L \Delta p_t e_{uu} e_{sg} e_{vp} A}
  * \f]
  *
- * where $N$ is a fit parameter that says how many events are under the signal function and $\Delta p_T$ is the width of the bin in $p_T$ (i.e. the width of cut
- * on the trasverse momentum). The value of the acceptance A is fixed to 1, and the other values are some costants taken from the article
- * "Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at $\sqrt(s) = 7 TeV".
+ * where $N$ is a fit parameter that says how many events are under the signal function and
+ * $\Delta p_T$ is the width of the bin in $p_T$ (i.e. the width of cut
+ * on the trasverse momentum). The value of the acceptance A is fixed to 1,
+ * and the other values are some costants taken from the article
+ * ["Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at $\sqrt(s) = 7 TeV"]
+ * (https://arxiv.org/pdf/1501.07750.pdf).
  *
  * A more detail description of the functions used it can be found in \c diffCrossSection.h.
  * \image html diffCrossSection.pdf "diffCrossSection.pdf"
  * 
  * \section test_doc Testing
- * 
- * Some tests are done for this library, one for each of the following files or function: \c optionParse.h, \c df_set.h and \c fitRoo.h.
- * 
+ *
+ * Since the program is built with CMake, the testing was performed using CTest.
+ * Below are presented the tests that the authors implemented.
+ *
+ * \subsection test 0 Test 0
+ * Testing if the reading of the command arguments and flags is properly done.
+ * In this test one define some variables, call the \c ProcessArgs() and sees if the definition stands.
+ *
  * \subsection test1 Test 1
- * In the first test 
+ * Here is tested the online reading of the data and the behavior in case the Data folder or the Data file is missing.
+ * In the test, the folder Data is deleted and the function `df_set()` is called.
+ * This function should handle the creation of the folder Data and the downloading and saving of the data.
+ * Once finished this first step, we check if the Data folder exists and if it contains the file data.root
+ * Next, we keep the folder Data and we eliminate the file data.root.
+ * The function `df_set()` is called again and after it finished, one check if the data is successfully recreated.
  *
  * \subsection test2 Test 2
+ * In this test the fit results are controlled. First off, one defines a model with a similar shape
+ * to the one expected and calls the function `fitRoo()` passing this model as an argument instead of the real data.
+ * The test checks if the fit converged by looking at the fitStatus and also check if the returned parameters
+ * are inside 5 sigma of the initial value.
  *
  * \subsection test3 Test 3
- *
- * 
- * ...
- * 
- * \section Documentation
+ * This one tests the function `SavePlot()` which handles the saving of a canvas with a specific filename.
+ * If the folder Plots does not exist, it creates it.
+ * \subsection test4 Test 4
+ * This test is useful to check if the printing of the custom cuts on the canvas work.
+ * It compares the strings returned by the function `formatYString()` or `formatPtString()` with the expected ones.
  * 
  */

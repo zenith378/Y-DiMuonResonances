@@ -7,7 +7,7 @@ Using the Y(1S,2S,3S) resonances in two muons from the CMS open data, the main g
 - fitting them with customizable parameters;
 -  plotting the differential cross section in $p_T$.
 
-This functionalities are built in order to recreate similar plots of the article  [Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at √s = 7 TeV](https://arxiv.org/pdf/1501.07750.pdf) by the CMS collaborations, even if the data are not the same.
+This functionalities are built in order to recreate similar plots of the article  [Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at √s = 7 TeV](https://arxiv.org/pdf/1501.07750.pdf) by the CMS collaborations, even if the data set are not the same.
 # A simple example usage
 The whole project is built with CMake, so the first thing we want to do is to create a build directory where the makefiles and executables are going to be. This is simply done by typing in the terminal: 
 ```
@@ -24,8 +24,8 @@ $ ./build/main/YLaunch
 the program will create the plot of the differential cross section in pt of the Y resonances. The default applied filters are:
 
 - an invariant mass of the Dimuon pair between 8.5 and 11.5 GeV
--   at least 2 muons of opposite charge in each event
--  an absolute value of rapidity less than 1.2
+- at least 2 muons of opposite charge in each event
+- an absolute value of rapidity less than 1.2
 
 ![Final Result](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/diffCrossSection-1.png)
 
@@ -61,12 +61,12 @@ In order to use the library as the author thought, a main is provided with it. I
 The first thing one wants to do is to initialize some parameters. This step is necessary because the options and flags are passed as pointers in the function `ProcessArgs()`, so that they can be modified by the user with the flag syntax while calling the executable from terminal.
 The default values are:
 
-- depth=0, i.e. basic cuts on two muons with opposite charge and invariant mass between 8.5 and 11.5 GeV
-- fitFunction=0, i.e. Breit-Wigner
-- ptm, ptM, ym, yM=NaN, i.e. no cuts on $p_T$ or rapidity $y$
-- nameFile="YResonacesFit", name of the figure that will be saved
-- verbose=0, i.e. no output stream from Minuit
-- mode=1, i.e. CrossMode
+- depth = 0, i.e. basic cuts on two muons with opposite charge and invariant mass between 8.5 and 11.5 GeV
+- fitFunction = 0, i.e. Breit-Wigner
+- ptm, ptM, ym, yM = NaN, i.e. no cuts on $p_T$ or rapidity $y$
+- nameFile = "YResonacesFit", name of the figure that will be saved
+- verbose = 0, i.e. no output stream from Minuit
+- mode = 1, i.e. CrossMode
 
  In the `optionParse.C` file are also defined functions in order to handle parameters out of bounds and non-existing ones. 
 
@@ -101,8 +101,9 @@ For example, the line
 ```
 $ ./build/main/YLaunch -m fit -p 12 -P 50 -y 0.2 -Y 1.4
 ```
-requests the cuts to be $12\lt p_T \lt 50$ GeV and $0.2<|y|<1.4$.
-Once the dataframe is cute, the report on the cuts is printed on stream.
+requests the cuts to be $12\lt p_T \lt 50$ GeV and $0.2<|y|<1.4$
+, this dataframe is not saved.
+Once the dataframe is cut, the report on the cuts is printed on stream.
 
 ### Draw a preliminary Spectrum Plot
 
