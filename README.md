@@ -1,5 +1,6 @@
+
 # YCrossFit
-In this project we built a shared library named YCrossFit, for the CMEPDA exam. 
+A shared library for analyzing dimuon resonances, built by Giulio Cordova and Matilde Carminati for the CMEPDA exam. 
 
 [![docs](https://github.com/zenith378/Y-DiMuonResonances/actions/workflows/doc.yml/badge.svg)](https://zenith378.github.io/Y-DiMuonResonances/html/index.html) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
@@ -7,7 +8,12 @@ Using the Y(1S,2S,3S) resonances in two muons from the CMS open data, the main g
 - fitting them with customizable parameters;
 -  plotting the differential cross section in $p_T$.
 
-This functionalities are built in order to recreate similar plots of the article  [Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at √s = 7 TeV](https://arxiv.org/pdf/1501.07750.pdf) by the CMS collaborations, even if the data set are not the same.
+This functionalities are built in order to recreate similar plots of the article  [Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at √s = 7 TeV](https://arxiv.org/pdf/1501.07750.pdf) by the CMS collaboration, even if the data set are not the same.
+
+# Requirements
+
+- CMake 3.5
+- CERN ROOT 6.26  
 # A simple example usage
 The whole project is built with CMake, so the first thing we want to do is to create a build directory where the makefiles and executables are going to be. This is simply done by typing in the terminal: 
 ```
@@ -17,27 +23,42 @@ $ make -C build
 ```
 ## Default options (Cross mode)
 
-If we run the main of the library without givin anything as flag or option, as it follows:
+If we run the main of the library without specifying any flags or options, as it follows:
 ```
 $ ./build/main/YLaunch
 ```
-the program will create the plot of the differential cross section in pt of the Y resonances. The default applied filters are:
+the program will create the plot of the differential cross section in pt of the Y resonances. 
+> In order to avoid typing the whole command, one can also use the bash script `YCross.sh`, which will compile and execute the script in CrossSection mode
+ ```
+$ ./YCross.sh
+```
+
+
+The default applied filters are:
+
+- For the single muon:
+	- $p_T$ > 3 GeV for 1.4 < |$\eta$| < 1.6,
+	- $p_T$ > 3.5 GeV for 1.2 < |$\eta$| < 1.4, 
+	- $p_T$ > 4.5 GeV for |$\eta$| < 1.2. 
 
 - an invariant mass of the Dimuon pair between 8.5 and 11.5 GeV
 - at least 2 muons of opposite charge in each event
-- an absolute value of rapidity less than 1.2
+- an absolute value of rapidity ($y$) less than 1.2
 
 ![Final Result](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/diffCrossSection-1.png)
 
-  
+  > The cut on the absolute value of rapidity is customizable by adding the flags -y and -Y, as described in the documentation of `ProcessArgs()`
 ## Fit mode
 This programs also offers a Fit functionality where the differential cross section is not calculated nor plotted, but a singular fit is performed. This is called by adding the option --mode (-m) fit to the executable call.
 ```
 $ ./build/main/YLaunch --mode fit
 ```
+>As for the CrossSection mode, a bash script is also provided for Fit mode, which will compile and execute the program:
+ ```
+$ ./YFit.sh
+```
 The following graph is produced, while the results of the fit are printed in the terminal. 
 ![Fit Mode](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/YResonancesFit-1.png)
-
 
 ### Custimize options
 
@@ -49,10 +70,13 @@ We can type in the terminal
 ```
 $ ./build/main/YLaunch -m fit -n “CustomizeCuts” -p 20. -P 30. -Y 0.5
 ```
-and the following figure is produced and saved in the file CustomizeCut.pdf inside the Plots folder.
+and the following figure is produced and saved in the file _CustomizeCut.pdf_ inside the Plots folder.
 
 ![CustomizeCuts](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/CustomizeCuts-1.png)
-
+An exhaustive list of options are flags can also be obtained by typing in the terminal
+```
+$ ./build/main/YLaunch --help
+```
 
 # Description of main (and functionality of libraries)
 
@@ -78,11 +102,11 @@ Since the data are heavy, it is really slow to read them online every time one c
 
 The Dataset is saved through a Snapshot of the Dataframe with new useful variables:
 
-- Dimuon_FourVec: Four Vector containing the Pt, Eta, Phi and Mass of the Dimuon pair
-- Dimuon_mass: Invariant Mass of the Dimuon Four Vector
-- Dimuon_pt: Transverse Momentum of the Dimuon Four Vector
-- Dimuon_beta: Beta (velocity) of the Dimuon Four Vector
-- Dimuon_y: Rapidity of the Dimuon Four Vector
+- _Dimuon_FourVec_: Four Vector containing the Pt, Eta, Phi and Mass of the Dimuon pair
+- _Dimuon_mass_: Invariant Mass of the Dimuon Four Vector
+- _Dimuon_pt_: Transverse Momentum of the Dimuon Four Vector
+- _Dimuon_beta_: Beta (velocity) of the Dimuon Four Vector
+- _Dimuon_y_: Rapidity of the Dimuon Four Vector
 
 This variables are defined in order to make fast and efficient cuts on the Dataframe.
 
@@ -134,10 +158,15 @@ where $N$ is a fit parameter that says how many events are under the signal func
 
 # Testing
 
-Since the program is built with CMake, the testing was performed using CTest. Below are presented the tests that the authors implemented.
+Since the program is built with CMake, the testing was performed using CTest. A brief description of each test is presented below. To run the test, one must move inside the build folder and run the simple command ctest.
+```
+$ cd build
+$ ctest
+```
+>It is important to compile the program first, otherwise the test executable are not created, and the build folder will not be there in first place...
 ## Test 0
-Testing if the reading of the command arguments and flags is properly done. 
-In this test one define some variables, call the `processArgs()` and sees if the definition stands.
+Test0 handles the reading of the command arguments and flags. 
+In this test one define some variables, call the `processArgs()` and sees if the definition stands, then one modify the arguments and check if the options are evolved according to the made changes.
 ## Test 1
 Here is tested the online reading of the data and the behavior in case the Data folder or the Data file is missing.
 In the test, the folder Data is deleted and the function `df_set()` is called. This function should handle the creation of the folder Data and the downloading and saving of the data. 
@@ -150,3 +179,11 @@ In this test the fit results are controlled. First off, one defines a model with
 This one tests the function `SavePlot()` which handles the saving of a canvas with a specific filename. If the folder Plots does not exist, it creates it.
 ## Test 4
 This test is useful to check if the printing of the custom cuts on the canvas work. It compares the strings returned by the function `formatYString()` or `formatPtString()` with the expected ones.
+
+# Documentation
+The documentation of this project is built with [Doxygen](https://www.doxygen.nl). The [online page](https://zenith378.github.io/Y-DiMuonResonances/html/index.html) of this documentation is built via Continous Integration and Github Actions, through a .yml file in the .github/workflow folder.
+
+![Documentation Hell](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/photo_2022-12-29%2016.48.20.png)
+# Coding Style Options
+The styling of the code files is formatted and checked using the library 
+[`clang-format`](https://clang.llvm.org/docs/ClangFormat.html), using the [guidelines provided by the ROOT official page](https://root.cern/contribute/coding_conventions/#clangformat).
