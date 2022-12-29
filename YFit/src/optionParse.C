@@ -53,8 +53,8 @@ void unknownErrorHandling()
 void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr, float &ymr, float &yMr,
                  std::string &nfr, int &vr, int &mr)
 {
-   const char *const short_opts  = "d:f:m:n:p:P:y:Y:hv"; // Define short options and whether an argument is expected
-   const option      long_opts[] = {                     // define long options
+   const char *const short_opts   = "d:f:m:n:p:P:y:Y:hv"; // Define short options and whether an argument is expected
+   const option      long_opts[]  = {                     // define long options
                                {"cutDepth", required_argument, 0, 'd'},
                                {"fitFunction", required_argument, 0, 'f'},
                                {"mode", required_argument, 0, 'm'},
@@ -66,7 +66,7 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
                                {"help", no_argument, 0, 'h'},
                                {"verbose", no_argument, 0, 'v'},
                                {0, 0, 0, 0}};
-        int option_index = 0; // initialize index to 0
+   int               option_index = 0; // initialize index to 0
    while (true) {
       const auto opt = getopt_long(argc, argv, short_opts, long_opts, &option_index);
 
@@ -218,7 +218,8 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
          std::cout << "Unrecognized option. Options and flags accepted are the followings:\n" << std::endl;
 
       case 'h': // -h or --help
-      default: PrintHelp(); break;
+      default: PrintHelp(); 
+      break;
       }
    }
 }

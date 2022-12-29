@@ -1,4 +1,3 @@
-
 #include "ROOT/RDataFrame.hxx"
 #include "TMath.h"
 #include "TCanvas.h"

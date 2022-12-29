@@ -5,19 +5,6 @@
  *
  *
  * In this file are defined the functions used in order to handle flags and command line options.
- * In particular, it is defined:
- *
- * void PrintHelp(): output of the option help. It shows the available options and flags;
- *
- * void outOfRangeErrorHandling(std::string opt, std::string range, const char *insrtvl):
- * ;
- *
- * void conversionErrorHandling(std::string opt, std::string range, std::invalid_argument err):
- * it handles an exception of type Conversion Error (string to float or string to int);
- *
- * void unknowErrorHandling(): it handles an error of uknown type;
- *
- * voi ProcessArgs(...): it handles command line inputs and stores the values of flags or options.
  *
  *******************************************************************************/
 #ifndef optionParse_h
@@ -32,7 +19,7 @@
  *
  * \brief Print help stream for understanding what options and flags are available, then exit
  *
- *It prints the following output:
+ * Print the following output:
  *
  * --cutDepth [-d] <n>:             Choose Cut Depth between the options:
  *                                  0 (default): select events with two muons of opposite charge
