@@ -124,7 +124,7 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Handling flags and option parameters. </p>
-<p >In this file are defined the functions used in order to handle flags and command line options. In particular, it is defined: </p>
+<p >In this file are defined the functions used in order to handle flags and command line options. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="aaaac65a9c94bb3634948df7d2d9e1164" name="aaaac65a9c94bb3634948df7d2d9e1164"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaaac65a9c94bb3634948df7d2d9e1164">&#9670;&nbsp;</a></span>conversionErrorHandling()</h2>
@@ -234,7 +234,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Print help stream for understanding what options and flags are available, then exit. </p>
-<p >It prints the following output:</p>
+<p >Print the following output:</p>
 <p >&ndash;cutDepth [-d] &lt;n&gt;: Choose Cut Depth between the options: 0 (default): select events with two muons of opposite charge and invariant mass around Y-State 1: select dimuon pT between 10 and 100 GeV 2: select dimuon pT between 10 and 100 GeV and a rapidity less than 0.6 in abs value &ndash;mode [-m] &lt;mode&gt;: Choose functionality of the program between: fit: execute fit with given parameters cross (default): calculate differential cross section in pt. &ndash;fitFunction [-f] &lt;PDFName&gt;: Choose PDF to use as Fit Function between three options: gaus: Gaussian PDF bw (default): Breit - Wigner PDF stud: t-Student PDF &ndash;nameFig [-n] &lt;figName&gt; name of file in which the figure of the fit is going to be saved &ndash;ptmin [-p] &lt;val&gt;: Set minimum cut on pt (GeV) &ndash;ptMax [-P] &lt;val&gt;: Set maximum cut on pt (GeV) &ndash;ymin [-y] &lt;val&gt;: Set minimum cut on rapidity &ndash;yMax [-Y] &lt;val&gt;: Set maximum cut on rapidity &ndash;help [-h]: Show help &ndash;verbose [-v]: Verbose Fit, shows minimisation steps. </p>
 
 </div>
@@ -357,7 +357,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>it handles an exception of type "unknown" </p>
-<p >Print the string "*Unknown error occured. Please contact the authors or open an issue at https://github.com/zenith378/Y-DiMuonResonances*" and exit with error.</p>
+<p >Print the string "*Unknown error occured. Please contact the authors or open an issue at
+https://github.com/zenith378/Y-DiMuonResonances*" and exit with error.</p>
 <dl class="section return"><dt>Returns</dt><dd>error exit </dd></dl>
 
 </div>
