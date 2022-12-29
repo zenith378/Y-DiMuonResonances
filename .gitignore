@@ -438,3 +438,9 @@ TSWLatexianTemp*
 #*Notes.bib
 
 **./Data/*
+.vscode/settings.json
+Data/data_cut0.root
+Data/data_cut2.root
+Data/data.root
+Data/data_cut1.root
+Data/

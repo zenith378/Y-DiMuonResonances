@@ -1,8 +1,8 @@
 /**************************************************************
- * 
+ *
  * \file fitRoo.h
  * \brief Function for fitting the data and displying the canvas
- * 
+ *
  *******************************************************************************/
 
 #ifndef fitRoo_h
@@ -31,47 +31,46 @@
 #include <string.h>
 #include <filesystem>
 
-
 using namespace RooFit;
- 
+
 /***********************************************************
  * \brief Formatting the string to be displayed on the canvas regarding the cuts made on pt.
- * 
+ *
  * If there are no custom cut, the default ones are printed
- * 
+ *
  * @param dr reference of depth defined in main
  * @param pmr recerence of ptm (minimum pt) defined in main
  * @param pMr recerence of ptM (maximum pt) defined in main
- * 
+ *
  * \return string formatted to print on the canvas
  *************************************************************/
-TString formatPtString(int dr=0, float pmr= std::nanf("1"), float pMr= std::nanf("1"));
+TString formatPtString(int dr = 0, float pmr = std::nanf("1"), float pMr = std::nanf("1"));
 
 /***********************************************************
  * \brief Formatting the string to be displayed on the canvas regarding the cuts made on y
- * 
+ *
  * If there are no custom cut, the default ones are printed
  *
  * @param dr reference of depth defined in main
  * @param ymr recerence of ym (minimum rapidity) defined in main
  * @param yMr recerence of yM (maximum rapidity) defined in main
- * 
+ *
  * \return string formatted to print on the canvas
  *************************************************************/
-TString formatYString(int dr=0, float ymr= std::nanf("1"), float yMr= std::nanf("1"));
+TString formatYString(int dr = 0, float ymr = std::nanf("1"), float yMr = std::nanf("1"));
 
 /***********************************************************
  * \brief Implementation of the fit function
- * 
- * Define a model function as sum of a quadratic background and three peak signals 
- * that can be chosen between breit wigner, gaussian, or t-student. 
- * Fit the histogram in input with the model function and print the result on the terminal. 
- * The data, the fitted model and its components are drawn on the canvas. 
- * On the canvas are also printed the cuts on tranverse momentum and rapidity, and the luminosity 
+ *
+ * Define a model function as sum of a quadratic background and three peak signals
+ * that can be chosen between breit wigner, gaussian, or t-student.
+ * Fit the histogram in input with the model function and print the result on the terminal.
+ * The data, the fitted model and its components are drawn on the canvas.
+ * On the canvas are also printed the cuts on tranverse momentum and rapidity, and the luminosity
  * and CM energy as well.
- * The result is saved in a pdf file with the name defined by parameter nfr. If the mode is set 
+ * The result is saved in a pdf file with the name defined by parameter nfr. If the mode is set
  * to "fit" an application with the canvas is displayed.
- * 
+ *
  * @param hh histogram to be fitted
  * @param fr reference of fitFunction defined in main
  * @param dr reference of depth defined in main
@@ -81,9 +80,11 @@ TString formatYString(int dr=0, float ymr= std::nanf("1"), float yMr= std::nanf(
  * @param yMr recerence of yM (maximum rapidity) defined in main
  * @param nfr recerence of nameFile defined in main
  * @param vr reference of varaible verbose defined in main
- * 
+ *
  * \return result of the fit
  *************************************************************/
-RooFitResult* fitRoo(TH1* hh,int mr, int fr=0, int dr=0, float pmr= std::nanf("1"), float pMr= std::nanf("1"), float ymr= std::nanf("1"), float yMr= std::nanf("1"), std::string fnr="YResonancesFit", int vr=0);
+RooFitResult *fitRoo(TH1 *hh, int mr, int fr = 0, int dr = 0, float pmr = std::nanf("1"), float pMr = std::nanf("1"),
+                     float ymr = std::nanf("1"), float yMr = std::nanf("1"), std::string fnr = "YResonancesFit",
+                     int vr = 0);
 
 #endif
