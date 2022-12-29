@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cmake -S . -B build
-make -C build && ./build/main/YLaunch
+make -C build && ./build/main/YLaunch -m cross
