@@ -26,7 +26,7 @@
  * $ ./build/main/YLaunch
  * \endcode
  * the programm will create un histogramm of the invariant mass of two muons selected as follow:
- *  * \f$p_{T} > 3.5 GeV\f$ and \f$|y| < 2.0\f$ (for the single muon)
+ *  * \f$p_{T} > 3.5\f$ GeV and \f$|y| < 2.0\f$ (for the single muon)
  *  * at least 2 muons of opposite charge in each event
  *
  * \image html YResonancesFit.pdf "YResonancesFit.pdf"
@@ -67,17 +67,17 @@
  * The histogramm and the fitted function are drawn on a canvas which is saved.
  *
  * \subsubsection diffCS Calculate and plot the differential cross section
- * Using the customizable function \c fitRoo(), it is possible calculate the differential cross section of the process \f$Y->\mu^+\mu^-\f$
+ * Using the customizable function \c fitRoo(), it is possible calculate the differential cross section of the process \f$Y\rightarrow\mu^+\mu^-\f$
  *
  * \f[
- * \frac{d\sigma}{dp_t} = \frac{N}{L \Delta p_t e_{uu} e_{sg} e_{vp} A}
+ * \frac{d\sigma}{dp_t} = \frac{N}{L \Delta p_T e_{uu} e_{sg} e_{vp} A}
  * \f]
  *
  * where \f$N\f$ is a fit parameter that says how many events are under the signal function and
- * \f$\Delta p_T\f$ is the width of the bin in \f$p_T\f$ (i.e. the width of cut
+ * \f$\Deltap_T\f$ is the width of the bin in \f$p_T\f$ (i.e. the width of cut
  * on the trasverse momentum). The value of the acceptance A is fixed to 1,
  * and the other values are some costants taken from the article
- * ["Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at $\sqrt(s) = 7 TeV"]
+ * ["Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at \f$\sqrt(s) = 7 \text{TeV}\f$"]
  * (https://arxiv.org/pdf/1501.07750.pdf).
  *
  * A more detail description of the functions used it can be found in \c diffCrossSection.h.
