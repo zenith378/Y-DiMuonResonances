@@ -201,7 +201,7 @@
  * $ ctest
  * \endcode
  * 
- * \subsection test 0 Test 0
+ * \subsection test0 Test 0
  * Test0 handles the reading of the command arguments and flags. 
  * In this test one define some variables, call the \c processArgs() 
  * and sees if the definition stands, then one modify the arguments and check 
