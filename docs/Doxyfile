@@ -54,7 +54,7 @@ PROJECT_NUMBER         = 1.0
 # for a project that appears at the top of each page and should give viewer a
 # quick idea about the purpose of the project. Keep the description short.
 
-PROJECT_BRIEF          = "Library for computing the differential Cross Section and fit with custom parameters for the Y(1S,2S,3S) resonances in two muons"
+PROJECT_BRIEF          = "A C++/ROOT Library for the analysis of the differential cross section of the Y(1S,2S,3S) resonances in two muons"
 
 
 
