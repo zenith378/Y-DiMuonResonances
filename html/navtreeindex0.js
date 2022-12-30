@@ -56,7 +56,7 @@ var NAVTREEINDEX0 =
 "index.html#program_des":[0,3],
 "index.html#spectrum_draw":[0,3,3],
 "index.html#styleOpt":[0,5],
-"index.html#test":[0,4,0],
+"index.html#test0":[0,4,0],
 "index.html#test1":[0,4,1],
 "index.html#test3":[0,4,2],
 "index.html#test4":[0,4,3],
