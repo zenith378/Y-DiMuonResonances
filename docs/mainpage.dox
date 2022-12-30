@@ -52,10 +52,11 @@
  * * an invariant mass of the Dimuon pair between 8.5 and 11.5 GeV
  * * at least 2 muons of opposite charge in each event
  * * an absolute value of rapidity (\f$y\f$) less than 1.2
+ *
  * \image html YResonancesFit.pdf "YResonancesFit.pdf"
- 
+ *
  *\note The cut on the absolute value of rapidity is customizable by adding the flags -y and -Y, as described in the documentation of `ProcessArgs()`
-
+ *
  * \subsubsection Fit Mode
  * This programs also offers a Fit functionality where the differential cross section 
  * is not calculated nor plotted, but a singular fit is performed. 
@@ -63,7 +64,7 @@
  * \code 
  * $ ./build/main/YLaunch --mode fit
  * \endcode 
-
+ *
  * \note
  * As for the CrossSection mode, 
  * a bash script is also provided for Fit mode, 
@@ -139,15 +140,20 @@
  * * Depth 0: only two muons with opposite charge and with an invariant mass between 8.5 and 11.5 GeV are selected
  * * Depth 1: same as depth 0 but with an additional cut on the transverse momentum, requesting \f$ 10 < p_T < 100 \f$ GeV
  * * Depth 2: same as depth 1 but with an addition cut on rapidity, requesting \f$ |y| < 1.2 \f$
+ * 
  * In order to be faster in the future calls, these three dataframe are saved in data_cut0.root, 
  * data_cut1.root, data_cut2.root.
+ *
  * It is also possible to choose other cuts on the trasverse momentum and the rapidity of the dimuon state, 
  * by adding an option while calling the program from the terminal. For example, the line
+ *
  * \code 
  * $ ./build/main/YLaunch -m fit -p 12 -P 50 -y 0.2 -Y 1.4
  * \endcode 
+ *
  * requests the cuts to be \f$ 12 < p_T <50 \f$ GeV and \f$ 0.2 < |y| < 1.4 \f$, but this dataframe is not saved. 
  * Once the dataframe is cut, the report on the cuts is printed on stream.
+ *
  * \subsection spectrum_draw Draw a preliminary Spectrum Plot
  * The selected data are preliminary drawn on a canvas as an histohgramm of the invariant mass of the dimuon.
  * The canvas is saved as **nameFile_Preliminary.pdf**, where nameFile is the name passed through 
@@ -157,11 +163,13 @@
  * If it does not exist, it is recreated.
  *
  * \subsection fit_roo Fit the Function and save it in a canvas
+ *
  * In \c fitRoo.C the plotted histogramm is fitted by RooFit to a PDF choosable with the flag 
  * -f [--fitFunction]. The options are:
  * * a BreitWigner [-f bw] (default)
  * * a Gaussian [-f gaus]
  * * a t-Student [-f stud] (still not stable in this version)
+ *
  * The histogram and the fitted function are drawn on a canvas which is saved as nameFile.pdf. 
  * If there are custom cuts, these are printed on the canvas.
  *
