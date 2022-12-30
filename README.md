@@ -6,7 +6,7 @@ A shared library for analyzing dimuon resonances, built by Giulio Cordova and Ma
 
 Using the Y(1S,2S,3S) resonances in two muons from the CMS open data, the main goals of this library are essentially two:
 - fitting them with customizable parameters;
--  plotting the differential cross section in $ p_T $.
+-  plotting the differential cross section in $p_T $.
 
 This functionalities are built in order to recreate similar plots of the article  [Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at √s = 7 TeV](https://arxiv.org/pdf/1501.07750.pdf) by the CMS collaboration, even if the data set are not the same.
 
@@ -37,13 +37,13 @@ $ ./YCross.sh
 The default applied filters are:
 
 - For the single muon:
-	- $ p_T $ > 3 GeV for 1.4 < |$ \eta $| < 1.6,
-	- $ p_T $ > 3.5 GeV for 1.2 < |$ \eta $| < 1.4, 
-	- $ p_T $ > 4.5 GeV for |$ \eta $| < 1.2. 
+	- $ p_T $ > 3 GeV for 1.4 < | $\eta $ | < 1.6,
+	- $ p_T $ > 3.5 GeV for 1.2 < | $\eta $ | < 1.4, 
+	- $ p_T $ > 4.5 GeV for | $\eta $ | < 1.2. 
 
 - an invariant mass of the Dimuon pair between 8.5 and 11.5 GeV
 - at least 2 muons of opposite charge in each event
-- an absolute value of rapidity ($y$) less than 1.2
+- an absolute value of rapidity ( $y $) less than 1.2
 
 ![Final Result](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/diffCrossSection-1.png)
 
@@ -64,7 +64,7 @@ The following graph is produced, while the results of the fit are printed in the
 
 In Fit mode we can customize some cuts on the dimuon state using the flags described in the documentation of the file  `OptionParse.h`.
 
-Say for example, that we want to apply the cuts $ 20.0 < p_T < 30.0 $ GeV and $|y| < 0.5$ for the dimuon state and save the plot in a file named CustomizeCuts.pdf.
+Say for example, that we want to apply the cuts $20.0<p_T<30.0$ GeV and $|y|<0.5$ for the dimuon state and save the plot in a file named CustomizeCuts.pdf.
 We can type in the terminal
 
 ```
@@ -152,7 +152,7 @@ The histogram and the fitted function are drawn on a canvas which is saved as _`
 ### Calculate and plot the differential cross section
 
 Using the customizable function  `fitRoo()`, it is possible calculate the differential cross section of the process $Y->\mu^+\mu^-$, defined as
-$$\frac{d\sigma}{dp_T}=\frac{N}{L \Delta p_T e_{uu} e_{sg} e_{vp} A}$$
+$$\frac{d\sigma}{dp_T}=\frac{N}{L \Delta p_T e_uu e_sg e_vp A}$$
 where $N$ is a fit parameter that says how many events are under the signal function and $\Delta p_t$ is the width of the bin in $p_T$ (i.e. the width of cut on the trasverse momentum). A more detailed description of the functions used it can be found in  `[diffCrossSection.h]`.
 
 
