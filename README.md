@@ -37,9 +37,9 @@ $ ./YCross.sh
 The default applied filters are:
 
 - For the single muon:
-	- $p_T > $3 GeV for 1.4 < | $\eta $| < 1.6,
-	- $p_T > $3.5 GeV for 1.2 < | $\eta $| < 1.4, 
-	- $p_T > $4.5 GeV for | $\eta $| < 1.2. 
+	- $p_T > 3$ GeV for 1.4 < | $\eta$| < 1.6,
+	- $p_T > 3.5$ GeV for 1.2 < | $\eta$| < 1.4, 
+	- $p_T > 4.5$ GeV for | $\eta$| < 1.2. 
 
 - an invariant mass of the Dimuon pair between 8.5 and 11.5 GeV
 - at least 2 muons of opposite charge in each event
