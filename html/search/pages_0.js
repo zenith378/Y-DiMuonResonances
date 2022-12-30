@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ycrossfit_0',['YCrossFit',['../index.html',1,'']]]
+  ['documentation_0',['Documentation',['../index.html',1,'']]]
 ];
