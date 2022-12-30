@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>YCrossFit: Documentation</title>
+<title>YCrossFit: Main Page</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -34,7 +34,7 @@ MathJax.Hub.Config({
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">YCrossFit<span id="projectnumber">&#160;1.0</span>
    </div>
-   <div id="projectbrief">Library for computing the differential Cross Section and fit with custom parameters for the Y(1S,2S,3S) resonances in two muons</div>
+   <div id="projectbrief">A C++/ROOT Library for the analysis of the differential cross section of the Y(1S,2S,3S) resonances in two muons</div>
   </td>
  </tr>
  </tbody>
@@ -89,86 +89,10 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </iframe>
 </div>
 
-<div><div class="header">
-  <div class="headertitle"><div class="title">Documentation </div></div>
+<div class="header">
+  <div class="headertitle"><div class="title">YCrossFit Documentation</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >This C++ Library was created by Giulio Cordova and Matilde Carminati for the Computing Methods for Experimental Physics and Data Analysis exam.</p>
-<h1><a class="anchor" id="intro_sec"></a>
-Introduction</h1>
-<p >YFit Library is a simple library used to fit the first three Y resonances from the open cms dimuon dataset and to calculate the differentian cross section of the same process as a function of the trasverse momentum. It comes together with its own main in order to use it.</p>
-<h1><a class="anchor" id="example_usage"></a>
-A simple example usage</h1>
-<p >The following lines are used for compiling the code and do the testing. </p><div class="fragment"><div class="line">$ cmake -S . -B ./build</div>
-<div class="line">$ make -C build</div>
-</div><!-- fragment --><h3><a class="anchor" id="defOpt"></a>
-Default options</h3>
-<p >If we run the main of the library without givin anything as flag or option, as it follows: </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch</div>
-<div class="ttc" id="amain_8C_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> main.C:33</div></div>
-</div><!-- fragment --><p> the programm will create un histogramm of the invariant mass of two muons selected as follow:</p><ul>
-<li>\(p_{T} &gt; 3.5\) GeV and \(|y| &lt; 2.0\) (for the single muon)</li>
-<li>at least 2 muons of opposite charge in each event</li>
-</ul>
-<div class="image">
-<img src="YResonancesFit.pdf" alt=""/>
-<div class="caption">
-YResonancesFit.pdf</div></div>
-<h3><a class="anchor" id="custOpt"></a>
-Custimize options</h3>
-<p >We can customize some cuts on the dimuon state using the flags described in the documentation of the file <code>OptionParse.h</code>.</p>
-<p >In this example, \(20.0 &lt; p_T &lt; 30.0\) GeV and \(|y| &lt; 0.5\) for the dimuon state </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch -n <span class="stringliteral">&quot;CustomizeCuts&quot;</span> -p 20. -P 30. -Y 0.5</div>
-</div><!-- fragment --> <div class="image">
-<img src="CustomizeCuts.pdf" alt=""/>
-<div class="caption">
-CustomizeCuts.pdf</div></div>
-<p >In both cases the plot of the differential cross section is created and saved inside the same folder (/Y-DiMuonResonance/Plots)</p>
-<h1><a class="anchor" id="program_des"></a>
-Description of main (and functionality of libraries)</h1>
-<h3><a class="anchor" id="option_param"></a>
-Choose of the parameters and flags</h3>
-<p >The default parameters for the cuts are defined in the <code><a class="el" href="main_8C.html" title="Main source code of the program: define default options for parameters and call the functions in orde...">main.C</a></code> file. If the user use the flags for customixìze them, the default value are replaced when the function <code><a class="el" href="optionParse_8h.html#a160578dd115ed301ca034d092a9e97e7" title="Implementation of the option arguments with the library &lt;getopt&gt;">ProcessArgs()</a></code> is called. </p>
-<h3><a class="anchor" id="data_load"></a>
-Data Loading</h3>
-<p >The data are loaded and manipulated (to have useful variables) using the functions defined inside <code><a class="el" href="df__set_8h.html" title="Function for creating and setting up dataframe used in the analysis.">df_set.h</a></code> </p>
-<h3><a class="anchor" id="apply_cut"></a>
-Apply some cuts!</h3>
-<p >The data are selected to be two muons of opposite charge with an invariant mass round the mass of the Y resonances. Also it is possible to choose other cuts on the trasverse momentum and the rapidity of the dimuon state.</p>
-<h3><a class="anchor" id="spectrum_draw"></a>
-Draw a preliminary Spectrum Plot</h3>
-<p >The selected data are preliminary drawn on a canvas as an histohgramm of the invariant mass of the dimuon. The canvas is saved as <em>Preliminary_histo.pdf</em>. The function used for that are better descibed in the documentation of the file <code><a class="el" href="SpectrumPlot_8h.html" title="Function to plot the spectrum of the dataset which is currently used and create an histogram.">SpectrumPlot.h</a></code> </p>
-<h3><a class="anchor" id="fit_roo"></a>
-Fit the Function and save it in a canvas</h3>
-<p >The plotted histogramm is fitted to a function ,a BW by default, but it's possible to choose a gaussian or a t-student. The histogramm and the fitted function are drawn on a canvas which is saved.</p>
-<h3><a class="anchor" id="diffCS"></a>
-Calculate and plot the differential cross section</h3>
-<p >Using the customizable function <code><a class="el" href="fitRoo_8h.html#a8d34d827ff23492f36fe47c3e81cbf8c" title="Implementation of the fit function.">fitRoo()</a></code>, it is possible calculate the differential cross section of the process \(Y\rightarrow\mu^+\mu^-\)</p>
-<p class="formulaDsp">
-\[ \frac{d\sigma}{dp_t} = \frac{N}{L \Delta p_T e_{uu} e_{sg} e_{vp} A} \]
-</p>
-<p >where \(N\) is a fit parameter that says how many events are under the signal function and \(\Deltap_T\) is the width of the bin in \(p_T\) (i.e. the width of cut on the trasverse momentum). The value of the acceptance A is fixed to 1, and the other values are some costants taken from the article <a href="https://arxiv.org/pdf/1501.07750.pdf">"Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at \f$\sqrt(s) = 7 \text{TeV}\f$"</a>.</p>
-<p >A more detail description of the functions used it can be found in <code><a class="el" href="diffCrossSection_8h.html" title="Function to calculate and plot the differential cross section for the Y1S, 2S and 3S in trasverse mom...">diffCrossSection.h</a></code>. </p><div class="image">
-<img src="diffCrossSection.pdf" alt=""/>
-<div class="caption">
-diffCrossSection.pdf</div></div>
-<h1><a class="anchor" id="test_doc"></a>
-Testing</h1>
-<p >Since the program is built with CMake, the testing was performed using CTest. Below are presented the tests that the authors implemented.</p>
-<h2><a class="anchor" id="test"></a>
-0 Test 0</h2>
-<p >Testing if the reading of the command arguments and flags is properly done. In this test one define some variables, call the <code><a class="el" href="optionParse_8h.html#a160578dd115ed301ca034d092a9e97e7" title="Implementation of the option arguments with the library &lt;getopt&gt;">ProcessArgs()</a></code> and sees if the definition stands.</p>
-<h2><a class="anchor" id="test1"></a>
-Test 1</h2>
-<p >Here is tested the online reading of the data and the behavior in case the Data folder or the Data file is missing. In the test, the folder Data is deleted and the function <code><a class="el" href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b" title="Define the dataframe used in the analysis or it creates it if it is not found.">df_set()</a></code> is called. This function should handle the creation of the folder Data and the downloading and saving of the data. Once finished this first step, we check if the Data folder exists and if it contains the file data.root Next, we keep the folder Data and we eliminate the file data.root. The function <code><a class="el" href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b" title="Define the dataframe used in the analysis or it creates it if it is not found.">df_set()</a></code> is called again and after it finished, one check if the data is successfully recreated.</p>
-<h2><a class="anchor" id="test2"></a>
-Test 2</h2>
-<p >In this test the fit results are controlled. First off, one defines a model with a similar shape to the one expected and calls the function <code><a class="el" href="fitRoo_8h.html#a8d34d827ff23492f36fe47c3e81cbf8c" title="Implementation of the fit function.">fitRoo()</a></code> passing this model as an argument instead of the real data. The test checks if the fit converged by looking at the fitStatus and also check if the returned parameters are inside 5 sigma of the initial value.</p>
-<h2><a class="anchor" id="test3"></a>
-Test 3</h2>
-<p >This one tests the function <code><a class="el" href="SpectrumPlot_8h.html#a34714da9ccb76f8078d83e0226c98bb3" title="Save the plot created in the folder Plots. If the folder does not exits, it creates it.">SavePlot()</a></code> which handles the saving of a canvas with a specific filename. If the folder Plots does not exist, it creates it. </p>
-<h2><a class="anchor" id="test4"></a>
-Test 4</h2>
-<p >This test is useful to check if the printing of the custom cuts on the canvas work. It compares the strings returned by the function <code><a class="el" href="fitRoo_8h.html#a2cbf9d1b384ae8f608f2696f3b097ce5" title="Formatting the string to be displayed on the canvas regarding the cuts made on y.">formatYString()</a></code> or <code><a class="el" href="fitRoo_8h.html#a1071b14a4470a35ab0feac8aff36eab5" title="Formatting the string to be displayed on the canvas regarding the cuts made on pt.">formatPtString()</a></code> with the expected ones. </p>
-</div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
