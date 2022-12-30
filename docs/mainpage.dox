@@ -53,7 +53,9 @@
  * * at least 2 muons of opposite charge in each event
  * * an absolute value of rapidity (\f$y\f$) less than 1.2
  * \image html YResonancesFit.pdf "YResonancesFit.pdf"
- *\note{The cut on the absolute value of rapidity is customizable by adding the flags -y and -Y, as described in the documentation of `ProcessArgs()`}
+ 
+ *\note The cut on the absolute value of rapidity is customizable by adding the flags -y and -Y, as described in the documentation of `ProcessArgs()`
+
  * \subsubsection Fit Mode
  * This programs also offers a Fit functionality where the differential cross section 
  * is not calculated nor plotted, but a singular fit is performed. 
@@ -61,6 +63,7 @@
  * \code 
  * $ ./build/main/YLaunch --mode fit
  * \endcode 
+
  * \note
  * As for the CrossSection mode, 
  * a bash script is also provided for Fit mode, 
@@ -117,7 +120,7 @@
  * The data are loaded and manipulated (to have useful variables) using the functions defined inside  
  * \c df_set.C. Since the data are heavy, it is really slow to read them online every time one calls the program.
  * Therefore, it was decided to download them and store them in a folder Data.
- * \noteThe folder Data is not in this repository because is too heavy. 
+ * \note The folder Data is not in this repository because is too heavy. 
  * The first time you call this function, the data are going to be downloaded 
  * from the CMS Open Data portal, so it might take a while (up to 40 minutes depending on the internet connection).
  *
