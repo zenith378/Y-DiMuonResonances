@@ -25,17 +25,23 @@
 var NAVTREE =
 [
   [ "YFit", "index.html", [
-    [ "YFit YFit Library Documentation", "index.html", [
-      [ "Introduction", "index.html#intro_sec", null ],
-      [ "A simple example usage", "index.html#example_usage", null ],
-      [ "Description of main (and functionality of libraries)", "index.html#program_des", null ],
-      [ "Testing", "index.html#test_doc", [
-        [ "0 Test 0", "index.html#test", null ],
-        [ "Test 1", "index.html#test1", null ],
-        [ "Test 2", "index.html#test2", null ],
-        [ "Test 3", "index.html#test3", null ],
-        [ "Test 4", "index.html#test4", null ]
-      ] ]
+    [ "YCrossFit", "index.html", [
+      [ "Requirements", "index.html#autotoc_md1", null ],
+      [ "A simple example usage", "index.html#autotoc_md2", [
+        [ "Default options (Cross mode)", "index.html#autotoc_md3", [
+          [ "Custimize options", "index.html#autotoc_md4", null ]
+        ] ]
+      ] ],
+      [ "Description of main (and functionality of libraries)", "index.html#autotoc_md5", null ],
+      [ "Testing", "index.html#autotoc_md12", [
+        [ "Test 0", "index.html#autotoc_md13", null ],
+        [ "Test 1", "index.html#autotoc_md14", null ],
+        [ "Test 2", "index.html#autotoc_md15", null ],
+        [ "Test 3", "index.html#autotoc_md16", null ],
+        [ "Test 4", "index.html#autotoc_md17", null ]
+      ] ],
+      [ "Documentation", "index.html#autotoc_md18", null ],
+      [ "Coding Style Options", "index.html#autotoc_md19", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

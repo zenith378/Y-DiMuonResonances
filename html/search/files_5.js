@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['spectrumplot_2eh_0',['SpectrumPlot.h',['../SpectrumPlot_8h.html',1,'']]]
+  ['readme_2emd_0',['README.md',['../README_8md.html',1,'']]]
 ];

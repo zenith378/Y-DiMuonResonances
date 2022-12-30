@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>YFit: YFit YFit Library Documentation</title>
+<title>YFit: YCrossFit</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,84 +89,143 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">YFit YFit Library Documentation </div></div>
+  <div class="headertitle"><div class="title">YCrossFit </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >This C++ Library was created by Giulio Cordova and Matilde Carminati for the Computing Methods for Experimental Physics and Data Analysis exam.</p>
-<h1><a class="anchor" id="intro_sec"></a>
-Introduction</h1>
-<p >YFit Library is a simple library used to fit the first three Y resonances from the open cms dimuon dataset and to calculate the differentian cross section of the same process as a function of the trasverse momentum. It comes together with its own main in order to use it.</p>
-<h1><a class="anchor" id="example_usage"></a>
-A simple example usage</h1>
-<p >The following lines are used for compiling the code and do the testing. </p><div class="fragment"><div class="line">$ cmake -S . -B ./build</div>
-<div class="line">$ make -C build</div>
-</div><!-- fragment --><h3><a class="anchor" id="defOpt"></a>
-Default options</h3>
-<p >If we run the main of the library without givin anything as flag or option, as it follows: </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch</div>
-<div class="ttc" id="amain_8C_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> main.C:33</div></div>
-</div><!-- fragment --><p> the programm will create un histogramm of the invariant mass of two muons selected as follow:</p><ul>
-<li>\(p_{T} &gt; 3.5\) GeV and \(|y| &lt; 2.0\) (for the single muon)</li>
-<li>at least 2 muons of opposite charge in each event</li>
+<div class="textblock"><p ><a class="anchor" id="md_README"></a>A shared library for analyzing dimuon resonances, built by Giulio Cordova and Matilde Carminati for the CMEPDA exam.</p>
+<p ><a href="https://zenith378.github.io/Y-DiMuonResonances/html/index.html"><img src="https://github.com/zenith378/Y-DiMuonResonances/actions/workflows/doc.yml/badge.svg" alt="docs" style="pointer-events: none;" class="inline"/></a> <a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3" style="pointer-events: none;" class="inline"/></a></p>
+<p >Using the Y(1S,2S,3S) resonances in two muons from the CMS open data, the main goals of this library are essentially two:</p><ul>
+<li>fitting them with customizable parameters;</li>
+<li>plotting the differential cross section in $p_T$.</li>
 </ul>
-<div class="image">
-<img src="YResonancesFit.pdf" alt=""/>
-<div class="caption">
-YResonancesFit.pdf</div></div>
-<h3><a class="anchor" id="custOpt"></a>
+<p >This functionalities are built in order to recreate similar plots of the article <a href="https://arxiv.org/pdf/1501.07750.pdf">Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at √s = 7 TeV</a> by the CMS collaboration, even if the data set are not the same.</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Requirements</h1>
+<ul>
+<li>CMake 3.5</li>
+<li>CERN ROOT 6.26 <br  />
+ </li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
+A simple example usage</h1>
+<p >The whole project is built with CMake, so the first thing we want to do is to create a build directory where the makefiles and executables are going to be. This is simply done by typing in the terminal: </p><div class="fragment"><div class="line">$ cmake -S . -B ./build</div>
+<div class="line"> </div>
+<div class="line">$ make -C build</div>
+</div><!-- fragment --> <h2><a class="anchor" id="autotoc_md3"></a>
+Default options (Cross mode)</h2>
+<p >If we run the main of the library without specifying any flags or options, as it follows: </p><div class="fragment"><div class="line">$ ./build/main/YLaunch</div>
+</div><!-- fragment --><p> the program will create the plot of the differential cross section in pt of the Y resonances. </p><blockquote class="doxtable">
+<p >In order to avoid typing the whole command, one can also use the bash script <code>YCross.sh</code>, which will compile and execute the script in CrossSection mode </p>
+</blockquote>
+<div class="fragment"><div class="line">$ ./YCross.sh</div>
+</div><!-- fragment --><p >The default applied filters are:</p>
+<ul>
+<li>For the single muon:<ul>
+<li>$p_T$ &gt; 3 GeV for 1.4 &lt; |$\eta$| &lt; 1.6,</li>
+<li>$p_T$ &gt; 3.5 GeV for 1.2 &lt; |$\eta$| &lt; 1.4,</li>
+<li>$p_T$ &gt; 4.5 GeV for |$\eta$| &lt; 1.2.</li>
+</ul>
+</li>
+<li>an invariant mass of the Dimuon pair between 8.5 and 11.5 GeV</li>
+<li>at least 2 muons of opposite charge in each event</li>
+<li>an absolute value of rapidity ($y$) less than 1.2</li>
+</ul>
+<p ><img src="https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/diffCrossSection-1.png" alt="Final Result" class="inline"/></p>
+<blockquote class="doxtable">
+<p >The cut on the absolute value of rapidity is customizable by adding the flags -y and -Y, as described in the documentation of <code><a class="el" href="optionParse_8h.html#a160578dd115ed301ca034d092a9e97e7" title="Implementation of the option arguments with the library &lt;getopt&gt;">ProcessArgs()</a></code> </p>
+</blockquote>
+<p>## Fit mode This programs also offers a Fit functionality where the differential cross section is not calculated nor plotted, but a singular fit is performed. This is called by adding the option &ndash;mode (-m) fit to the executable call. </p><div class="fragment"><div class="line">$ ./build/main/YLaunch --mode fit</div>
+</div><!-- fragment --><p> &gt;As for the CrossSection mode, a bash script is also provided for Fit mode, which will compile and execute the program: </p><div class="fragment"><div class="line">$ ./YFit.sh</div>
+</div><!-- fragment --><p> The following graph is produced, while the results of the fit are printed in the terminal. <img src="https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/YResonancesFit-1.png" alt="Fit Mode" class="inline"/></p>
+<h3><a class="anchor" id="autotoc_md4"></a>
 Custimize options</h3>
-<p >We can customize some cuts on the dimuon state using the flags described in the documentation of the file <code>OptionParse.h</code>.</p>
-<p >In this example, \(20.0 &lt; p_T &lt; 30.0\) GeV and \(|y| &lt; 0.5\) for the dimuon state </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch -n <span class="stringliteral">&quot;CustomizeCuts&quot;</span> -p 20. -P 30. -Y 0.5</div>
-</div><!-- fragment --> <div class="image">
-<img src="CustomizeCuts.pdf" alt=""/>
-<div class="caption">
-CustomizeCuts.pdf</div></div>
-<p >In both cases the plot of the differential cross section is created and saved inside the same folder (/Y-DiMuonResonance/Plots)</p>
-<h1><a class="anchor" id="program_des"></a>
+<p >In Fit mode we can customize some cuts on the dimuon state using the flags described in the documentation of the file <code>OptionParse.h</code>.</p>
+<p >Say for example, that we want to apply the cuts $ 20.0 &lt; p_T &lt; 30.0 $ GeV and $|y| &lt; 0.5$ for the dimuon state and save the plot in a file named CustomizeCuts.pdf. We can type in the terminal</p>
+<div class="fragment"><div class="line">$ ./build/main/YLaunch -m fit -n “CustomizeCuts” -p 20. -P 30. -Y 0.5</div>
+</div><!-- fragment --><p> and the following figure is produced and saved in the file <em>CustomizeCut.pdf</em> inside the Plots folder.</p>
+<p ><img src="https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/CustomizeCuts-1.png" alt="CustomizeCuts" class="inline"/> An exhaustive list of options are flags can also be obtained by typing in the terminal </p><div class="fragment"><div class="line">$ ./build/main/YLaunch --help</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
 Description of main (and functionality of libraries)</h1>
-<h3><a class="anchor" id="option_param"></a>
-Choose of the parameters and flags</h3>
-<p >The default parameters for the cuts are defined in the <code><a class="el" href="main_8C.html" title="Main source code of the program: define default options for parameters and call the functions in orde...">main.C</a></code> file. If the user use the flags for customixìze them, the default value are replaced when the function <code><a class="el" href="optionParse_8h.html#a160578dd115ed301ca034d092a9e97e7" title="Implementation of the option arguments with the library &lt;getopt&gt;">ProcessArgs()</a></code> is called. </p>
-<h3><a class="anchor" id="data_load"></a>
-Data Loading</h3>
-<p >The data are loaded and manipulated (to have useful variables) using the functions defined inside <code><a class="el" href="df__set_8h.html" title="Function for creating and setting up dataframe used in the analysis.">df_set.h</a></code> </p>
-<h3><a class="anchor" id="apply_cut"></a>
+<p >In order to use the library as the author thought, a main is provided with it. In this section, the structure of the program is explained as if we were reading the code starting from the main and following the function calls. </p>
+<h3><a class="anchor" id="autotoc_md6"></a>
+Choice of the parameters and flags</h3>
+<p >The first thing one wants to do is to initialize some parameters. This step is necessary because the options and flags are passed as pointers in the function <code><a class="el" href="optionParse_8h.html#a160578dd115ed301ca034d092a9e97e7" title="Implementation of the option arguments with the library &lt;getopt&gt;">ProcessArgs()</a></code>, so that they can be modified by the user with the flag syntax while calling the executable from terminal. The default values are:</p>
+<ul>
+<li>depth = 0, i.e. basic cuts on two muons with opposite charge and invariant mass between 8.5 and 11.5 GeV</li>
+<li>fitFunction = 0, i.e. Breit-Wigner</li>
+<li>ptm, ptM, ym, yM = NaN, i.e. no cuts on $p_T$ or rapidity $y$</li>
+<li>nameFile = "YResonacesFit", name of the figure that will be saved</li>
+<li>verbose = 0, i.e. no output stream from Minuit</li>
+<li><p class="startli">mode = 1, i.e. CrossMode</p>
+<p class="startli">In the <code>optionParse.C</code> file are also defined functions in order to handle parameters out of bounds and non-existing ones.</p>
+</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md7"></a>
+Data Load</h3>
+<p >The data are loaded and manipulated (to have useful variables) using the functions defined inside <code>df_set.C</code>. Since the data are heavy, it is really slow to read them online every time one calls the program. Therefore, it was decided to download them and store them in a folder Data. &gt;Note: The folder Data is not in this repository because is too heavy. The first time you call this function, the data are going to be downloaded from the CMS Open Data portal, so it might take a while (up to 40 minutes depending on the internet connection).</p>
+<p >The Dataset is saved through a Snapshot of the Dataframe with new useful variables:</p>
+<ul>
+<li><em>Dimuon_FourVec</em>: Four Vector containing the Pt, Eta, Phi and Mass of the Dimuon pair</li>
+<li><em>Dimuon_mass</em>: Invariant Mass of the Dimuon Four Vector</li>
+<li><em>Dimuon_pt</em>: Transverse Momentum of the Dimuon Four Vector</li>
+<li><em>Dimuon_beta</em>: Beta (velocity) of the Dimuon Four Vector</li>
+<li><em>Dimuon_y</em>: Rapidity of the Dimuon Four Vector</li>
+</ul>
+<p >This variables are defined in order to make fast and efficient cuts on the Dataframe.</p>
+<p >In the function<code><a class="el" href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b" title="Define the dataframe used in the analysis or it creates it if it is not found.">df_set()</a></code> is also handled the creation of the folder Data if not already existing.</p>
+<h3><a class="anchor" id="autotoc_md8"></a>
 Apply some cuts!</h3>
-<p >The data are selected to be two muons of opposite charge with an invariant mass round the mass of the Y resonances. Also it is possible to choose other cuts on the trasverse momentum and the rapidity of the dimuon state.</p>
-<h3><a class="anchor" id="spectrum_draw"></a>
+<p >In the file <code>Cuts.C</code> one can decide the cuts to be applied in the dataframe. The authors implemented three "default" ones:</p><ul>
+<li>Depth 0: only two muons with opposite charge and with an invariant mass between 8.5 and 11.5 GeV are selected</li>
+<li>Depth 1: same as depth 0 but with an additional cut on the transverse momentum, requesting $10\lt p_T \lt 100$ GeV</li>
+<li>Depth 2: same as depth 1 but with an addition cut on rapidity, requesting $|y|\lt 1.2$. In order to be faster in the future calls, these three dataframe are saved in data_cut0.root, data_cut1.root, data_cut2.root.</li>
+</ul>
+<p >It is also possible to choose other cuts on the trasverse momentum and the rapidity of the dimuon state, by adding an option while calling the program from the terminal. For example, the line </p><div class="fragment"><div class="line">$ ./build/main/YLaunch -m fit -p 12 -P 50 -y 0.2 -Y 1.4</div>
+</div><!-- fragment --><p> requests the cuts to be $12\lt p_T \lt 50$ GeV and $0.2&lt;|y|&lt;1.4$ , this dataframe is not saved. Once the dataframe is cut, the report on the cuts is printed on stream.</p>
+<h3><a class="anchor" id="autotoc_md9"></a>
 Draw a preliminary Spectrum Plot</h3>
-<p >The selected data are preliminary drawn on a canvas as an histohgramm of the invariant mass of the dimuon. The canvas is saved as <em>Preliminary_histo.pdf</em>. The function used for that are better descibed in the documentation of the file <code><a class="el" href="SpectrumPlot_8h.html" title="Function to plot the spectrum of the dataset which is currently used and create an histogram.">SpectrumPlot.h</a></code> </p>
-<h3><a class="anchor" id="fit_roo"></a>
+<p >The selected data are preliminary drawn on a canvas as an histohgramm of the invariant mass of the dimuon.</p>
+<p ><img src="https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/Preliminary_histo-1.png" alt="PreliminaryHisto" class="inline"/></p>
+<p >The canvas is saved as <code>nameFile</code>__Preliminary.pdf_, where nameFile is the name passed through command line with the flag -n or &ndash;nameFile. &gt;If no argument is provided, the default value for nameFile is "YResonacesFit".</p>
+<p >In the file <code>Cuts.C</code> is also defined a function in order to handle the saving of figures in the folder Plots. If it does not exist, it is recreated.</p>
+<h3><a class="anchor" id="autotoc_md10"></a>
 Fit the Function and save it in a canvas</h3>
-<p >The plotted histogramm is fitted to a function ,a BW by default, but it's possible to choose a gaussian or a t-student. The histogramm and the fitted function are drawn on a canvas which is saved.</p>
-<h3><a class="anchor" id="diffCS"></a>
+<p >In <code>fitRoo.C</code> the plotted histogramm is fitted by RooFit to a PDF choosable with the flag -f [&ndash;fitFunction]. The options are:</p><ul>
+<li>a BreitWigner [-f bw] (default)</li>
+<li>a Gaussian [-f gaus]</li>
+<li>a t-Student [-f stud] (still not stable in this version)</li>
+</ul>
+<p >The histogram and the fitted function are drawn on a canvas which is saved as _<code>nameFile</code>.pdf_. If there are custom cuts, these are printed on the canvas.</p>
+<h3><a class="anchor" id="autotoc_md11"></a>
 Calculate and plot the differential cross section</h3>
-<p >Using the customizable function <code><a class="el" href="fitRoo_8h.html#a8d34d827ff23492f36fe47c3e81cbf8c" title="Implementation of the fit function.">fitRoo()</a></code>, it is possible calculate the differential cross section of the process \(Y\rightarrow\mu^+\mu^-\)</p>
-<p class="formulaDsp">
-\[ \frac{d\sigma}{dp_t} = \frac{N}{L \Delta p_T e_{uu} e_{sg} e_{vp} A} \]
-</p>
-<p >where \(N\) is a fit parameter that says how many events are under the signal function and \(\Deltap_T\) is the width of the bin in \(p_T\) (i.e. the width of cut on the trasverse momentum). The value of the acceptance A is fixed to 1, and the other values are some costants taken from the article <a href="https://arxiv.org/pdf/1501.07750.pdf">"Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at \f$\sqrt(s) = 7 \text{TeV}\f$"</a>.</p>
-<p >A more detail description of the functions used it can be found in <code><a class="el" href="diffCrossSection_8h.html" title="Function to calculate and plot the differential cross section for the Y1S, 2S and 3S in trasverse mom...">diffCrossSection.h</a></code>. </p><div class="image">
-<img src="diffCrossSection.pdf" alt=""/>
-<div class="caption">
-diffCrossSection.pdf</div></div>
-<h1><a class="anchor" id="test_doc"></a>
+<p >Using the customizable function <code><a class="el" href="fitRoo_8h.html#a8d34d827ff23492f36fe47c3e81cbf8c" title="Implementation of the fit function.">fitRoo()</a></code>, it is possible calculate the differential cross section of the process $Y-&gt;\mu^+\mu^-$, defined as $$\frac{d\sigma}{dp_T}=\frac{N}{L \Delta p_T e_{uu} e_{sg} e_{vp} A}$$ where $N$ is a fit parameter that says how many events are under the signal function and $\Delta p_t$ is the width of the bin in $p_T$ (i.e. the width of cut on the trasverse momentum). A more detailed description of the functions used it can be found in <code>[<a class="el" href="diffCrossSection_8h.html" title="Function to calculate and plot the differential cross section for the Y1S, 2S and 3S in trasverse mom...">diffCrossSection.h</a>]</code>.</p>
+<h1><a class="anchor" id="autotoc_md12"></a>
 Testing</h1>
-<p >Since the program is built with CMake, the testing was performed using CTest. Below are presented the tests that the authors implemented.</p>
-<h2><a class="anchor" id="test"></a>
-0 Test 0</h2>
-<p >Testing if the reading of the command arguments and flags is properly done. In this test one define some variables, call the <code><a class="el" href="optionParse_8h.html#a160578dd115ed301ca034d092a9e97e7" title="Implementation of the option arguments with the library &lt;getopt&gt;">ProcessArgs()</a></code> and sees if the definition stands.</p>
-<h2><a class="anchor" id="test1"></a>
+<p >Since the program is built with CMake, the testing was performed using CTest. A brief description of each test is presented below. To run the test, one must move inside the build folder and run the simple command ctest. </p><div class="fragment"><div class="line">$ cd build</div>
+<div class="line">$ ctest</div>
+</div><!-- fragment --><p> &gt;It is important to compile the program first, otherwise the test executable are not created, and the build folder will not be there in first place... </p>
+<h2><a class="anchor" id="autotoc_md13"></a>
+Test 0</h2>
+<p >Test0 handles the reading of the command arguments and flags. In this test one define some variables, call the <code>processArgs()</code> and sees if the definition stands, then one modify the arguments and check if the options are evolved according to the made changes. </p>
+<h2><a class="anchor" id="autotoc_md14"></a>
 Test 1</h2>
-<p >Here is tested the online reading of the data and the behavior in case the Data folder or the Data file is missing. In the test, the folder Data is deleted and the function <code><a class="el" href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b" title="Define the dataframe used in the analysis or it creates it if it is not found.">df_set()</a></code> is called. This function should handle the creation of the folder Data and the downloading and saving of the data. Once finished this first step, we check if the Data folder exists and if it contains the file data.root Next, we keep the folder Data and we eliminate the file data.root. The function <code><a class="el" href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b" title="Define the dataframe used in the analysis or it creates it if it is not found.">df_set()</a></code> is called again and after it finished, one check if the data is successfully recreated.</p>
-<h2><a class="anchor" id="test2"></a>
+<p >Here is tested the online reading of the data and the behavior in case the Data folder or the Data file is missing. In the test, the folder Data is deleted and the function <code><a class="el" href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b" title="Define the dataframe used in the analysis or it creates it if it is not found.">df_set()</a></code> is called. This function should handle the creation of the folder Data and the downloading and saving of the data. Once finished this first step, we check if the Data folder exists and if it contains the file data.root Next, we keep the folder Data and we eliminate the file data.root. The function <code><a class="el" href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b" title="Define the dataframe used in the analysis or it creates it if it is not found.">df_set()</a></code> is called again and after it finished, one check if the data is successfully recreated. </p>
+<h2><a class="anchor" id="autotoc_md15"></a>
 Test 2</h2>
-<p >In this test the fit results are controlled. First off, one defines a model with a similar shape to the one expected and calls the function <code><a class="el" href="fitRoo_8h.html#a8d34d827ff23492f36fe47c3e81cbf8c" title="Implementation of the fit function.">fitRoo()</a></code> passing this model as an argument instead of the real data. The test checks if the fit converged by looking at the fitStatus and also check if the returned parameters are inside 5 sigma of the initial value.</p>
-<h2><a class="anchor" id="test3"></a>
+<p >In this test the fit results are controlled. First off, one defines a model with a similar shape to the one expected and calls the function <code><a class="el" href="fitRoo_8h.html#a8d34d827ff23492f36fe47c3e81cbf8c" title="Implementation of the fit function.">fitRoo()</a></code> passing this model as an argument instead of the real data. The test checks if the fit converged by looking at the fitStatus and also check if the returned parameters are inside 5 sigma of the initial value. </p>
+<h2><a class="anchor" id="autotoc_md16"></a>
 Test 3</h2>
 <p >This one tests the function <code><a class="el" href="SpectrumPlot_8h.html#a34714da9ccb76f8078d83e0226c98bb3" title="Save the plot created in the folder Plots. If the folder does not exits, it creates it.">SavePlot()</a></code> which handles the saving of a canvas with a specific filename. If the folder Plots does not exist, it creates it. </p>
-<h2><a class="anchor" id="test4"></a>
+<h2><a class="anchor" id="autotoc_md17"></a>
 Test 4</h2>
-<p >This test is useful to check if the printing of the custom cuts on the canvas work. It compares the strings returned by the function <code><a class="el" href="fitRoo_8h.html#a2cbf9d1b384ae8f608f2696f3b097ce5" title="Formatting the string to be displayed on the canvas regarding the cuts made on y.">formatYString()</a></code> or <code><a class="el" href="fitRoo_8h.html#a1071b14a4470a35ab0feac8aff36eab5" title="Formatting the string to be displayed on the canvas regarding the cuts made on pt.">formatPtString()</a></code> with the expected ones. </p>
+<p >This test is useful to check if the printing of the custom cuts on the canvas work. It compares the strings returned by the function <code><a class="el" href="fitRoo_8h.html#a2cbf9d1b384ae8f608f2696f3b097ce5" title="Formatting the string to be displayed on the canvas regarding the cuts made on y.">formatYString()</a></code> or <code><a class="el" href="fitRoo_8h.html#a1071b14a4470a35ab0feac8aff36eab5" title="Formatting the string to be displayed on the canvas regarding the cuts made on pt.">formatPtString()</a></code> with the expected ones.</p>
+<h1><a class="anchor" id="autotoc_md18"></a>
+Documentation</h1>
+<p >The documentation of this project is built with <a href="https://www.doxygen.nl">Doxygen</a>. The <a href="https://zenith378.github.io/Y-DiMuonResonances/html/index.html">online page</a> of this documentation is built via Continous Integration and Github Actions, through a .yml file in the .github/workflow folder.</p>
+<p ><img src="https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/photo_2022-12-29%2016.48.20.png" alt="Documentation Hell" class="inline"/> </p>
+<h1><a class="anchor" id="autotoc_md19"></a>
+Coding Style Options</h1>
+<p >The styling of the code files is formatted and checked using the library <a href="https://clang.llvm.org/docs/ClangFormat.html"><code>clang-format</code></a>, using the <a href="https://root.cern/contribute/coding_conventions/#clangformat">guidelines provided by the ROOT official page</a>. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
