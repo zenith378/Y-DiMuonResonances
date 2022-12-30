@@ -118,8 +118,9 @@ Default options</h2>
 <p >If we run the main of the library without specifying any flags or options, as it follows: </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch</div>
 <div class="ttc" id="amain_8C_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> main.C:33</div></div>
 </div><!-- fragment --><p> the program will create the plot of the differential cross section in pt of the Y resonances.</p>
-<dl class="section note"><dt>Note</dt><dd>{ In order to avoid typing the whole command, one can also use the bash script <code>YCross.sh</code>, which will compile and execute the script in CrossSection mode <div class="fragment"><div class="line">$ ./YCross.sh</div>
-</div><!-- fragment --> } The default applied filters are:<ul>
+<dl class="section note"><dt>Note</dt><dd>In order to avoid typing the whole command, one can also use the bash script <code>YCross.sh</code>, which will compile and execute the script in CrossSection mode <div class="fragment"><div class="line">$ ./YCross.sh</div>
+</div><!-- fragment --></dd></dl>
+<p>The default applied filters are:</p><ul>
 <li>For the single muon:<ul>
 <li>\(p_T\) &gt; 3 GeV for 1.4 &lt; | \(\eta\)| &lt; 1.6,</li>
 <li>\(p_T\) &gt; 3.5 GeV for 1.2 &lt; | \(\eta\)| &lt; 1.4,</li>
@@ -132,16 +133,14 @@ Default options</h2>
 <img src="YResonancesFit.pdf" alt=""/>
 <div class="caption">
 YResonancesFit.pdf</div></div>
- </li>
+ <dl class="section note"><dt>Note</dt><dd>{The cut on the absolute value of rapidity is customizable by adding the flags -y and -Y, as described in the documentation of <code><a class="el" href="optionParse_8h.html#a160578dd115ed301ca034d092a9e97e7" title="Implementation of the option arguments with the library &lt;getopt&gt;">ProcessArgs()</a></code>} </dd></dl>
+</li>
 </ul>
-</dd>
-<dd>
-{The cut on the absolute value of rapidity is customizable by adding the flags -y and -Y, as described in the documentation of <code><a class="el" href="optionParse_8h.html#a160578dd115ed301ca034d092a9e97e7" title="Implementation of the option arguments with the library &lt;getopt&gt;">ProcessArgs()</a></code>} </dd></dl>
 <h3><a class="anchor" id="Fit"></a>
 Mode</h3>
 <p >This programs also offers a Fit functionality where the differential cross section is not calculated nor plotted, but a singular fit is performed. This is called by adding the option &ndash;mode (-m) fit to the executable call. </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch --mode fit</div>
-</div><!-- fragment --> <dl class="section note"><dt>Note</dt><dd>{ As for the CrossSection mode, a bash script is also provided for Fit mode, which will compile and execute the program: <div class="fragment"><div class="line">$ ./YFit.sh</div>
-</div><!-- fragment --> }</dd></dl>
+</div><!-- fragment --> <dl class="section note"><dt>Note</dt><dd>As for the CrossSection mode, a bash script is also provided for Fit mode, which will compile and execute the program: <div class="fragment"><div class="line">$ ./YFit.sh</div>
+</div><!-- fragment --></dd></dl>
 <h3><a class="anchor" id="custOpt"></a>
 Custimize options</h3>
 <p >In Fit mode we can customize some cuts on the dimuon state using the flags described in the documentation of the file <code>OptionParse.h</code>.</p>
@@ -171,8 +170,8 @@ Choose of the parameters and flags</h2>
 <h2><a class="anchor" id="data_load"></a>
 Data Loading</h2>
 <p >The data are loaded and manipulated (to have useful variables) using the functions defined inside <br  />
- <code>df_set.C</code>. Since the data are heavy, it is really slow to read them online every time one calls the program. Therefore, it was decided to download them and store them in a folder Data. </p><dl class="section note"><dt>Note</dt><dd>{The folder Data is not in this repository because is too heavy. The first time you call this function, the data are going to be downloaded from the CMS Open Data portal, so it might take a while (up to 40 minutes depending on the internet connection).}</dd></dl>
-<p>The Dataset is saved through a Snapshot of the Dataframe with new useful variables:</p><ul>
+ <code>df_set.C</code>. Since the data are heavy, it is really slow to read them online every time one calls the program. Therefore, it was decided to download them and store them in a folder Data. \noteThe folder Data is not in this repository because is too heavy. The first time you call this function, the data are going to be downloaded from the CMS Open Data portal, so it might take a while (up to 40 minutes depending on the internet connection).</p>
+<p >The Dataset is saved through a Snapshot of the Dataframe with new useful variables:</p><ul>
 <li>Dimuon_FourVec: Four Vector containing the Pt, Eta, Phi and Mass of the Dimuon pair</li>
 <li>Dimuon_mass: Invariant Mass of the Dimuon Four Vector</li>
 <li>Dimuon_pt: Transverse Momentum of the Dimuon Four Vector</li>
