@@ -129,12 +129,12 @@ Default options</h2>
 </li>
 <li>an invariant mass of the Dimuon pair between 8.5 and 11.5 GeV</li>
 <li>at least 2 muons of opposite charge in each event</li>
-<li>an absolute value of rapidity ( \(y\)) less than 1.2 <div class="image">
+<li>an absolute value of rapidity ( \(y\)) less than 1.2</li>
+</ul>
+<div class="image">
 <img src="YResonancesFit.pdf" alt=""/>
 <div class="caption">
 YResonancesFit.pdf</div></div>
-</li>
-</ul>
 <dl class="section note"><dt>Note</dt><dd>The cut on the absolute value of rapidity is customizable by adding the flags -y and -Y, as described in the documentation of <code><a class="el" href="optionParse_8h.html#a160578dd115ed301ca034d092a9e97e7" title="Implementation of the option arguments with the library &lt;getopt&gt;">ProcessArgs()</a></code></dd></dl>
 <h3><a class="anchor" id="Fit"></a>
 Mode</h3>
@@ -184,9 +184,12 @@ Apply some cuts!</h2>
 <p >In the file Cuts.C one can decide the cuts to be applied in the dataframe. The authors implemented three "default" ones:</p><ul>
 <li>Depth 0: only two muons with opposite charge and with an invariant mass between 8.5 and 11.5 GeV are selected</li>
 <li>Depth 1: same as depth 0 but with an additional cut on the transverse momentum, requesting \( 10 &lt; p_T &lt; 100 \) GeV</li>
-<li>Depth 2: same as depth 1 but with an addition cut on rapidity, requesting \( |y| &lt; 1.2 \) In order to be faster in the future calls, these three dataframe are saved in data_cut0.root, data_cut1.root, data_cut2.root. It is also possible to choose other cuts on the trasverse momentum and the rapidity of the dimuon state, by adding an option while calling the program from the terminal. For example, the line <div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch -m fit -p 12 -P 50 -y 0.2 -Y 1.4</div>
-</div><!-- fragment --> requests the cuts to be \( 12 &lt; p_T &lt;50 \) GeV and \( 0.2 &lt; |y| &lt; 1.4 \), but this dataframe is not saved. Once the dataframe is cut, the report on the cuts is printed on stream. </li>
+<li>Depth 2: same as depth 1 but with an addition cut on rapidity, requesting \( |y| &lt; 1.2 \)</li>
 </ul>
+<p >In order to be faster in the future calls, these three dataframe are saved in data_cut0.root, data_cut1.root, data_cut2.root.</p>
+<p >It is also possible to choose other cuts on the trasverse momentum and the rapidity of the dimuon state, by adding an option while calling the program from the terminal. For example, the line</p>
+<div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch -m fit -p 12 -P 50 -y 0.2 -Y 1.4</div>
+</div><!-- fragment --><p >requests the cuts to be \( 12 &lt; p_T &lt;50 \) GeV and \( 0.2 &lt; |y| &lt; 1.4 \), but this dataframe is not saved. Once the dataframe is cut, the report on the cuts is printed on stream.</p>
 <h2><a class="anchor" id="spectrum_draw"></a>
 Draw a preliminary Spectrum Plot</h2>
 <p >The selected data are preliminary drawn on a canvas as an histohgramm of the invariant mass of the dimuon. The canvas is saved as <b>nameFile_Preliminary.pdf</b>, where nameFile is the name passed through command line with the flag -n or &ndash;nameFile. If no argument is provided, the default value for nameFile is "YResonacesFit". In the file <code>SpectrumPlot.C</code> is also defined a function in order to handle the saving of figures in the folder Plots. If it does not exist, it is recreated.</p>
@@ -195,8 +198,9 @@ Fit the Function and save it in a canvas</h2>
 <p >In <code>fitRoo.C</code> the plotted histogramm is fitted by RooFit to a PDF choosable with the flag -f [&ndash;fitFunction]. The options are:</p><ul>
 <li>a BreitWigner [-f bw] (default)</li>
 <li>a Gaussian [-f gaus]</li>
-<li>a t-Student [-f stud] (still not stable in this version) The histogram and the fitted function are drawn on a canvas which is saved as nameFile.pdf. If there are custom cuts, these are printed on the canvas.</li>
+<li>a t-Student [-f stud] (still not stable in this version)</li>
 </ul>
+<p >The histogram and the fitted function are drawn on a canvas which is saved as nameFile.pdf. If there are custom cuts, these are printed on the canvas.</p>
 <h2><a class="anchor" id="diffCS"></a>
 Calculate and plot the differential cross section</h2>
 <p >Using the customizable function <code><a class="el" href="fitRoo_8h.html#a8d34d827ff23492f36fe47c3e81cbf8c" title="Implementation of the fit function.">fitRoo()</a></code>, it is possible calculate the differential cross section of the process \(Y\rightarrow\mu^+\mu^-\)</p>
