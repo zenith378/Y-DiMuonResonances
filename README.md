@@ -37,9 +37,9 @@ $ ./YCross.sh
 The default applied filters are:
 
 - For the single muon:
-	- $ p_T $ > 3 GeV for 1.4 < | $\eta $ | < 1.6,
-	- $ p_T $ > 3.5 GeV for 1.2 < | $\eta $ | < 1.4, 
-	- $ p_T $ > 4.5 GeV for | $\eta $ | < 1.2. 
+	- $p_T $> 3 GeV for 1.4 < | $\eta $| < 1.6,
+	- $p_T $> 3.5 GeV for 1.2 < | $\eta $| < 1.4, 
+	- $p_T $> 4.5 GeV for | $\eta $| < 1.2. 
 
 - an invariant mass of the Dimuon pair between 8.5 and 11.5 GeV
 - at least 2 muons of opposite charge in each event
@@ -64,7 +64,7 @@ The following graph is produced, while the results of the fit are printed in the
 
 In Fit mode we can customize some cuts on the dimuon state using the flags described in the documentation of the file  `OptionParse.h`.
 
-Say for example, that we want to apply the cuts $20.0<p_T<30.0$ GeV and $|y|<0.5$ for the dimuon state and save the plot in a file named CustomizeCuts.pdf.
+Say for example, that we want to apply the cuts $20.0 \lt p_T \lt 30.0$ GeV and $|y|\lt 0.5$ for the dimuon state and save the plot in a file named CustomizeCuts.pdf.
 We can type in the terminal
 
 ```
@@ -152,8 +152,8 @@ The histogram and the fitted function are drawn on a canvas which is saved as _`
 ### Calculate and plot the differential cross section
 
 Using the customizable function  `fitRoo()`, it is possible calculate the differential cross section of the process $Y->\mu^+\mu^-$, defined as
-$$\frac{d\sigma}{dp_T}=\frac{N}{L \Delta p_T e_uu e_sg e_vp A}$$
-where $N$ is a fit parameter that says how many events are under the signal function and $\Delta p_t$ is the width of the bin in $p_T$ (i.e. the width of cut on the trasverse momentum). A more detailed description of the functions used it can be found in  `[diffCrossSection.h]`.
+$$\frac{d\sigma}{dp_T}=\frac{N}{L \Delta p_T \eps A}$$
+where $N$ is a fit parameter that says how many events are under the signal function, $\Delta p_t$ is the width of the bin in $p_T$ (i.e. the width of cut on the trasverse momentum), $\eps$ the efficiency and $A$ the acceptance. A more detailed description of the functions used it can be found in  `[diffCrossSection.h]`.
 
 
 # Testing

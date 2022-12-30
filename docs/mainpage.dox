@@ -37,13 +37,13 @@
  * \endcode
  * the program will create the plot of the differential cross section in pt of the Y resonances.
  * 
- * \note{
+ * \note
  * In order to avoid typing the whole command, one can also use the bash script `YCross.sh`, 
  * which will compile and execute the script in CrossSection mode
  * \code
  * $ ./YCross.sh
  * \endcode
- * }
+ * 
  *  The default applied filters are:
  * * For the single muon:
  *    * \f$p_T\f$ > 3 GeV for 1.4 < |\f$\eta\f$| < 1.6,
@@ -61,14 +61,14 @@
  * \code 
  * $ ./build/main/YLaunch --mode fit
  * \endcode 
- * \note{
+ * \note
  * As for the CrossSection mode, 
  * a bash script is also provided for Fit mode, 
  * which will compile and execute the program:
  * \code 
  * $ ./YFit.sh
  * \endcode 
- * }
+ * 
  * 
  * \subsubsection custOpt Custimize options
  *
@@ -117,7 +117,9 @@
  * The data are loaded and manipulated (to have useful variables) using the functions defined inside  
  * \c df_set.C. Since the data are heavy, it is really slow to read them online every time one calls the program.
  * Therefore, it was decided to download them and store them in a folder Data.
- * \note{The folder Data is not in this repository because is too heavy. The first time you call this function, the data are going to be downloaded from the CMS Open Data portal, so it might take a while (up to 40 minutes depending on the internet connection).}
+ * \noteThe folder Data is not in this repository because is too heavy. 
+ * The first time you call this function, the data are going to be downloaded 
+ * from the CMS Open Data portal, so it might take a while (up to 40 minutes depending on the internet connection).
  *
  * The Dataset is saved through a Snapshot of the Dataframe with new useful variables:
  * * Dimuon_FourVec: Four Vector containing the Pt, Eta, Phi and Mass of the Dimuon pair
