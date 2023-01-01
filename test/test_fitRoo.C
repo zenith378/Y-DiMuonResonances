@@ -50,7 +50,8 @@ int main()
    RooFitResult *fitResult = fitRoo(hdata, 1, 1);
 
    // se non fa il fit il test fallisce
-   if (fitResult->status() > 4) exit(1);
+   if (fitResult->edm() > 1e4 || (fitResult->status() > 4) || (fitResult->status() > 3 && fitResult->edm() > 1e3))
+      exit(1);
 
    RooArgList lf = fitResult->floatParsFinal(); // save values returned from fit
    std::cout << lf << std::endl;                // print order
