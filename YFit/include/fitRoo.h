@@ -36,7 +36,7 @@ using namespace RooFit;
 /***********************************************************
  * \brief Formatting the string to be displayed on the canvas regarding the cuts made on pt.
  *
- * If there are no custom cut, the default ones are printed
+ * If there are no custom cut, the default ones are printed.
  *
  * @param dr reference of depth defined in main
  * @param pmr recerence of ptm (minimum pt) defined in main
@@ -49,7 +49,7 @@ TString formatPtString(int dr = 0, float pmr = std::nanf("1"), float pMr = std::
 /***********************************************************
  * \brief Formatting the string to be displayed on the canvas regarding the cuts made on y
  *
- * If there are no custom cut, the default ones are printed
+ * If there are no custom cut, the default ones are printed.
  *
  * @param dr reference of depth defined in main
  * @param ymr recerence of ym (minimum rapidity) defined in main

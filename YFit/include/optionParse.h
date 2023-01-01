@@ -66,7 +66,7 @@ void PrintHelp();
 
 /***************************************
  *
- * \brief handle an exception of type "Out of Range"
+ * \brief Handle an exception of type "Out of Range".
  *
  * Print the range for the option passed to the function,
  * then prints the out-of-range value inserted
@@ -84,7 +84,7 @@ void outOfRangeErrorHandling(std::string opt, std::string range, const char *ins
 
 /***************************************
  *
- * \brief handles an exception of type "conversion Error"
+ * \brief Handles an exception of type "conversion Error".
  *
  * Print the type of exception (thrown by the stardard library),
  * then it prints the accepted type for the option and exit with failure.
@@ -100,7 +100,7 @@ void conversionErrorHandling(std::string opt, std::string range, std::invalid_ar
 
 /***************************************
  *
- * \brief it handles an exception of type "unknown"
+ * \brief Handle an exception of type "unknown".
  *
  * Print the string "*Unknown error occured. Please contact the authors or open an issue at
  *https://github.com/zenith378/Y-DiMuonResonances*" and exit with error.
@@ -111,14 +111,14 @@ void conversionErrorHandling(std::string opt, std::string range, std::invalid_ar
 void unknownErrorHandling();
 
 /***********************************************************
- * \brief Implementation of the option arguments with the library <getopt>
+ * \brief Implementation of the option arguments with the library <getopt>.
  *
  * Read options and flags from command line and store it in the function arguments passed as reference
  * If the command line arguments do not exists, are out of range, or the format is invalid, the fucntions handles
  * these cases as exceptions described in the functions \c outOfRangeErrorHandling() ,
- * \c coversionErrorHandling() , \c unknownErrorHandling()
+ * \c coversionErrorHandling() , \c unknownErrorHandling() .
  *
- * If no command arguments are passed, the function do nothing and the values remain the same defined in \c main()
+ * If no command arguments are passed, the function do nothing and the values remain the same defined in \c main() .
  *
  * @param argc command line arguments number
  * @param argv array of command line arguments passed

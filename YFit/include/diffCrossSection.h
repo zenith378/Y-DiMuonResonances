@@ -1,6 +1,6 @@
 /**************************************************************
  * \file diffCrossSection.h
- * \brief Function to calculate and plot the differential cross section for the Y1S, 2S and 3S in trasverse momentum
+ * \brief Function to calculate and plot the differential cross section for the Y(1S), Y(2S) and Y(3S) in trasverse momentum
  *
  *******************************************************************************/
 
@@ -28,7 +28,7 @@
 #include "SpectrumPlot.h"
 
 /***********************************************************
- * \brief Structure where are saved the value usuful for each bin.
+ * \brief Structure where are saved the value useful for each bin.
  *
  * In this structure are saved the value useful for each point in trasverse momentum.
  *****************************************************************************************/
@@ -47,19 +47,18 @@ struct dcsbin {
 };
 
 /********************************************************************************************************************
- * \brief Calculate the differential cross section given the functin that describe the mass distribution (model), which
- *Y is (i), and the width of the pt bin (wpt)
+ * \brief Calculate the differential cross section given the number of events under the peak of the Y resonance and the width of the \f$p_T \f$ bin (wpt)
  *
  * The equation used for calculating the different cross section
  * \f[
  * \frac{d\sigma}{dp_t} = \frac{N}{L \Delta p_t e_{uu} e_{sg} e_{vp} A}
  * \f]
  *
- * where $N$ is a fit parameter that says how many events are under the signal function and
- * $\Delta p_T$ is the width of the bin in $p_T$ (i.e. the width of cut
+ * where \f$N\f$ is a fit parameter that says how many events are under the signal function and
+ * \f$\Delta p_T\f$ is the width of the bin in \f$p_T\f$ (i.e. the width of cut
  * on the trasverse momentum). The value of the acceptance A is fixed to 1,
  * and the other values are some costants taken from the article
- * ["Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at $\sqrt(s) = 7 TeV"]
+ * ["Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at \f$\sqrt(s) = 7 \f$ TeV"]
  * (https://arxiv.org/pdf/1501.07750.pdf).
  *
  * @param N number of event under the peak of the resonance
@@ -70,14 +69,13 @@ struct dcsbin {
 Double_t diffCrossSec(double N, float wpt);
 
 /********************************************************************************************************************
- * \brief Calculate the differential cross section (multiplied by the relative branching ratio) for one bin in trasverso
- *momentum
+ * \brief Create a stucture where it save the edges of the bins and the cross section for each Y resonance.
  *
  * This function select the data from the data frame df using the function Cuts() defined in Cuts.h. The cut on the
- *trasverse momentum is given by the bin edges and the one on the rapidity is between -1.2 and 1.2. The data are plotted
+ *trasverse momentum is given by the bin edges and the one on the rapidity is between\f$ -1.2\f$ and \f$1.2\f$. The data are plotted
  *and fitted using the function fitRoo defined in fitRoo.h. From the fit we can get the number of events under the peak
  *of each Y resonance and using the function diffCrossSec, defined in diffCrossection.h, calculate the differential
- *cross section for the bin. All the value usuful for the plotting are save inside the structur returned.
+ *cross section for the bin. All the value useful for the plotting are save inside the structur returned.
  * @param ptm lower edge of the bin
  * @param ptM upper edge of the bin
  * @param df Dataframe with all the data
@@ -88,7 +86,7 @@ Double_t diffCrossSec(double N, float wpt);
 dcsbin setset(float ptm, float ptM, float ym, float yM, ROOT::RDF::RNode &df, std::string nameFile);
 
 /********************************************************************************************************************
- * \brief Plot the differential cross section calculate for each bin for the Y1S, 2S and 3S as a function of the
+ * \brief Plot the differential cross section calculate for each bin for the Y(1S), Y(2S) and Y(3S) as a function of the
  *trasverse momentum
  *
  * The edge of the bin are defined in two array, these are used for calculate the differential cross section in each

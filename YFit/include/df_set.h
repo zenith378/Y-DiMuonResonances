@@ -1,12 +1,10 @@
 /**************************************************************
- * \file df_set.h
+ *
+ *\file df_set.h
  * \brief Function for creating and setting up dataframe used in the analysis
  *
- *
- *
  * In this file are defined the functions used in order to read the dataframe (or create it if it is not already there)
- * and setting it up with useful variables
- *
+ * and setting it up with useful variables.
  *
  *******************************************************************************/
 #ifndef df_set_h
@@ -45,7 +43,7 @@ ROOT::Math::PtEtaPhiMVector computeDiMuonFourVec(RVec<float> &pt, RVec<float> &e
                                                  unsigned long &im0, unsigned long &im1);
 /***************************************
  *
- * \brief Calculate the invariant mass of a dimuon Four Vector
+ * \brief Calculate the invariant mass of a dimuon Four Vector.
  * @param fourvec four vector of dimuon pair
  *
  * \return invariant mass of fourvector
@@ -55,7 +53,7 @@ float computeDiMuonInvariantMass(ROOT::Math::PtEtaPhiMVector &fourvec);
 
 /***************************************
  *
- * \brief Calculate the transverse momentum of a dimuon Four Vector
+ * \brief Calculate the transverse momentum of a dimuon Four Vector.
  * @param fourvec four vector of dimuon pair
  *
  * \return pt (transverse momentum)
@@ -65,7 +63,8 @@ float computeDiMuonPT(ROOT::Math::PtEtaPhiMVector &fourvec);
 
 /***************************************
  *
- * \brief Calculate the rapidity \begin{equation} \eta=\text{arctanh}(\beta) \end{eqaution } of a dimuon Four Vector
+ * \brief Calculate the rapidity \f$ \eta=\text{arctanh}(\beta) \f$ of a dimuon Four Vector.
+ *
  * @param fourvec four vector of dimuon pair
  *
  * \return rapidity of fourvector
@@ -75,7 +74,8 @@ float computeDiMuonRapidity(ROOT::Math::PtEtaPhiMVector &fourvec);
 
 /***************************************
  *
- * \brief Calculate beta (p_t/E) of a dimuon Four Vector
+ * \brief Calculate beta (\f$\frac{p_t}{E}\f$) of a dimuon Four Vector.
+ *
  * @param fourvec four vector of dimuon pair
  *
  * \return beta of fourvector
@@ -85,7 +85,7 @@ float computeDiMuonBeta(ROOT::Math::PtEtaPhiMVector &fourvec);
 
 /***************************************
  *
- * \brief Define the dataframe used in the analysis or it creates it if it is not found
+ * \brief Define the dataframe used in the analysis or it creates it if it is not found.
  *
  * This function tries to open the file data.root in the folder Data. If the folder or the data do not exist,
  * the function downloads the dataset from the CMS open data web page and save it in a file for further usage.
