@@ -17,14 +17,13 @@
 
 /***************************************
  * 
- * \brief Apply default cuts 
+ * \brief Apply default cuts.
  * 
  * The function cut the inserted dataframe with the default cuts:
- * 
  * * Depth 0: two muons of opposite charge and invariant mass between 8.5 and 11.5 GeV
- * * Depth 1: select dimuon pT between 10 and 100 GeV
- * * Depth 2: select dimuon pT between 10 and 100 GeV
- *          and a rapidity less than 0.6 in abs value
+ * * Depth 1: select dimuon trasverse momentum between 10 and 100 GeV
+ * * Depth 2: select dimuon trasverse momentum between 10 and 100 GeV
+ *          and a rapidity less than 0.6 in absolute value
  * 
  * @param df dataframe to be cutted
  * @param dr depth of the cut to be applied
@@ -50,7 +49,7 @@ ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode &df_custom_cut, std::string_view f
 
 /***************************************
  * 
- * \brief looks for active otpion parameters and applies custom cuts with the function \c applyFilter()
+ * \brief Looks for active otpion parameters and applies custom cuts with the function \c applyFilter().
  * 
  *
  * @param df dataframe to be cutted
@@ -68,7 +67,7 @@ ROOT::RDF::RNode customFilter(ROOT::RDF::RNode &df, float pmr= std::nanf("1"), f
  * 
  * \brief Try to read cutted dataframe from file. If it does not exists, generate it.
  * 
- * The function tries to open the cutted dataframe stored in file. If the file does not exists or the directory Data does not exists, 
+ * The function tries to open the cutted dataframe stored in file. If the file does not exists or the directory *Data* does not exists, 
  * it creates them.
  * 
  *
