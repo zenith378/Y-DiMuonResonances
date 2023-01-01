@@ -25,31 +25,6 @@
 var NAVTREE =
 [
   [ "YCrossFit", "index.html", [
-    [ "Documentation Main Page", "index.html", [
-      [ "Introduction", "index.html#intro_sec", null ],
-      [ "Requirements", "index.html#Requirements", null ],
-      [ "A simple example usage", "index.html#example_usage", [
-        [ "Default options", "index.html#defOpt", [
-          [ "Mode", "index.html#Fit", null ],
-          [ "Custimize options", "index.html#custOpt", null ]
-        ] ]
-      ] ],
-      [ "Description of main (and functionality of libraries)", "index.html#program_des", [
-        [ "Choose of the parameters and flags", "index.html#option_param", null ],
-        [ "Data Loading", "index.html#data_load", null ],
-        [ "Apply some cuts!", "index.html#apply_cut", null ],
-        [ "Draw a preliminary Spectrum Plot", "index.html#spectrum_draw", null ],
-        [ "Fit the Function and save it in a canvas", "index.html#fit_roo", null ],
-        [ "Calculate and plot the differential cross section", "index.html#diffCS", null ]
-      ] ],
-      [ "Testing", "index.html#test_doc", [
-        [ "Test 0", "index.html#test0", null ],
-        [ "Test 1", "index.html#test1", null ],
-        [ "Test 3", "index.html#test3", null ],
-        [ "Test 4", "index.html#test4", null ]
-      ] ],
-      [ "Coding Style Options", "index.html#styleOpt", null ]
-    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],

@@ -94,35 +94,35 @@ $(document).ready(function(){initNavTree('df__set_8h_source.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 <a href="df__set_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef df_set_h</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define df_set_h</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;ROOT/RDataFrame.hxx&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;ROOT/RVec.hxx&quot;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;Math/Vector4Dfwd.h&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;Math/Vector4D.h&quot;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;TMath.h&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;TFile.h&quot;</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;TSystem.h&gt;</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="df__set_8h.html">df_set.h</a>&quot;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;filesystem&gt;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="optionParse_8h.html">optionParse.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifndef df_set_h</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define df_set_h</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;ROOT/RDataFrame.hxx&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;ROOT/RVec.hxx&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;Math/Vector4Dfwd.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;Math/Vector4D.h&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;TMath.h&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;TFile.h&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;TSystem.h&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="df__set_8h.html">df_set.h</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;filesystem&gt;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="optionParse_8h.html">optionParse.h</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">using namespace </span>ROOT::VecOps;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">using namespace </span>ROOT::VecOps;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="df__set_8h.html#a34326771b0000d24289194fcb49ecd9d">   44</a></span>ROOT::Math::PtEtaPhiMVector <a class="code hl_function" href="df__set_8h.html#a34326771b0000d24289194fcb49ecd9d">computeDiMuonFourVec</a>(RVec&lt;float&gt; &amp;pt, RVec&lt;float&gt; &amp;eta, RVec&lt;float&gt; &amp;phi, RVec&lt;float&gt; &amp;mass,</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> &amp;im0, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> &amp;im1);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="df__set_8h.html#af34623f885412e03b09394c01f1b36cf">   54</a></span><span class="keywordtype">float</span> <a class="code hl_function" href="df__set_8h.html#af34623f885412e03b09394c01f1b36cf">computeDiMuonInvariantMass</a>(ROOT::Math::PtEtaPhiMVector &amp;fourvec);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="df__set_8h.html#abc3dcc064a14d81643ca53fb4476cb58">   64</a></span><span class="keywordtype">float</span> <a class="code hl_function" href="df__set_8h.html#abc3dcc064a14d81643ca53fb4476cb58">computeDiMuonPT</a>(ROOT::Math::PtEtaPhiMVector &amp;fourvec);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="df__set_8h.html#aa008d9f6ecf77c07b6af80b1ef7cf9af">   74</a></span><span class="keywordtype">float</span> <a class="code hl_function" href="df__set_8h.html#aa008d9f6ecf77c07b6af80b1ef7cf9af">computeDiMuonRapidity</a>(ROOT::Math::PtEtaPhiMVector &amp;fourvec);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="df__set_8h.html#a34326771b0000d24289194fcb49ecd9d">   42</a></span>ROOT::Math::PtEtaPhiMVector <a class="code hl_function" href="df__set_8h.html#a34326771b0000d24289194fcb49ecd9d">computeDiMuonFourVec</a>(RVec&lt;float&gt; &amp;pt, RVec&lt;float&gt; &amp;eta, RVec&lt;float&gt; &amp;phi, RVec&lt;float&gt; &amp;mass,</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> &amp;im0, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> &amp;im1);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="df__set_8h.html#af34623f885412e03b09394c01f1b36cf">   52</a></span><span class="keywordtype">float</span> <a class="code hl_function" href="df__set_8h.html#af34623f885412e03b09394c01f1b36cf">computeDiMuonInvariantMass</a>(ROOT::Math::PtEtaPhiMVector &amp;fourvec);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="df__set_8h.html#abc3dcc064a14d81643ca53fb4476cb58">   62</a></span><span class="keywordtype">float</span> <a class="code hl_function" href="df__set_8h.html#abc3dcc064a14d81643ca53fb4476cb58">computeDiMuonPT</a>(ROOT::Math::PtEtaPhiMVector &amp;fourvec);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="df__set_8h.html#aa008d9f6ecf77c07b6af80b1ef7cf9af">   73</a></span><span class="keywordtype">float</span> <a class="code hl_function" href="df__set_8h.html#aa008d9f6ecf77c07b6af80b1ef7cf9af">computeDiMuonRapidity</a>(ROOT::Math::PtEtaPhiMVector &amp;fourvec);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="df__set_8h.html#a57a6e40352ae3e1653a413240f4db8bf">   84</a></span><span class="keywordtype">float</span> <a class="code hl_function" href="df__set_8h.html#a57a6e40352ae3e1653a413240f4db8bf">computeDiMuonBeta</a>(ROOT::Math::PtEtaPhiMVector &amp;fourvec);</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
@@ -132,8 +132,8 @@ $(document).ready(function(){initNavTree('df__set_8h_source.html',''); initResiz
 <div class="ttc" id="adf__set_8h_html"><div class="ttname"><a href="df__set_8h.html">df_set.h</a></div><div class="ttdoc">Function for creating and setting up dataframe used in the analysis.</div></div>
 <div class="ttc" id="adf__set_8h_html_a00ced25cbce30fd8a68fcb54cb47f21b"><div class="ttname"><a href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b">df_set</a></div><div class="ttdeci">ROOT::RDF::RNode df_set()</div><div class="ttdoc">Define the dataframe used in the analysis or it creates it if it is not found.</div></div>
 <div class="ttc" id="adf__set_8h_html_a34326771b0000d24289194fcb49ecd9d"><div class="ttname"><a href="df__set_8h.html#a34326771b0000d24289194fcb49ecd9d">computeDiMuonFourVec</a></div><div class="ttdeci">ROOT::Math::PtEtaPhiMVector computeDiMuonFourVec(RVec&lt; float &gt; &amp;pt, RVec&lt; float &gt; &amp;eta, RVec&lt; float &gt; &amp;phi, RVec&lt; float &gt; &amp;mass, unsigned long &amp;im0, unsigned long &amp;im1)</div><div class="ttdoc">Calculate the four vector of a dimuon starting from pt, eta, phi and mass of muon pair.</div></div>
-<div class="ttc" id="adf__set_8h_html_a57a6e40352ae3e1653a413240f4db8bf"><div class="ttname"><a href="df__set_8h.html#a57a6e40352ae3e1653a413240f4db8bf">computeDiMuonBeta</a></div><div class="ttdeci">float computeDiMuonBeta(ROOT::Math::PtEtaPhiMVector &amp;fourvec)</div><div class="ttdoc">Calculate beta (p_t/E) of a dimuon Four Vector.</div></div>
-<div class="ttc" id="adf__set_8h_html_aa008d9f6ecf77c07b6af80b1ef7cf9af"><div class="ttname"><a href="df__set_8h.html#aa008d9f6ecf77c07b6af80b1ef7cf9af">computeDiMuonRapidity</a></div><div class="ttdeci">float computeDiMuonRapidity(ROOT::Math::PtEtaPhiMVector &amp;fourvec)</div><div class="ttdoc">Calculate the rapidity \begin{equation} \eta=\text{arctanh}(\beta) \end{eqaution } of a dimuon Four V...</div></div>
+<div class="ttc" id="adf__set_8h_html_a57a6e40352ae3e1653a413240f4db8bf"><div class="ttname"><a href="df__set_8h.html#a57a6e40352ae3e1653a413240f4db8bf">computeDiMuonBeta</a></div><div class="ttdeci">float computeDiMuonBeta(ROOT::Math::PtEtaPhiMVector &amp;fourvec)</div><div class="ttdoc">Calculate beta ( ) of a dimuon Four Vector.</div></div>
+<div class="ttc" id="adf__set_8h_html_aa008d9f6ecf77c07b6af80b1ef7cf9af"><div class="ttname"><a href="df__set_8h.html#aa008d9f6ecf77c07b6af80b1ef7cf9af">computeDiMuonRapidity</a></div><div class="ttdeci">float computeDiMuonRapidity(ROOT::Math::PtEtaPhiMVector &amp;fourvec)</div><div class="ttdoc">Calculate the rapidity  of a dimuon Four Vector.</div></div>
 <div class="ttc" id="adf__set_8h_html_abc3dcc064a14d81643ca53fb4476cb58"><div class="ttname"><a href="df__set_8h.html#abc3dcc064a14d81643ca53fb4476cb58">computeDiMuonPT</a></div><div class="ttdeci">float computeDiMuonPT(ROOT::Math::PtEtaPhiMVector &amp;fourvec)</div><div class="ttdoc">Calculate the transverse momentum of a dimuon Four Vector.</div></div>
 <div class="ttc" id="adf__set_8h_html_af34623f885412e03b09394c01f1b36cf"><div class="ttname"><a href="df__set_8h.html#af34623f885412e03b09394c01f1b36cf">computeDiMuonInvariantMass</a></div><div class="ttdeci">float computeDiMuonInvariantMass(ROOT::Math::PtEtaPhiMVector &amp;fourvec)</div><div class="ttdoc">Calculate the invariant mass of a dimuon Four Vector.</div></div>
 <div class="ttc" id="aoptionParse_8h_html"><div class="ttname"><a href="optionParse_8h.html">optionParse.h</a></div><div class="ttdoc">Handling flags and option parameters.</div></div>
