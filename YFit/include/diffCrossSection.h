@@ -28,7 +28,7 @@
 #include "SpectrumPlot.h"
 
 /***********************************************************
- * \brief Structure where are saved the value usuful for each bin.
+ * \brief Structure where are saved the value useful for each bin.
  *
  * In this structure are saved the value useful for each point in trasverse momentum.
  *****************************************************************************************/
@@ -77,7 +77,7 @@ Double_t diffCrossSec(double N, float wpt);
  *trasverse momentum is given by the bin edges and the one on the rapidity is between -1.2 and 1.2. The data are plotted
  *and fitted using the function fitRoo defined in fitRoo.h. From the fit we can get the number of events under the peak
  *of each Y resonance and using the function diffCrossSec, defined in diffCrossection.h, calculate the differential
- *cross section for the bin. All the value usuful for the plotting are save inside the structur returned.
+ *cross section for the bin. All the value useful for the plotting are save inside the structur returned.
  * @param ptm lower edge of the bin
  * @param ptM upper edge of the bin
  * @param df Dataframe with all the data
