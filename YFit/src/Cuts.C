@@ -43,7 +43,7 @@ ROOT::RDF::RNode applyFilter(ROOT::RDF::RNode &df_custom_cut, std::string_view f
 {
    ROOT::EnableImplicitMT(1);
    df_custom_cut = df_custom_cut.Filter(filter, name); // apply custom filter
-   auto count    = df_custom_cut.Count();              // count remaining events
+   auto count = df_custom_cut.Count();                 // count remaining events
    if (*count < 800) {
       std::cerr << "WARNING: Few events. Fit might not converge.\n" << std::endl;
    }
@@ -58,12 +58,12 @@ ROOT::RDF::RNode customFilter(ROOT::RDF::RNode &df, float pmr, float pMr, float 
    if (pmr == pmr)                      // if pmr is not nan
    {
       std::string fil = "Dimuon_pt >" + std::to_string(pmr); // format string to pass to the filter function
-      df_custom_cut   = applyFilter(df_custom_cut, fil, "Custom cut on minimum pt"); // apply filter
+      df_custom_cut = applyFilter(df_custom_cut, fil, "Custom cut on minimum pt"); // apply filter
    }
    if (pMr == pMr) // similar as above
    {
       std::string fil = "Dimuon_pt <" + std::to_string(pMr);
-      df_custom_cut   = applyFilter(df_custom_cut, fil, "Custom cut on maximum pt");
+      df_custom_cut = applyFilter(df_custom_cut, fil, "Custom cut on maximum pt");
    }
 
    if (ymr == ymr && yMr == yMr) // similar as above
@@ -81,12 +81,12 @@ ROOT::RDF::RNode customFilter(ROOT::RDF::RNode &df, float pmr, float pMr, float 
    if (ymr == ymr && yMr != yMr) // similar as above
    {
       std::string fil = "Dimuon_y >" + std::to_string(ymr);
-      df_custom_cut   = applyFilter(df_custom_cut, fil, "Custom cut on minimum rapidity");
+      df_custom_cut = applyFilter(df_custom_cut, fil, "Custom cut on minimum rapidity");
    }
    if (yMr == yMr && ymr != ymr) // similar as above
    {
       std::string fil = "Dimuon_y <" + std::to_string(yMr);
-      df_custom_cut   = applyFilter(df_custom_cut, fil, "Custom cut on maximum rapidity");
+      df_custom_cut = applyFilter(df_custom_cut, fil, "Custom cut on maximum rapidity");
    }
    return df_custom_cut;
 }
@@ -168,7 +168,7 @@ ROOT::RDF::RNode Cuts(ROOT::RDF::RNode &df, int dr, float pmr, float pMr, float 
    // generate dataframe from depth value
    ROOT::RDF::RNode df_off = generateDataFrame(df, dr);
    if (ymr == ymr || yMr == yMr || ymr == ymr || yMr == yMr) { // if custom cuts are defined
-      df_off      = customFilter(df_off, pmr, pMr, ymr, yMr);  // apply custom cuts
+      df_off = customFilter(df_off, pmr, pMr, ymr, yMr);       // apply custom cuts
       auto report = df_off.Report();                           // request cut report
       report->Print();                                         // print cut report on the terminal
       std::cout << "\n" << std::endl;

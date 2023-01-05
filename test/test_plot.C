@@ -27,9 +27,9 @@ int main()
 
    // the option of this canvas are implemented just for fun, it's not really important what's in here
    pad1->cd();
-   float  xt1 = 0.5;
-   float  yt1 = 0.1;
-   TText *t1  = new TText(0.5, yt1, "CrossY");
+   float xt1 = 0.5;
+   float yt1 = 0.1;
+   TText *t1 = new TText(0.5, yt1, "CrossY");
    t1->SetTextAlign(22);
    t1->SetTextSize(0.05);
    t1->Draw();
@@ -47,8 +47,8 @@ int main()
    TText *t21 = new TText(0.05, 0.8, "Giulio Cordova");
    t21->SetTextSize(0.1);
    t21->Draw();
-   float       xp2   = 0.5;
-   float       yp2   = 0.4;
+   float xp2 = 0.5;
+   float yp2 = 0.4;
    TPavesText *paves = new TPavesText(0.1, 0.1, xp2, yp2);
    paves->AddText("Jon Snow King in the North");
    paves->AddText("Sam didn't eat the elven bread");
@@ -59,8 +59,8 @@ int main()
    TText *t22 = new TText(0.05, 0.8, "Matilde Carminati");
    t22->SetTextSize(0.1);
    t22->Draw();
-   float       xlc   = 0.01;
-   float       ylc   = 0.01;
+   float xlc = 0.01;
+   float ylc = 0.01;
    TPaveLabel *label = new TPaveLabel(xlc, ylc, xlc + 0.8, ylc + 0.1, "The Answer is 42");
    label->SetFillColor(24);
    label->Draw();

@@ -17,11 +17,11 @@ int main()
    // define variables on which the model is built
    RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5, 11.5);
    // background
-   RooRealVar    a0("a0", "a0", 3692);
-   RooRealVar    a1("a1", "a1", -118.8);
-   RooRealVar    a2("a2", "a2", 0);
+   RooRealVar a0("a0", "a0", 3692);
+   RooRealVar a1("a1", "a1", -118.8);
+   RooRealVar a2("a2", "a2", 0);
    RooPolynomial bkg("bkg", "Background", x, RooArgSet(a0, a1, a2));
-   RooRealVar    nback("nback", "back", 0.32 * 100e3);
+   RooRealVar nback("nback", "back", 0.32 * 100e3);
 
    // Create parameters
    RooRealVar mean1("mean1", "mean of gaussians", 9.45);
@@ -43,8 +43,8 @@ int main()
    RooAddPdf model("model", "model", RooArgList(*sig1, *sig2, *sig3, bkg), RooArgList(nsig1, nsig2, nsig3, nback));
 
    // generate data from model created
-   RooDataSet *data  = model.generate(x, 100e3);
-   TH1        *hdata = data->createHistogram("x", 300);
+   RooDataSet *data = model.generate(x, 100e3);
+   TH1 *hdata = data->createHistogram("x", 300);
 
    // use fit function to fit model just created
    RooFitResult *fitResult = fitRoo(hdata, 1, 1);
@@ -55,7 +55,7 @@ int main()
 
    RooArgList lf = fitResult->floatParsFinal(); // save values returned from fit
    std::cout << lf << std::endl;                // print order
-   RooArgList        lv  = {a0, a1, a2, mean1, mean2, mean3, nback, nsig1, nsig2, nsig3, sigma1, sigma2, sigma3};
+   RooArgList lv = {a0, a1, a2, mean1, mean2, mean3, nback, nsig1, nsig2, nsig3, sigma1, sigma2, sigma3};
    const TMatrixDSym cov = fitResult->covarianceMatrix();
 
    // check if mean values are ok

@@ -46,32 +46,36 @@ TString formatYString(int dr, float ymr, float yMr) // see documentation for for
 {
    TString tmp;
    if (ymr != ymr && yMr != yMr) {
-      if (dr == 2) tmp.Form("|y| < 0.6");
+      if (dr == 2)
+         tmp.Form("|y| < 0.6");
    }
-   if (ymr == ymr && yMr == yMr) tmp.Form("%.2f < |y| < %.2f", ymr, yMr);
+   if (ymr == ymr && yMr == yMr)
+      tmp.Form("%.2f < |y| < %.2f", ymr, yMr);
 
-   if (ymr == ymr && yMr != yMr) tmp.Form("|y| > %.2f", ymr);
+   if (ymr == ymr && yMr != yMr)
+      tmp.Form("|y| > %.2f", ymr);
 
-   if (ymr != ymr && yMr == yMr) tmp.Form("|y| < %.2f", yMr);
+   if (ymr != ymr && yMr == yMr)
+      tmp.Form("|y| < %.2f", yMr);
 
    return tmp;
 }
 
-RooFitResult *fitRoo(TH1 *hh, int mr, int fr, int dr, float pmr, float pMr, float ymr, float yMr, std::string nfr,
-                     int vr)
+RooFitResult *
+fitRoo(TH1 *hh, int mr, int fr, int dr, float pmr, float pMr, float ymr, float yMr, std::string nfr, int vr)
 {
    // Declare observable x
    RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5, 11.5);
    // generate an histogram readable by roofit
    RooDataHist rh("rh", "rh", x, Import(*hh));
 
-   Int_t    nb  = hh->GetNbinsX();       // number of bins
-   Double_t x1  = hh->GetBinCenter(1);   // center of the first bin
-   Double_t x9  = hh->GetBinCenter(nb);  // center of last bin
-   Double_t n1  = hh->GetBinContent(1);  // content of first bin
-   Double_t n9  = hh->GetBinContent(nb); // content of last bin
+   Int_t nb = hh->GetNbinsX();           // number of bins
+   Double_t x1 = hh->GetBinCenter(1);    // center of the first bin
+   Double_t x9 = hh->GetBinCenter(nb);   // center of last bin
+   Double_t n1 = hh->GetBinContent(1);   // content of first bin
+   Double_t n9 = hh->GetBinContent(nb);  // content of last bin
    Double_t slp = (n9 - n1) / (x9 - x1); // initialize value of slope
-   Double_t bg  = n1 - slp * x1;         // initiazlize values for background
+   Double_t bg = n1 - slp * x1;          // initiazlize values for background
 
    Int_t entries = hh->GetEntries(); // events in the histogram
 
@@ -79,11 +83,11 @@ RooFitResult *fitRoo(TH1 *hh, int mr, int fr, int dr, float pmr, float pMr, floa
    // ---------------------------------------
 
    // Build polynomial pdf
-   RooRealVar    a0("a0", "a0", bg, -10000, 100000);
-   RooRealVar    a1("a1", "a1", slp, -10000., 1000.);
-   RooRealVar    a2("a2", "a2", 0, -1000., 1000.);
+   RooRealVar a0("a0", "a0", bg, -10000, 100000);
+   RooRealVar a1("a1", "a1", slp, -10000., 1000.);
+   RooRealVar a2("a2", "a2", 0, -1000., 1000.);
    RooPolynomial bkg("bkg", "Background", x, RooArgSet(a0, a1, a2));
-   RooRealVar    nback("nback", "Number of events in background", 0.32 * entries, 0.01 * entries, entries);
+   RooRealVar nback("nback", "Number of events in background", 0.32 * entries, 0.01 * entries, entries);
 
    // Create fit function parameters
    // mean and sigma are useful for all the fit function, r1,r2,r3 only for t-student

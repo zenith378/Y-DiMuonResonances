@@ -1,6 +1,7 @@
 /**************************************************************
  * \file diffCrossSection.h
- * \brief Function to calculate and plot the differential cross section for the Y(1S), Y(2S) and Y(3S) in trasverse momentum
+ * \brief Function to calculate and plot the differential cross section for the Y(1S), Y(2S) and Y(3S) in trasverse
+ *momentum
  *
  *******************************************************************************/
 
@@ -47,7 +48,8 @@ struct dcsbin {
 };
 
 /********************************************************************************************************************
- * \brief Calculate the differential cross section given the number of events under the peak of the Y resonance and the width of the \f$p_T \f$ bin (wpt)
+ * \brief Calculate the differential cross section given the number of events under the peak of the Y resonance and the
+ *width of the \f$p_T \f$ bin (wpt)
  *
  * The equation used for calculating the different cross section
  * \f[
@@ -58,8 +60,8 @@ struct dcsbin {
  * \f$\Delta p_T\f$ is the width of the bin in \f$p_T\f$ (i.e. the width of cut
  * on the trasverse momentum). The value of the acceptance A is fixed to 1,
  * and the other values are some costants taken from the article
- * ["Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at \f$\sqrt(s) = 7 \f$ TeV"]
- * (https://arxiv.org/pdf/1501.07750.pdf).
+ * ["Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at \f$\sqrt(s) = 7 \f$
+ *TeV"] (https://arxiv.org/pdf/1501.07750.pdf).
  *
  * @param N number of event under the peak of the resonance
  * @param wpt width of the bin
@@ -72,10 +74,10 @@ Double_t diffCrossSec(double N, float wpt);
  * \brief Create a stucture where it save the edges of the bins and the cross section for each Y resonance.
  *
  * This function select the data from the data frame df using the function Cuts() defined in Cuts.h. The cut on the
- *trasverse momentum is given by the bin edges and the one on the rapidity is between\f$ -1.2\f$ and \f$1.2\f$. The data are plotted
- *and fitted using the function fitRoo defined in fitRoo.h. From the fit we can get the number of events under the peak
- *of each Y resonance and using the function diffCrossSec, defined in diffCrossection.h, calculate the differential
- *cross section for the bin. All the value useful for the plotting are save inside the structur returned.
+ *trasverse momentum is given by the bin edges and the one on the rapidity is between\f$ -1.2\f$ and \f$1.2\f$. The data
+ *are plotted and fitted using the function fitRoo defined in fitRoo.h. From the fit we can get the number of events
+ *under the peak of each Y resonance and using the function diffCrossSec, defined in diffCrossection.h, calculate the
+ *differential cross section for the bin. All the value useful for the plotting are save inside the structur returned.
  * @param ptm lower edge of the bin
  * @param ptM upper edge of the bin
  * @param df Dataframe with all the data

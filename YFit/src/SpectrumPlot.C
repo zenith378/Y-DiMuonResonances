@@ -35,9 +35,9 @@ TH1 *SpectrumPlot(ROOT::RDF::RNode &df_cut, std::string nameFile)
    ROOT::EnableImplicitMT(1);
 
    // Book histogram of dimuon mass spectrum
-   const auto bins = 150;  // Number of bins in the histogram
-   const auto low  = 8.5;  // Lower edge of the histogram
-   const auto up   = 11.5; // Upper edge of the histogram
+   const auto bins = 150; // Number of bins in the histogram
+   const auto low = 8.5;  // Lower edge of the histogram
+   const auto up = 11.5;  // Upper edge of the histogram
 
    auto hist = df_cut.Histo1D({"hist", "Dimuon mass", bins, low, up}, "Dimuon_mass");
 

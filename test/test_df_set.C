@@ -7,7 +7,8 @@
 int main()
 {
    // if data folder is found
-   if (!gSystem->AccessPathName("./Data/")) std::filesystem::remove_all("./Data"); // delete data folder is found
+   if (!gSystem->AccessPathName("./Data/"))
+      std::filesystem::remove_all("./Data"); // delete data folder is found
    try {
       try {
          // call the function df_set (it handles the creation of the directory and the downloading of the dataset)

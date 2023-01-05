@@ -48,7 +48,7 @@ ROOT::RDF::RNode df_set()
 
    namespace fs = std::filesystem;
 
-   std::string       fname("./Data/data.root"); // path to data file
+   std::string fname("./Data/data.root"); // path to data file
    ROOT::RDataFrame *df;
    try {
       try // try opening file
