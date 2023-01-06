@@ -200,7 +200,8 @@ fitRoo(TH1 *hh, int mr, int fr, int dr, float pmr, float pMr, float ymr, float y
    hpull->SetMarkerStyle(6);
    hpull->SetLineWidth(0);
    // define application in order to display the result
-   TApplication *theApp2 = new TApplication("app2", 0, 0);
+   TApplication *theApp2 = new TApplication("theApp2", 0, 0);
+   ;
 
    // Draw the frame on the canvas
    TCanvas *c2 = new TCanvas("Fit", "Y Resonances Fit", 950, 800);
@@ -258,12 +259,20 @@ fitRoo(TH1 *hh, int mr, int fr, int dr, float pmr, float pMr, float ymr, float y
 
    // save plot
    SavePlot(c2, nfr);
+
    if (mr == 0) // if mode is set to cross, do not open canvas (with the application)
    {
       TRootCanvas *rc2 = (TRootCanvas *)c2->GetCanvasImp();
       rc2->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
-      theApp2->Run();
+      theApp2->Run(true);
    }
 
+   delete sig1;
+   delete sig2;
+   delete sig3;
+   delete pad1;
+   delete pad2;
+   delete c2;
+   // delete theApp2;
    return fitResult;
 }

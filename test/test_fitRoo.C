@@ -82,5 +82,8 @@ int main()
          exit(1);
       }
    }
+   delete sig1;
+   delete sig2;
+   delete sig3;
    return 0;
 }

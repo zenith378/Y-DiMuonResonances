@@ -154,7 +154,6 @@ ROOT::RDF::RNode generateDataFrame(ROOT::RDF::RNode &df, int dr)
       std::cout << "\nSaving cut file for future usage...\n" << std::endl;
       df_cut.Snapshot("Cuts", *fname); // save file
       std::cout << "Cut File successfully saved\n" << std::endl;
-
       return df_cut;
    } catch (...) {
       unknownErrorHandling();
@@ -166,14 +165,14 @@ ROOT::RDF::RNode Cuts(ROOT::RDF::RNode &df, int dr, float pmr, float pMr, float 
 {
    ROOT::EnableImplicitMT(1);
    // generate dataframe from depth value
-   ROOT::RDF::RNode df_off = generateDataFrame(df, dr);
+   ROOT::RDF::RNode df_ret = generateDataFrame(df, dr);
    if (ymr == ymr || yMr == yMr || ymr == ymr || yMr == yMr) { // if custom cuts are defined
-      df_off = customFilter(df_off, pmr, pMr, ymr, yMr);       // apply custom cuts
-      auto report = df_off.Report();                           // request cut report
+      df_ret = customFilter(df_ret, pmr, pMr, ymr, yMr);       // apply custom cuts
+      auto report = df_ret.Report();                           // request cut report
       report->Print();                                         // print cut report on the terminal
       std::cout << "\n" << std::endl;
-      return df_off; // return custom cut df
+      return df_ret; // return custom cut df
    }
 
-   return df_off; // return default cut df
+   return df_ret; // return default cut df
 }

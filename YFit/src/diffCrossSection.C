@@ -167,7 +167,15 @@ void PlotDiffCrossSection(ROOT::RDF::RNode &df, float ym, float yM, int dr)
    c1->Update();
    SavePlot(c1, "diffCrossSection");
    rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
-   theApp->Run();
+   theApp->Run(true);
+
+   delete c1;
+   delete mg;
+   delete g1;
+   delete g2;
+   delete g3;
+   delete theApp;
+   delete leg;
 
    return;
 }

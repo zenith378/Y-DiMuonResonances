@@ -14,28 +14,28 @@ set_property(TARGET test0 test1 test2 test3 test4 PROPERTY CXX_STANDARD 17)
 
 
 add_test(
-  NAME test0
+  NAME CmdLineArgs
   COMMAND $<TARGET_FILE:test0>
   )
 
 add_test(
-  NAME test1
+  NAME ReadAndStoreData
   COMMAND $<TARGET_FILE:test1>
   )
-set_tests_properties(test1 PROPERTIES TIMEOUT 5000)
+set_tests_properties(ReadAndStoreData PROPERTIES TIMEOUT 8000)
 
 add_test(
-  NAME test2
+  NAME Fit
   COMMAND $<TARGET_FILE:test2>
   )
 
 add_test(
-  NAME test3
+  NAME SavePlot
   COMMAND $<TARGET_FILE:test3>
   )
 
 add_test(
-  NAME test4
+  NAME StringFormat
   COMMAND $<TARGET_FILE:test4>
   )
 

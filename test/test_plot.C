@@ -67,10 +67,21 @@ int main()
    c1->Update();
 
    // Actual test
-   SavePlot(c1, "prova.pdf");
-   if (!gSystem->AccessPathName("./Plots/prova.pdf")) { // if filesystem cannot access pathname
+   SavePlot(c1, "prova");
+   if (!gSystem->AccessPathName("./test/Plots/prova.pdf")) { // if filesystem cannot access pathname
       std::cerr << "File not created" << std::endl;
       exit(1);
    }
+   delete t1;
+   delete t21;
+   delete t22;   
+   delete pad21;
+   delete pad22;
+   delete pad1;
+   delete pad2;
+   delete line1;
+   delete line2;
+   delete c1;
+   
    return 0;
 }
