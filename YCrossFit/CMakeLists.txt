@@ -26,7 +26,7 @@ target_link_libraries(YCrossFit ${ROOT_LIBRARIES})
 add_library(sub::lib1 ALIAS YCrossFit)
 
 target_include_directories( YCrossFit
-    PUBLIC ${PROJECT_SOURCE_DIR}/YFit/include
+    PUBLIC ${PROJECT_SOURCE_DIR}/YCrossFit/include
     ${CMAKE_SOURCE_DIR} ${ROOT_INCLUDE_DIRS}
 )
 set_property(TARGET YCrossFit PROPERTY CXX_STANDARD 17)
