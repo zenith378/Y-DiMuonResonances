@@ -116,7 +116,7 @@ A simple example usage</h1>
 </div><!-- fragment --><h2><a class="anchor" id="defOpt"></a>
 Default options</h2>
 <p >If we run the main of the library without specifying any flags or options, as it follows: </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch</div>
-<div class="ttc" id="amain_8C_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> main.C:33</div></div>
+<div class="ttc" id="amain_8C_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> main.C:34</div></div>
 </div><!-- fragment --><p> the program will create the plot of the differential cross section in pt of the Y resonances.</p>
 <dl class="section note"><dt>Note</dt><dd>In order to avoid typing the whole command, one can also use the bash script <code>YCross.sh</code>, which will compile and execute the script in CrossSection mode <div class="fragment"><div class="line">$ ./YCross.sh</div>
 </div><!-- fragment --></dd></dl>
@@ -135,7 +135,7 @@ Default options</h2>
 <img src="YResonancesFit.pdf" alt=""/>
 <div class="caption">
 YResonancesFit.pdf</div></div>
-<dl class="section note"><dt>Note</dt><dd>The cut on the absolute value of rapidity is customizable by adding the flags -y and -Y, as described in the documentation of <code><a class="el" href="optionParse_8h.html#a160578dd115ed301ca034d092a9e97e7" title="Implementation of the option arguments with the library &lt;getopt&gt;.">ProcessArgs()</a></code></dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The cut on the absolute value of rapidity is customizable by adding the flags -y and -Y, as described in the documentation of <code>ProcessArgs()</code></dd></dl>
 <h3><a class="anchor" id="Fit"></a>
 Mode</h3>
 <p >This programs also offers a Fit functionality where the differential cross section is not calculated nor plotted, but a singular fit is performed. This is called by adding the option &ndash;mode (-m) fit to the executable call. </p><div class="fragment"><div class="line">$ ./build/<a class="code hl_function" href="main_8C.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>/YLaunch --mode fit</div>
@@ -157,7 +157,7 @@ Description of main (and functionality of libraries)</h1>
 <p >In order to use the library as the author thought, a main is provided with it. In this section, the structure of the program is explained as if we were reading the code starting from the main and following the function calls. </p>
 <h2><a class="anchor" id="option_param"></a>
 Choose of the parameters and flags</h2>
-<p >The first thing one wants to do is to initialize some parameters. This step is necessary because the options and flags are passed as pointers in the function <code><a class="el" href="optionParse_8h.html#a160578dd115ed301ca034d092a9e97e7" title="Implementation of the option arguments with the library &lt;getopt&gt;.">ProcessArgs()</a></code>, so that they can be modified by the user with the flag syntax while calling the executable from terminal.</p>
+<p >The first thing one wants to do is to initialize some parameters. This step is necessary because the options and flags are passed as pointers in the function <code>ProcessArgs()</code>, so that they can be modified by the user with the flag syntax while calling the executable from terminal.</p>
 <p >The default values are:</p><ul>
 <li>depth = 0, i.e. basic cuts on two muons with opposite charge and invariant mass between 8.5 and 11.5 GeV</li>
 <li>fitFunction = 0, i.e. Breit-Wigner</li>
@@ -178,7 +178,7 @@ Data Loading</h2>
 <li>Dimuon_beta: Beta (velocity) of the Dimuon Four Vector</li>
 <li>Dimuon_y: Rapidity of the Dimuon Four Vector</li>
 </ul>
-<p >This variables are defined in order to make fast and efficient cuts on the Dataframe. In the function <code><a class="el" href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b" title="Define the dataframe used in the analysis or it creates it if it is not found.">df_set()</a></code> is also handled the creation of the folder Data if not already existing. </p>
+<p >This variables are defined in order to make fast and efficient cuts on the Dataframe. In the function <code>df_set()</code> is also handled the creation of the folder Data if not already existing. </p>
 <h2><a class="anchor" id="apply_cut"></a>
 Apply some cuts!</h2>
 <p >In the file Cuts.C one can decide the cuts to be applied in the dataframe. The authors implemented three "default" ones:</p><ul>
@@ -203,12 +203,12 @@ Fit the Function and save it in a canvas</h2>
 <p >The histogram and the fitted function are drawn on a canvas which is saved as nameFile.pdf. If there are custom cuts, these are printed on the canvas.</p>
 <h2><a class="anchor" id="diffCS"></a>
 Calculate and plot the differential cross section</h2>
-<p >Using the customizable function <code><a class="el" href="fitRoo_8h.html#a8d34d827ff23492f36fe47c3e81cbf8c" title="Implementation of the fit function.">fitRoo()</a></code>, it is possible calculate the differential cross section of the process \(Y\rightarrow\mu^+\mu^-\)</p>
+<p >Using the customizable function <code>fitRoo()</code>, it is possible calculate the differential cross section of the process \(Y\rightarrow\mu^+\mu^-\)</p>
 <p class="formulaDsp">
 \[ \frac{d\sigma}{dp_t} = \frac{N}{L \Delta p_T e_{uu} e_{sg} e_{vp} A} \]
 </p>
 <p >where \(N\) is a fit parameter that says how many events are under the signal function and \(\Delta p_T\) is the width of the bin in \(p_T\) (i.e. the width of cut on the trasverse momentum). The value of the acceptance A is fixed to 1, and the other values are some costants taken from the article <a href="https://arxiv.org/pdf/1501.07750.pdf">"Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at √s = 7 TeV"</a>.</p>
-<p >A more detail description of the functions used it can be found in <code><a class="el" href="diffCrossSection_8h.html" title="Function to calculate and plot the differential cross section for the Y(1S), Y(2S) and Y(3S) in trasv...">diffCrossSection.h</a></code>. </p><div class="image">
+<p >A more detail description of the functions used it can be found in <code>diffCrossSection.h</code>. </p><div class="image">
 <img src="diffCrossSection.pdf" alt=""/>
 <div class="caption">
 diffCrossSection.pdf</div></div>
@@ -221,14 +221,14 @@ Test 0</h2>
 <p >Test0 handles the reading of the command arguments and flags. In this test one define some variables, call the <code>processArgs()</code> and sees if the definition stands, then one modify the arguments and check if the options are evolved according to the made changes</p>
 <h2><a class="anchor" id="test1"></a>
 Test 1</h2>
-<p >Here is tested the online reading of the data and the behavior in case the Data folder or the Data file is missing. In the test, the folder Data is deleted and the function <code><a class="el" href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b" title="Define the dataframe used in the analysis or it creates it if it is not found.">df_set()</a></code> is called. This function should handle the creation of the folder Data and the downloading and saving of the data. Once finished this first step, we check if the Data folder exists and if it contains the file data.root. Next, we keep the folder Data and we eliminate the file data.root. The function <code><a class="el" href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b" title="Define the dataframe used in the analysis or it creates it if it is not found.">df_set()</a></code> is called again and after it finished, one check if the data is successfully recreated.</p>
-<p >In this test the fit results are controlled. First off, one defines a model with a similar shape to the one expected and calls the function <code><a class="el" href="fitRoo_8h.html#a8d34d827ff23492f36fe47c3e81cbf8c" title="Implementation of the fit function.">fitRoo()</a></code> passing this model as an argument instead of the real data. The test checks if the fit converged by looking at the fitStatus and also check if the returned parameters are inside 5 sigma of the initial value.</p>
+<p >Here is tested the online reading of the data and the behavior in case the Data folder or the Data file is missing. In the test, the folder Data is deleted and the function <code>df_set()</code> is called. This function should handle the creation of the folder Data and the downloading and saving of the data. Once finished this first step, we check if the Data folder exists and if it contains the file data.root. Next, we keep the folder Data and we eliminate the file data.root. The function <code>df_set()</code> is called again and after it finished, one check if the data is successfully recreated.</p>
+<p >In this test the fit results are controlled. First off, one defines a model with a similar shape to the one expected and calls the function <code>fitRoo()</code> passing this model as an argument instead of the real data. The test checks if the fit converged by looking at the fitStatus and also check if the returned parameters are inside 5 sigma of the initial value.</p>
 <h2><a class="anchor" id="test3"></a>
 Test 3</h2>
-<p >This one tests the function <code><a class="el" href="SpectrumPlot_8h.html#a34714da9ccb76f8078d83e0226c98bb3" title="Save the plot created in the folder Plots.">SavePlot()</a></code> which handles the saving of a canvas with a specific filename. If the folder Plots does not exist, it creates it. </p>
+<p >This one tests the function <code>SavePlot()</code> which handles the saving of a canvas with a specific filename. If the folder Plots does not exist, it creates it. </p>
 <h2><a class="anchor" id="test4"></a>
 Test 4</h2>
-<p >This test is useful to check if the printing of the custom cuts on the canvas work. It compares the strings returned by the function <code><a class="el" href="fitRoo_8h.html#a2cbf9d1b384ae8f608f2696f3b097ce5" title="Formatting the string to be displayed on the canvas regarding the cuts made on y.">formatYString()</a></code> or <code><a class="el" href="fitRoo_8h.html#a1071b14a4470a35ab0feac8aff36eab5" title="Formatting the string to be displayed on the canvas regarding the cuts made on pt.">formatPtString()</a></code> with the expected ones.</p>
+<p >This test is useful to check if the printing of the custom cuts on the canvas work. It compares the strings returned by the function <code>formatYString()</code> or <code>formatPtString()</code> with the expected ones.</p>
 <h1><a class="anchor" id="styleOpt"></a>
 Coding Style Options</h1>
 <p >The styling of the code files is formatted and checked using the library clang-format, using the guidelines provided by the <a href="https://root.cern/contribute/coding_conventions/#clangformat">ROOT official page</a>. </p>
