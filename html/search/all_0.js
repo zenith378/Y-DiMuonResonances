@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['documentation_20main_20page_0',['Documentation Main Page',['../index.html',1,'']]]
+  ['applyfilter_0',['applyFilter',['../Cuts_8h.html#a3887e21d2e02383073be6442614a0704',1,'Cuts.h']]]
 ];

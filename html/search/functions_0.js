@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main_0',['main',['../main_8C.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.C']]]
+  ['applyfilter_0',['applyFilter',['../Cuts_8h.html#a3887e21d2e02383073be6442614a0704',1,'Cuts.h']]]
 ];
