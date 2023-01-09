@@ -27,6 +27,7 @@
 #include "TGraphErrors.h"
 #include "TMultiGraph.h"
 #include "SpectrumPlot.h"
+#include "TROOT.h"
 
 /***********************************************************
  * \brief Structure where are saved the value useful for each bin.
@@ -99,6 +100,6 @@ dcsbin setset(float ptm, float ptM, float ym, float yM, ROOT::RDF::RNode &df, st
  * @param dr depth
  *
  ************************************************************************************************************************************************************************/
-void PlotDiffCrossSection(ROOT::RDF::RNode &df, float ym, float yM, int dr = 0);
+void PlotDiffCrossSection(ROOT::RDF::RNode &df, float ym = std::nanf("1"), float yM = 1.2, int dr = 0, int cr = 0);
 
 #endif /* difffCrossection_h */

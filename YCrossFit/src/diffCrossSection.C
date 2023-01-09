@@ -17,6 +17,7 @@
 #include "TGraphErrors.h"
 #include "TMultiGraph.h"
 #include "SpectrumPlot.h"
+#include "TROOT.h"
 
 Double_t diffCrossSec(double N, float wpt)
 {
@@ -64,7 +65,7 @@ dcsbin setset(float ptm, float ptM, float ym, float yM, ROOT::RDF::RNode &df, st
    return abin;
 }
 
-void PlotDiffCrossSection(ROOT::RDF::RNode &df, float ym, float yM, int dr)
+void PlotDiffCrossSection(ROOT::RDF::RNode &df, float ym, float yM, int dr, int cr)
 {
    const int n = 21; // number of points for the plot of the differential cross section
    // Define array for binning the differential cross section
@@ -90,10 +91,10 @@ void PlotDiffCrossSection(ROOT::RDF::RNode &df, float ym, float yM, int dr)
       dy2[i] = abin.ds2;             // error of cross section of Y(2S)
       dy3[i] = abin.ds3;             // error of cross section of Y(3S)
    }
-   // define application in order to display canvas
-   TApplication *theApp = new TApplication("app", 0, 0);
+   // if mute canvas flag is on, do not display canvas
+   if (cr == 1)
+      gROOT->SetBatch(1);
    TCanvas *c1 = new TCanvas("cross section", "Y Resonances differential Cross Section", 950, 800);
-   TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
 
    // DRAWING
 
@@ -162,20 +163,11 @@ void PlotDiffCrossSection(ROOT::RDF::RNode &df, float ym, float yM, int dr)
    leg->AddEntry(g2, "Y(2S)", "lp");
    leg->AddEntry(g3, "Y(3S)", "lp");
    leg->Draw();
-
+   if (cr == 0) {
+      TRootCanvas *rc = (TRootCanvas *)c1->GetCanvasImp();
+      rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
+   }
    // update the canvas, save it and display it
    c1->Update();
    SavePlot(c1, "diffCrossSection");
-   rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
-   theApp->Run(true);
-
-   delete c1;
-   delete mg;
-   delete g1;
-   delete g2;
-   delete g3;
-   delete theApp;
-   delete leg;
-
-   return;
 }

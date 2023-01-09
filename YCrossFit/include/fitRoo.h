@@ -30,6 +30,7 @@
 #include "TString.h"
 #include <string.h>
 #include <filesystem>
+#include "TROOT.h"
 
 using namespace RooFit;
 
@@ -85,6 +86,6 @@ TString formatYString(int dr = 0, float ymr = std::nanf("1"), float yMr = std::n
  *************************************************************/
 RooFitResult *fitRoo(TH1 *hh, int mr, int fr = 0, int dr = 0, float pmr = std::nanf("1"), float pMr = std::nanf("1"),
                      float ymr = std::nanf("1"), float yMr = std::nanf("1"), std::string fnr = "YResonancesFit",
-                     int vr = 0);
+                     int vr = 0, int cr = 0);
 
 #endif

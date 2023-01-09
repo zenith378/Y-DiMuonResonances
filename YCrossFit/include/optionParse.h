@@ -21,6 +21,8 @@
  *
  * Print the following output:
  *
+ * --canvasMute [-c]:               Do not display canvas
+ * 
  * --cutDepth [-d] <n>:             Choose Cut Depth between the options:
  *
  *                                  0 (default): select events with two muons of opposite charge
@@ -133,6 +135,6 @@ void unknownErrorHandling();
  * @param mr reference of option mode
  *************************************************************/
 void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr, float &ymr, float &yMr,
-                 std::string &nfr, int &vr, int &mr);
+                 std::string &nfr, int &vr, int &mr, int &cr);
 
 #endif

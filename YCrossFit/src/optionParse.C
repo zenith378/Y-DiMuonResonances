@@ -5,7 +5,8 @@
 
 void PrintHelp() // it prints the available options and flags, then exit
 {
-   std::cout << "--cutDepth [-d] <n>:            Choose Cut Depth between the options:\n"
+   std::cout << "--canvasMute [-c]:              Do not display canvas\n"
+                "--cutDepth [-d] <n>:            Choose Cut Depth between the options:\n"
                 "                                0 (default): select events with two muons of opposite charge\n"
                 "                                1: select dimuon pT between 10 and 100 GeV\n"
                 "                                2: select dimuon pT between 10 and 100 GeV\n"
@@ -51,21 +52,16 @@ void unknownErrorHandling()
 }
 
 void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr, float &ymr, float &yMr,
-                 std::string &nfr, int &vr, int &mr)
+                 std::string &nfr, int &vr, int &mr,int &cr)
 {
-   const char *const short_opts = "d:f:m:n:p:P:y:Y:hv"; // Define short options and whether an argument is expected
-   const option long_opts[] = {                         // define long options
-                               {"cutDepth", required_argument, 0, 'd'},
-                               {"fitFunction", required_argument, 0, 'f'},
-                               {"mode", required_argument, 0, 'm'},
-                               {"nameFig", required_argument, 0, 'n'},
-                               {"ptmin", required_argument, 0, 'p'},
-                               {"ptMax", required_argument, 0, 'P'},
-                               {"ymin", required_argument, 0, 'y'},
-                               {"yMax", required_argument, 0, 'Y'},
-                               {"help", no_argument, 0, 'h'},
-                               {"verbose", no_argument, 0, 'v'},
-                               {0, 0, 0, 0}};
+   const char *const short_opts = "cd:f:m:n:p:P:y:Y:hv"; // Define short options and whether an argument is expected
+   const option long_opts[] = {                          // define long options
+                               {"muteCanvas", no_argument, 0, 'c'},        {"cutDepth", required_argument, 0, 'd'},
+                               {"fitFunction", required_argument, 0, 'f'}, {"mode", required_argument, 0, 'm'},
+                               {"nameFig", required_argument, 0, 'n'},     {"ptmin", required_argument, 0, 'p'},
+                               {"ptMax", required_argument, 0, 'P'},       {"ymin", required_argument, 0, 'y'},
+                               {"yMax", required_argument, 0, 'Y'},        {"help", no_argument, 0, 'h'},
+                               {"verbose", no_argument, 0, 'v'},           {0, 0, 0, 0}};
    int option_index = 0; // initialize index to 0
    while (true) {
       const auto opt = getopt_long(argc, argv, short_opts, long_opts, &option_index);
@@ -75,6 +71,12 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
 
       switch (opt) // switch over the flags
       {
+      case 'c': // verbose flag
+      {
+         std::cout << "Mute Canvas flag set on\n" << std::endl;
+         cr = 1;
+         break;
+      }
       case 'd': // depth flag
       {
          try {

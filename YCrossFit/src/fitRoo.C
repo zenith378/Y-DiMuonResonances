@@ -20,6 +20,7 @@
 #include "TString.h"
 #include <string.h>
 #include <filesystem>
+#include "TROOT.h"
 
 using namespace RooFit;
 
@@ -62,8 +63,13 @@ TString formatYString(int dr, float ymr, float yMr) // see documentation for for
 }
 
 RooFitResult *
-fitRoo(TH1 *hh, int mr, int fr, int dr, float pmr, float pMr, float ymr, float yMr, std::string nfr, int vr)
+fitRoo(TH1 *hh, int mr, int fr, int dr, float pmr, float pMr, float ymr, float yMr, std::string nfr, int vr, int cr)
 {
+   // if mute canvas flag is on, do not display canvas
+
+   if (cr == 1)
+      gROOT->SetBatch(1);
+
    // Declare observable x
    RooRealVar x("x", "m_{#mu^{+}#mu^{-}} (GeV/c^{2})", 8.5, 11.5);
    // generate an histogram readable by roofit
@@ -116,7 +122,7 @@ fitRoo(TH1 *hh, int mr, int fr, int dr, float pmr, float pMr, float ymr, float y
 
    case 0: // breit wigner
    default: {
-      std::cout << "Using Breit-Wigner" << std::endl;
+      std::cout << "Using Breit-Wigner PDF" << std::endl;
 
       sig1 = new RooBreitWigner("sig1", "Signal component 1", x, mean1, sigma1);
       sig2 = new RooBreitWigner("sig2", "Signal component 2", x, mean2, sigma2);
@@ -127,7 +133,7 @@ fitRoo(TH1 *hh, int mr, int fr, int dr, float pmr, float pMr, float ymr, float y
 
    case 1: // gaussian
    {
-      std::cout << "Using gaus" << std::endl;
+      std::cout << "Using Gaussian PDF" << std::endl;
       sig1 = new RooGaussian("sig1", "Signal component 1", x, mean1, sigma1);
       sig2 = new RooGaussian("sig2", "Signal component 2", x, mean2, sigma2);
       sig3 = new RooGaussian("sig3", "Signal component 3", x, mean3, sigma3);
@@ -135,6 +141,7 @@ fitRoo(TH1 *hh, int mr, int fr, int dr, float pmr, float pMr, float ymr, float y
    }
    case 2: // tstudent
    {
+      std::cout << "Using t-student PDF" << std::endl;
       sig1 = new RooGenericPdf("sig1",
                                "((exp(lgamma((r1+1)/2.0)-lgamma(r1/2.0)))/(sqrt((22/7)*r1)*sigma1))*pow((1+(((x-mean1)/"
                                "sigma1)*((x-mean1)/sigma1))/r1),-(r1+1)/2.0)",
@@ -199,9 +206,6 @@ fitRoo(TH1 *hh, int mr, int fr, int dr, float pmr, float pMr, float ymr, float y
    RooHist *hpull = xframe->pullHist();
    hpull->SetMarkerStyle(6);
    hpull->SetLineWidth(0);
-   // define application in order to display the result
-   TApplication *theApp2 = new TApplication("theApp2", 0, 0);
-   ;
 
    // Draw the frame on the canvas
    TCanvas *c2 = new TCanvas("Fit", "Y Resonances Fit", 950, 800);
@@ -255,24 +259,28 @@ fitRoo(TH1 *hh, int mr, int fr, int dr, float pmr, float pMr, float ymr, float y
    hpull->GetYaxis()->SetTitleFont(43);
    hpull->SetTitle("");
    hpull->Draw();
+
+
+   if (mr == 0 && cr==0) // if mode is set to fit, close program while closing the canvas
+   {
+      TRootCanvas *rc2 = (TRootCanvas *)c2->GetCanvasImp();
+
+      rc2->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
+
+   } 
    c2->Update();
 
    // save plot
    SavePlot(c2, nfr);
-
-   if (mr == 0) // if mode is set to cross, do not open canvas (with the application)
-   {
-      TRootCanvas *rc2 = (TRootCanvas *)c2->GetCanvasImp();
-      rc2->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
-      theApp2->Run(true);
+   
+   if(mr==1) {
+      delete sig1;
+      delete sig2;
+      delete sig3;
+      delete pad1;
+      delete pad2;
+      delete c2;
    }
-
-   delete sig1;
-   delete sig2;
-   delete sig3;
-   delete pad1;
-   delete pad2;
-   delete c2;
-   // delete theApp2;
+   
    return fitResult;
 }
