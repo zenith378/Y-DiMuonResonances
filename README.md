@@ -89,6 +89,7 @@ The default values are:
 - nameFile = "YResonacesFit", name of the figure that will be saved
 - verbose = 0, i.e. no output stream from Minuit
 - mode = 1, i.e. CrossMode
+- canvas = 0, i.e. display canvas
 
  In the `optionParse.C` file are also defined functions in order to handle parameters out of bounds and non-existing ones. 
 
