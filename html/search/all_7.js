@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['plotdiffcrosssection_0',['PlotDiffCrossSection',['../diffCrossSection_8h.html#af1cb2ffcaab842e40eeb9647994043b0',1,'diffCrossSection.h']]],
-  ['printhelp_1',['PrintHelp',['../optionParse_8h.html#ae964ff8411b4fdcaf65cb5529aea4bef',1,'optionParse.h']]],
-  ['processargs_2',['ProcessArgs',['../optionParse_8h.html#a61c8962f215518c96a8dc36410df49f1',1,'optionParse.h']]],
-  ['ptm_3',['ptm',['../structdcsbin.html#a101236bac3cf7733a93e1caddb7343b9',1,'dcsbin']]],
-  ['ptm_4',['ptM',['../structdcsbin.html#a4fb8a2bc0cd03571fef4fe0c77a18322',1,'dcsbin']]]
+  ['s1_0',['s1',['../structdcsbin.html#a2595d9689fd759f46f2d8d25808c3798',1,'dcsbin']]],
+  ['s2_1',['s2',['../structdcsbin.html#afaf2f72e2da6dcc9dac2fc31585221c4',1,'dcsbin']]],
+  ['s3_2',['s3',['../structdcsbin.html#a25e8eb0e30896497dee55eefecd36d3f',1,'dcsbin']]],
+  ['saveplot_3',['SavePlot',['../SpectrumPlot_8h.html#a34714da9ccb76f8078d83e0226c98bb3',1,'SpectrumPlot.h']]],
+  ['setset_4',['setset',['../diffCrossSection_8h.html#a5cdd68b288c0c4594c64f5bbdac293fe',1,'diffCrossSection.h']]],
+  ['spectrumplot_5',['SpectrumPlot',['../SpectrumPlot_8h.html#a073489160eb1c3db831d0ad3c28c2e3d',1,'SpectrumPlot.h']]],
+  ['spectrumplot_2eh_6',['SpectrumPlot.h',['../SpectrumPlot_8h.html',1,'']]]
 ];

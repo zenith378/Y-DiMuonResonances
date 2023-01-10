@@ -119,9 +119,9 @@ Functions</h2></td></tr>
 <tr class="memitem:acd083c726f0de0e35447b9d4176abc76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="optionParse_8h.html#acd083c726f0de0e35447b9d4176abc76">unknownErrorHandling</a> ()</td></tr>
 <tr class="memdesc:acd083c726f0de0e35447b9d4176abc76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle an exception of type "unknown".  <a href="optionParse_8h.html#acd083c726f0de0e35447b9d4176abc76">More...</a><br /></td></tr>
 <tr class="separator:acd083c726f0de0e35447b9d4176abc76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61c8962f215518c96a8dc36410df49f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="optionParse_8h.html#a61c8962f215518c96a8dc36410df49f1">ProcessArgs</a> (int argc, char **argv, int &amp;dr, int &amp;fr, float &amp;pmr, float &amp;pMr, float &amp;ymr, float &amp;yMr, std::string &amp;nfr, int &amp;vr, int &amp;mr, int &amp;cr)</td></tr>
-<tr class="memdesc:a61c8962f215518c96a8dc36410df49f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of the option arguments with the library &lt;getopt&gt;.  <a href="optionParse_8h.html#a61c8962f215518c96a8dc36410df49f1">More...</a><br /></td></tr>
-<tr class="separator:a61c8962f215518c96a8dc36410df49f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd94abfcbee9dd699d02525afd504298"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="optionParse_8h.html#abd94abfcbee9dd699d02525afd504298">ProcessArgs</a> (int argc, char **argv, int &amp;fr, float &amp;pmr, float &amp;pMr, float &amp;ymr, float &amp;yMr, std::string &amp;nfr, int &amp;vr, int &amp;mr, int &amp;cr)</td></tr>
+<tr class="memdesc:abd94abfcbee9dd699d02525afd504298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of the option arguments with the library &lt;getopt&gt;.  <a href="optionParse_8h.html#abd94abfcbee9dd699d02525afd504298">More...</a><br /></td></tr>
+<tr class="separator:abd94abfcbee9dd699d02525afd504298"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Handling flags and option parameters. </p>
@@ -237,16 +237,7 @@ Functions</h2></td></tr>
 <p>Print help stream for understanding what options and flags are available, then exit. </p>
 <p >Print the following output:</p>
 <p >&ndash;canvasMute [-c]: Do not display canvas</p>
-<p >&ndash;cutDepth [-d] &lt;n&gt;: Choose Cut Depth between the options: </p><pre class="fragment">                             0 (default): select events with two muons of opposite charge
-
-                                          and invariant mass around Y-State
-
-                             1: select dimuon pT between 10 and 100 GeV
-
-                             2: select dimuon pT between 10 and 100 GeV
-
-                             and a rapidity less than 0.6 in abs value
-</pre><p> &ndash;mode [-m] &lt;mode&gt;: Choose functionality of the program between: </p><pre class="fragment">                             fit: execute fit with given parameters
+<p >&ndash;mode [-m] &lt;mode&gt;: Choose functionality of the program between: </p><pre class="fragment">                             fit: execute fit with given parameters
 
                              cross (default): calculate differential cross section in pt.
 </pre><p> &ndash;fitFunction [-f] &lt;PDFName&gt;: Choose PDF to use as Fit Function between three options: </p><pre class="fragment">                             gaus: Gaussian PDF
@@ -264,8 +255,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a61c8962f215518c96a8dc36410df49f1" name="a61c8962f215518c96a8dc36410df49f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61c8962f215518c96a8dc36410df49f1">&#9670;&nbsp;</a></span>ProcessArgs()</h2>
+<a id="abd94abfcbee9dd699d02525afd504298" name="abd94abfcbee9dd699d02525afd504298"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd94abfcbee9dd699d02525afd504298">&#9670;&nbsp;</a></span>ProcessArgs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -281,12 +272,6 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">char **&#160;</td>
           <td class="paramname"><em>argv</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>dr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -357,7 +342,6 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">argc</td><td>command line arguments number </td></tr>
     <tr><td class="paramname">argv</td><td>array of command line arguments passed </td></tr>
-    <tr><td class="paramname">dr</td><td>reference of depth defined in main </td></tr>
     <tr><td class="paramname">fr</td><td>reference of fitFunction defined in main </td></tr>
     <tr><td class="paramname">pmr</td><td>recerence of ptm (minimum pt) defined in main </td></tr>
     <tr><td class="paramname">pMr</td><td>recerence of ptM (maximum pt) defined in main </td></tr>
@@ -366,6 +350,7 @@ Functions</h2></td></tr>
     <tr><td class="paramname">nfr</td><td>recerence of nameFile defined in main </td></tr>
     <tr><td class="paramname">vr</td><td>reference of varaible verbose defined in main </td></tr>
     <tr><td class="paramname">mr</td><td>reference of option mode </td></tr>
+    <tr><td class="paramname">cr</td><td>reference of canvas flag: if on, do not display application </td></tr>
   </table>
   </dd>
 </dl>

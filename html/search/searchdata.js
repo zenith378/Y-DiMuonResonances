@@ -1,9 +1,9 @@
 var indexSectionsWithContent =
 {
-  0: "acdfgmopsu",
+  0: "acdfmopsu",
   1: "d",
   2: "cdfmos",
-  3: "acdfgmopsu",
+  3: "acdfmopsu",
   4: "dps",
   5: "d"
 };

@@ -6,6 +6,5 @@ var searchData=
   ['computedimuonpt_3',['computeDiMuonPT',['../df__set_8h.html#abc3dcc064a14d81643ca53fb4476cb58',1,'df_set.h']]],
   ['computedimuonrapidity_4',['computeDiMuonRapidity',['../df__set_8h.html#aa008d9f6ecf77c07b6af80b1ef7cf9af',1,'df_set.h']]],
   ['conversionerrorhandling_5',['conversionErrorHandling',['../optionParse_8h.html#aaaac65a9c94bb3634948df7d2d9e1164',1,'optionParse.h']]],
-  ['customfilter_6',['customFilter',['../Cuts_8h.html#a52f4252d051209d440a929a7e4f81742',1,'Cuts.h']]],
-  ['cuts_7',['Cuts',['../Cuts_8h.html#ac0ca9394f49d849c125800240600fb25',1,'Cuts.h']]]
+  ['cuts_6',['Cuts',['../Cuts_8h.html#ac7d6cc9b140874ad77cd362f8f2f35cb',1,'Cuts.h']]]
 ];

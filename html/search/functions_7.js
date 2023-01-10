@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['plotdiffcrosssection_0',['PlotDiffCrossSection',['../diffCrossSection_8h.html#af1cb2ffcaab842e40eeb9647994043b0',1,'diffCrossSection.h']]],
-  ['printhelp_1',['PrintHelp',['../optionParse_8h.html#ae964ff8411b4fdcaf65cb5529aea4bef',1,'optionParse.h']]],
-  ['processargs_2',['ProcessArgs',['../optionParse_8h.html#a61c8962f215518c96a8dc36410df49f1',1,'optionParse.h']]]
+  ['saveplot_0',['SavePlot',['../SpectrumPlot_8h.html#a34714da9ccb76f8078d83e0226c98bb3',1,'SpectrumPlot.h']]],
+  ['setset_1',['setset',['../diffCrossSection_8h.html#a5cdd68b288c0c4594c64f5bbdac293fe',1,'diffCrossSection.h']]],
+  ['spectrumplot_2',['SpectrumPlot',['../SpectrumPlot_8h.html#a073489160eb1c3db831d0ad3c28c2e3d',1,'SpectrumPlot.h']]]
 ];
