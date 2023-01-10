@@ -34,6 +34,6 @@ void SavePlot(TCanvas *c, TString namePlot);
  * @param mr reference of mode. If fit mode is selected, display canvas.
  * \return histogram of the data
  *************************************************************/
-TH1 *SpectrumPlot(ROOT::RDF::RNode &df_cut, std::string nameFile, int mr=0);
+TH1 *SpectrumPlot(ROOT::RDF::RNode &df_cut, std::string nameFile, int mr = 0);
 
 #endif /* SpectrumPlot_h */

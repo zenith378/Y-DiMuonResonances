@@ -35,7 +35,7 @@ dcsbin setset(float ptm, float ptM, float ym, float yM, ROOT::RDF::RNode &df, st
    int fitfunc = 1; // Fit Function initilized to 0, i.e. Breit-Wigner
    int verbose = 0; // verbose flag initialized to zero, i.e. no output stream for Minuit
    ROOT::RDF::RNode df_cut = Cuts(df, ptm, ptM, ym, yM);
-   TH1 *h = SpectrumPlot(df_cut, nameFile,1);
+   TH1 *h = SpectrumPlot(df_cut, nameFile, 1);
    RooFitResult *fitResult = fitRoo(h, 1, fitfunc, ptm, ptM, ym, yM, nameFile, verbose);
 
    // list of the parameter values of the fitted function
@@ -75,8 +75,7 @@ void PlotDiffCrossSection(ROOT::RDF::RNode &df, float ym, float yM, int cr)
    // define arrays for constructing the Graph of the differential cross section
    double x[n], y1[n], y2[n], y3[n], dx[n], dy1[n], dy2[n], dy3[n];
    if (yM != yM)
-      yM = 1.2; // cut on absolute value of rapidity if not already inizialized
-#pragma acc loop
+      yM = 1.2;                  // cut on absolute value of rapidity if not already inizialized
    for (int i = 0; i < n; i++) { // loop over the points
       // The name of the file in which the figure is saved for every iteration of fitRoo
       std::string nameFile = "YResonances_" + std::to_string(i);
