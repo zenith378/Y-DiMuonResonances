@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
       if (ptm == ptm || ptM == ptM || ym == ym || yM == yM) // if custom cuts are defined
          df_cut = Cuts(df, ptm, ptM, ym, yM);               // apply cuts to the dataframe
 
-      TH1 *h = SpectrumPlot(df_cut, nameFile); // draw preliminary histogram
+      TH1 *h = SpectrumPlot(df_cut, nameFile, mode); // draw preliminary histogram
       // fit the preliminary histogram to the fitfunction, plot the result and print fit values on terminal
       RooFitResult *fitresult = fitRoo(h, mode, fitfunc, ptm, ptM, ym, yM, nameFile, verbose, canvas);
    }

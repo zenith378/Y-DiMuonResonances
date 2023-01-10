@@ -29,7 +29,7 @@ void SavePlot(TCanvas *c, TString namePlot)
    }
 }
 
-TH1 *SpectrumPlot(ROOT::RDF::RNode &df_cut, std::string nameFile)
+TH1 *SpectrumPlot(ROOT::RDF::RNode &df_cut, std::string nameFile, int mr)
 {
    // Enable multi-threading
    ROOT::EnableImplicitMT(1);
@@ -70,6 +70,7 @@ TH1 *SpectrumPlot(ROOT::RDF::RNode &df_cut, std::string nameFile)
    SavePlot(c, nameFile + "_preliminary");
 
    TH1 *h = (TH1 *)gDirectory->Get("hist"); // convert from type ROOT::Dataframe to TH1
-   delete c;
+   if (mr == 1)
+      delete c;
    return h;
 }

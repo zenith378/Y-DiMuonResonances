@@ -31,8 +31,9 @@ void SavePlot(TCanvas *c, TString namePlot);
  *
  * @param df_cut Dataframe containg the data
  * @param nameFile name to give to the pdf (a string "preliminary" is going to be added to the filename)
+ * @param mr reference of mode. If fit mode is selected, display canvas.
  * \return histogram of the data
  *************************************************************/
-TH1 *SpectrumPlot(ROOT::RDF::RNode &df_cut, std::string nameFile);
+TH1 *SpectrumPlot(ROOT::RDF::RNode &df_cut, std::string nameFile, int mr=0);
 
 #endif /* SpectrumPlot_h */

@@ -82,7 +82,7 @@ TString formatYString(float ymr = std::nanf("1"), float yMr = std::nanf("1"));
  *
  * \return result of the fit
  *************************************************************/
-RooFitResult *fitRoo(TH1 *hh, int mr, int fr = 0, float pmr = std::nanf("1"), float pMr = std::nanf("1"),
+RooFitResult *fitRoo(TH1 *hh, int mr=0, int fr = 0, float pmr = std::nanf("1"), float pMr = std::nanf("1"),
                      float ymr = std::nanf("1"), float yMr = std::nanf("1"), std::string fnr = "YResonancesFit",
                      int vr = 0, int cr = 0);
 

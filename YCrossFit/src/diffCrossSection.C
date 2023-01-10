@@ -32,11 +32,10 @@ Double_t diffCrossSec(double N, float wpt)
 dcsbin setset(float ptm, float ptM, float ym, float yM, ROOT::RDF::RNode &df, std::string nameFile)
 {
    // initialize default values for options
-   int depth = 0;   // Depth value initialized to 0, i.e. no cuts
    int fitfunc = 1; // Fit Function initilized to 0, i.e. Breit-Wigner
    int verbose = 0; // verbose flag initialized to zero, i.e. no output stream for Minuit
    ROOT::RDF::RNode df_cut = Cuts(df, ptm, ptM, ym, yM);
-   TH1 *h = SpectrumPlot(df_cut, nameFile);
+   TH1 *h = SpectrumPlot(df_cut, nameFile,1);
    RooFitResult *fitResult = fitRoo(h, 1, fitfunc, ptm, ptM, ym, yM, nameFile, verbose);
 
    // list of the parameter values of the fitted function
