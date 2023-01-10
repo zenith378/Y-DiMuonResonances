@@ -45,6 +45,7 @@ var NAVTREE =
       [ "Testing", "index.html#test_doc", [
         [ "Test 0", "index.html#test0", null ],
         [ "Test 1", "index.html#test1", null ],
+        [ "Test 2", "index.html#test2", null ],
         [ "Test 3", "index.html#test3", null ],
         [ "Test 4", "index.html#test4", null ]
       ] ],

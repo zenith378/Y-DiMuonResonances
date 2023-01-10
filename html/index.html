@@ -196,7 +196,7 @@ Fit the Function and save it in a canvas</h2>
 <p >The histogram and the fitted function are drawn on a canvas which is saved as nameFile.pdf. If there are custom cuts, these are printed on the canvas.</p>
 <h2><a class="anchor" id="diffCS"></a>
 Calculate and plot the differential cross section</h2>
-<p >Using the customizable function <code><a class="el" href="fitRoo_8h.html#af797f20a80f56dc5d7754bc860404d77" title="Implementation of the fit function.">fitRoo()</a></code>, it is possible calculate the differential cross section of the process \(Y\rightarrow\mu^+\mu^-\)</p>
+<p >Using the customizable function <code><a class="el" href="fitRoo_8h.html#a100eebd7f25897d0b14e2efa70d599dd" title="Implementation of the fit function.">fitRoo()</a></code>, it is possible calculate the differential cross section of the process \(Y\rightarrow\mu^+\mu^-\)</p>
 <p class="formulaDsp">
 \[ \frac{d\sigma}{dp_t} = \frac{N}{L \Delta p_T e_{uu} e_{sg} e_{vp} A} \]
 </p>
@@ -215,7 +215,9 @@ Test 0</h2>
 <h2><a class="anchor" id="test1"></a>
 Test 1</h2>
 <p >Here is tested the online reading of the data and the behavior in case the Data folder or the Data file is missing. In the test, the folder Data is deleted and the function <code><a class="el" href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b" title="Define the dataframe used in the analysis or it creates it if it is not found.">df_set()</a></code> is called. This function should handle the creation of the folder Data and the downloading and saving of the data. Once finished this first step, we check if the Data folder exists and if it contains the file data.root. Next, we keep the folder Data and we eliminate the file data.root. The function <code><a class="el" href="df__set_8h.html#a00ced25cbce30fd8a68fcb54cb47f21b" title="Define the dataframe used in the analysis or it creates it if it is not found.">df_set()</a></code> is called again and after it finished, one check if the data is successfully recreated.</p>
-<p >In this test the fit results are controlled. First off, one defines a model with a similar shape to the one expected and calls the function <code><a class="el" href="fitRoo_8h.html#af797f20a80f56dc5d7754bc860404d77" title="Implementation of the fit function.">fitRoo()</a></code> passing this model as an argument instead of the real data. The test checks if the fit converged by looking at the fitStatus and also check if the returned parameters are inside 5 sigma of the initial value.</p>
+<h2><a class="anchor" id="test2"></a>
+Test 2</h2>
+<p >In this test the fit results are controlled. First off, one defines a model with a similar shape to the one expected and calls the function <code><a class="el" href="fitRoo_8h.html#a100eebd7f25897d0b14e2efa70d599dd" title="Implementation of the fit function.">fitRoo()</a></code> passing this model as an argument instead of the real data. The test checks if the fit converged by looking at the fitStatus and also check if the returned parameters are inside 5 sigma of the initial value.</p>
 <h2><a class="anchor" id="test3"></a>
 Test 3</h2>
 <p >This one tests the function <code><a class="el" href="SpectrumPlot_8h.html#a34714da9ccb76f8078d83e0226c98bb3" title="Save the plot created in the folder Plots.">SavePlot()</a></code> which handles the saving of a canvas with a specific filename. If the folder Plots does not exist, it creates it. </p>

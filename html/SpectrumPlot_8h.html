@@ -114,9 +114,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a34714da9ccb76f8078d83e0226c98bb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SpectrumPlot_8h.html#a34714da9ccb76f8078d83e0226c98bb3">SavePlot</a> (TCanvas *c, TString namePlot)</td></tr>
 <tr class="memdesc:a34714da9ccb76f8078d83e0226c98bb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save the plot created in the folder Plots.  <a href="SpectrumPlot_8h.html#a34714da9ccb76f8078d83e0226c98bb3">More...</a><br /></td></tr>
 <tr class="separator:a34714da9ccb76f8078d83e0226c98bb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a073489160eb1c3db831d0ad3c28c2e3d"><td class="memItemLeft" align="right" valign="top">TH1 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SpectrumPlot_8h.html#a073489160eb1c3db831d0ad3c28c2e3d">SpectrumPlot</a> (ROOT::RDF::RNode &amp;df_cut, std::string nameFile)</td></tr>
-<tr class="memdesc:a073489160eb1c3db831d0ad3c28c2e3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create histogram of currently used df, and plot the spectrum.  <a href="SpectrumPlot_8h.html#a073489160eb1c3db831d0ad3c28c2e3d">More...</a><br /></td></tr>
-<tr class="separator:a073489160eb1c3db831d0ad3c28c2e3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b69ca30cdd1d12f296de6715682ec50"><td class="memItemLeft" align="right" valign="top">TH1 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SpectrumPlot_8h.html#a8b69ca30cdd1d12f296de6715682ec50">SpectrumPlot</a> (ROOT::RDF::RNode &amp;df_cut, std::string nameFile, int mr=0)</td></tr>
+<tr class="memdesc:a8b69ca30cdd1d12f296de6715682ec50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create histogram of currently used df, and plot the spectrum.  <a href="SpectrumPlot_8h.html#a8b69ca30cdd1d12f296de6715682ec50">More...</a><br /></td></tr>
+<tr class="separator:a8b69ca30cdd1d12f296de6715682ec50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Function to plot the spectrum of the dataset which is currently used and create an histogram. </p>
@@ -158,8 +158,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a073489160eb1c3db831d0ad3c28c2e3d" name="a073489160eb1c3db831d0ad3c28c2e3d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a073489160eb1c3db831d0ad3c28c2e3d">&#9670;&nbsp;</a></span>SpectrumPlot()</h2>
+<a id="a8b69ca30cdd1d12f296de6715682ec50" name="a8b69ca30cdd1d12f296de6715682ec50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b69ca30cdd1d12f296de6715682ec50">&#9670;&nbsp;</a></span>SpectrumPlot()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -174,7 +174,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>nameFile</em>&#160;</td>
+          <td class="paramname"><em>nameFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mr</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -189,6 +195,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">df_cut</td><td>Dataframe containg the data </td></tr>
     <tr><td class="paramname">nameFile</td><td>name to give to the pdf (a string "preliminary" is going to be added to the filename) </td></tr>
+    <tr><td class="paramname">mr</td><td>reference of mode. If fit mode is selected, display canvas. </td></tr>
   </table>
   </dd>
 </dl>
