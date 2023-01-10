@@ -43,7 +43,6 @@ The default applied filters are:
 
 - an invariant mass of the Dimuon pair between 8.5 and 11.5 GeV
 - at least 2 muons of opposite charge in each event
-- an absolute value of rapidity ( $y $) less than 1.2
 
 ![Final Result](https://github.com/zenith378/Y-DiMuonResonances/blob/main/Plots/png/diffCrossSection-1.png)
 
