@@ -74,7 +74,7 @@ int main()
    }
    delete t1;
    delete t21;
-   delete t22;   
+   delete t22;
    delete pad21;
    delete pad22;
    delete pad1;
@@ -82,6 +82,6 @@ int main()
    delete line1;
    delete line2;
    delete c1;
-   
+
    return 0;
 }

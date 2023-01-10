@@ -39,26 +39,24 @@ using namespace RooFit;
  *
  * If there are no custom cut, the default ones are printed.
  *
- * @param dr reference of depth defined in main
  * @param pmr recerence of ptm (minimum pt) defined in main
  * @param pMr recerence of ptM (maximum pt) defined in main
  *
  * \return string formatted to print on the canvas
  *************************************************************/
-TString formatPtString(int dr = 0, float pmr = std::nanf("1"), float pMr = std::nanf("1"));
+TString formatPtString(float pmr = std::nanf("1"), float pMr = std::nanf("1"));
 
 /***********************************************************
  * \brief Formatting the string to be displayed on the canvas regarding the cuts made on y
  *
  * If there are no custom cut, the default ones are printed.
  *
- * @param dr reference of depth defined in main
  * @param ymr recerence of ym (minimum rapidity) defined in main
  * @param yMr recerence of yM (maximum rapidity) defined in main
  *
  * \return string formatted to print on the canvas
  *************************************************************/
-TString formatYString(int dr = 0, float ymr = std::nanf("1"), float yMr = std::nanf("1"));
+TString formatYString(float ymr = std::nanf("1"), float yMr = std::nanf("1"));
 
 /***********************************************************
  * \brief Implementation of the fit function
@@ -74,17 +72,17 @@ TString formatYString(int dr = 0, float ymr = std::nanf("1"), float yMr = std::n
  *
  * @param hh histogram to be fitted
  * @param fr reference of fitFunction defined in main
- * @param dr reference of depth defined in main
  * @param pmr recerence of ptm (minimum pt) defined in main
  * @param pMr recerence of ptM (maximum pt) defined in main
  * @param ymr recerence of ym (minimum rapidity) defined in main
  * @param yMr recerence of yM (maximum rapidity) defined in main
  * @param nfr recerence of nameFile defined in main
  * @param vr reference of varaible verbose defined in main
+ * @param cr canvas flag: if on, do not display application
  *
  * \return result of the fit
  *************************************************************/
-RooFitResult *fitRoo(TH1 *hh, int mr, int fr = 0, int dr = 0, float pmr = std::nanf("1"), float pMr = std::nanf("1"),
+RooFitResult *fitRoo(TH1 *hh, int mr, int fr = 0, float pmr = std::nanf("1"), float pMr = std::nanf("1"),
                      float ymr = std::nanf("1"), float yMr = std::nanf("1"), std::string fnr = "YResonancesFit",
                      int vr = 0, int cr = 0);
 

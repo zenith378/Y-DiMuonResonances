@@ -51,7 +51,6 @@
  *    * \f$p_T\f$ > 4.5 GeV for |\f$\eta\f$| < 1.2. 
  * * an invariant mass of the Dimuon pair between 8.5 and 11.5 GeV
  * * at least 2 muons of opposite charge in each event
- * * an absolute value of rapidity (\f$y\f$) less than 1.2
  *
  * \image html YResonancesFit.pdf "YResonancesFit.pdf"
  *
@@ -108,7 +107,6 @@
  * with the flag syntax while calling the executable from terminal. 
  * 
  * The default values are:
- * * depth = 0, i.e. basic cuts on two muons with opposite charge and invariant mass between 8.5 and 11.5 GeV
  * * fitFunction = 0, i.e. Breit-Wigner
  * * ptm, ptM, ym, yM = NaN, i.e. no cuts on \f$ p_T \f$ or rapidity y
  * * nameFile = "YResonacesFit", name of the figure that will be saved
@@ -136,15 +134,8 @@
  * In the function \c df_set() is also handled the creation of the folder Data if not already existing.
  * \subsection apply_cut Apply some cuts!
  * In the file Cuts.C one can decide the cuts to be applied in the dataframe. 
- * The authors implemented three "default" ones:
- * * Depth 0: only two muons with opposite charge and with an invariant mass between 8.5 and 11.5 GeV are selected
- * * Depth 1: same as depth 0 but with an additional cut on the transverse momentum, requesting \f$ 10 < p_T < 100 \f$ GeV
- * * Depth 2: same as depth 1 but with an addition cut on rapidity, requesting \f$ |y| < 1.2 \f$
- * 
- * In order to be faster in the future calls, these three dataframe are saved in data_cut0.root, 
- * data_cut1.root, data_cut2.root.
  *
- * It is also possible to choose other cuts on the trasverse momentum and the rapidity of the dimuon state, 
+ * It is possible to choose custom cuts on the trasverse momentum and the rapidity of the dimuon state, 
  * by adding an option while calling the program from the terminal. For example, the line
  *
  * \code 

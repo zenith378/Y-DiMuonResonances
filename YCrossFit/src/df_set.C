@@ -86,23 +86,30 @@ ROOT::RDF::RNode df_set()
          df_temp
             .Define("goodmu", "(Muon_pt > 4.5 && abs(Muon_eta) < 1.2) || (Muon_pt > 3.5 && abs(Muon_eta) <1.4 && "
                               "abs(Muon_eta)>1.2) || (Muon_pt > 3. && abs(Muon_eta) <1.6 && abs(Muon_eta)>1.4)")
-            .Filter("Sum(goodmu)>=2", "At least two muons:")
+            .Filter("Sum(goodmu)>=2", "At least two muons")
             .Define("mu0", "Nonzero(goodmu)[0]")
             .Define("oppositeCharge", "goodmu && Muon_charge[mu0]*Muon_charge < 0")
-            .Filter("Sum(oppositeCharge)>0", "Opposite charge:")
+            .Filter("Sum(oppositeCharge)>0", "Opposite charge")
             .Define("mu1", "Nonzero(oppositeCharge)[0]")
             .Define("Dimuon_FourVec", computeDiMuonFourVec,
                     {"Muon_pt", "Muon_eta", "Muon_phi", "Muon_mass", "mu0", "mu1"})
             .Define("Dimuon_mass", computeDiMuonInvariantMass, {"Dimuon_FourVec"})
             .Define("Dimuon_pt", computeDiMuonPT, {"Dimuon_FourVec"})
             .Define("Dimuon_beta", computeDiMuonBeta, {"Dimuon_FourVec"})
-            .Define("Dimuon_y", computeDiMuonRapidity, {"Dimuon_FourVec"});
+            .Define("Dimuon_y", computeDiMuonRapidity, {"Dimuon_FourVec"})
+            .Filter([](float x) { return x > 8.5 && x < 11.5; }, {"Dimuon_mass"},
+                    {"Inviariant mass between 8.5 and 11.5"}); // Cut around the Ys;
 
       auto report = df_set.Report();
+      std::cerr << "Dataframe read and formatted correctly. Cut report follows...\n" << std::endl;
+
       // Print cut-flow report
       report->Print();
+      std::cerr << "Saving dataset in " + fname + " for future usage...\n" << std::endl;
 
       df_set.Snapshot("Events", fname); // save dataframe in a root file in order to avoid downloading it all the times
+
+      std::cerr << "Data successfully stored\n" << std::endl;
 
       return df_set;
    } catch (...) // if it happens anything that is not caught

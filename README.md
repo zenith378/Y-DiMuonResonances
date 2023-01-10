@@ -85,7 +85,6 @@ In order to use the library as the author thought, a main is provided with it. I
 The first thing one wants to do is to initialize some parameters. This step is necessary because the options and flags are passed as pointers in the function `ProcessArgs()`, so that they can be modified by the user with the flag syntax while calling the executable from terminal.
 The default values are:
 
-- depth = 0, i.e. basic cuts on two muons with opposite charge and invariant mass between 8.5 and 11.5 GeV
 - fitFunction = 0, i.e. Breit-Wigner
 - ptm, ptM, ym, yM = NaN, i.e. no cuts on $p_T$ or rapidity $y$
 - nameFile = "YResonacesFit", name of the figure that will be saved
@@ -114,13 +113,8 @@ In the function`df_set()` is also handled the creation of the folder Data if not
 
 ### Apply some cuts!
 In the file `Cuts.C` one can decide the cuts to be applied in the dataframe.
-The authors implemented three "default" ones:
-- Depth 0: only two muons with opposite charge and with an invariant mass between 8.5 and 11.5 GeV are selected
-- Depth 1: same as depth 0 but with an additional cut on the transverse momentum, requesting $10\lt p_T \lt 100$ GeV
-- Depth 2: same as depth 1 but with an addition cut on rapidity, requesting $|y|\lt 1.2$.
-In order to be faster in the future calls, these three dataframe are saved in data_cut0.root, data_cut1.root, data_cut2.root.
 
-It is also possible to choose other cuts on the trasverse momentum and the rapidity of the dimuon state, by adding an option while calling the program from the terminal.
+It is possible to choose custom cuts on the trasverse momentum and the rapidity of the dimuon state, by adding an option while calling the program from the terminal.
 For example, the line
 ```
 $ ./build/main/YLaunch -m fit -p 12 -P 50 -y 0.2 -Y 1.4

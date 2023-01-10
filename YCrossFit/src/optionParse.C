@@ -6,11 +6,6 @@
 void PrintHelp() // it prints the available options and flags, then exit
 {
    std::cout << "--canvasMute [-c]:              Do not display canvas\n"
-                "--cutDepth [-d] <n>:            Choose Cut Depth between the options:\n"
-                "                                0 (default): select events with two muons of opposite charge\n"
-                "                                1: select dimuon pT between 10 and 100 GeV\n"
-                "                                2: select dimuon pT between 10 and 100 GeV\n"
-                "                                and a rapidity less than 0.6 in abs value\n"
                 "--mode [-m] <mode>              Choose functionality of the program between:\n"
                 "                                fit: execute fit with given parameters\n"
                 "                                cross (default): calculate differential cross section in pt.\n"
@@ -51,17 +46,22 @@ void unknownErrorHandling()
    exit(1);
 }
 
-void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr, float &ymr, float &yMr,
-                 std::string &nfr, int &vr, int &mr,int &cr)
+void ProcessArgs(int argc, char **argv, int &fr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &nfr,
+                 int &vr, int &mr, int &cr)
 {
-   const char *const short_opts = "cd:f:m:n:p:P:y:Y:hv"; // Define short options and whether an argument is expected
-   const option long_opts[] = {                          // define long options
-                               {"muteCanvas", no_argument, 0, 'c'},        {"cutDepth", required_argument, 0, 'd'},
-                               {"fitFunction", required_argument, 0, 'f'}, {"mode", required_argument, 0, 'm'},
-                               {"nameFig", required_argument, 0, 'n'},     {"ptmin", required_argument, 0, 'p'},
-                               {"ptMax", required_argument, 0, 'P'},       {"ymin", required_argument, 0, 'y'},
-                               {"yMax", required_argument, 0, 'Y'},        {"help", no_argument, 0, 'h'},
-                               {"verbose", no_argument, 0, 'v'},           {0, 0, 0, 0}};
+   const char *const short_opts = "cf:m:n:p:P:y:Y:hv"; // Define short options and whether an argument is expected
+   const option long_opts[] = {                        // define long options
+                               {"muteCanvas", no_argument, 0, 'c'},
+                               {"fitFunction", required_argument, 0, 'f'},
+                               {"mode", required_argument, 0, 'm'},
+                               {"nameFig", required_argument, 0, 'n'},
+                               {"ptmin", required_argument, 0, 'p'},
+                               {"ptMax", required_argument, 0, 'P'},
+                               {"ymin", required_argument, 0, 'y'},
+                               {"yMax", required_argument, 0, 'Y'},
+                               {"help", no_argument, 0, 'h'},
+                               {"verbose", no_argument, 0, 'v'},
+                               {0, 0, 0, 0}};
    int option_index = 0; // initialize index to 0
    while (true) {
       const auto opt = getopt_long(argc, argv, short_opts, long_opts, &option_index);
@@ -75,29 +75,6 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
       {
          std::cout << "Mute Canvas flag set on\n" << std::endl;
          cr = 1;
-         break;
-      }
-      case 'd': // depth flag
-      {
-         try {
-            dr = std::stoi(optarg); // convert from string to integer, if the convertion is aborted, std::stdoi() throws
-                                    // a std::invalid_argument
-            if (dr != 0 && dr != 1 && dr != 2) // if the argument is not in range
-            {
-               throw(optarg); // throw exception to handle in out of range
-            }
-         } catch (const char *errore) // errore is the value inserted by the user
-         {
-            outOfRangeErrorHandling("depth", "0, 1, or 2", errore); // handle exception of type out of range
-         } catch (const std::invalid_argument &eD)                  // catch exception from standard library
-         {
-            conversionErrorHandling("depth", "an integer number (namely 0, 1 or 2)", eD); // handle the exception
-         } catch (...) // if exception is an unknown type
-         {
-            unknownErrorHandling(); // handle the exception
-         }
-         std::cout << "Cut Depth set to: " << dr << "\n" << std::endl; // if successful, print the customized value
-
          break;
       }
       case 'f': // fit function flag
@@ -218,7 +195,6 @@ void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr
       }
       case '?': // Unrecognized option
          std::cout << "Unrecognized option. Options and flags accepted are the followings:\n" << std::endl;
-
       case 'h': // -h or --help
       default: PrintHelp(); break;
       }

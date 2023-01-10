@@ -22,18 +22,6 @@
  * Print the following output:
  *
  * --canvasMute [-c]:               Do not display canvas
- * 
- * --cutDepth [-d] <n>:             Choose Cut Depth between the options:
- *
- *                                  0 (default): select events with two muons of opposite charge
- *
- *                                               and invariant mass around Y-State
- *
- *                                  1: select dimuon pT between 10 and 100 GeV
- *
- *                                  2: select dimuon pT between 10 and 100 GeV
- *
- *                                  and a rapidity less than 0.6 in abs value
  *
  * --mode [-m] <mode>:              Choose functionality of the program between:
  *
@@ -124,7 +112,6 @@ void unknownErrorHandling();
  *
  * @param argc command line arguments number
  * @param argv array of command line arguments passed
- * @param dr reference of depth defined in main
  * @param fr reference of fitFunction defined in main
  * @param pmr recerence of ptm (minimum pt) defined in main
  * @param pMr recerence of ptM (maximum pt) defined in main
@@ -133,8 +120,10 @@ void unknownErrorHandling();
  * @param nfr recerence of nameFile defined in main
  * @param vr reference of varaible verbose defined in main
  * @param mr reference of option mode
+ * @param cr reference of canvas flag: if on, do not display application
+
  *************************************************************/
-void ProcessArgs(int argc, char **argv, int &dr, int &fr, float &pmr, float &pMr, float &ymr, float &yMr,
-                 std::string &nfr, int &vr, int &mr, int &cr);
+void ProcessArgs(int argc, char **argv, int &fr, float &pmr, float &pMr, float &ymr, float &yMr, std::string &nfr,
+                 int &vr, int &mr, int &cr);
 
 #endif

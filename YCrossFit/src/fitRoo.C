@@ -24,13 +24,9 @@
 
 using namespace RooFit;
 
-TString formatPtString(int dr, float pmr, float pMr)
+TString formatPtString(float pmr, float pMr)
 {
-   TString tmp;                    // define tmp string
-   if (pmr != pmr && pMr != pMr) { // values are nan
-      if (dr == 1 || dr == 2)      // if depth set to 1 or 2
-         tmp.Form("10 < p_{T} < 100 GeV");
-   }
+   TString tmp;                  // define tmp string
    if (pmr == pmr && pMr == pMr) // if both minimum and maximum are defined
       tmp.Form("%.1f < p_{T} < %.1f GeV", pmr, pMr);
 
@@ -43,13 +39,9 @@ TString formatPtString(int dr, float pmr, float pMr)
    return tmp;
 }
 
-TString formatYString(int dr, float ymr, float yMr) // see documentation for formatPtString()
+TString formatYString(float ymr, float yMr) // see documentation for formatPtString()
 {
    TString tmp;
-   if (ymr != ymr && yMr != yMr) {
-      if (dr == 2)
-         tmp.Form("|y| < 0.6");
-   }
    if (ymr == ymr && yMr == yMr)
       tmp.Form("%.2f < |y| < %.2f", ymr, yMr);
 
@@ -63,7 +55,7 @@ TString formatYString(int dr, float ymr, float yMr) // see documentation for for
 }
 
 RooFitResult *
-fitRoo(TH1 *hh, int mr, int fr, int dr, float pmr, float pMr, float ymr, float yMr, std::string nfr, int vr, int cr)
+fitRoo(TH1 *hh, int mr, int fr, float pmr, float pMr, float ymr, float yMr, std::string nfr, int vr, int cr)
 {
    // if mute canvas flag is on, do not display canvas
 
@@ -223,8 +215,8 @@ fitRoo(TH1 *hh, int mr, int fr, int dr, float pmr, float pMr, float ymr, float y
    xframe->SetMinimum(0.001);
    xframe->Draw();
    // format string for printing cuts on canvas
-   TString cut2 = formatYString(dr, ymr, yMr);
-   TString cut1 = formatPtString(dr, pmr, pMr);
+   TString cut2 = formatYString(ymr, yMr);
+   TString cut1 = formatPtString(pmr, pMr);
 
    TLatex label;
    label.SetNDC(true); // normalized coordinates
@@ -260,20 +252,18 @@ fitRoo(TH1 *hh, int mr, int fr, int dr, float pmr, float pMr, float ymr, float y
    hpull->SetTitle("");
    hpull->Draw();
 
-
-   if (mr == 0 && cr==0) // if mode is set to fit, close program while closing the canvas
+   if (mr == 0 && cr == 0) // if mode is set to fit, close program while closing the canvas
    {
       TRootCanvas *rc2 = (TRootCanvas *)c2->GetCanvasImp();
 
       rc2->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
-
-   } 
+   }
    c2->Update();
 
    // save plot
    SavePlot(c2, nfr);
-   
-   if(mr==1) {
+
+   if (mr == 1) {
       delete sig1;
       delete sig2;
       delete sig3;
@@ -281,6 +271,6 @@ fitRoo(TH1 *hh, int mr, int fr, int dr, float pmr, float pMr, float ymr, float y
       delete pad2;
       delete c2;
    }
-   
+
    return fitResult;
 }

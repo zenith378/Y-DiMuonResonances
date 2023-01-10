@@ -35,9 +35,9 @@ dcsbin setset(float ptm, float ptM, float ym, float yM, ROOT::RDF::RNode &df, st
    int depth = 0;   // Depth value initialized to 0, i.e. no cuts
    int fitfunc = 1; // Fit Function initilized to 0, i.e. Breit-Wigner
    int verbose = 0; // verbose flag initialized to zero, i.e. no output stream for Minuit
-   ROOT::RDF::RNode df_cut = Cuts(df, depth, ptm, ptM, ym, yM);
+   ROOT::RDF::RNode df_cut = Cuts(df, ptm, ptM, ym, yM);
    TH1 *h = SpectrumPlot(df_cut, nameFile);
-   RooFitResult *fitResult = fitRoo(h, 1, fitfunc, depth, ptm, ptM, ym, yM, nameFile, verbose);
+   RooFitResult *fitResult = fitRoo(h, 1, fitfunc, ptm, ptM, ym, yM, nameFile, verbose);
 
    // list of the parameter values of the fitted function
    RooArgList lf = fitResult->floatParsFinal();
@@ -65,7 +65,7 @@ dcsbin setset(float ptm, float ptM, float ym, float yM, ROOT::RDF::RNode &df, st
    return abin;
 }
 
-void PlotDiffCrossSection(ROOT::RDF::RNode &df, float ym, float yM, int dr, int cr)
+void PlotDiffCrossSection(ROOT::RDF::RNode &df, float ym, float yM, int cr)
 {
    const int n = 21; // number of points for the plot of the differential cross section
    // Define array for binning the differential cross section
@@ -76,7 +76,8 @@ void PlotDiffCrossSection(ROOT::RDF::RNode &df, float ym, float yM, int dr, int 
    // define arrays for constructing the Graph of the differential cross section
    double x[n], y1[n], y2[n], y3[n], dx[n], dy1[n], dy2[n], dy3[n];
    if (yM != yM)
-      yM = 1.2;                  // cut on absolute value of rapidity if not already inizialized
+      yM = 1.2; // cut on absolute value of rapidity if not already inizialized
+#pragma acc loop
    for (int i = 0; i < n; i++) { // loop over the points
       // The name of the file in which the figure is saved for every iteration of fitRoo
       std::string nameFile = "YResonances_" + std::to_string(i);
@@ -146,7 +147,7 @@ void PlotDiffCrossSection(ROOT::RDF::RNode &df, float ym, float yM, int dr, int 
    if (ym != ym && yM != yM)
       label.DrawLatex(0.75, 0.78, "#bf{|y| < 1.2}");
    else {
-      TString cut = formatYString(dr, ym, yM);
+      TString cut = formatYString(ym, yM);
       label.DrawLatex(0.75, 0.78, ("#bf{" + cut + "}"));
    }
    label.SetTextAlign(11);

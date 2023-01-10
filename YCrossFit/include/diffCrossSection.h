@@ -97,9 +97,9 @@ dcsbin setset(float ptm, float ptM, float ym, float yM, ROOT::RDF::RNode &df, st
  * @param df Dataframe where the unselected data are stored
  * @param ym lower edge on absolute value of rapidity
  * @param yM upper edge on absolute value of rapidity
- * @param dr depth
+ * @param cr canvas flag: if on, do not display application
  *
  ************************************************************************************************************************************************************************/
-void PlotDiffCrossSection(ROOT::RDF::RNode &df, float ym = std::nanf("1"), float yM = 1.2, int dr = 0, int cr = 0);
+void PlotDiffCrossSection(ROOT::RDF::RNode &df, float ym = std::nanf("1"), float yM = 1.2, int cr = 0);
 
 #endif /* difffCrossection_h */
