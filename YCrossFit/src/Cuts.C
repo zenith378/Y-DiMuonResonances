@@ -36,7 +36,6 @@ ROOT::RDF::RNode Cuts(ROOT::RDF::RNode &df, float pmr, float pMr, float ymr, flo
    {
       df_cut = df_cut.Filter([ymr, yMr](float x) { return ((x > -yMr && x < -ymr) || (x > ymr && x > yMr)); },
                              {"Dimuon_y"}, {"Custom cut on rapidity"});
-
       auto count = df_cut.Count();
       if (*count < 800) {
          std::cerr << "WARNING: Few events. Fit might not converge.\n" << std::endl;
@@ -45,12 +44,12 @@ ROOT::RDF::RNode Cuts(ROOT::RDF::RNode &df, float pmr, float pMr, float ymr, flo
 
    if (ymr == ymr && yMr != yMr) // similar as above
    {
-      std::string fil = "Dimuon_y >" + std::to_string(ymr);
+      std::string fil = "abs(Dimuon_y) >" + std::to_string(ymr);
       df_cut = applyFilter(df_cut, fil, "Custom cut on minimum rapidity");
    }
    if (yMr == yMr && ymr != ymr) // similar as above
    {
-      std::string fil = "Dimuon_y <" + std::to_string(yMr);
+      std::string fil = "abs(Dimuon_y) <" + std::to_string(yMr);
       df_cut = applyFilter(df_cut, fil, "Custom cut on maximum rapidity");
    }
    auto report = df_cut.Report(); // request cut report

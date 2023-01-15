@@ -82,26 +82,26 @@ fitRoo(TH1 *hh, int mr, int fr, float pmr, float pMr, float ymr, float yMr, std:
 
    // Build polynomial pdf
    RooRealVar a0("a0", "a0", bg, -10000, 100000);
-   RooRealVar a1("a1", "a1", slp, -10000., 1000.);
-   RooRealVar a2("a2", "a2", 0, -1000., 1000.);
+   RooRealVar a1("a1", "a1", slp, -10000., 10000.);
+   RooRealVar a2("a2", "a2", 0, -10000., 10000.);
    RooPolynomial bkg("bkg", "Background", x, RooArgSet(a0, a1, a2));
-   RooRealVar nback("nback", "Number of events in background", 0.32 * entries, 0.01 * entries, entries);
+   RooRealVar nback("nback", "Number of events in background", 0.32 * entries, 0.0001 * entries, entries);
 
    // Create fit function parameters
    // mean and sigma are useful for all the fit function, r1,r2,r3 only for t-student
    RooRealVar mean1("mean1", "mean1", 9.45, 9.3, 9.6); // values initialized as PDG
    RooRealVar mean2("mean2", "mean2", 10.01, 9.9, 10.2);
    RooRealVar mean3("mean3", "mean3", 10.35, 10.25, 10.5);
-   RooRealVar sigma1("sigma1", "width1", 0.054, 0.001, 0.3);
-   RooRealVar sigma2("sigma2", "width2", 0.032, 0.001, 0.3);
-   RooRealVar sigma3("sigma3", "width3", 0.020, 0.001, 0.3);
-   RooRealVar r1("r1", "r1", 10, 0.001, 10000);
-   RooRealVar r2("r2", "r2", 1, 0.001, 10000);
-   RooRealVar r3("r3", "r3", 1, 0.001, 10000);
+   RooRealVar sigma1("sigma1", "width1", 0.054, 0.0001, 0.3);
+   RooRealVar sigma2("sigma2", "width2", 0.032, 0.0001, 0.3);
+   RooRealVar sigma3("sigma3", "width3", 0.020, 0.0001, 0.3);
+   RooRealVar r1("r1", "r1", 10, 0.0001, 10000);
+   RooRealVar r2("r2", "r2", 1, 0.0001, 10000);
+   RooRealVar r3("r3", "r3", 1, 0.0001, 10000);
 
-   RooRealVar nsig1("nsig1", "Number of events in signal1", 0.42 * entries, 0.01 * entries, entries);
-   RooRealVar nsig2("nsig2", "Number of events in signal2", 0.31 * entries, 0.01 * entries, entries);
-   RooRealVar nsig3("nsig3", "Number of events in signal3", 0.22 * entries, 0.01 * entries, entries);
+   RooRealVar nsig1("nsig1", "Number of events in signal1", 0.42 * entries, 0.0001 * entries, entries);
+   RooRealVar nsig2("nsig2", "Number of events in signal2", 0.31 * entries, 0.0001 * entries, entries);
+   RooRealVar nsig3("nsig3", "Number of events in signal3", 0.22 * entries, 0.0001 * entries, entries);
 
    // Define signal
 

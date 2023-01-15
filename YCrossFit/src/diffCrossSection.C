@@ -25,8 +25,7 @@ Double_t diffCrossSec(double N, float wpt)
    const float e_uu = 0.75; // efficiencies
    const float e_sg = 0.5;
    const float e_vp = 0.99;
-   const float A = 1; // acceptance
-   return N / (L * wpt * e_uu * e_sg * e_vp * A);
+   return N / (L * wpt * e_uu * e_sg * e_vp);
 }
 
 dcsbin setset(float ptm, float ptM, float ym, float yM, ROOT::RDF::RNode &df, std::string nameFile)
@@ -73,9 +72,12 @@ void PlotDiffCrossSection(ROOT::RDF::RNode &df, float ym, float yM, int cr)
    double ptM[n] = {14., 16., 18., 20., 22., 24., 26., 28., 30., 32., 34.,
                     36., 38., 40., 43., 46., 50., 55., 60., 70., 100.};
 
-   double A1[n]={0.37, 0.43, 0.48, 0.52, 0.56, 0.59, 0.62, 0.64, 0.66, 0.67, 0.69, 0.70, 0.71, 0.72, 0.74, 0.75, 0.77, 0.79, 0.80, 0.82, 0.87 };
-   double A2[n]={0.36, 0.42, 0.47, 0.52, 0.55, 0.58, 0.60, 0.62, 0.64, 0.66, 0.68, 0.69, 0.71, 0.71, 0.73, 0.75, 0.76, 0.78, 0.80, 0.82, 0.87 };
-   double A3[n]={0.37, 0.42, 0.47, 0.51, 0.54, 0.58, 0.61, 0.63, 0.65, 0.67, 0.68, 0.69, 0.71, 0.72, 0.74, 0.75, 0.77, 0.79, 0.81, 0.83, 0.88 };
+   double A1[n] = {0.37, 0.43, 0.48, 0.52, 0.56, 0.59, 0.62, 0.64, 0.66, 0.67, 0.69,
+                   0.70, 0.71, 0.72, 0.74, 0.75, 0.77, 0.79, 0.80, 0.82, 0.87};
+   double A2[n] = {0.36, 0.42, 0.47, 0.52, 0.55, 0.58, 0.60, 0.62, 0.64, 0.66, 0.68,
+                   0.69, 0.71, 0.71, 0.73, 0.75, 0.76, 0.78, 0.80, 0.82, 0.87};
+   double A3[n] = {0.37, 0.42, 0.47, 0.51, 0.54, 0.58, 0.61, 0.63, 0.65, 0.67, 0.68,
+                   0.69, 0.71, 0.72, 0.74, 0.75, 0.77, 0.79, 0.81, 0.83, 0.88};
    // define arrays for constructing the Graph of the differential cross section
    double x[n], y1[n], y2[n], y3[n], dx[n], dy1[n], dy2[n], dy3[n];
    if (yM != yM)
@@ -87,12 +89,12 @@ void PlotDiffCrossSection(ROOT::RDF::RNode &df, float ym, float yM, int cr)
       dcsbin abin = setset(ptm[i], ptM[i], ym, yM, df, nameFile);
       x[i] = (ptm[i] + ptM[i]) / 2;  // center of the bin
       dx[i] = (ptM[i] - ptm[i]) / 2; // coverage of binning
-      y1[i] = abin.s1/A1[i];               // cross section of Y(1S)
-      y2[i] = abin.s2/A2[i];               // cross section of Y(2S)
-      y3[i] = abin.s3/A3[i];               // cross section of Y(3S)
-      dy1[i] = abin.ds1/A1[i];             // error of cross section of Y(1S)
-      dy2[i] = abin.ds2/A2[i];             // error of cross section of Y(2S)
-      dy3[i] = abin.ds3/A3[i];             // error of cross section of Y(3S)
+      y1[i] = abin.s1 / A1[i];       // cross section of Y(1S)
+      y2[i] = abin.s2 / A2[i];       // cross section of Y(2S)
+      y3[i] = abin.s3 / A3[i];       // cross section of Y(3S)
+      dy1[i] = abin.ds1 / A1[i];     // error of cross section of Y(1S)
+      dy2[i] = abin.ds2 / A2[i];     // error of cross section of Y(2S)
+      dy3[i] = abin.ds3 / A3[i];     // error of cross section of Y(3S)
    }
    // if mute canvas flag is on, do not display canvas
    if (cr == 1)
