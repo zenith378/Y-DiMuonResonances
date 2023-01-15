@@ -61,8 +61,8 @@ struct dcsbin {
  * \f$\Delta p_T\f$ is the width of the bin in \f$p_T\f$ (i.e. the width of cut
  * on the trasverse momentum). The value of the acceptance A is fixed to 1,
  * and the other values are some costants taken from the article
- * ["Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at \f$\sqrt(s) = 7 \f$
- *TeV"] (https://arxiv.org/pdf/1501.07750.pdf).
+ * ["Measurements of the Υ(1S), Υ(2S), and Υ(3S) differential cross sections in pp collisions at √s = 
+ * 7 TeV"] (https://arxiv.org/pdf/1501.07750.pdf).
  *
  * @param N number of event under the peak of the resonance
  * @param wpt width of the bin
